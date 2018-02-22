@@ -1,0 +1,18 @@
+binary_sensor.door_window_sensor_158d0001dacdc4:
+  friendly_name: 'Ouverture Porte'
+binary_sensor.switch_158d0002134c3d:
+  friendly_name: 'Bouton Xiaomi'
+light.gateway_light_7811dcb25b2c:
+  friendly_name: 'Gateway Xiaomi'
+sensor.Temperature_158d0002288031:
+  friendly_name: 'Parents'
+sensor.Temperature_158d0002273af3:
+  friendly_name: 'Salon'
+sensor.Temperature_158d00022736d0:
+  friendly_name: 'Noah'
+sensor.Temperature_158d00022730f3:
+  friendly_name: 'Athénaïs'
+sensor.Temperature_158d000224cd8d:
+  friendly_name: 'Test'
+sensor.Temperature_158d0002273576:
+  friendly_name: 'Sören'
