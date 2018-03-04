@@ -41,6 +41,8 @@ updater:
 
 # Discover some devices automatically
 discovery:
+  ignore:
+    - apple_tv
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
