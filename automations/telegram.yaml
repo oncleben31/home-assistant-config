@@ -92,4 +92,4 @@
   action:
   - service: notify.telegram
     data:
-      message: "Home Assitant a redémarrer !"
+      message: "Home Assitant a redémarré !"
