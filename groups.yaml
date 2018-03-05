@@ -5,7 +5,6 @@ default_view:
     - sun.sun
     - sensor.yr_symbol
     - group.exterieurs
-    - group.tests
     - group.temperatures
     - group.humidite
     - group.all_lights
@@ -41,9 +40,11 @@ temperatures:
     - sensor.Temperature_158d00022730f3
     - sensor.Temperature_158d0002273576
     - sensor.fibaro_system_fgsd002_smoke_sensor_temperature
+    - sensor.presence_couloir_temperature
+    
 
 humidite:
-  name: Humidité
+  name: Humidités
   entities:
     - sensor.humidity_158d0002273af3
     - sensor.humidity_158d0002288031
@@ -58,14 +59,13 @@ securite:
   entities:
     - binary_sensor.motion_sensor_158d0001e575b0
     - binary_sensor.sensor
+    - sensor.presence_motion_couloir
 
 puissance:
   name: Puissance
   entities:
     - sensor.power
     - sensor.neo_coolcam_power_plug_12a_power
-#    - sensor.prise_tv_power_3_8
-#    - sensor.prise_pc_power_4_8
 
 energie:
   view: yes
@@ -75,6 +75,13 @@ energie:
     - group.all_switches
     - group.puissance
 
+hue:
+  name: Hue
+  entities:
+    - sensor.presence_motion_couloir
+    - sensor.salon_interrupteur
+    - sensor.presence_couloir_temperature
+    - sensor.presence_couloir_light_level
 
 automatismes:
   view: yes
@@ -83,3 +90,6 @@ automatismes:
   entities:
     - group.all_automations
     - timer.redemande_leve_du_soleil
+    - sensor.illumination_158d0001e575b0
+    - group.hue
+    - group.tests

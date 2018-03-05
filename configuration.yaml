@@ -82,6 +82,17 @@ sensor:
          - Humidity
          - Temperature
     automatic_add: True
+  - platform: template
+    sensors:
+      presence_couloir_temperature:
+        friendly_name: 'Temperature couloir'
+        value_template: '{{states.sensor.presence_motion_couloir.attributes.temperature}}'
+        unit_of_measurement: °C
+
+      presence_couloir_light_level:
+        friendly_name: 'Luminosité couloir'
+        value_template: '{{states.sensor.presence_motion_couloir.attributes.lux}}'
+        unit_of_measurement: lux
 
 # Text to speech
 tts:

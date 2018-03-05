@@ -1,8 +1,11 @@
 *
 !*.yaml
+!*.py
 !scenes
 !.gitignore
-!automations
+!automations/
+!custom_components
+!custom_components/**
 !README
 secrets.yaml
 known_devices.yaml
