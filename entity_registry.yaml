@@ -1,0 +1,276 @@
+media_player.apple_tv:
+  platform: apple_tv
+  unique_id: a17dc9ec6f7f44674551e8bac32c2bd75f2fb7929c71decf01672f6c98d9fb8b
+remote.apple_tv:
+  platform: apple_tv
+  unique_id: a17dc9ec6f7f44674551e8bac32c2bd75f2fb7929c71decf01672f6c98d9fb8b
+light.salon_milieu:
+  platform: hue
+  unique_id: 00:17:88:01:10:51:bc:bf-0b
+light.plafond:
+  platform: hue
+  unique_id: 00:17:88:01:02:ae:86:46-0b
+light.salon_coin:
+  platform: hue
+  unique_id: 00:17:88:01:10:31:48:5b-0b
+light.couloir:
+  platform: hue
+  unique_id: 00:17:88:01:10:51:c5:ef-0b
+light.salon_gauche:
+  platform: hue
+  unique_id: 00:17:88:01:10:51:c5:78-0b
+light.spot:
+  platform: hue
+  unique_id: 84:18:26:00:00:0d:a9:b1-03
+light.guirelande:
+  platform: hue
+  unique_id: 84:18:26:00:00:0d:1f:78-03
+light.salon_droite:
+  platform: hue
+  unique_id: 00:17:88:01:10:47:1d:d5-0b
+media_player.tv_ue48h6200:
+  platform: plex
+  unique_id: jhcnha5imri4q
+media_player.apple_tv_2:
+  platform: apple_tv
+  unique_id: 6727123bdea2a7847465260a70b2e8c9fff01ae3d77a3baf902b23285f3170c8
+remote.apple_tv_2:
+  platform: apple_tv
+  unique_id: 6727123bdea2a7847465260a70b2e8c9fff01ae3d77a3baf902b23285f3170c8
+switch.switch:
+  platform: zwave
+  unique_id: 3-72057594093060096
+switch.switch_2:
+  platform: zwave
+  unique_id: 4-72057594109837312
+sensor.alarm_type:
+  platform: zwave
+  unique_id: 3-72057594094305281
+sensor.alarm_level:
+  platform: zwave
+  unique_id: 3-72057594094305297
+sensor.unknown:
+  platform: zwave
+  unique_id: 3-72057594093273090
+sensor.alarm_type_2:
+  platform: zwave
+  unique_id: 4-72057594111082497
+sensor.alarm_level_2:
+  platform: zwave
+  unique_id: 4-72057594111082513
+sensor.unknown_2:
+  platform: zwave
+  unique_id: 4-72057594110050306
+sensor.neo_coolcam_power_plug_12a_power:
+  platform: zwave
+  unique_id: 3-72057594093273218
+sensor.neo_coolcam_power_plug_12a_voltage:
+  platform: zwave
+  unique_id: 3-72057594093273346
+sensor.neo_coolcam_power_plug_12a_current:
+  platform: zwave
+  unique_id: 3-72057594093273410
+sensor.neo_coolcam_power_plug_12a_exporting:
+  platform: zwave
+  unique_id: 3-72057594093273600
+sensor.neo_coolcam_power_plug_12a_sourcenodeid:
+  platform: zwave
+  unique_id: 3-72057594094305313
+sensor.neo_coolcam_power_plug_12a_power_management:
+  platform: zwave
+  unique_id: 3-72057594094305457
+sensor.power:
+  platform: zwave
+  unique_id: 4-72057594110050434
+sensor.voltage:
+  platform: zwave
+  unique_id: 4-72057594110050562
+sensor.current:
+  platform: zwave
+  unique_id: 4-72057594110050626
+sensor.exporting:
+  platform: zwave
+  unique_id: 4-72057594110050816
+sensor.neo_coolcam_power_plug_12a_previous_reading:
+  platform: zwave
+  unique_id: 3-72057594093273106
+sensor.neo_coolcam_power_plug_12a_interval:
+  platform: zwave
+  unique_id: 3-72057594093273123
+sensor.neo_coolcam_power_plug_12a_previous_reading_2:
+  platform: zwave
+  unique_id: 3-72057594093273234
+sensor.neo_coolcam_power_plug_12a_interval_2:
+  platform: zwave
+  unique_id: 3-72057594093273251
+sensor.neo_coolcam_power_plug_12a_previous_reading_3:
+  platform: zwave
+  unique_id: 3-72057594093273362
+sensor.neo_coolcam_power_plug_12a_interval_3:
+  platform: zwave
+  unique_id: 3-72057594093273379
+sensor.neo_coolcam_power_plug_12a_previous_reading_4:
+  platform: zwave
+  unique_id: 3-72057594093273426
+sensor.neo_coolcam_power_plug_12a_interval_4:
+  platform: zwave
+  unique_id: 3-72057594093273443
+sensor.neo_coolcam_power_plug_12a_previous_reading_5:
+  platform: zwave
+  unique_id: 4-72057594110050322
+sensor.neo_coolcam_power_plug_12a_interval_5:
+  platform: zwave
+  unique_id: 4-72057594110050339
+sensor.neo_coolcam_power_plug_12a_previous_reading_6:
+  platform: zwave
+  unique_id: 4-72057594110050450
+sensor.neo_coolcam_power_plug_12a_interval_6:
+  platform: zwave
+  unique_id: 4-72057594110050467
+sensor.neo_coolcam_power_plug_12a_previous_reading_7:
+  platform: zwave
+  unique_id: 4-72057594110050578
+sensor.neo_coolcam_power_plug_12a_interval_7:
+  platform: zwave
+  unique_id: 4-72057594110050595
+sensor.neo_coolcam_power_plug_12a_previous_reading_8:
+  platform: zwave
+  unique_id: 4-72057594110050642
+sensor.neo_coolcam_power_plug_12a_interval_8:
+  platform: zwave
+  unique_id: 4-72057594110050659
+sensor.alarm_type_3:
+  platform: zwave
+  unique_id: 2-72057594077528065
+sensor.alarm_level_3:
+  platform: zwave
+  unique_id: 2-72057594077528081
+binary_sensor.sensor:
+  platform: zwave
+  unique_id: 2-72057594076463104
+sensor.fibaro_system_fgsd002_smoke_sensor_temperature:
+  platform: zwave
+  unique_id: 2-72057594076479506
+sensor.fibaro_system_fgsd002_smoke_sensor_sourcenodeid:
+  platform: zwave
+  unique_id: 2-72057594077528097
+sensor.fibaro_system_fgsd002_smoke_sensor_smoke:
+  platform: zwave
+  unique_id: 2-72057594077528129
+sensor.fibaro_system_fgsd002_smoke_sensor_heat:
+  platform: zwave
+  unique_id: 2-72057594077528177
+sensor.fibaro_system_fgsd002_smoke_sensor_burglar:
+  platform: zwave
+  unique_id: 2-72057594077528225
+sensor.fibaro_system_fgsd002_smoke_sensor_power_management:
+  platform: zwave
+  unique_id: 2-72057594077528241
+sensor.fibaro_system_fgsd002_smoke_sensor_system:
+  platform: zwave
+  unique_id: 2-72057594077528257
+sensor.fibaro_system_fgsd002_smoke_sensor_general:
+  platform: zwave
+  unique_id: 2-72057594078232577
+sensor.fibaro_system_fgsd002_smoke_sensor_smoke_2:
+  platform: zwave
+  unique_id: 2-72057594078232593
+sensor.fibaro_system_fgsd002_smoke_sensor_heat_2:
+  platform: zwave
+  unique_id: 2-72057594078232641
+media_player.apple_tv_3:
+  platform: apple_tv
+  unique_id: cc6b08f9e38f604b3b318293a83ebb79d6cfa7bf184d46ff6ce45d627f2d73e2
+remote.apple_tv_3:
+  platform: apple_tv
+  unique_id: cc6b08f9e38f604b3b318293a83ebb79d6cfa7bf184d46ff6ce45d627f2d73e2
+media_player.plex_web_chrome:
+  platform: plex
+  unique_id: us91dpiapsi5u7c0w2o8moi4
+sensor.humidity_158d0002273576:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0002273576
+sensor.pressure_158d0002273576:
+  platform: xiaomi_aqara
+  unique_id: pressure158d0002273576
+sensor.temperature_158d00022736d0:
+  platform: xiaomi_aqara
+  unique_id: temperature158d00022736d0
+sensor.humidity_158d00022736d0:
+  platform: xiaomi_aqara
+  unique_id: humidity158d00022736d0
+sensor.humidity_158d00022730f3:
+  platform: xiaomi_aqara
+  unique_id: humidity158d00022730f3
+sensor.pressure_158d00022736d0:
+  platform: xiaomi_aqara
+  unique_id: pressure158d00022736d0
+sensor.pressure_158d00022730f3:
+  platform: xiaomi_aqara
+  unique_id: pressure158d00022730f3
+sensor.pressure_158d0002273af3:
+  platform: xiaomi_aqara
+  unique_id: pressure158d0002273af3
+sensor.temperature_158d000224cd8d:
+  platform: xiaomi_aqara
+  unique_id: temperature158d000224cd8d
+sensor.temperature_158d00022730f3:
+  platform: xiaomi_aqara
+  unique_id: temperature158d00022730f3
+sensor.humidity_158d0002273af3:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0002273af3
+sensor.humidity_158d000224cd8d:
+  platform: xiaomi_aqara
+  unique_id: humidity158d000224cd8d
+sensor.temperature_158d0002288031:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0002288031
+sensor.temperature_158d0002273af3:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0002273af3
+sensor.pressure_158d000224cd8d:
+  platform: xiaomi_aqara
+  unique_id: pressure158d000224cd8d
+sensor.humidity_158d0002288031:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0002288031
+sensor.illumination_158d0001e575b0:
+  platform: xiaomi_aqara
+  unique_id: lux158d0001e575b0
+sensor.pressure_158d0002288031:
+  platform: xiaomi_aqara
+  unique_id: pressure158d0002288031
+sensor.illumination_7811dcb25b2c:
+  platform: xiaomi_aqara
+  unique_id: illumination7811dcb25b2c
+sensor.temperature_158d0002273576:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0002273576
+binary_sensor.wall_switch_left_158d000183e3bc:
+  platform: xiaomi_aqara
+  unique_id: channel_0158d000183e3bc
+binary_sensor.door_window_sensor_158d0001dacdc4:
+  platform: xiaomi_aqara
+  unique_id: status158d0001dacdc4
+binary_sensor.wall_switch_right_158d000183e3bc:
+  platform: xiaomi_aqara
+  unique_id: channel_1158d000183e3bc
+binary_sensor.wall_switch_both_158d000183e3bc:
+  platform: xiaomi_aqara
+  unique_id: dual_channel158d000183e3bc
+binary_sensor.switch_158d0002134c3d:
+  platform: xiaomi_aqara
+  unique_id: status158d0002134c3d
+binary_sensor.motion_sensor_158d0001e575b0:
+  platform: xiaomi_aqara
+  unique_id: status158d0001e575b0
+light.gateway_light_7811dcb25b2c:
+  platform: xiaomi_aqara
+  unique_id: rgb7811dcb25b2c
+media_player.google_home:
+  platform: cast
+  unique_id: c54ca785-a685-9f5f-9929-53b0a5143956
+media_player.tele:
+  platform: cast
+  unique_id: 9c88576f-cdc2-1c5d-0c77-e879c0bdd2d0
