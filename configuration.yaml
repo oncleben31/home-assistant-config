@@ -1,17 +1,15 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: Maison
-  # Location required to calculate the time the sun rises and sets
+
   latitude: !secret latitude_home
   longitude: !secret longitude_home
-  # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: !secret altitude_home
-  # metric for Metric, imperial for Imperial
+
   unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Paris
-  # Customization file
+
   customize: !include customize.yaml
+  packages: !include_dir_named packages
 
 # Show links to resources in log and frontend
 # introduction:
@@ -29,6 +27,8 @@ http:
   api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: !secret base_url
+  ip_ban_enabled: True
+  login_attempts_threshold: 3
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -37,7 +37,7 @@ http:
 # https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
 updater:
   # Optional, allows Home Assistant developers to focus on popular components.
-  # include_used_components: true
+  include_used_components: true
 
 # Discover some devices automatically
 discovery:
@@ -54,6 +54,9 @@ history:
       - sensor
       - switch
       - media_player
+      - light
+      - binary_sensor
+
 
 recorder:
   include:
@@ -61,6 +64,8 @@ recorder:
       - sensor
       - switch
       - media_player
+      - light
+      - binary_sensor
 
 # View all events in a logbook
 logbook:
@@ -129,7 +134,9 @@ zwave:
 
 #MQTT
 mqtt:
-  broker: 192.168.1.28
+  broker: 127.0.0.1
+  port: 1883
+  client_id: home-assistant
   username: !secret mqtt_username
   password: !secret mqtt_password
 

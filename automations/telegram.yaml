@@ -93,3 +93,16 @@
   - service: notify.telegram
     data:
       message: "Home Assitant a redémarré !"
+
+##
+## Notification if update available
+##
+
+- alias: 'Notification de mise à jour disponible'
+  trigger:
+    platform: state
+    entity_id: updater.updater
+  action:
+    service: notify.telegram
+    data:
+      message: "Une mise à jour de Home Assistant est disponible"

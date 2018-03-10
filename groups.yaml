@@ -10,7 +10,8 @@ default_view:
     - group.all_lights
     - media_player.google_home
     - media_player.tele
-    - media_player.samsung_led48_ue48h6200
+#    - media_player.samsung_led48_ue48h6200
+    - media_player.tv_ue48h6200
 
 exterieurs:
   name: Extérieurs
@@ -41,7 +42,7 @@ temperatures:
     - sensor.Temperature_158d0002273576
     - sensor.fibaro_system_fgsd002_smoke_sensor_temperature
     - sensor.presence_couloir_temperature
-    
+
 
 humidite:
   name: Humidités
@@ -93,3 +94,4 @@ automatismes:
     - sensor.illumination_158d0001e575b0
     - group.hue
     - group.tests
+    - group.raspberry_pi

@@ -4,6 +4,7 @@
 !scenes
 !.gitignore
 !automations/
+!packages
 !custom_components
 !custom_components/**
 !README

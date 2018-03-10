@@ -1,0 +1,26 @@
+sensor:
+  - platform: command_line
+    name: CPU Temperature
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    value_template: '{{ value | multiply(0.001) }}'
+
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_free
+      - type: memory_use_percent
+      - type: processor_use
+      - type: since_last_boot
+
+group:
+  raspberry_pi:
+    name: "Raspberry Pi"
+    entities:
+      - sensor.cpu_temperature
+      - sensor.disk_use_percent_
+      - sensor.memory_free
+      - sensor.memory_use_percent
+      - sensor.processor_use
+      - sensor.since_last_boot
