@@ -77,6 +77,9 @@ map:
 sun:
 
 # Weather prediction
+#weather:
+
+# Sensors
 sensor:
   - platform: yr
   - platform: rfxtrx
@@ -98,6 +101,39 @@ sensor:
         friendly_name: 'Luminosité couloir'
         value_template: '{{states.sensor.presence_motion_couloir.attributes.lux}}'
         unit_of_measurement: lux
+  - platform: mqtt
+    state_topic: "home/piscine/temperature"
+    name: "Température piscine"
+    unit_of_measurement: "°C"
+
+  - platform: darksky
+    api_key: !secret darksky
+    update_interval: 00:05
+    monitored_conditions:
+      - summary
+      - nearest_storm_distance
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - precip_accumulation
+      - temperature
+      - apparent_temperature
+      - dew_point
+      - wind_speed
+      - wind_bearing
+      - cloud_cover
+      - humidity
+      - pressure
+      - visibility
+      - minutely_summary
+      - hourly_summary
+      - daily_summary
+      - temperature_max
+      - temperature_min
+      - apparent_temperature_max
+      - apparent_temperature_min
+      - precip_intensity_max
+      - uv_index
 
 # Text to speech
 tts:
@@ -143,6 +179,15 @@ mqtt:
 timer:
   redemande_leve_du_soleil:
     duration: '00:15:00'
+
+input_select:
+  house_mode:
+    name: House mode
+    options:
+      - Présence
+      - Nuit
+      - Innocupé
+      - Sécurisé
 
 group: !include groups.yaml
 automation: !include automations.yaml

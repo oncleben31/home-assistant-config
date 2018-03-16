@@ -2,6 +2,7 @@ default_view:
   view: yes
   icon: mdi:home
   entities:
+    - updater.updater
     - sun.sun
     - sensor.yr_symbol
     - group.exterieurs
@@ -12,6 +13,7 @@ default_view:
     - media_player.tele
 #    - media_player.samsung_led48_ue48h6200
     - media_player.tv_ue48h6200
+    - group.darksky
 
 exterieurs:
   name: Extérieurs
@@ -95,3 +97,32 @@ automatismes:
     - group.hue
     - group.tests
     - group.raspberry_pi
+    - input_select.house_mode
+
+darksky:
+  name: Météo DarkSky
+  entities:
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_nearest_storm_distance
+    - sensor.dark_sky_precip
+    - sensor.dark_sky_precip_intensity
+    - sensor.dark_sky_precip_probability
+    - sensor.dark_sky_precip_accumulation
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_apparent_temperature
+    - sensor.dark_sky_dew_point
+    - sensor.dark_sky_wind_speed
+    - sensor.dark_sky_wind_bearing
+    - sensor.dark_sky_cloud_coverage
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_pressure
+    - sensor.dark_sky_visibility
+    - sensor.dark_sky_minutely_summary
+    - sensor.dark_sky_hourly_summary
+    - sensor.dark_sky_daily_summary
+    - sensor.dark_sky_daily_high_apparent_temperature
+    - sensor.dark_sky_daily_low_apparent_temperature
+    - sensor.dark_sky_daily_high_temperature
+    - sensor.dark_sky_daily_low_temperature
+    - sensor.dark_sky_daily_max_precip_intensity
+    - sensor.dark_sky_uv_index
