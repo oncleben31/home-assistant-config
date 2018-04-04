@@ -111,21 +111,21 @@ sensor:
     update_interval: 00:05
     monitored_conditions:
       - summary
-      - nearest_storm_distance
+      # - nearest_storm_distance
       - precip_type
       - precip_intensity
       - precip_probability
       - precip_accumulation
       - temperature
-      - apparent_temperature
-      - dew_point
+      # - apparent_temperature
+      # - dew_point
       - wind_speed
       - wind_bearing
       - cloud_cover
       - humidity
-      - pressure
+      # - pressure
       - visibility
-      - minutely_summary
+      # - minutely_summary
       - hourly_summary
       - daily_summary
       - temperature_max
