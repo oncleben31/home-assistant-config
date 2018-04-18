@@ -79,6 +79,12 @@ sun:
 # Weather prediction
 #weather:
 
+# Hue bridge:
+hue:
+  bridges:
+    - host: 192.168.1.22
+      allow_unreachable: true
+
 # Sensors
 sensor:
   - platform: yr
@@ -105,6 +111,7 @@ sensor:
     state_topic: "home/piscine/temperature"
     name: "Température piscine"
     unit_of_measurement: "°C"
+  - platform: hue
 
   - platform: darksky
     api_key: !secret darksky
