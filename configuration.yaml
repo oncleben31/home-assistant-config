@@ -11,10 +11,10 @@ homeassistant:
   customize: !include customize.yaml
   packages: !include_dir_named packages
 
-# Show links to resources in log and frontend
-# introduction:
 logger:
-#  default: info
+  default: info
+  logs:
+    homeassistant.components.zwave: warning
 
 # Enables the frontend
 frontend:
@@ -71,7 +71,7 @@ recorder:
 logbook:
 
 # Enables a map showing the location of tracked devices
-map:
+#map:
 
 # Track the sun
 sun:
@@ -112,35 +112,11 @@ sensor:
     name: "Température piscine"
     unit_of_measurement: "°C"
   - platform: hue
+  - platform: plex
+    host: 192.168.1.12
+    port: 32400
+    token: !secret plex_token
 
-  - platform: darksky
-    api_key: !secret darksky
-    update_interval: 00:05
-    monitored_conditions:
-      - summary
-      # - nearest_storm_distance
-      - precip_type
-      - precip_intensity
-      - precip_probability
-      - precip_accumulation
-      - temperature
-      # - apparent_temperature
-      # - dew_point
-      - wind_speed
-      - wind_bearing
-      - cloud_cover
-      - humidity
-      # - pressure
-      - visibility
-      # - minutely_summary
-      - hourly_summary
-      - daily_summary
-      - temperature_max
-      - temperature_min
-      - apparent_temperature_max
-      - apparent_temperature_min
-      - precip_intensity_max
-      - uv_index
 
 # Text to speech
 tts:
@@ -195,6 +171,7 @@ input_select:
       - Nuit
       - Innocupé
       - Sécurisé
+
 
 group: !include groups.yaml
 automation: !include automations.yaml

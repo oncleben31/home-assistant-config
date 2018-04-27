@@ -1,0 +1,94 @@
+sensor:
+  - platform: darksky
+    api_key: !secret darksky
+    update_interval: 00:05
+    language: fr
+    monitored_conditions:
+      - summary
+#      - precip_type
+#      - precip_intensity
+      - precip_probability
+#      - precip_accumulation
+      - temperature
+      - wind_speed
+      - wind_bearing
+#      - cloud_cover
+      - humidity
+#      - visibility
+#      - hourly_summary
+#      - daily_summary
+#      - temperature_max
+#      - temperature_min
+#      - apparent_temperature_max
+#      - apparent_temperature_min
+#      - precip_intensity_max
+#      - uv_index
+#
+
+# Convert the Wind Direction from degrees to cardinal
+# Thanks to DIYFUTURISM.COM
+  - platform: template
+    sensors:
+      friendly_wind_direction:
+        friendly_name: 'Direction du vent'
+        icon_template: 'mdi:compass'
+        value_template: >-
+          {%if states.sensor.dark_sky_wind_bearing.state | float<=11 %}N
+          {% elif states.sensor.dark_sky_wind_bearing.state | float>348 %}N
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=34 | float>11 %}NNE
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=56 | float>34 %}NE
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=79 | float>56 %}ENE
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=101 | float>79 %}E
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=124 | float>101 %}ESE
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=146 | float>124 %}SE
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=169 | float>146 %}SSE
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=191 | float>169 %}S
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=214 | float>191 %}SSO
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=236 | float>214 %}SO
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=259 | float>236 %}OSO
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=281 | float>259 %}O
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=304 | float>281 %}ONO
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=326 | float>304 %}NO
+          {% elif states.sensor.dark_sky_wind_bearing.state | float<=348 | float>326 %}NNO
+          {%- endif %}
+
+      wind_speed_kmh:
+        friendly_name: 'Vitesse du vent'
+        unit_of_measurement: 'km/h'
+        icon_template: 'mdi:weather-windy'
+        value_template: "{{ (states('sensor.dark_sky_wind_speed')|float * 3.6)|round }}"
+
+homeassistant:
+  customize:
+   sensor.dark_sky_temperature:
+     friendly_name: "Température Dark Sky"
+   sensor.dark_sky_humidity:
+     friendly_name: "Humidité Dark Sky"
+   sensor.dark_sky_precip_probability:
+     friendly_name: "Probabilité de précipitation"
+
+group:
+  darksky:
+    name: Météo DarkSky
+    entities:
+#      - sensor.dark_sky_summary
+      - sensor.dark_sky_temperature
+#      - sensor.dark_sky_precip
+#      - sensor.dark_sky_precip_intensity
+#      - sensor.dark_sky_precip_accumulation
+#      - sensor.dark_sky_wind_speed
+      - sensor.wind_speed_kmh
+#      - sensor.dark_sky_wind_bearing
+      - sensor.friendly_wind_direction
+#      - sensor.dark_sky_cloud_coverage
+      - sensor.dark_sky_humidity
+#      - sensor.dark_sky_visibility
+#      - sensor.dark_sky_hourly_summary
+#      - sensor.dark_sky_daily_summary
+#      - sensor.dark_sky_daily_high_apparent_temperature
+#      - sensor.dark_sky_daily_low_apparent_temperature
+#      - sensor.dark_sky_daily_high_temperature
+#      - sensor.dark_sky_daily_low_temperature
+#      - sensor.dark_sky_daily_max_precip_intensity
+#      - sensor.dark_sky_uv_index
+      - sensor.dark_sky_precip_probability
