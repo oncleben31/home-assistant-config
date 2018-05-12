@@ -23,7 +23,23 @@ sensor:
 #      - apparent_temperature_min
 #      - precip_intensity_max
 #      - uv_index
-#
+  - platform: wunderground
+    api_key: !secret wunderground
+    lang: FR
+    monitored_conditions:
+      - alerts
+      - feelslike_c
+      - heat_index_c
+      - precip_today_metric
+      - precip_today_string
+      - precip_1d_mm
+      - precip_1d
+      - temp_c
+      - weather
+      - wind_dir
+      - wind_gust_kph
+      - wind_kph
+      - wind_string
 
 # Convert the Wind Direction from degrees to cardinal
 # Thanks to DIYFUTURISM.COM
@@ -92,3 +108,18 @@ group:
 #      - sensor.dark_sky_daily_max_precip_intensity
 #      - sensor.dark_sky_uv_index
       - sensor.dark_sky_precip_probability
+  wunderground:
+    entities:
+      - sensor.pws_
+      - sensor.pws_alerts
+      - sensor.pws_feelslike_c
+      - sensor.pws_heat_index_c
+      - sensor.pws_precip_today_metric
+      - sensor.pws_precip_today_string
+      - sensor.pws_precip_1d_mm
+      - sensor.pws_precip_1d
+      - sensor.pws_temp_c
+      - sensor.pws_wind_dir
+      - sensor.pws_wind_gust_kph
+      - sensor.pws_wind_kph
+      - sensor.pws_wind_string
