@@ -28,7 +28,7 @@ http:
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: !secret base_url
   ip_ban_enabled: True
-  login_attempts_threshold: 3
+  login_attempts_threshold: 4
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -76,14 +76,8 @@ logbook:
 # Track the sun
 sun:
 
-# Weather prediction
-#weather:
 
-# Hue bridge:
-hue:
-  bridges:
-    - host: 192.168.1.22
-      allow_unreachable: true
+
 
 # Sensors
 sensor:
@@ -111,7 +105,6 @@ sensor:
     state_topic: "home/piscine/temperature"
     name: "Température piscine"
     unit_of_measurement: "°C"
-  - platform: hue
   - platform: plex
     host: 192.168.1.12
     port: 32400
