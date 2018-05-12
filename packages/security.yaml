@@ -1,0 +1,85 @@
+binary_sensor:
+  - platform: template
+    sensors:
+      mouvement_maison_meta:
+        friendly_name: "Mouvement dans la maison"
+        device_class: motion
+        value_template: >-
+          {%- if is_state("sensor.presence_motion_couloir", "on")
+          or is_state("binary_sensor.motion_sensor_158d0001e575b0", "on")
+          -%}
+          True
+          {%- else -%}
+          False
+          {%- endif %}
+      mouvement_couloir:
+        friendly_name: "Mouvement dans le couloir"
+        device_class: motion
+        value_template: "{{ is_state('sensor.presence_motion_couloir', 'on') }}"
+
+# Custom Components: https://github.com/rogro82/hass-variables
+variable:
+  last_motion:
+    name: "Dernier mouvement"
+    value: 'Inconnu'
+    restore: true
+    attributes:
+      icon: mdi:map-marker
+
+automation:
+# Update Last Motion variable
+  - alias: "Update Last Motion"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.mouvement_couloir, binary_sensor.motion_sensor_158d0001e575b0
+        to: 'on'
+    action:
+      - service: variable.set_variable
+        data:
+          variable: last_motion
+          attributes_template: >
+              {
+                "history_1": "{{ variable.state }}",
+                "history_2": "{{ variable.attributes.history_1 }}",
+                "history_3": "{{ variable.attributes.history_2 }}"
+              }
+        data_template:
+          value: "{{ trigger.to_state.attributes.friendly_name }}"
+
+
+
+alarm_control_panel:
+  - platform: manual
+    name: Home Alarm
+    code: 1234
+    pending_time: 30
+    delay_time: 20
+    trigger_time: 4
+    disarmed:
+      trigger_time: 0
+    armed_home:
+      pending_time: 0
+      delay_time: 0
+
+
+homeassistant:
+  customize:
+    group.securite:
+      order: 2
+
+group:
+  mouvements:
+    name: Détecteurs de mouvement
+    entities:
+      - variable.last_motion
+      - binary_sensor.mouvement_maison_meta
+      - binary_sensor.motion_sensor_158d0001e575b0
+      - binary_sensor.mouvement_couloir
+
+  securite:
+    view: yes
+    name: Sécurité
+    icon: mdi:security-home
+    entities:
+      - alarm_control_panel.home_alarm
+      - group.mouvements

@@ -1,0 +1,5 @@
+- alias: 'dummy'
+  hide_entity: true
+  initial_state: false
+  trigger:
+  action:

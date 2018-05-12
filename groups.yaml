@@ -1,11 +1,13 @@
 default_view:
   view: yes
   icon: mdi:home
+  name: Maison
   entities:
     - updater.updater
     - sun.sun
     - sensor.yr_symbol
     - sensor.dark_sky_summary
+    - sensor.pws_weather
     - group.exterieurs
     - group.temperatures
     - group.humidite
@@ -15,6 +17,7 @@ default_view:
 #    - media_player.samsung_led48_ue48h6200
     - media_player.tv_ue48h6200
     - group.darksky
+    - group.wunderground
 
 exterieurs:
   name: Extérieurs
@@ -44,7 +47,7 @@ temperatures:
     - sensor.Temperature_158d00022736d0
     - sensor.Temperature_158d00022730f3
     - sensor.Temperature_158d0002273576
-    - sensor.fibaro_system_fgsd002_smoke_sensor_temperature
+    - sensor.detecteur_de_fumee_temperature
     - sensor.presence_couloir_temperature
 
 
@@ -57,20 +60,12 @@ humidite:
     - sensor.humidity_158d00022730f3
     - sensor.humidity_158d0002273576
 
-securite:
-  view: yes
-  name: Sécurité
-  icon: mdi:security-home
-  entities:
-    - binary_sensor.motion_sensor_158d0001e575b0
-    - binary_sensor.sensor
-    - sensor.presence_motion_couloir
 
 puissance:
   name: Puissance
   entities:
-    - sensor.power
-    - sensor.neo_coolcam_power_plug_12a_power
+    - sensor.prise_pc_power
+    - sensor.prise_tv_power
 
 energie:
   view: yes

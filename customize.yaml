@@ -40,7 +40,7 @@ light.gateway_light_7811dcb25b2c:
 sensor.illumination_7811dcb25b2c:
   friendly_name: "Luminosité Gateway Xiaomi"
 binary_sensor.motion_sensor_158d0001e575b0:
-  friendly_name: "Détecteur de présence Salon"
+  friendly_name: "Mouvement dans le Salon"
 sensor.illumination_158d0001e575b0:
   friendly_name: "Luminosité salon"
 
