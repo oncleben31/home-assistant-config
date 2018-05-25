@@ -1,5 +1,6 @@
-- alias: 'dummy'
+- alias: dummy
   hide_entity: true
   initial_state: false
   trigger:
   action:
+  id: 621d6edfe6c44a41b59116c872c0a78d

@@ -43,6 +43,7 @@ updater:
 discovery:
   ignore:
     - apple_tv
+    - philips_hue
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -56,6 +57,8 @@ history:
       - media_player
       - light
       - binary_sensor
+      - alarm_control_panel
+      - sun
 
 
 recorder:
@@ -66,6 +69,8 @@ recorder:
       - media_player
       - light
       - binary_sensor
+      - alarm_control_panel
+      - sun
 
 # View all events in a logbook
 logbook:
@@ -76,7 +81,19 @@ logbook:
 # Track the sun
 sun:
 
-
+binary_sensor:
+  - platform: trend
+    sensors:
+      temp_falling:
+        entity_id: sensor.Temperature_158d0002288031
+        sample_duration: 3600
+        min_gradient: -0.00014
+        device_class: cold
+      temp_rising:
+        entity_id: sensor.Temperature_158d0002288031
+        sample_duration: 3600
+        min_gradient: 0.00014
+        device_class: heat
 
 
 # Sensors
@@ -90,10 +107,12 @@ sensor:
          - Humidity
          - Temperature
     automatic_add: True
+
   - platform: hue
     # custom components for accessing Hue motion sensor data (https://github.com/robmarkcole/Hue-sensors-HASS)
     ip_address: 192.168.1.22
     token: !secret hue_token
+
   - platform: template
     sensors:
       presence_couloir_temperature:
@@ -105,10 +124,12 @@ sensor:
         friendly_name: 'Luminosité couloir'
         value_template: '{{states.sensor.presence_motion_couloir.attributes.lux}}'
         unit_of_measurement: lux
+
   - platform: mqtt
     state_topic: "home/piscine/temperature"
     name: "Température piscine"
     unit_of_measurement: "°C"
+
   - platform: plex
     host: 192.168.1.12
     port: 32400
