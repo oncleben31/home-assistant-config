@@ -74,6 +74,12 @@ recorder:
 
 # View all events in a logbook
 logbook:
+  include:
+    domains:
+      - sensor
+  exclude:
+    entities:
+      - sensor.since_last_boot
 
 # Enables a map showing the location of tracked devices
 #map:
@@ -125,11 +131,6 @@ sensor:
         value_template: '{{states.sensor.presence_motion_couloir.attributes.lux}}'
         unit_of_measurement: lux
 
-  - platform: mqtt
-    state_topic: "home/piscine/temperature"
-    name: "Température piscine"
-    unit_of_measurement: "°C"
-
   - platform: plex
     host: 192.168.1.12
     port: 32400
@@ -176,6 +177,7 @@ mqtt:
   client_id: home-assistant
   username: !secret mqtt_username
   password: !secret mqtt_password
+  discovery: true
 
 timer:
   redemande_leve_du_soleil:

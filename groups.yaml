@@ -12,10 +12,6 @@ default_view:
     - group.temperatures
     - group.humidite
     - group.all_lights
-    - media_player.google_home
-    - media_player.tele
-#    - media_player.samsung_led48_ue48h6200
-    - media_player.tv_ue48h6200
     - group.darksky
     - group.wunderground
 
@@ -24,7 +20,7 @@ exterieurs:
   entities:
     - sensor.exterieur_humidity
     - sensor.exterieur_temperature
-    - sensor.temperature_piscine
+    - sensor.temperaturepiscine
 
 tests:
   name: Tests
@@ -95,3 +91,13 @@ automatismes:
     - group.tests
     - group.raspberry_pi
     - input_select.house_mode
+
+media:
+  view: yes
+  icon: mdi:theater
+  name: 'Média'
+  entities:
+    - media_player.google_home
+    - media_player.tele
+    - media_player.samsung_led48_ue48h6200
+    - media_player.tv_ue48h6200
