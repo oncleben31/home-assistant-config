@@ -8,7 +8,7 @@
 !custom_components
 !custom_components/**
 !esphomeyaml
-!README
+!README.md
 
 secrets.yaml
 known_devices.yaml
