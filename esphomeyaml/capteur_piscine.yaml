@@ -1,0 +1,43 @@
+esphomeyaml:
+  name: capteur_piscine
+  platform: ESP32
+  board: lolin32
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+# Usefull to debug MQTT:
+# See all MQTT mesages: ssh Hass.io and mosquitto_sub -h 192.168.1.28 -v -t '#'
+# Clear a retained message no more used: ssh Hass.io and mosquitto_pub -h 192.168.1.28 -t TOPIC -n -r
+# Clear old message link to app: esphomeyaml capteur_piscine.yaml clean-mqtt
+mqtt:
+  broker: '192.168.1.28'
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+# Enable logging
+logger:
+
+ota:
+  password: !secret ota_password
+
+# Example configuration entry
+dallas:
+  - id: dallas_hub1
+    pin: 4
+    update_interval: 1s
+
+# Individual sensors
+sensor:
+  - platform: dallas
+    dallas_id: "dallas_hub1"
+    address: 0x9C0417C1A988FF28
+    name: "Température Piscine"
+    icon: "mdi:oil-temperature"
+    expire_after: "1:02"
+    availability:
+
+deep_sleep:
+  run_duration: 20s
+  sleep_duration: 1h
