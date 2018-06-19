@@ -136,6 +136,14 @@ sensor:
     port: 32400
     token: !secret plex_token
 
+  - platform: linky
+    username: !secret linky_username
+    password: !secret linky_password
+    monitored_variables:
+      - daily_1d_consumption
+      - monthly_current_consumption
+      - yearly_current_consumption
+
 
 # Text to speech
 tts:
@@ -191,6 +199,10 @@ input_select:
       - Nuit
       - Innocupé
       - Sécurisé
+
+
+
+
 
 
 group: !include groups.yaml

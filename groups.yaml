@@ -63,6 +63,13 @@ puissance:
     - sensor.prise_pc_power
     - sensor.prise_tv_power
 
+compteur:
+  name: Puissance consommée
+  entities:
+    - sensor.linky_daily_1d_consumption
+    - sensor.linky_monthly_current_consumption
+    - sensor.linky_yearly_current_consumption
+
 energie:
   view: yes
   icon: mdi:power-plug
@@ -70,6 +77,7 @@ energie:
   entities:
     - group.all_switches
     - group.puissance
+    - group.compteur
 
 hue:
   name: Hue
