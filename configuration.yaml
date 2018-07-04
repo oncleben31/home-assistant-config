@@ -29,6 +29,7 @@ http:
   base_url: !secret base_url
   ip_ban_enabled: True
   login_attempts_threshold: 4
+  # WARNING don't use 'trusted_networks' when using a reverse proxy.
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -200,7 +201,10 @@ input_select:
       - Innocupé
       - Sécurisé
 
-
+vacuum:
+  - platform: xiaomi_miio
+    host: 192.168.1.36
+    token: !secret vacuum_xiaomi_toket
 
 
 
