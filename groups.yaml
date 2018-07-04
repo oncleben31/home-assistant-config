@@ -98,6 +98,7 @@ automatismes:
     - group.hue
     - group.tests
     - group.raspberry_pi
+    - group.network
     - input_select.house_mode
 
 media:

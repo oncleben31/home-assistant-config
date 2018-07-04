@@ -1,0 +1,19 @@
+binary_sensor:
+  - platform: ping
+    host: 185.60.114.159
+
+sensor:
+  - platform: speedtest
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+
+group:
+  network:
+    name: "Réseau"
+    entities:
+      - binary_sensor.ping_binary_sensor
+      - sensor.speedtest_ping
+      - sensor.speedtest_upload
+      - sensor.speedtest_download
