@@ -99,6 +99,7 @@ automatismes:
     - group.tests
     - group.raspberry_pi
     - group.network
+    - group.local_monitor
     - input_select.house_mode
 
 media:

@@ -1,6 +1,19 @@
 binary_sensor:
   - platform: ping
+    name: blizzard
     host: 185.60.114.159
+  - platform: ping
+    name: Rocky
+    host: 192.168.1.36 # Xiaomi Vacuum
+  - platform: ping
+    name: Xiaomi Gateway
+    host: 192.168.1.30 # Xiaomi Gateway
+  - platform: ping
+    name: Hue Gateway
+    host: 192.168.1.22 # Hue Gateway
+  - platform: ping
+    name: Synology
+    host: 192.168.1.12 # Synology
 
 sensor:
   - platform: speedtest
@@ -10,10 +23,18 @@ sensor:
       - upload
 
 group:
+  local_monitor:
+    name: "Devices"
+    entities:
+      - binary_sensor.xiaomi_gateway
+      - binary_sensor.hue_gateway
+      - binary_sensor.Rocky
+      - binary_sensor.synology
+
   network:
     name: "Réseau"
     entities:
-      - binary_sensor.ping_binary_sensor
+      - binary_sensor.blizzard
       - sensor.speedtest_ping
       - sensor.speedtest_upload
       - sensor.speedtest_download
