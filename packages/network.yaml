@@ -24,7 +24,7 @@ sensor:
 
 group:
   local_monitor:
-    name: "Devices"
+    name: "Systèmes"
     entities:
       - binary_sensor.xiaomi_gateway
       - binary_sensor.hue_gateway
