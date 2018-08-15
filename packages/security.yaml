@@ -85,6 +85,16 @@ automation:
         data:
           message: "ALARM! L'alarme a été déclanchée."
 
+  - alias: 'Send notification when water leak detected'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.water_leak_sensor_158d0001c34c39
+        to: 'on'
+    action:
+      - service: notify.telegram
+        data_template:
+          message: "ATTENTION! Fuite d'eau detectée {{trigger.to_state.attributes.friendly_name}}."
+
 homeassistant:
   customize:
     group.securite:
@@ -99,6 +109,11 @@ group:
       - binary_sensor.motion_sensor_158d0001e575b0
       - binary_sensor.mouvement_couloir
 
+  innondations:
+    name: Detection fuites d'eau
+    entities:
+      -  binary_sensor.water_leak_sensor_158d0001c34c39
+
   securite:
     view: yes
     name: Sécurité
@@ -106,3 +121,4 @@ group:
     entities:
       - alarm_control_panel.ha_alarm
       - group.mouvements
+      - group.innondations
