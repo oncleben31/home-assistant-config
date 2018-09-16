@@ -201,10 +201,7 @@ input_select:
       - Innocupé
       - Sécurisé
 
-vacuum:
-  - platform: xiaomi_miio
-    host: 192.168.1.36
-    token: !secret vacuum_xiaomi_toket
+
 
 
 
