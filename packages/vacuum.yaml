@@ -1,7 +1,7 @@
 vacuum:
   - platform: xiaomi_miio
     host: 192.168.1.36
-    token: !secret vacuum_xiaomi_toket
+    token: !secret vacuum_xiaomi_token
 
 #Vacuum integration in Telegram inspired by https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
 sensor:
@@ -55,15 +55,32 @@ automation:
           title: '*Rocky*'
           message: Plus d'erreur. Problème résolu
 
-  - id: vacuum_cleaner_status_changed
-    alias: Vacuum Cleaner Status cCanged
-    trigger:
-      - platform: state
-        entity_id: vacuum.xiaomi_vacuum_cleaner
-    action:
-      - service: notify.telegram
-        data:
-          title: '*Rocky*'
-          message: >-
-            {{states.vacuum.xiaomi_vacuum_cleaner.state}}
+# Coordonnées pratique:
+# dock: [25000,25000]
+# buanderie(bl): [20600,21000]
+# sallon(tr): [30500, 29300]
+# cuisine(bl): []
+# cuisine(tr): [27000,25000]
+# maison(bl): []
+# maison(tr): []
+# tapis(bl): []
+# tapis(tr): []
+# salleamanger(tr): []
+
+script:
+  launch_vacuum_in_kitchen_and_livingroom:
+    # used with ifttt with POST command https://my_url.com/api/services/script/launch_vacuum_in_kitchen_and_livingroom?api_password=API_PASSWORD
+    alias: Lance Rocky dans la cuisine et le salon
+    sequence: 
+      - service: vacuum.set_fan_speed
+        data: 
+          entity_id: vacuum.xiaomi_vacuum_cleaner
+          fan_speed: balanced
+      - service: vacuum.send_command
+        data: 
+          entity_id: vacuum.xiaomi_vacuum_cleaner
+          command: app_zoned_clean
+          params: [[20600,21000,30500,29300,1]]
+
+
           

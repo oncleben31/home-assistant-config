@@ -14,6 +14,7 @@ default_view:
     - group.all_lights
     - group.darksky
     - group.wunderground
+    - vacuum.xiaomi_vacuum_cleaner
 
 exterieurs:
   name: Extérieurs
@@ -93,6 +94,7 @@ automatismes:
   name: Automatismes
   entities:
     - group.all_automations
+    - group.all_scripts
     - timer.redemande_leve_du_soleil
     - sensor.illumination_158d0001e575b0
     - group.hue

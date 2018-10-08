@@ -64,3 +64,5 @@ group.all_switches:
   hidden: false
 group.all_lights:
   hidden: false
+group.all_scripts:
+  hidden: false
