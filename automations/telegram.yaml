@@ -92,6 +92,7 @@
   action:
   - service: notify.telegram
     data:
+      #title: "*Hass.io*"
       message: "Home Assitant a redémarré !"
 
 ##
@@ -105,4 +106,6 @@
   action:
     service: notify.telegram
     data:
-      message: "Une mise à jour de Home Assistant est disponible"
+      #title: "*Hass.io*" 
+      message: >
+        Une mise à jour de Home Assistant est disponible:  {{states.updater.updater.state}}
