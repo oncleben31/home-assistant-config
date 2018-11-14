@@ -86,6 +86,17 @@ logbook:
     entities:
       - sensor.since_last_boot
 
+
+# Log events in InfluxDB
+influxdb:
+  host: localhost
+  port: 8086
+  database: home-assistant
+  username: home-assistant
+  password: !secret influxdb_user_password
+  max_retries: 3
+  default_measurement: state
+
 # Enables a map showing the location of tracked devices
 #map:
 
