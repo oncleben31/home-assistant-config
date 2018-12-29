@@ -54,6 +54,35 @@ automation:
         data:
           title: '*Rocky*'
           message: Plus d'erreur. Problème résolu
+  - id: launch_vacuum_in_selected_room
+    # Launch vacuum with Google Home through IFTTT. User can select the room name
+    alias: lance Rocky
+    trigger: 
+      platform: event
+      event_type: ifttt_webhook_received
+      event_data:
+        action: call_rocky
+    action: 
+      service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if (trigger.event.data.room== "la partie jour") or "dans la partie jour" %}
+            script.launch_vacuum_in_kitchen_and_livingroom
+          {% endif %}
+          
+  - id: stop_vacuum
+    # Stop vacuum with Google Home through IFTTT. And go back to dock
+    alias: stop Rocky
+    trigger: 
+      platform: event
+      event_type: ifttt_webhook_received
+      event_data:
+        action: stop_rocky
+    action: 
+      service: notify.telegram
+      data:
+        message: >
+          OK je stop Rocky. Il retourne sa base. 
 
 # Coordonnées pratique:
 # dock: [25000,25000]
