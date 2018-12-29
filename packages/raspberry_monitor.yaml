@@ -12,7 +12,7 @@ sensor:
       - type: memory_free
       - type: memory_use_percent
       - type: processor_use
-      - type: since_last_boot
+      - type: last_boot
 
 group:
   raspberry_pi:
@@ -23,4 +23,4 @@ group:
       - sensor.memory_free
       - sensor.memory_use_percent
       - sensor.processor_use
-      - sensor.since_last_boot
+      - sensor.last_boot
