@@ -3,3 +3,13 @@ hue:
   bridges:
     - host: 192.168.1.22
       allow_unreachable: true
+
+light:
+  #create lights group for dimmable Hue bulbs.
+  - platform: group
+    name: "Lumières dimmable du salon"
+    entities: 
+      - light.salon_coin
+      - light.salon_droite
+      - light.salon_gauche
+      - light.salon_milieu
