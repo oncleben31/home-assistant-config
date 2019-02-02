@@ -1,0 +1,7 @@
+# Discovery component allow to discover some devices automatically
+#
+# https://www.home-assistant.io/components/discovery/
+#
+discovery:
+  ignore:
+    - igd

@@ -1,0 +1,10 @@
+---
+# Speedtest allows to monitor quality of the ADSL connexion.
+#
+# https://www.home-assistant.io/components/sensor.speedtest/
+#
+platform: speedtest
+monitored_conditions:
+  - ping
+  - download
+  - upload

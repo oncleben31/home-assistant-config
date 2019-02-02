@@ -1,0 +1,19 @@
+---
+# Stop and send back to dock my Xiamoi vacuum with Google assistant
+# thru IFTTT
+#
+# Integration in Telegram inspired by https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
+#
+id: stop_vacuum
+# Stop vacuum with Google Home through IFTTT. And go back to dock
+alias: stop Rocky
+trigger: 
+  platform: event
+  event_type: ifttt_webhook_received
+  event_data:
+    action: stop_rocky
+action: 
+  service: notify.telegram
+  data:
+    message: >
+      OK je stop Rocky. Il retourne sa base. 

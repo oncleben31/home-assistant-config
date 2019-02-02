@@ -1,0 +1,7 @@
+# Ping external server to check if internet is up.
+#
+# https://www.home-assistant.io/components/binary_sensor.ping/
+#
+platform: ping
+name: blizzard
+host: 185.60.114.159

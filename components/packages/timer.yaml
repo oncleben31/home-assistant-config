@@ -1,0 +1,8 @@
+---
+# Timer component allow to manage time related event
+#
+#https://www.home-assistant.io/components/timer/
+#
+timer:
+  redemande_leve_du_soleil:
+    duration: '00:15:00'

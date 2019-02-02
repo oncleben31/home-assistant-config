@@ -1,0 +1,16 @@
+---
+# The recorder component is storing details in a database which
+# then are handled by the history component.
+#
+# https://www.home-assistant.io/components/recorder/
+#
+recorder:
+  include:
+    domains:
+      - sensor
+      - switch
+      - media_player
+      - light
+      - binary_sensor
+      - alarm_control_panel
+      - sun

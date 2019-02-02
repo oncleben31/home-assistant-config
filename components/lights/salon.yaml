@@ -1,0 +1,14 @@
+---
+# Light group: Lumières dimmables du salon
+# My living room has 4 Philips Hue dimable bulbs
+# and I want them to act as one.
+#
+# https://www.home-assistant.io/components/light.group/
+
+platform: group
+name: "Lumières dimmable du salon"
+entities: 
+  - light.salon_coin
+  - light.salon_droite
+  - light.salon_gauche
+  - light.salon_milieu

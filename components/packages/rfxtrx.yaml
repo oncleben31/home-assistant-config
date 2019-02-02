@@ -1,0 +1,7 @@
+# The frxtrx comonent allows to use RFXCOM devices who communicate
+# by radio with other sensors.
+#
+# https://www.home-assistant.io/components/rfxtrx/
+#
+rfxtrx:
+  device: /dev/ttyUSB0

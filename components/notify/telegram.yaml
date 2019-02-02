@@ -1,0 +1,8 @@
+# I use Telegram for notification. This chanel is the main one to notify me
+# There will be probably in the future other chanels
+#
+# https://www.home-assistant.io/components/notify.telegram/
+#
+name: telegram
+platform: telegram
+chat_id: !secret telegram_chat_id

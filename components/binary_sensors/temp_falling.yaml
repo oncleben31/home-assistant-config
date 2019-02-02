@@ -1,0 +1,13 @@
+---
+# temp_falling is a binary sensor to detect when the temperature
+# is droping in the parent master bedroom.
+#
+# https://www.home-assistant.io/components/binary_sensor.trend/
+#
+platform: trend
+sensors:
+  temp_falling:
+    entity_id: sensor.Temperature_158d0002288031
+    sample_duration: 3600
+    min_gradient: -0.00014
+    device_class: cold

@@ -1,0 +1,8 @@
+---
+# Configures the official Home Assistant frontend.
+#
+# https://www.home-assistant.io/components/frontend/
+#
+
+# Enable config panel in UI
+frontend:

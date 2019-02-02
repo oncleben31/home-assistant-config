@@ -1,0 +1,8 @@
+---
+# The notify component allows you to send notifications thru
+# different chanels
+# This loads up my notification configurations.
+#
+# https://www.home-assistant.io/components/notify
+#
+notify: !include_dir_list ../notify

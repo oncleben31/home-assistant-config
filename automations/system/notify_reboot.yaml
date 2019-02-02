@@ -1,0 +1,14 @@
+##
+## Notification on reboot de Home assistant
+##
+
+alias: notification au reboot de Home Assistant
+condition: []
+trigger:
+- event: start
+  platform: homeassistant
+action:
+- service: notify.telegram
+  data:
+    #title: "*Hass.io*"
+    message: "Home Assitant a redémarré !"

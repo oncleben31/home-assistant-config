@@ -1,0 +1,11 @@
+# I Extract the temperature infor from Hue motion sensor to
+# have a didicated sensor.
+#
+# https://www.home-assistant.io/components/sensor.template/
+#
+platform: template
+sensors:
+  presence_couloir_temperature:
+    friendly_name: 'Temperature couloir'
+    value_template: '{{states.sensor.presence_motion_couloir.attributes.temperature}}'
+    unit_of_measurement: °C

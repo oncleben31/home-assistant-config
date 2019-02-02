@@ -1,0 +1,13 @@
+---
+# Monitoring of different parameters of the raspberry.
+#
+# https://www.home-assistant.io/components/sensor.systemmonitor/
+#
+platform: systemmonitor
+resources:
+  - type: disk_use_percent
+    arg: /
+  - type: memory_free
+  - type: memory_use_percent
+  - type: processor_use
+  - type: last_boot

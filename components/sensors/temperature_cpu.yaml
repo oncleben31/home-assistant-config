@@ -1,0 +1,10 @@
+---
+# Sensor to minitor the temperature of the raspberry
+#
+# https://www.home-assistant.io/components/sensor.command_line/
+#
+platform: command_line
+name: CPU Temperature
+command: "cat /sys/class/thermal/thermal_zone0/temp"
+unit_of_measurement: "°C"
+value_template: '{{ value | multiply(0.001) }}'

@@ -4,7 +4,9 @@
 !scenes
 !.gitignore
 !automations/
-!packages
+!automations/**
+!components
+!components/**
 !custom_components
 !custom_components/**
 !esphomeyaml

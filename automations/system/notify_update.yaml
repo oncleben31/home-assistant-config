@@ -1,0 +1,14 @@
+##
+## Notification if update available
+##
+
+alias: 'Notification de mise à jour disponible'
+trigger:
+  platform: state
+  entity_id: updater.updater
+action:
+  service: notify.telegram
+  data:
+    #title: "*Hass.io*" 
+    message: >
+      Une mise à jour de Home Assistant est disponible:  {{states.updater.updater.state}}

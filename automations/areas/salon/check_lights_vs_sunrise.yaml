@@ -1,0 +1,23 @@
+alias: Eteindre éclairage au levé du soleil
+initial_state: true
+hide_entity: false
+trigger:
+- event: sunrise
+  offset: 0:15:00
+  platform: sun
+- platform: event
+  event_type: timer.finished
+  event_data:
+    entity_id: timer.redemande_leve_du_soleil
+action:
+- data:
+    data:
+      inline_keyboard:
+      - Oui:/eteintLumiere, Non:/do_nothing, Redemande:/redemande
+    message: Le soleil est levé et il reste des lumières allumées dans le salon.
+      Voulez vous les éteindre ?
+  service: notify.telegram
+condition:
+- condition: state
+  entity_id: light.salon
+  state: 'on'

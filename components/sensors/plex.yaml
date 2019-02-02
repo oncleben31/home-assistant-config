@@ -1,0 +1,9 @@
+---
+# show number of current users of Plex
+#
+# https://www.home-assistant.io/components/sensor.plex/
+#
+platform: plex
+host: 192.168.1.12
+port: 32400
+token: !secret plex_token

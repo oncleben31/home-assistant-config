@@ -1,0 +1,27 @@
+---
+# Send a notification on Telegram if the Vacuum raise an Error
+#
+# Integration in Telegram inspired by https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
+#
+id: vacuum_cleaner_error
+alias: Vacuum Cleaner Error
+trigger:
+  - platform: state
+    entity_id: sensor.vacuum_cleaner_status_sensor
+    to: 'Error'
+  - platform: state
+    entity_id: sensor.vacuum_cleaner_status_sensor
+    to: 'In Error'
+  - platform: state
+    entity_id: sensor.vacuum_cleaner_status_sensor
+    to: 'Charging Error'
+action:
+  - service: notify.telegram
+    data:
+      title: '*Problème avec Rocky*'
+      message: >-
+        {% if is_state('sensor.vacuum_cleaner_error_sensor', 'No Error')  %}
+          {{states.sensor.vacuum_cleaner_status_sensor.state}}
+        {% else %}
+          {{states.sensor.vacuum_cleaner_error_sensor.state}}
+        {% endif %}

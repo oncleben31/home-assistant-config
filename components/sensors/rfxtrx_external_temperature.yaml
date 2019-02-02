@@ -1,0 +1,13 @@
+---
+# External Temperature and Humidity coming from Oregon external probe
+#
+# https://www.home-assistant.io/components/sensor.rfxtrx/
+#
+platform: rfxtrx
+devices:
+  0a520100f30100624e0389:
+    name: extérieur
+    data_type:
+      - Humidity
+      - Temperature
+automatic_add: True

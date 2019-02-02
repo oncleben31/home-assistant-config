@@ -1,0 +1,25 @@
+# Integration of Xiaomi Vacuum Cleaner
+#
+# https://www.home-assistant.io/components/vacuum.xiaomi_miio/
+#
+vacuum:
+  - platform: xiaomi_miio
+    host: 192.168.1.36
+    token: !secret vacuum_xiaomi_token
+
+# Coordonnées pratique:
+# dock: [25000,25000]
+# buanderie(bl): [20600,21000]
+# sallon(tr): [30500, 29300]
+# cuisine(bl): []
+# cuisine(tr): [27000,25000]
+# maison(bl): []
+# maison(tr): []
+# tapis(bl): []
+# tapis(tr): []
+# salleamanger(tr): []
+
+
+
+
+          

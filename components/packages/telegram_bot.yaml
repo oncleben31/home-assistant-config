@@ -1,0 +1,9 @@
+# Telegram is the messaging app used by familly and friends
+# I use it for notification to my devices thru a dedicated bot.
+#
+# https://www.home-assistant.io/components/notify.telegram/
+#
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_bot_api
+    allowed_chat_ids: !secret telegram_chat_id

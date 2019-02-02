@@ -1,0 +1,6 @@
+# Access home assistant with a RESTFUL API
+# I use it with Xiaomi Vacuum Cleaner thru IFTTT
+#
+# https://www.home-assistant.io/components/api/
+#
+api:

@@ -1,227 +1,42 @@
+---
+# Welcome to my Home Assistant configuration!
+#
+# Don't be scared by the size of my configuration file...
+# I'm inspired by the strucutre propsed by Franck Nijhof.
+#
+# This systemis very modular and very differently structured
+# compared to other configurations you'll find online.
+#
+# Basically, each file in the repository does 1 (one, uno, eins)
+# thing only! Click through it, you'll get it pretty fast.
+#
+# The configuration.yaml is only used to bootstrap the system
+# and contains some minimal, but vital, settings.
+#
+# https://github.com/frenck/home-assistant-config
+# https://www.youtube.com/watch?v=lndeybw21PY
+#
 homeassistant:
+  # Name of this Home Assistant instance... Some French touch ;)
   name: Maison
 
+  # Location required to calculate the time the sun rises and sets
   latitude: !secret latitude_home
   longitude: !secret longitude_home
+  
+  # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: !secret altitude_home
 
+  # metric for Metric, imperial for Imperial
   unit_system: metric
+  
+  # Pick yours from here:
+  # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Paris
-
-  customize: !include customize.yaml
-  packages: !include_dir_named packages
-
-logger:
-  default: info
-  logs:
-    homeassistant.components.zwave: warning
-
-# Enables the frontend
-frontend:
-
-# Enables configuration UI
-config:
-
-# RESTFUL API
-# used with Xiaomi Vacuum Cleaner thru IFTTT
-api:
-
-http:
-  # Secrets are defined in the file secrets.yaml
-  api_password: !secret api_password
-  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  base_url: !secret base_url
-  ip_ban_enabled: True
-  login_attempts_threshold: 4
-  # WARNING don't use 'trusted_networks' when using a reverse proxy.
-
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  include_used_components: true
-
-# Discover some devices automatically
-discovery:
-  ignore:
-    - apple_tv
-    - philips_hue
-
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-
-# Enables support for tracking state changes over time
-history:
-  include:
-    domains:
-      - sensor
-      - switch
-      - media_player
-      - light
-      - binary_sensor
-      - alarm_control_panel
-      - sun
-
-
-recorder:
-  include:
-    domains:
-      - sensor
-      - switch
-      - media_player
-      - light
-      - binary_sensor
-      - alarm_control_panel
-      - sun
-
-# View all events in a logbook
-logbook:
-  include:
-    domains:
-      - sensor
-  exclude:
-    entities:
-      - sensor.since_last_boot
-
-
-# Log events in InfluxDB
-influxdb:
-  host: localhost
-  port: 8086
-  database: home-assistant
-  username: home-assistant
-  password: !secret influxdb_user_password
-  max_retries: 3
-  default_measurement: state
-
-# Enables a map showing the location of tracked devices
-#map:
-
-# Track the sun
-sun:
-
-binary_sensor:
-  - platform: trend
-    sensors:
-      temp_falling:
-        entity_id: sensor.Temperature_158d0002288031
-        sample_duration: 3600
-        min_gradient: -0.00014
-        device_class: cold
-      temp_rising:
-        entity_id: sensor.Temperature_158d0002288031
-        sample_duration: 3600
-        min_gradient: 0.00014
-        device_class: heat
-
-
-# Sensors
-sensor:
-  - platform: yr
-  - platform: rfxtrx
-    devices:
-      0a520100f30100624e0389:
-        name: extérieur
-        data_type:
-         - Humidity
-         - Temperature
-    automatic_add: True
-
-  - platform: hue
-    # custom components for accessing Hue motion sensor data (https://github.com/robmarkcole/Hue-sensors-HASS)
-    ip_address: 192.168.1.22
-    token: !secret hue_token
-
-  - platform: template
-    sensors:
-      presence_couloir_temperature:
-        friendly_name: 'Temperature couloir'
-        value_template: '{{states.sensor.presence_motion_couloir.attributes.temperature}}'
-        unit_of_measurement: °C
-
-      presence_couloir_light_level:
-        friendly_name: 'Luminosité couloir'
-        value_template: '{{states.sensor.presence_motion_couloir.attributes.lux}}'
-        unit_of_measurement: lux
-
-  - platform: plex
-    host: 192.168.1.12
-    port: 32400
-    token: !secret plex_token
-
-  # - platform: linky
-  #   username: !secret linky_username
-  #   password: !secret linky_password
-  #   monitored_variables:
-  #     - daily_1d_consumption
-  #     - monthly_current_consumption
-  #     - yearly_current_consumption
-
-
-# Text to speech
-tts:
-  - platform: google
-    language: 'fr'
-
-# Cloud
-cloud:
-
-#Xiaopi Gateway
-xiaomi_aqara:
-  discovery_retry: 10
-  gateways:
-    - key: !secret gateway_xiaomi
-
-#Telegram
-telegram_bot:
-  - platform: polling
-    api_key: !secret telegram_bot_api
-    allowed_chat_ids: !secret telegram_chat_id
-
-notify:
-  - name: telegram
-    platform: telegram
-    chat_id: !secret telegram_chat_id
-
-#RFXCOM
-rfxtrx:
-  device: /dev/ttyUSB0
-
-#ZWAVE
-zwave:
-  usb_path: /dev/ttyACM0
-
-#MQTT
-mqtt:
-  broker: 127.0.0.1
-  port: 1883
-  client_id: home-assistant
-  username: !secret mqtt_username
-  password: !secret mqtt_password
-  discovery: true
-
-timer:
-  redemande_leve_du_soleil:
-    duration: '00:15:00'
-
-input_select:
-  house_mode:
-    name: House mode
-    options:
-      - Présence
-      - Nuit
-      - Innocupé
-      - Sécurisé
-
-
-
-
-
+  
+  # Load packages
+  packages: !include_dir_named components/packages
 
 group: !include groups.yaml
-automation: !include automations.yaml
-automation old: !include_dir_merge_list automations
-script: !include scripts.yaml
+
+

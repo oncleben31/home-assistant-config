@@ -1,0 +1,8 @@
+---
+# Custom components for accessing Hue motion sensor data 
+#
+# https://github.com/robmarkcole/Hue-sensors-HASS
+#
+platform: hue
+ip_address: 192.168.1.22
+token: !secret hue_token

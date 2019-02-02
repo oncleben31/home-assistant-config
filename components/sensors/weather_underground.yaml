@@ -1,0 +1,22 @@
+---
+# The Weather Underground component to fetch specific data on the website
+#
+# https://www.home-assistant.io/components/sensor.wunderground/
+
+platform: wunderground
+api_key: !secret wunderground
+lang: FR
+monitored_conditions:
+  - alerts
+  - feelslike_c
+  - heat_index_c
+  - precip_today_metric
+  - precip_today_string
+  - precip_1d_mm
+  - precip_1d
+  - temp_c
+  - weather
+  - wind_dir
+  - wind_gust_kph
+  - wind_kph
+  - wind_string
