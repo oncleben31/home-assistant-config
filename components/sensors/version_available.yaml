@@ -6,6 +6,5 @@
 #
 platform: version
 name: version_available
-source: local
-branch: stable
+source: hassio
 image: default

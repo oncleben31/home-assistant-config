@@ -3,7 +3,6 @@ default_view:
   icon: mdi:home
   name: Maison
   entities:
-    - updater.updater
     - sun.sun
     - sensor.yr_symbol
     - sensor.dark_sky_summary
