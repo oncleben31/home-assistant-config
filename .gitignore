@@ -11,6 +11,8 @@
 !custom_components
 !custom_components/**
 !esphomeyaml
+!www
+!www/**
 !README.md
 
 secrets.yaml

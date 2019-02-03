@@ -1,90 +1,16 @@
 ---
 # Linky provide power consumtion in France.
-# I use of a custom component by Pirion as the official component is 
+# I use of a custom component by grea09 as the official component is 
 # too simple
 #
-# https://github.com/Pirionfr/Home-AssistantConfig/blob/master/custom_components/sensor/linky.py
+# https://github.com/home-assistant/home-assistant/pull/20535
 # https://community.home-assistant.io/t/add-a-module-to-retrieve-electricity-use-from-linky/28199
 #
 platform: linky
 username: !secret linky_username
 password: !secret linky_password
-monitored_variables:
-- halfhourly_00_00_consumption
-- halfhourly_00_30_consumption
-- halfhourly_01_00_consumption
-- halfhourly_01_30_consumption
-- halfhourly_02_00_consumption
-- halfhourly_02_30_consumption
-- halfhourly_03_00_consumption
-- halfhourly_03_30_consumption
-- halfhourly_04_00_consumption
-- halfhourly_04_30_consumption
-- halfhourly_05_00_consumption
-- halfhourly_05_30_consumption
-- halfhourly_06_00_consumption
-- halfhourly_06_30_consumption
-- halfhourly_07_00_consumption
-- halfhourly_07_30_consumption
-- halfhourly_08_00_consumption
-- halfhourly_08_30_consumption
-- halfhourly_09_00_consumption
-- halfhourly_09_30_consumption
-- halfhourly_10_00_consumption
-- halfhourly_10_30_consumption
-- halfhourly_11_00_consumption
-- halfhourly_11_30_consumption
-- halfhourly_12_00_consumption
-- halfhourly_12_30_consumption
-- halfhourly_13_00_consumption
-- halfhourly_13_30_consumption
-- halfhourly_14_00_consumption
-- halfhourly_14_30_consumption
-- halfhourly_15_00_consumption
-- halfhourly_15_30_consumption
-- halfhourly_16_00_consumption
-- halfhourly_16_30_consumption
-- halfhourly_17_00_consumption
-- halfhourly_17_30_consumption
-- halfhourly_18_00_consumption
-- halfhourly_18_30_consumption
-- halfhourly_19_00_consumption
-- halfhourly_19_30_consumption
-- halfhourly_20_00_consumption
-- halfhourly_20_30_consumption
-- halfhourly_21_00_consumption
-- halfhourly_21_30_consumption
-- halfhourly_22_00_consumption
-- halfhourly_22_30_consumption
-- halfhourly_23_00_consumption
-- halfhourly_23_30_consumption
-- daily_1d_consumption
-- daily_2d_consumption
-- daily_3d_consumption
-- daily_4d_consumption
-- daily_5d_consumption
-- daily_6d_consumption
-- daily_7d_consumption
-- daily_8d_consumption
-- daily_9d_consumption
-- daily_10d_consumption
-- daily_11d_consumption
-- daily_12d_consumption
-- daily_13d_consumption
-- daily_14d_consumption
-- daily_15d_consumption
-- daily_16d_consumption
-- daily_17d_consumption
-- daily_18d_consumption
-- daily_19d_consumption
-- daily_20d_consumption
-- daily_21d_consumption
-- daily_22d_consumption
-- daily_23d_consumption
-- daily_24d_consumption
-- daily_25d_consumption
-- daily_26d_consumption
-- daily_27d_consumption
-- daily_28d_consumption
-- daily_29d_consumption
-- monthly_1m_consumption
+# No HP/HC
+peak_hours:
+  - ["00:00","24:00"]
+peak_hours_cost: 0.09864
+offpeak_hours_cost: 0.09864
