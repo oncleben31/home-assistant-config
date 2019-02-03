@@ -7,6 +7,7 @@
 !automations/**
 !components
 !components/**
+!themes
 !custom_components
 !custom_components/**
 !esphomeyaml

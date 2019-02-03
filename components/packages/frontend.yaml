@@ -6,3 +6,5 @@
 
 # Enable config panel in UI
 frontend:
+  # We can define additional/custom themes for the frontend here.
+  themes: !include_dir_merge_named ../../themes
