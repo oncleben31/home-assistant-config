@@ -3,6 +3,7 @@
 ##
 
 alias: notification au reboot de Home Assistant
+initial_state: true
 condition: []
 trigger:
 - event: start

@@ -7,6 +7,7 @@
 id: stop_vacuum
 # Stop vacuum with Google Home through IFTTT. And go back to dock
 alias: stop Rocky
+initial_state: true
 trigger: 
   platform: event
   event_type: ifttt_webhook_received

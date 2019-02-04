@@ -7,6 +7,7 @@
 id: vacuum_cleaner_error_solved
 # Notification to inform when problem solved
 alias: Vacuum Cleaner Error Solved
+initial_state: true
 trigger:
   - platform: state
     entity_id: sensor.vacuum_cleaner_error_sensor

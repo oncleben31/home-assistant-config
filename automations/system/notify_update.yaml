@@ -1,11 +1,15 @@
+---
 ##
 ## Notification if update available
 ##
 
 alias: 'Notification de mise à jour disponible'
+initial_state: true
 trigger:
-  platform: state
-  entity_id: sensor.version_available
+  - platform: state
+    entity_id: sensor.version_available
+  - platform: homeassistant
+    event: start
 condition:
   - condition: template
     value_template: >-
