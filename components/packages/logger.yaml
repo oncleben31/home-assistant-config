@@ -1,0 +1,10 @@
+---
+# Logger to help debug
+#
+# https://www.home-assistant.io/components/logger/
+#
+# logger:
+#   default: info
+#   logs:
+#     homeassistant.components.zwave: warning
+ 
