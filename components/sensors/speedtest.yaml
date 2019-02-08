@@ -1,6 +1,8 @@
 ---
 # Speedtest allows to monitor quality of the ADSL connexion.
 #
+# Launch of the sensor is triggered by an automation
+#
 # https://www.home-assistant.io/components/sensor.speedtest/
 #
 platform: speedtest
@@ -8,3 +10,4 @@ monitored_conditions:
   - ping
   - download
   - upload
+manual: true
