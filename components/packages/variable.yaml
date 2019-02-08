@@ -1,0 +1,13 @@
+---
+# A custom component to have a variable.
+# Used to follow the history of the latest motion in the house.
+#
+# https://github.com/rogro82/hass-variables
+#
+variable:
+  last_motion:
+    name: "Dernier mouvement"
+    value: 'Inconnu'
+    restore: true
+    attributes:
+      icon: mdi:map-marker

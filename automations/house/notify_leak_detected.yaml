@@ -1,0 +1,13 @@
+---
+# Send a notification if a leak is detected
+#
+alias: 'Send notification when water leak detected'
+initial_state: true
+trigger:
+  - platform: state
+    entity_id: binary_sensor.water_leak_sensor_buanderie
+    to: 'on'
+action:
+  - service: notify.telegram
+    data_template:
+      message: "ATTENTION! Fuite d'eau detectée {{trigger.to_state.attributes.friendly_name}}."
