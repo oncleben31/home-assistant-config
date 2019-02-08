@@ -1,4 +1,17 @@
+---
+# Request receive by Telegram to check again if lights are still on in 15 minutes
+#
+# If yes send a notification on telegram asking what to do: nothing, switch 
+# off or check again in 15 minutes
+#
+# This automation is linked to:
+# - request_check_again_in_15_min.yaml
+# - request_keep_lights.yaml
+# - request_switch_off_lights.yaml
+# - check_lights_vs_sunrise.yaml
+#
 alias: Redemande dans 15 minutes
+initial_state: true
 hide_entity: true
 trigger:
   platform: event
