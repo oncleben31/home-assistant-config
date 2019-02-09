@@ -37,6 +37,5 @@ homeassistant:
   # Load packages
   packages: !include_dir_named components/packages
 
-group: !include groups.yaml
 
 
