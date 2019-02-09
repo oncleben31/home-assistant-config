@@ -11,7 +11,7 @@ condition:
   conditions:
     - condition: numeric_state
       entity_id: 'sensor.prise_pc_power'
-      below: 20
+      below: 25
     - condition: numeric_state
       entity_id: 'sensor.prise_pc_power'
       below: 5
