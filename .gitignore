@@ -11,6 +11,10 @@
 !custom_components
 !custom_components/**
 !esphomeyaml
+!scripts
+!scripts/**
+!customizations
+!customizations/**
 !www
 !www/**
 !README.md

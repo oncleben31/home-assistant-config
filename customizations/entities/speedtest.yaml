@@ -1,0 +1,9 @@
+---
+# Change Speedtest UI friendly name 
+#
+sensor.speedtest_download:
+  friendly_name: 'Download'
+sensor.speedtest_ping:
+  friendly_name: 'Ping'
+sensor.speedtest_upload:
+  friendly_name: 'Upload'

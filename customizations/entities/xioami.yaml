@@ -1,0 +1,35 @@
+---
+# Set some friendly names for Xiaomi devices
+#  
+#sensor.Temperature_158d0002288031:
+sensor.humidity_158d0002288031:
+  friendly_name: 'Parents'
+sensor.humidity_158d0002273af3:
+  friendly_name: 'Salon'
+sensor.humidity_158d00022736d0:
+  friendly_name: 'Noah'
+sensor.humidity_158d00022730f3:
+  friendly_name: 'Athénaïs'
+sensor.humidity_158d000224cd8d:
+  friendly_name: 'Test'
+sensor.humidity_158d0002273576:
+  friendly_name: 'Sören'
+sensor.Pressure_158d000224cd8d:
+  friendly_name: 'Test'
+
+#Other Xiaomi devices
+binary_sensor.door_window_sensor_158d0001dacdc4:
+  friendly_name: "Ouverture Porte"
+binary_sensor.switch_158d0002134c3d:
+  friendly_name: "Bouton Xiaomi"
+light.gateway_light_7811dcb25b2c:
+  friendly_name: "Gateway Xiaomi"
+sensor.illumination_7811dcb25b2c:
+  friendly_name: "Luminosité Gateway Xiaomi"
+binary_sensor.motion_sensor_158d0001e575b0:
+  friendly_name: "Mouvement dans le Salon"
+sensor.illumination_158d0001e575b0:
+  friendly_name: "Luminosité salon"
+
+
+

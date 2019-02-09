@@ -1,0 +1,16 @@
+# Launch my Xiaomi Vacuum in the living room
+#
+# Integration in Telegram inspired by https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
+#
+launch_vacuum_in_kitchen_and_livingroom:
+  alias: Lance Rocky dans la cuisine et le salon
+  sequence: 
+    - service: vacuum.set_fan_speed
+      data: 
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        fan_speed: balanced
+    - service: vacuum.send_command
+      data: 
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        command: app_zoned_clean
+        params: [[20600,21000,30500,29300,1]]

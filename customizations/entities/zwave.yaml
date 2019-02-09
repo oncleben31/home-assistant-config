@@ -1,0 +1,5 @@
+---
+# Renaming Zwave entities
+#
+sensor.fibaro_system_fgsd002_smoke_sensor_temperature:
+  friendly_name: 'Détecteur Couloir'
