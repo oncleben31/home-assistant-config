@@ -12,7 +12,7 @@ class LinkyCard extends HTMLElement {
       const link = document.createElement('link');
       link.type = 'text/css';
       link.rel = 'stylesheet';
-      link.href = '/local/custom_ui/linky-card.css?v=31';
+      link.href = '/local/linky-card.css?v=31';
       card.appendChild(link);
       this.content = document.createElement('div');
       this.content.className = 'card';
