@@ -1,22 +1,22 @@
 ---
 # Update the history of last motion using the 'last_motion' variable
 #
-alias: "Update Last Motion"
-initial_state: true
-trigger:
-  - platform: state
-#   entity_id: binary_sensor.mouvement_couloir, binary_sensor.motion_sensor_158d0001e575b0
-    entity_id: binary_sensor.motion_sensor_livingroom
-    to: 'on'
-action:
-  - service: variable.set_variable
-    data:
-      variable: last_motion
-      attributes_template: >
-          {
-            "history_1": "{{ variable.state }}",
-            "history_2": "{{ variable.attributes.history_1 }}",
-            "history_3": "{{ variable.attributes.history_2 }}"
-          }
-    data_template:
-      value: "{{ trigger.to_state.attributes.friendly_name }}"
+- alias: "Update Last Motion"
+  initial_state: true
+  trigger:
+    - platform: state
+  #   entity_id: binary_sensor.mouvement_couloir, binary_sensor.motion_sensor_158d0001e575b0
+      entity_id: binary_sensor.motion_sensor_livingroom
+      to: 'on'
+  action:
+    - service: variable.set_variable
+      data:
+        variable: last_motion
+        attributes_template: >
+            {
+              "history_1": "{{ variable.state }}",
+              "history_2": "{{ variable.attributes.history_1 }}",
+              "history_3": "{{ variable.attributes.history_2 }}"
+            }
+      data_template:
+        value: "{{ trigger.to_state.attributes.friendly_name }}"

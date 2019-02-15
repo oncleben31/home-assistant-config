@@ -1,31 +1,31 @@
 ---
 # Notification if Hass.io update available
 # 
-alias: 'Notification de mise à jour disponible'
-initial_state: true
-trigger:
-  - platform: state
-    entity_id: sensor.version_available
-  - platform: homeassistant
-    event: start
-condition:
-  - condition: template
-    value_template: >-
-      {{
-        states('sensor.version_available')
-        !=
-        states('sensor.version_current')
-      }}
-action:
-  - service: notify.telegram
-    data:
-      #title: "*Hass.io*" 
-      message: >
-        Une mise à jour de Home Assistant pour Hass.io est disponible:  {{ states('sensor.version_available') }}
-  - service: persistent_notification.create
-    data_template:
-      title: Mise à jour disponible !
-      message: >-
-        Une mise à jour de Home Assistant pour Hass.io est disponible !
-        La version {{ states('sensor.version_available') }} vient d'être déployée !
-      notification_id: hassio_upgrade
+- alias: 'Notification de mise à jour disponible'
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.version_available
+    - platform: homeassistant
+      event: start
+  condition:
+    - condition: template
+      value_template: >-
+        {{
+          states('sensor.version_available')
+          !=
+          states('sensor.version_current')
+        }}
+  action:
+    - service: notify.telegram
+      data:
+        #title: "*Hass.io*" 
+        message: >
+          Une mise à jour de Home Assistant pour Hass.io est disponible:  {{ states('sensor.version_available') }}
+    - service: persistent_notification.create
+      data_template:
+        title: Mise à jour disponible !
+        message: >-
+          Une mise à jour de Home Assistant pour Hass.io est disponible !
+          La version {{ states('sensor.version_available') }} vient d'être déployée !
+        notification_id: hassio_upgrade

@@ -1,0 +1,41 @@
+---
+# Control my Xiamoi vacuum with my Google assistant thru IFTTT
+#
+# Integration in Telegram inspired by https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
+#
+- id: launch_vacuum_in_selected_room
+  # Launch vacuum with Google Home through IFTTT. User can select the room name
+  alias: lance Rocky
+  initial_state: true
+  trigger: 
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: call_rocky
+  action: 
+    # select the script depending of the command recognized by IFTTT     
+    service: script.turn_on
+    data_template:
+      entity_id: >
+        {% if (trigger.event.data.room == "la partie jour" or trigger.event.data.room == "dans la partie jour") %}
+          script.launch_vacuum_in_kitchen_and_livingroom
+        {% elif (trigger.event.data.room == "le tapis" or trigger.event.data.room == "sur le tapis") %}
+          script.launch_vacuum_on_the_carpet
+        {% elif (trigger.event.data.room == "la cuisine" or trigger.event.data.room == "dans la cuisine") %}
+          script.launch_vacuum_in_kitchen
+        {% endif %}
+
+- id: stop_vacuum
+# Stop vacuum with Google Home through IFTTT. And go back to dock
+  alias: stop Rocky
+  initial_state: true
+  trigger: 
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: stop_rocky
+  action: 
+    service: notify.telegram
+    data:
+      message: >
+        OK je stop Rocky. Il retourne sa base. 

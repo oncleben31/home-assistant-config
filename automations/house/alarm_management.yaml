@@ -1,0 +1,32 @@
+---
+# Automations to manage the alarm
+#
+# link to documentation
+#
+
+# Trigger Alarm if motion detected
+- alias: "Trigger alarm"
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_livingroom
+      to: 'on'
+  action:
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.ha_alarm
+  condition:
+    condition: state
+    entity_id: alarm_control_panel.ha_alarm
+    state: 'armed_away'
+
+#Notify if alarm is triggered
+- alias: 'Send notification when alarm triggered'
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.ha_alarm
+      to: 'triggered'
+  action:
+    - service: notify.telegram
+      data:
+        message: "ALARM! L'alarme a été déclanchée."

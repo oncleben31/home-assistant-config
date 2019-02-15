@@ -4,34 +4,34 @@
 # Click the Xiaomi button to make living room bulbs flash, send a telegram notification
 # and play a voice message on the Google Home.
 #
-alias: toc_toc_toc
-initial_state: true
-trigger:
-  platform: event
-  event_type: xiaomi_aqara.click
-  event_data:
-    entity_id: binary_sensor.switch_158d0002134c3d
-    click_type: single
-action:
-  - service: light.turn_on
-    data: 
-      entity_id: light.lumieres_dimmable_du_salon
-      flash: short
-  - delay: 0.5
-  - service: light.turn_on
-    data: 
-      entity_id: light.lumieres_dimmable_du_salon
-      flash: short
-  - delay: 0.5
-  - service: light.turn_on
-    data: 
-      entity_id: light.lumieres_dimmable_du_salon
-      flash: short
-  - service: notify.telegram
-    data:
-      message: "Quelqu'un attend des calins dans la chambre"
-  - service: tts.google_say
-    entity_id: media_player.google_home
-    data:
-      message: "Quelqu'un attend des calins dans la chambre"
-      language: 'fr'
+- alias: toc_toc_toc
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d0002134c3d
+      click_type: single
+  action:
+    - service: light.turn_on
+      data: 
+        entity_id: light.lumieres_dimmable_du_salon
+        flash: short
+    - delay: 0.5
+    - service: light.turn_on
+      data: 
+        entity_id: light.lumieres_dimmable_du_salon
+        flash: short
+    - delay: 0.5
+    - service: light.turn_on
+      data: 
+        entity_id: light.lumieres_dimmable_du_salon
+        flash: short
+    - service: notify.telegram
+      data:
+        message: "Quelqu'un attend des calins dans la chambre"
+    - service: tts.google_say
+      entity_id: media_player.google_home
+      data:
+        message: "Quelqu'un attend des calins dans la chambre"
+        language: 'fr'
