@@ -14,3 +14,4 @@ recorder:
       - binary_sensor
       - alarm_control_panel
       - sun
+      - vacuum

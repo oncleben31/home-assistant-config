@@ -3,8 +3,10 @@
 #
 # https://www.home-assistant.io/components/logger/
 #
-# logger:
-#   default: info
-#   logs:
-#     homeassistant.components.zwave: warning
+logger:
+  default: warning
+  logs:
+    homeassistant.components.recorder: debug
+#    homeassistant.components.zwave: warning
+#    homeassistant.components.vacuum.xiaomi_miio: debug
  

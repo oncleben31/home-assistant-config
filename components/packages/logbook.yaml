@@ -9,6 +9,8 @@ logbook:
   include:
     domains:
       - sensor
+      - vacuum
+      - binary_sensor
   exclude:
     entities:
       - sensor.since_last_boot
