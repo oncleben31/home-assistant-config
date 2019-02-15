@@ -1,11 +1,11 @@
-# Launch my Xiaomi Vacuum in the living room, the kitchen and utility room
+# Launch my Xiaomi Vacuum in the kitchen and utility room
 #
 # Integration in Telegram inspired by https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
 # https://www.home-assistant.io/components/vacuum/
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
 #
-launch_vacuum_in_kitchen_and_livingroom:
-  alias: Lance Rocky dans la cuisine et le salon
+launch_vacuum_in_kitchen:
+  alias: Lance Rocky dans la cuisine
   sequence: 
     - service: vacuum.set_fan_speed
       data: 
@@ -15,4 +15,4 @@ launch_vacuum_in_kitchen_and_livingroom:
       data: 
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
-        params: [[20600,21000,30500,29300,1]]
+        params: [[20600,21000,27800,25200,1]]

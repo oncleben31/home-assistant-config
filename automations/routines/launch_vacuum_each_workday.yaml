@@ -1,0 +1,15 @@
+---
+# Launch the vacuum every work day at 10:00
+#
+- alias: Lancemnent quotidien de Rocky
+  initial_state: true
+  trigger: 
+    platform: time
+    at: '10:00:00'
+  condition: 
+    condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  action: 
+    service: script.turn_on
+    entity_id: script.launch_vacuum_in_kitchen  

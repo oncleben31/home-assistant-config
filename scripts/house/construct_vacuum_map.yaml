@@ -1,0 +1,18 @@
+---
+# Script to pilot the Xioami Vacuum when the map is reseted
+#
+# https://www.home-assistant.io/components/vacuum/
+# https://www.home-assistant.io/components/vacuum.xiaomi_miio/
+#
+vacuum_map_construct:
+  alias: Constuir la map de Rocky
+  sequence:
+    - service: vacuum.set_fan_speed
+      data: 
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        fan_speed: quiet
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        command: app_goto_target
+        params: [25500,25600]

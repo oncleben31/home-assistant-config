@@ -1,0 +1,7 @@
+---
+# Workday component to know when it should be a working day or a off day
+#
+# https://www.home-assistant.io/components/binary_sensor.workday/
+#
+platform: workday
+country: FRA

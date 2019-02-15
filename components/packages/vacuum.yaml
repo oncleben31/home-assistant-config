@@ -1,5 +1,31 @@
 # Integration of Xiaomi Vacuum Cleaner
 #
+# Tips: 
+# - Increasing the x coordinate will move the robot relative to the starting point to the right 
+#   (decreasing to the left)
+# - Increasing the y coordinate will move the robot relative to the starting point to the top 
+#   (decreasing to the bottom)
+# - To serach key coordinates, use the service "vacuum.send_command" in GUI with the
+#   parameters below. You can check on the Mi app to see where is the target:
+# {
+#  "entity_id": "vacuum.xiaomi_vacuum_cleaner",
+#  "command": "app_goto_target",
+#  "params": [25500,25600]
+# }
+#
+# Usefull coordinates:
+#  - dock: [25500,25500]
+#  - buanderie(bl): [20600,21000]
+#  - sallon(tr): [30500, 29300]
+#  - cuisine(bl): []
+#  - cuisine(tr): [27800,25200]
+#  - maison(bl): []
+#  - maison(tr): []
+#  - tapis(bl): []
+#  - tapis(tr): []
+#  - salleamanger(tr): []
+#  - tapis(tr): [30200,28900]
+#  - tapis(bl): [28000,25900]
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
 #
 vacuum:
@@ -7,17 +33,8 @@ vacuum:
     host: 192.168.1.36
     token: !secret vacuum_xiaomi_token
 
-# Coordonnées pratique:
-# dock: [25000,25000]
-# buanderie(bl): [20600,21000]
-# sallon(tr): [30500, 29300]
-# cuisine(bl): []
-# cuisine(tr): [27000,25000]
-# maison(bl): []
-# maison(tr): []
-# tapis(bl): []
-# tapis(tr): []
-# salleamanger(tr): []
+
+
 
 
 

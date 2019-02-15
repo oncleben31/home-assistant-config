@@ -1,18 +1,22 @@
-# Launch my Xiaomi Vacuum in the living room, the kitchen and utility room
+# Launch my Xiaomi Vacuum on the carpet
 #
 # Integration in Telegram inspired by https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
 # https://www.home-assistant.io/components/vacuum/
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
 #
-launch_vacuum_in_kitchen_and_livingroom:
-  alias: Lance Rocky dans la cuisine et le salon
+launch_vacuum_on_the_carpet:
+  alias: Lance Rocky sur le tapis
   sequence: 
+    # Set fan speed at maximum power
     - service: vacuum.set_fan_speed
       data: 
         entity_id: vacuum.xiaomi_vacuum_cleaner
-        fan_speed: balanced
+        fan_speed: max
+    # Clean the carpet 3 times.
     - service: vacuum.send_command
       data: 
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
-        params: [[20600,21000,30500,29300,1]]
+        params: [[228000,25900,30200,28900,3]]
+
+
