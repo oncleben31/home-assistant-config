@@ -1,0 +1,11 @@
+---
+# Travel time from home to work
+#
+# https://www.home-assistant.io/components/sensor.waze_travel_time/
+#
+platform: waze_travel_time
+name: "Trajet Maison-Travail Alex"
+origin: zone.home
+destination: zone.travail_alex
+region: 'EU'
+realtime: true
