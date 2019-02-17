@@ -5,7 +5,6 @@ For more details about this component, please refer to the documentation at
 https://home-assistant.io/components/sensor.linky/
 """
 import logging
-import json
 from datetime import timedelta
 
 import voluptuous as vol
@@ -17,7 +16,7 @@ from homeassistant.helpers.entity import Entity
 from homeassistant.util import Throttle
 import homeassistant.helpers.config_validation as cv
 
-REQUIREMENTS = ['pylinky==0.1.8']
+REQUIREMENTS = ['pylinky==0.2.0']
 
 KILOWATT_HOUR = 'kWh'
 
@@ -58,6 +57,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     offpeak_hours_cost = config.get(OFFPEAK_HOURS_COST)
 
     linky_data = LinkyData(username, password, timeout)
+    linky_data.update()
 
     add_entities([LinkySensor(name, linky_data, peak_hours,
                               peak_hours_cost, offpeak_hours_cost)])
@@ -109,8 +109,7 @@ class LinkySensor(Entity):
 
     @Throttle(SCAN_INTERVAL)
     def update(self):
-        """Fetch new state data for the sensor.
-        """
+        """Fetch new state data for the sensor."""
         _LOGGER.debug("Start of update of linky data")
         self._lk.update()
         if not self._lk.success:
@@ -125,19 +124,19 @@ class LinkySensor(Entity):
                                      for d in self._lk.daily]
         self._attributes["peak_hours"] = sum([
             d[CONSUMPTION]
-            if any([between(h[0], h[1], d[TIME])
+            if any([_between(h[0], h[1], d[TIME])
                     for h in self._peak_hours])
             else 0 for d in self._lk.halfhourly]) / 2
         # From kW for 30 minutes to kWh
         self._attributes["offpeak_hours"] = sum(
-            [0 if any([between(h[0], h[1], d[TIME])
+            [0 if any([_between(h[0], h[1], d[TIME])
                        for h in self._peak_hours])
              else d[CONSUMPTION]
              for d in self._lk.halfhourly]) / 2
         # From kW for 30 minutes to kWh
         self._attributes["peak_offpeak_percent"] = ((self._attributes
-                                                    ["peak_hours"] *
-                                                    100) /
+                                                     ["peak_hours"] *
+                                                     100) /
                                                     (self._attributes
                                                      ["peak_hours"] +
                                                      self._attributes
@@ -147,23 +146,23 @@ class LinkySensor(Entity):
                                           self._offpeak_hours_cost *
                                           self._attributes["offpeak_hours"])
         if self._lk.compare_month == 0:
-          self._attributes["monthly_evolution"] = 0
-        else: 
-          self._attributes["monthly_evolution"] = (
-				1 - ((self._lk.monthly[0][CONSUMPTION]) /
-					(self._lk.compare_month))) * 100
-        _LOGGER.debug("Computed values: " +
+            self._attributes["monthly_evolution"] = 0
+        else:
+            self._attributes["monthly_evolution"] = (
+                1 - ((self._lk.monthly[0][CONSUMPTION]) /
+                     (self._lk.compare_month))) * 100
+        _LOGGER.debug("Computed values: %s",
                       str(self._attributes))
 
 
-def hour_to_min(hour):
+def _hour_to_min(hour):
     return sum(map(lambda x, y: int(x)*y, hour.split(":"), [60, 1]))
 
 
-def between(start, end, hour):
-    min_start = hour_to_min(start)
-    min_end = hour_to_min(end)
-    min_hour = hour_to_min(hour)
+def _between(start, end, hour):
+    min_start = _hour_to_min(start)
+    min_end = _hour_to_min(end)
+    min_hour = _hour_to_min(hour)
     return (min_start <= min_hour <= min_end
             if min_start < min_end
             else min_start >= min_hour >= min_end)
@@ -179,6 +178,11 @@ class LinkyData:
         self._timeout = timeout
         self.client = {}
         self.data = {}
+        self.halfhourly = []
+        self.daily = []
+        self.monthly = []
+        self.yearly = []
+        self.compare_month = []
         self.success = False
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
@@ -195,30 +199,22 @@ class LinkyData:
             _LOGGER.info("Connected to Enedis server successfully.")
             self.data = self.client.get_data()
             today = date.today()
-            # Fixes a bug in PyLinky
-            self.data["monthly"][0] = (self.client._get_data_per_month(
-                (today.replace(day=1) - relativedelta(months=12))
-                .strftime("%d/%m/%Y"),
-                ((today - relativedelta(months=11)).replace(day=1)
-                 - relativedelta(days=1)).strftime("%d/%m/%Y"))[0])
-            _LOGGER.info("Second request for bugfix")
             # Get partial CONSUMPTION of the same month last year
             self.compare_month = sum([d[CONSUMPTION]
                                       for d in self.client
-                                      ._get_data_per_month(
-                                          (today.replace(day=1) -
-                                           relativedelta(months=12))
-                                          .strftime("%d/%m/%Y"),
-                                          (today - relativedelta
+                                      .get_data_per_period(
+                                           "monthly",
+                                           (today.replace(day=1) -
+                                            relativedelta(months=12))
+                                           .strftime("%d/%m/%Y"),
+                                           (today - relativedelta
                                            (months=12))
-                                          .strftime("%d/%m/%Y"))])
-            _LOGGER.info("Same month last year " +
-                         "(from 1st to same day): " +
-                         str(self.compare_month))
+                                           .strftime("%d/%m/%Y"))])
+            _LOGGER.info("Same month last year (from 1st to same day): %s",
+                    str(self.compare_month))
         except PyLinkyError as exp:
-            _LOGGER.warning("Unable to fetch Linky data " +
-                            "(maybe due to night maintenance " +
-                            "downtime schedule): %s", exp)
+            reason = "(maybe due to night maintenance downtime schedule):"
+            _LOGGER.warning("Unable to fetch Linky data %s %s", reason, exp)
             return False
         return True
 
@@ -227,7 +223,7 @@ class LinkyData:
         self._fetch_data()
         if not self.data:
             return
-        _LOGGER.debug("Linky data retrieved: " + str(self.data))
+        _LOGGER.debug("Linky data retrieved: %s", str(self.data))
         self.halfhourly = list(reversed(self.data["hourly"]))
         self.daily = list(reversed(self.data["daily"]))
         self.monthly = list(reversed(self.data["monthly"]))
