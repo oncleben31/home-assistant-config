@@ -15,3 +15,4 @@ recorder:
       - alarm_control_panel
       - sun
       - vacuum
+      - device_tracker
