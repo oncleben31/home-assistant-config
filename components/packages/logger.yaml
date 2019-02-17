@@ -5,8 +5,8 @@
 #
 logger:
   default: warning
-  logs:
-    homeassistant.components.recorder: debug
+#  logs:
+#    homeassistant.components.recorder: debug
+#    homeassistant.components.logbook: debug
 #    homeassistant.components.zwave: warning
 #    homeassistant.components.vacuum.xiaomi_miio: debug
- 
