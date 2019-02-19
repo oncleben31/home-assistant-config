@@ -16,7 +16,7 @@ from homeassistant.helpers.entity import Entity
 from homeassistant.util import Throttle
 import homeassistant.helpers.config_validation as cv
 
-REQUIREMENTS = ['pylinky==0.2.0']
+REQUIREMENTS = ['pylinky==0.2.1']
 
 KILOWATT_HOUR = 'kWh'
 
