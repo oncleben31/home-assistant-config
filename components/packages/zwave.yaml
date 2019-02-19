@@ -8,4 +8,4 @@ zwave:
   # The USB port where the Aeotech Z-Stick is connected to.
   usb_path: /dev/ttyACM0
 
-  
+  device_config: !include ../../zwave_device_config.yaml
