@@ -1,0 +1,7 @@
+---
+# Custom components for accessing Hue motion sensor data
+# This platform for binary_sensor linked to motion detected
+#
+# https://github.com/robmarkcole/Hue-sensors-HASS
+#
+platform: hue

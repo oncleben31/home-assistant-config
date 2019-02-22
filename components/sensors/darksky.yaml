@@ -5,7 +5,7 @@
 
 platform: darksky
 api_key: !secret darksky
-update_interval: 00:05
+scan_interval: 00:05
 language: fr
 monitored_conditions:
   - summary
