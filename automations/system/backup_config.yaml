@@ -1,0 +1,39 @@
+---
+# Automation for HA weekly backup.
+# First we generate the backup then we copy on Google using the 
+# "Backup Hassio to Google Drive" addon by samccauley
+#
+# https://community.home-assistant.io/t/hassio-0-61-snapshot-service/39690/3
+# https://github.com/samccauley/addon-hassiogooglebackup
+#
+
+# Generate the HA config archive weekly
+- alias: Weekly Backup Monday at 3 AM
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '3:00:00'
+  condition:
+  - condition: time
+    weekday:
+      - mon
+  action:
+  - service: hassio.snapshot_full
+    data_template:
+      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+  - service: notify.telegram
+    data_template:
+      message: Creation du backup hebomadaire "Automated Backup {{ now().strftime('%Y-%m-%d') }}"
+
+# Sync the archive on Google Drive
+- alias: Weekly Backup to Google Monday at 4:30 AM
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '4:30:00'
+  condition:
+  - condition: time
+    weekday:
+      - mon
+  action:
+  - service: rest_command.google_backup
