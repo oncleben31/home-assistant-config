@@ -4,7 +4,7 @@
 # https://github.com/custom-components/custom_updater
 #
 custom_updater:
+  mode: storage
   track:
     - components
-  component_urls:
-    - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json
+    - cards
