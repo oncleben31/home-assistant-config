@@ -1,0 +1,90 @@
+---
+# Check vacuum need to be emptied
+#
+# If yes send a reminder on telegram asking to confirm it's done.
+# we can postponed in 30 minutes or cancel: 
+#
+
+# Main automation checking the state of the vacuum
+- alias: Rappeler de vider Rocky le soir
+  initial_state: true
+  trigger:
+  - platform: time
+    at: '20:00:00'
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.redemande_vider_rocky
+  action:
+  - data:
+      data:
+        inline_keyboard:
+        - Oui:/resetRocky, Redemande:/redemandeRocky, Demain:/demainRocky,
+      message: Rocky a été utilisé hier. Il a besoin que l'on vide son bac. C'est fait ?
+    service: notify.telegram
+  condition:
+  - condition: state
+    entity_id: input_select.vacuum_need_to_be_emptied
+    state: "A faire"
+
+# Command received by Telegram to ask again in 30 minutes
+- alias: Redemande dans 30 minutes
+  initial_state: true
+  hide_entity: true
+  trigger:
+    platform: event
+    event_type: telegram_callback
+    event_data:
+      data: /redemandeRocky
+  action:
+  - service: timer.start
+    entity_id: timer.redemande_vider_rocky
+  - service: telegram_bot.edit_message
+    data_template:
+      message_id: '{{ trigger.event.data.message.message_id }}'
+      chat_id: '{{ trigger.event.data.user_id }}'
+      message: 'OK je te redemande dans 30 minutes'
+
+# Command received by telegram to not ask again today
+- alias: Arrete de redemander aujourd'hui
+  initial_state: true
+  hide_entity: true
+  trigger:
+    platform: event
+    event_type: telegram_callback
+    event_data:
+      data: /demainRocky
+  action:
+  - service: telegram_bot.answer_callback_query
+    data_template:
+      callback_query_id: '{{ trigger.event.data.id }}'
+      message: "Tu as dis pas aujourd'hui"
+  - service: telegram_bot.edit_message
+    data_template:
+      message_id: '{{ trigger.event.data.message.message_id }}'
+      chat_id: '{{ trigger.event.data.user_id }}'
+      message: 'OK on en reparle demain'
+
+# Command received by Telegram to confirm vacuum emptied
+- alias: Bac du Rocky vidé
+  initial_state: true
+  hide_entity: true
+  trigger:
+    platform: event
+    event_type: telegram_callback
+    event_data:
+      data: /resetRocky
+  action:
+  - service: telegram_bot.answer_callback_query
+    data_template:
+      callback_query_id: '{{ trigger.event.data.id }}'
+      message: OK merci
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.vacuum_need_to_be_emptied
+      option: "Vide"
+  - service: telegram_bot.edit_message
+    data_template:
+      message_id: '{{ trigger.event.data.message.message_id }}'
+      chat_id: '{{ trigger.event.data.user_id }}'
+      message: 'Rocky est pret pour le prochain netoyage'

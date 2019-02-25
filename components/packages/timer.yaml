@@ -6,3 +6,5 @@
 timer:
   redemande_leve_du_soleil:
     duration: '00:15:00'
+  redemande_vider_rocky:
+    duration: '00:30:00'

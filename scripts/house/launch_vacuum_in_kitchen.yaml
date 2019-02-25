@@ -17,3 +17,7 @@ launch_vacuum_in_kitchen:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
         params: [[20600,21000,27800,25200,1]]
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.vacuum_need_to_be_emptied
+        option: "A faire"

@@ -19,5 +19,8 @@ launch_vacuum_on_the_carpet:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
         params: [[228000,25900,30200,28900,3]]
-
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.vacuum_need_to_be_emptied
+        option: "A faire"
 
