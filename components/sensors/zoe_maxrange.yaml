@@ -1,0 +1,12 @@
+---
+# Sensor to estimate evolution of max range of Renault Zoé
+# computed with range / battery
+#
+# https://github.com/epenet/hassRenaultZE
+#
+platform: template
+sensors:
+  zoe_max_range:
+    value_template: "{{ state_attr('sensor.zoe' , 'remaining_range') / sensor.zoe }}"
+    friendly_name: "Autonomie"
+    unit_of_measurement: "km"
