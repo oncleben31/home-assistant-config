@@ -1,15 +1,23 @@
 ---
 # Launch the vacuum every work day at 10:00
 #
+# Exception if the house is put in mode holidays with the thru an
+# input_select
+#
 - alias: Lancemnent quotidien de Rocky
   initial_state: true
   trigger: 
     platform: time
     at: '10:00:00'
   condition: 
-    condition: state
-    entity_id: binary_sensor.workday_sensor
-    state: 'on'
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.workday_sensor
+        state: 'on'
+      - condition: state
+        entity_id: input_select.house_mode
+        state: 'Normal'
   action: 
     service: script.turn_on
     entity_id: script.launch_vacuum_in_kitchen  
