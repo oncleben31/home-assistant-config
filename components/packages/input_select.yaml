@@ -1,18 +1,4 @@
 ---
-# Input_select component to follow some global states of the house
+# input_select allows to follow house or system mode
 #
-# https://www.home-assistant.io/components/input_select/
-#
-input_select:
-  house_mode:
-    name: Mode de la maison
-    options:
-     - Normal
-     - Vacances
-    icon: mdi:house
-    
-  vacuum_need_to_be_emptied: 
-    name: Rocky a besoin d'être vidé
-    options:
-      - Vide
-      - "A faire"
+input_select: !include_dir_merge_named ../input_selects
