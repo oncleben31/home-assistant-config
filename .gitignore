@@ -23,3 +23,5 @@ secrets.yaml
 known_devices.yaml
 ip_bans.yaml
 .DS_Store
+zwave_device_config.yaml
+export-lovelace.yaml
