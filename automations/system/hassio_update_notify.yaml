@@ -9,13 +9,22 @@
     - platform: homeassistant
       event: start
   condition:
-    - condition: template
-      value_template: >-
-        {{
-          states('sensor.version_available')
-          !=
-          states('sensor.version_current')
-        }}
+    condition: and
+    conditions:
+      - condition: template
+        value_template: >-
+          {{
+            states('sensor.version_available')
+            !=
+            states('sensor.version_current')
+          }}
+      - condition: template
+        value_template: >-
+          {{
+            'unknown'
+            !=
+            states('sensor.version_current')
+          }}
   action:
     - service: notify.telegram
       data:
