@@ -18,8 +18,8 @@ sensors:
     icon_template: >-
       {%- if is_state_attr('sensor.zoe', 'charging', true) 
       -%}
-      battery-charging-30
+      mdi:battery-charging-30
       {%- else -%}
-      battery-30
+      mdi:battery-30
       {%- endif %}
     

@@ -7,7 +7,7 @@
 platform: template
 sensors:
   zoe_plugged:
-    friendly_name: "Branché"
+    friendly_name: "Branchée"
     device_class: plug
     value_template: >-
       {%- if is_state_attr('sensor.zoe', 'plugged', true) 
