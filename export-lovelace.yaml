@@ -35,31 +35,61 @@ views:
         show_header_toggle: false
         title: Rocky
         type: entities
-      - type: vertical-stack
-        cards:
-          - type: picture-elements
-            elements:
-              - entity: sensor.zoe
-                style:
-                  background-color: 'rgb(54, 65, 78)'
-                  border-color: 'rgb(34, 154, 210)'
-                  border-left-style: solid
-                  color: 'rgb(255, 255, 255)'
-                  font-family: Trebuchet MS
-                  font-size: 90%
-                  font-weight: bold
-                  left: 5%
-                  opacity: 0.8
-                  pointer-events: none
-                  text-shadow: 1px 1px black
-                  top: 10%
-                  transform: 'translate(0%,-50%)'
-                type: state-label
-            image: /local/renault-zoe-charging.jpg
-            title: Ma Zoé
-          - type: history-graph
-            entities:
-              - sensor.zoe
+      - cards: null
+        elements:
+          - entity: sensor.zoe
+            prefix: 'Batterie: '
+            style:
+              background-color: 'rgb(54, 65, 78)'
+              border-color: 'rgb(34, 154, 210)'
+              border-right-style: solid
+              color: 'rgb(255, 255, 255)'
+              font-family: Trebuchet MS
+              font-size: 90%
+              font-weight: bold
+              right: 5%
+              opacity: 0.8
+              pointer-events: none
+              text-shadow: 1px 1px black
+              bottom: 5%
+              transform: 'translate(0%,0%)'
+            type: state-label
+          - entity: sensor.zoe_remaining_range
+            suffix: ' restants'
+            style:
+              background-color: 'rgb(54, 65, 78)'
+              color: 'rgb(255, 255, 255)'
+              border-color: 'rgb(34, 154, 210)'
+              border-right-style: solid
+              font-family: Trebuchet MS
+              font-size: 90%
+              font-weight: bold
+              right: 5%
+              opacity: 0.8
+              pointer-events: none
+              text-shadow: 1px 1px black
+              top: 5%
+              transform: 'translate(0%,0%)'
+            type: state-label
+          - entity: sensor.zoe_textual_status
+            style:
+              background-color: 'rgb(54, 65, 78)'
+              color: 'rgb(255, 255, 255)'
+              border-color: 'rgb(34, 154, 210)'
+              border-left-style: solid
+              font-family: Trebuchet MS
+              font-size: 90%
+              font-weight: bold
+              left: 5%
+              opacity: 0.8
+              pointer-events: none
+              text-shadow: 1px 1px black
+              top: 5%
+              transform: 'translate(0%,0%)'
+            type: state-label
+        image: /local/renault-zoe-charging.jpg
+        title: Ma Zoé
+        type: picture-elements
     icon: 'mdi:home'
     path: default_view
     title: Maison
