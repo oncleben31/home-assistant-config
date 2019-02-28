@@ -1,5 +1,5 @@
 ---
-# This binary motion sensor, track the charging state of the Zoé
+# This binary sensor, track the plugged state of the Zoé
 #
 # https://github.com/epenet/hassRenaultZE
 # https://www.home-assistant.io/components/binary_sensor.template/

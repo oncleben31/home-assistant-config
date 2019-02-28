@@ -1,6 +1,6 @@
 ---
-# Sensor to estimate evolution of max range of Renault Zoé
-# computed with range / battery
+# Sensor to estimate evolution of maximum range of Renault Zoé
+# when at 100%.
 #
 # https://github.com/epenet/hassRenaultZE
 #

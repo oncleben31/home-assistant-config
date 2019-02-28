@@ -1,5 +1,5 @@
 ---
-# This sensor, give the textual text of the Zoé (plugged / charging)
+# This sensor, give the textual status of the Zoé (plugged / charging)
 #
 # https://github.com/epenet/hassRenaultZE
 # https://www.home-assistant.io/components/binary_sensor.template/

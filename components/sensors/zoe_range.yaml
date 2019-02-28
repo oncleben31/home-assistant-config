@@ -7,5 +7,5 @@ platform: template
 sensors:
   zoe_remaining_range:
     value_template: "{{ state_attr('sensor.zoe' , 'remaining_range') }}"
-    friendly_name: "Autonomie"
+    friendly_name: "Autonomie restante"
     unit_of_measurement: "km"
