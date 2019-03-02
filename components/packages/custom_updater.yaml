@@ -4,7 +4,6 @@
 # https://github.com/custom-components/custom_updater
 #
 custom_updater:
-  mode: storage
   track:
     - components
     - cards
