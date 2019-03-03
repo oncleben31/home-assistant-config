@@ -9,7 +9,7 @@
   trigger: 
     - platform: state
       entity_id: binary_sensor.zoe_charging
-      to: true
+      to: 'on'
   action: 
     - service: notify.telegram
       data_template:
@@ -21,7 +21,7 @@
   trigger: 
     - platform: state
       entity_id: binary_sensor.zoe_charging
-      to: false
+      to: 'off'
   action: 
     - service: notify.telegram
       data_template:

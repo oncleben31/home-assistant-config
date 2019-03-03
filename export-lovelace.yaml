@@ -1,6 +1,6 @@
 resources:
-  - type: module
-    url: /customcards/github/custom-cards/tracker-card.js?track=true
+  - url: /customcards/github/custom-cards/tracker-card.js?track=true
+    type: module
   - type: js
     url: /local/linky-card.js?v=4
   - type: js
@@ -238,11 +238,7 @@ views:
                 battery_level: <= 30
         show_empty: true
         type: 'custom:auto-entities'
-      - title: null
-        trackers:
-          - sensor.custom_component_tracker
-          - sensor.custom_card_tracker
-        type: 'custom:tracker-card'
+      - type: 'custom:tracker-card'
       - entities:
           - entity: sensor.processor_use
           - entity: sensor.disk_use_percent
