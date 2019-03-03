@@ -7,6 +7,6 @@
 #
 rest_command:
   google_backup:
-    url: 'http://192.168.1.28:8055/gb/doBackup'
+    url: !secret url_gdrive_backup
     timeout: '300'
     

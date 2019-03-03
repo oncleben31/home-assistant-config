@@ -7,8 +7,8 @@
 # https://www.home-assistant.io/docs/mqtt/birth_will/
 #
 mqtt:
-  broker: 127.0.0.1
-  port: 1883
+  broker: !secret local_ip_mqtt
+  port: !secret port_mqtt
   client_id: home-assistant
   username: !secret mqtt_username
   password: !secret mqtt_password

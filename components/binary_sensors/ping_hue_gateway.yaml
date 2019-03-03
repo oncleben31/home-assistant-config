@@ -4,4 +4,4 @@
 #
 platform: ping
 name: Hue Gateway
-host: 192.168.1.22
+host: !secret local_ip_hue_gateway

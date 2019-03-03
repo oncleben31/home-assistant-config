@@ -4,4 +4,4 @@
 #
 platform: ping
 name: NAS
-host: 192.168.1.12
+host: !secret local_ip_nas

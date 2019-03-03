@@ -8,11 +8,11 @@ wifi:
   password: !secret wifi_password
 
 # Usefull to debug MQTT:
-# See all MQTT mesages: ssh Hass.io and mosquitto_sub -h 192.168.1.28 -v -t '#'
-# Clear a retained message no more used: ssh Hass.io and mosquitto_pub -h 192.168.1.28 -t TOPIC -n -r
+# See all MQTT mesages: ssh Hass.io and mosquitto_sub -h Local_IP -v -t '#'
+# Clear a retained message no more used: ssh Hass.io and mosquitto_pub -h Local_IP -t TOPIC -n -r
 # Clear old message link to app: esphomeyaml capteur_piscine.yaml clean-mqtt
 mqtt:
-  broker: '192.168.1.28'
+  broker: !secret local_ip_mqtt
   username: !secret mqtt_username
   password: !secret mqtt_password
 
