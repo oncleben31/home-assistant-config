@@ -1,0 +1,6 @@
+---
+# input_boolean allows to follow house or system mode
+#
+# https://www.home-assistant.io/components/input_boolean/
+#
+input_boolean: !include_dir_merge_named ../input_booleans

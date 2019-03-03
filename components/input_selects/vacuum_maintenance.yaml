@@ -1,8 +1,0 @@
----
-# Input_select to follow if the vacuum needs to be emptied
-#
-vacuum_need_to_be_emptied: 
-  name: Rocky a besoin d'être vidé
-  options:
-    - Vide
-    - "A faire"
