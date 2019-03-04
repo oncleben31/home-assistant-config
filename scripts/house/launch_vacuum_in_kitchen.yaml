@@ -20,4 +20,5 @@ launch_vacuum_in_kitchen:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.vacuum_need_to_be_emptied
+
   
