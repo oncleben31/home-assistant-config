@@ -1,12 +1,14 @@
 resources:
-  - url: /customcards/github/custom-cards/tracker-card.js?track=true
-    type: module
+  - type: module
+    url: /customcards/github/custom-cards/tracker-card.js?track=true
+  - type: js
+    url: /customcards/github/thomasloven/fold-entity-row.js?track=true
   - type: js
     url: /local/linky-card.js?v=4
   - type: js
-    url: /customcards/card-tools.js
+    url: /customcards/github/thomasloven/card-tools.js?track=true
   - type: js
-    url: /customcards/auto-entities.js
+    url: /customcards/github/thomasloven/auto-entities.js?track=true
 title: Maison
 views:
   - badges:
@@ -43,40 +45,40 @@ views:
               background-color: 'rgb(54, 65, 78)'
               border-color: 'rgb(34, 154, 210)'
               border-right-style: solid
+              bottom: 5%
               color: 'rgb(255, 255, 255)'
               font-family: Trebuchet MS
               font-size: 90%
               font-weight: bold
-              right: 5%
               opacity: 0.8
               pointer-events: none
+              right: 5%
               text-shadow: 1px 1px black
-              bottom: 5%
               transform: 'translate(0%,0%)'
             type: state-label
           - entity: sensor.zoe_remaining_range
-            suffix: ' restants'
             style:
               background-color: 'rgb(54, 65, 78)'
-              color: 'rgb(255, 255, 255)'
               border-color: 'rgb(34, 154, 210)'
               border-right-style: solid
+              color: 'rgb(255, 255, 255)'
               font-family: Trebuchet MS
               font-size: 90%
               font-weight: bold
-              right: 5%
               opacity: 0.8
               pointer-events: none
+              right: 5%
               text-shadow: 1px 1px black
               top: 5%
               transform: 'translate(0%,0%)'
+            suffix: ' restants'
             type: state-label
           - entity: sensor.zoe_textual_status
             style:
               background-color: 'rgb(54, 65, 78)'
-              color: 'rgb(255, 255, 255)'
               border-color: 'rgb(34, 154, 210)'
               border-left-style: solid
+              color: 'rgb(255, 255, 255)'
               font-family: Trebuchet MS
               font-size: 90%
               font-weight: bold
@@ -101,6 +103,9 @@ views:
           - arm_home
           - arm_away
         type: alarm-panel
+      - entities:
+          - entity: input_select.house_mode
+        type: glance
       - entities:
           - entity: binary_sensor.main_door
           - entity: binary_sensor.garage_door
@@ -175,8 +180,10 @@ views:
         type: glance
       - entities:
           - card:
-              title: Désactivées
-              type: entities
+              head:
+                label: Désactivées
+                type: section
+              type: 'custom:fold-entity-row'
             filter:
               include:
                 - domain: automation
@@ -184,8 +191,10 @@ views:
             show_empty: false
             type: 'custom:auto-entities'
           - card:
-              title: Activées
-              type: entities
+              head:
+                label: Activées
+                type: section
+              type: 'custom:fold-entity-row'
             filter:
               include:
                 - domain: automation
