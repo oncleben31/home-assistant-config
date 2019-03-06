@@ -17,6 +17,6 @@ launch_vacuum_in_kitchen_and_livingroom:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
         params: [[20600,21000,30500,29300,1]]
-    - service: input_select.turn_on
+    - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.vacuum_need_to_be_emptied
