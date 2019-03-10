@@ -26,6 +26,8 @@
           script.launch_vacuum_on_the_carpet
         {% elif (trigger.event.data.room == "la cuisine" or trigger.event.data.room == "dans la cuisine") %}
           script.launch_vacuum_in_kitchen
+        {% elif (trigger.event.data.room == "l'enrée" or trigger.event.data.room == "dans l'entrée") %}
+          script.launch_vacuum_in_the_entrance
         {% endif %}
 
 - id: stop_vacuum

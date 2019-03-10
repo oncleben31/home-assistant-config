@@ -26,6 +26,9 @@
 #  - salleamanger(tr): []
 #  - tapis(tr): [30200,28900]
 #  - tapis(bl): [28000,25900]
+#  - entree(tr): [25500,34600]
+#  - entree(bl): [23000,30200]
+#
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
 #
 vacuum:
