@@ -12,11 +12,13 @@ launch_vacuum_in_kitchen_and_livingroom:
       data: 
         entity_id: vacuum.xiaomi_vacuum_cleaner
         fan_speed: balanced
-    - service: vacuum.send_command
-      data: 
+    - service: vacuum.xiaomi_clean_zone
+      data_template:
         entity_id: vacuum.xiaomi_vacuum_cleaner
-        command: app_zoned_clean
-        params: [[20600,21000,30500,29300,1]]
+        repeats_template: 1
+        zone:
+        - [20600,21000,30500,29300]
+        - [25500,25500,30600,32600]
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.vacuum_need_to_be_emptied

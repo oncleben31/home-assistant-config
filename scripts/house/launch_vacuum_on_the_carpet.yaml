@@ -14,11 +14,12 @@ launch_vacuum_on_the_carpet:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         fan_speed: max
     # Clean the carpet 3 times.
-    - service: vacuum.send_command
-      data: 
+    - service: vacuum.xiaomi_clean_zone
+      data_template:
         entity_id: vacuum.xiaomi_vacuum_cleaner
-        command: app_zoned_clean
-        params: [[228000,25900,30200,28900,3]]
+        repeats_template: 3
+        zone:
+        - [28000,25900,30200,28900]
     - service: input_boolean.turn_on
       data_template:
         entity_id: input_boolean.vacuum_need_to_be_emptied

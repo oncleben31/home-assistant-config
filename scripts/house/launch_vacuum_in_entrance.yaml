@@ -6,17 +6,18 @@
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
 #
 launch_vacuum_in_the_entrance:
-  alias: Lance Rocky dans l'entrée'
+  alias: Lance Rocky dans l'entrée
   sequence: 
     - service: vacuum.set_fan_speed
       data: 
         entity_id: vacuum.xiaomi_vacuum_cleaner
         fan_speed: balanced
-    - service: vacuum.send_command
-      data: 
+    - service: vacuum.xiaomi_clean_zone
+      data_template:
         entity_id: vacuum.xiaomi_vacuum_cleaner
-        command: app_zoned_clean
-        params: [[23000,30200,25500,34600,1]]
+        repeats_template: 1
+        zone:
+        - [23000,29700,25500,34100]
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.vacuum_need_to_be_emptied
