@@ -23,6 +23,8 @@ views:
           - entity: sensor.exterieur_humidity
         title: Extérieur
         type: glance
+      - entity: weather.aurade
+        type: weather-forecast
       - entities:
           - entity: sensor.temperature_salon
           - entity: sensor.temperature_parents
@@ -51,10 +53,11 @@ views:
               font-size: 90%
               font-weight: bold
               opacity: 0.8
-              pointer-events: none
               right: 5%
               text-shadow: 1px 1px black
               transform: 'translate(0%,0%)'
+            tap_action:
+              action: more-info
             type: state-label
           - entity: sensor.zoe_remaining_range
             style:
@@ -66,12 +69,13 @@ views:
               font-size: 90%
               font-weight: bold
               opacity: 0.8
-              pointer-events: none
               right: 5%
               text-shadow: 1px 1px black
               top: 5%
               transform: 'translate(0%,0%)'
             suffix: ' restants'
+            tap_action:
+              action: more-info
             type: state-label
           - entity: sensor.zoe_textual_status
             style:
@@ -84,10 +88,11 @@ views:
               font-weight: bold
               left: 5%
               opacity: 0.8
-              pointer-events: none
               text-shadow: 1px 1px black
               top: 5%
               transform: 'translate(0%,0%)'
+            tap_action:
+              action: more-info
             type: state-label
         image: /local/renault-zoe-charging.jpg
         title: Ma Zoé
@@ -203,6 +208,21 @@ views:
             type: 'custom:auto-entities'
         title: Automatismes
         type: entities
+      - entities:
+          - head: group.all_scripts
+            type: 'custom:fold-entity-row'
+        show_header_toggle: false
+        title: Scripts
+        type: entities
+      - card:
+          title: Tracker Home
+          type: glance
+        filter:
+          include:
+            - domain: device_tracker
+              state: home
+        show_empty: true
+        type: 'custom:auto-entities'
     icon: 'mdi:robot'
     title: Automatismes
   - badges:
@@ -273,6 +293,7 @@ views:
           - entity: zone.home
           - entity: zone.travail_alex
           - entity: zone.travail_benoit
+          - entity: device_tracker.benoit_motog6
         type: map
     icon: 'mdi:map-marker'
     panel: true
