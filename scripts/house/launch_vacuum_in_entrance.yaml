@@ -15,7 +15,7 @@ launch_vacuum_in_the_entrance:
     - service: vacuum.xiaomi_clean_zone
       data_template:
         entity_id: vacuum.xiaomi_vacuum_cleaner
-        repeats_template: 1
+        repeats: 1
         zone:
         - [23000,29700,25500,34100]
     - service: input_boolean.turn_on

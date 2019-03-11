@@ -20,7 +20,7 @@
       data:
         inline_keyboard:
         - Oui:/resetRocky, Redemande:/redemandeRocky, Demain:/demainRocky
-      message: Rocky a été utilisé hier. Il a besoin que l'on vide son bac. C'est fait ?
+      message: Rocky a été utilisé aujourd'hui. Il a besoin que l'on vide son bac. C'est fait ?
     service: notify.telegram
   condition:
   - condition: state

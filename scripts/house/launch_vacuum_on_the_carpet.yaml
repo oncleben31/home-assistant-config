@@ -17,7 +17,7 @@ launch_vacuum_on_the_carpet:
     - service: vacuum.xiaomi_clean_zone
       data_template:
         entity_id: vacuum.xiaomi_vacuum_cleaner
-        repeats_template: 3
+        repeats: 3
         zone:
         - [28000,25900,30200,28900]
     - service: input_boolean.turn_on
