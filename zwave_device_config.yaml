@@ -1,0 +1,123 @@
+sensor.prise_pc_current:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_pc_energy:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_pc_previous_reading:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_pc_alarm_level:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_pc_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_pc_exporting:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_pc_interval:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_pc_interval_2:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_pc_interval_3:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_pc_interval_4:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_pc_previous_reading_2:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_pc_previous_reading_3:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_pc_previous_reading_4:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_pc_voltage:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_alarm_level:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_current:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_energy:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_exporting:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_interval:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_interval_2:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_interval_3:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_interval_4:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_power_management:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_previous_reading:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_previous_reading_2:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_previous_reading_3:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_previous_reading_4:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.prise_tv_voltage:
+  ignored: true
+  polling_intensity: 0
+sensor.detecteur_de_fumee_alarm_level:
+  ignored: true
+  polling_intensity: 0
+sensor.detecteur_de_fumee_alarm_type:
+  ignored: true
+  polling_intensity: 0
+sensor.detecteur_de_fumee_burglar:
+  ignored: true
+  polling_intensity: 0
+sensor.detecteur_de_fumee_general:
+  ignored: true
+  polling_intensity: 0
+sensor.detecteur_de_fumee_heat:
+  ignored: true
+  polling_intensity: 0
+sensor.detecteur_de_fumee_heat_2:
+  ignored: true
+  polling_intensity: 0
+sensor.detecteur_de_fumee_power_management:
+  ignored: true
+  polling_intensity: 0
+sensor.detecteur_de_fumee_smoke_2:
+  ignored: true
+  polling_intensity: 0
+sensor.detecteur_de_fumee_smoke:
+  ignored: true
+  polling_intensity: 0
+sensor.detecteur_de_fumee_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.detecteur_de_fumee_system:
+  ignored: true
+  polling_intensity: 0
