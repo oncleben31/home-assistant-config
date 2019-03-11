@@ -1,0 +1,11 @@
+---
+# input_select to define the house mode: Normal or holidays
+#
+# link to documentation
+#
+house_mode:
+  name: Mode de la maison
+  options:
+    - Normal
+    - Vacances
+  icon: mdi:home-map-marker

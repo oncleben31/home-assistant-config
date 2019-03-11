@@ -6,3 +6,4 @@
 googlehome:
   devices: 
     - host: !secret local_ip_google_home
+      track_devices: false

@@ -14,7 +14,7 @@
     - service: notify.telegram
       data_template:
         message: >
-          Zoé commence une charge à {{ states.sensor.zoe.state_with_unit }}.
+          La Zoé a commencé une charge à {{ states.sensor.zoe.state_with_unit }}.
 
 - alias: notify_zoe_charge_end
   initial_state: true
@@ -26,4 +26,4 @@
     - service: notify.telegram
       data_template:
         message: >
-          Zoé a terminé une charge à {{ states.sensor.zoe.state_with_unit }}.
+          La Zoé a terminé une charge à {{ states.sensor.zoe.state_with_unit }}.

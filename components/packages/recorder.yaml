@@ -16,3 +16,5 @@ recorder:
       - sun
       - vacuum
       - device_tracker
+      - input_select
+      - input_boolean

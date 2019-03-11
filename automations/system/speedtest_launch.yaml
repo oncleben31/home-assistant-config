@@ -16,4 +16,5 @@
         entity_id: 'sensor.prise_pc_power'
         below: 5
   action:
-    service: sensor.update_speedtest
+    service: speedtestdotnet.speedtest
+

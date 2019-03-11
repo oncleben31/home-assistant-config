@@ -3,20 +3,18 @@
 #
 # Integration in Telegram inspired by https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
 #
+# for the Xiaomi Vacuum plateform: 
+#   - state: return a standadr state used by all vacuum component
+#   - status: return the internal Xiaomi state
+#   - error: Error message return by the Xiaomi vacuum
 
 - id: vacuum_cleaner_error
   alias: Vacuum Cleaner Error
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.vacuum_cleaner_status_sensor
-      to: 'Error'
-    - platform: state
-      entity_id: sensor.vacuum_cleaner_status_sensor
-      to: 'In Error'
-    - platform: state
-      entity_id: sensor.vacuum_cleaner_status_sensor
-      to: 'Charging Error'
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      to: 'error'
   action:
     - service: notify.telegram
       data:

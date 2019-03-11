@@ -1,0 +1,5 @@
+---
+# Timer for automation watching the vacuum dustbin
+#
+redemande_vider_rocky:
+  duration: '00:30:00'

@@ -1,0 +1,6 @@
+---
+# Input_boolean to follow if the vacuum needs to be emptied
+#
+vacuum_need_to_be_emptied: 
+  name: Rocky a besoin d'être vidé
+  icon: mdi:delete-circle-outline

@@ -3,6 +3,9 @@
 #
 # Integration in Telegram inspired by https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
 #
+# https://www.home-assistant.io/components/vacuum/
+# https://www.home-assistant.io/components/vacuum.xiaomi_miio/
+#
 - id: launch_vacuum_in_selected_room
   # Launch vacuum with Google Home through IFTTT. User can select the room name
   alias: lance Rocky
@@ -23,6 +26,8 @@
           script.launch_vacuum_on_the_carpet
         {% elif (trigger.event.data.room == "la cuisine" or trigger.event.data.room == "dans la cuisine") %}
           script.launch_vacuum_in_kitchen
+        {% elif (trigger.event.data.room == "l'enrée" or trigger.event.data.room == "dans l'entrée") %}
+          script.launch_vacuum_in_the_entrance
         {% endif %}
 
 - id: stop_vacuum
@@ -35,7 +40,34 @@
     event_data:
       action: stop_rocky
   action: 
-    service: notify.telegram
-    data:
-      message: >
-        OK je stop Rocky. Il retourne sa base. 
+    - service: vacuum.return_to_home
+      data:
+        entity_id: vacuum.vacuum.xiaomi_vacuum_cleaner
+
+- id: pause_vacuum
+# Ask the vacuum to stay in pause
+  alias: Rocky en pause
+  initial_state: true
+  trigger: 
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: pause_rocky
+  action: 
+    - service: vacuum.pause
+      data:
+        entity_id: vacuum.vacuum.xiaomi_vacuum_cleaner
+
+- id: resume_vacuum
+# Ask vacuum to resume the task put in pause previously
+  alias: Relance Rocky
+  initial_state: true
+  trigger: 
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: resume_rocky
+  action: 
+    - service: vacuum.start
+      data:
+        entity_id: vacuum.vacuum.xiaomi_vacuum_cleaner

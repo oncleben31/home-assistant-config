@@ -1,0 +1,5 @@
+---
+# Timer for automation watching lights on when sun is up
+#
+redemande_leve_du_soleil:
+  duration: '00:15:00'

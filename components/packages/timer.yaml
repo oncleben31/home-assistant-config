@@ -3,6 +3,4 @@
 #
 #https://www.home-assistant.io/components/timer/
 #
-timer:
-  redemande_leve_du_soleil:
-    duration: '00:15:00'
+timer: !include_dir_merge_named ../timers
