@@ -1,0 +1,7 @@
+---
+# miflora sensor to link to Xiaomi Mi Flora Plant device
+#
+# https://www.home-assistant.io/components/miflora/
+#
+platform: miflora
+mac: !secret miflora_mac_address
