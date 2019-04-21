@@ -1,4 +1,3 @@
-
 ---
 # Connects to my MQTT broker, for which I use the foociail add-on:
 #
@@ -6,10 +5,10 @@
 # https://www.home-assistant.io/docs/mqtt/broker#run-your-own
 # https://www.home-assistant.io/docs/mqtt/birth_will/
 #
-mqtt:
-  broker: !secret local_ip_mqtt
-  port: !secret port_mqtt
-  client_id: home-assistant
-  username: !secret mqtt_username
-  password: !secret mqtt_password
-  discovery: true
+# mqtt:
+#   broker: !secret local_ip_mqtt
+#   port: !secret port_mqtt
+#   client_id: home-assistant
+#   username: !secret mqtt_username
+#   password: !secret mqtt_password
+#   discovery: true
