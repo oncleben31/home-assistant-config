@@ -1,6 +1,12 @@
-# Hue bridge:
+---
+# The Hue component allows to fine setup de Hue bridge. Even if this is not mandatory
+# due to possibilty to ue the GUI workflow
+#
+# https://www.home-assistant.io/components/hue/
+## Hue bridge:
 hue:
   bridges:
     - host: !secret local_ip_hue_gateway
-      allow_unreachable: true
+      allow_unreachable: false
+      allow_hue_groups: false
 
