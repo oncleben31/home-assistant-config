@@ -6,7 +6,7 @@
 # https://github.com/home-assistant/home-assistant/pull/20535
 # https://community.home-assistant.io/t/add-a-module-to-retrieve-electricity-use-from-linky/28199
 #
-platform: linky
+platform: linky_custom
 username: !secret linky_username
 password: !secret linky_password
 # No HP/HC

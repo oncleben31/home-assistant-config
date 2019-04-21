@@ -5,7 +5,8 @@
 #
 logger:
   default: warning
-#  logs:
+  logs:
+#    custom_components.linky_custom: debug
 #    homeassistant.components.recorder: debug
 #    homeassistant.components.logbook: debug
 #    homeassistant.components.zwave: warning
