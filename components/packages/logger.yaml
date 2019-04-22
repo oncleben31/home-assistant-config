@@ -5,8 +5,7 @@
 #
 logger:
   default: warning
-  logs:
-#    homeassistant.components.hue: debug
+#  logs:
 #    custom_components.linky_custom: debug
 #    homeassistant.components.recorder: debug
 #    homeassistant.components.logbook: debug
