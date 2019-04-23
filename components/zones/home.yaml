@@ -3,7 +3,7 @@
 #
 # https://www.home-assistant.io/components/zone/
 #
-- name: home
+- name: Maison
   latitude: !secret latitude_home
   longitude: !secret longitude_home
   radius: 250

@@ -1,0 +1,19 @@
+---
+# Zone for work
+#
+# https://www.home-assistant.io/components/zone/
+#
+- name: École
+  latitude: !secret latitude_ecole
+  longitude: !secret longitude_ecole
+  radius: 250
+  passive: false
+  icon: mdi:school
+  
+- name: Collège
+  latitude: !secret latitude_college
+  longitude: !secret longitude_college
+  radius: 250
+  passive: false
+  icon: mdi:school
+  
