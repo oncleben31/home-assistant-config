@@ -1,0 +1,6 @@
+---
+# person component to manage familly member and tracking devices
+#
+# https://www.home-assistant.io/components/person/
+#
+person:
