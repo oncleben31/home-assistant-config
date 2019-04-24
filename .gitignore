@@ -10,7 +10,7 @@
 !themes
 !custom_components
 !custom_components/**
-!esphomeyaml
+!esphome
 !scripts
 !scripts/**
 !customizations

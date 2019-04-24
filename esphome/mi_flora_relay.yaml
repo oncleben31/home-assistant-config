@@ -1,0 +1,35 @@
+esphome:
+  name: capteur_piscine
+  platform: ESP32
+  board: lolin32
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+# Enable logging
+logger:
+
+api:
+  password: !secret api_password
+
+ota:
+  password: !secret ota_password
+
+esp32_ble_tracker:
+
+sensor:
+  - platform: xiaomi_miflora
+    mac_address: !secret miflora_mac_address
+    temperature:
+      name: "Xiaomi MiFlora Temperature"
+    moisture:
+      name: "Xiaomi MiFlora Moisture"
+    illuminance:
+      name: "Xiaomi MiFlora Illuminance"
+    conductivity:
+      name: "Xiaomi MiFlora Soil Conductivity"
+    battery_level:
+      name: "Xiaomi MiFlora Battery Level"
+
+
