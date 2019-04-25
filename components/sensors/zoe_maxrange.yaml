@@ -8,8 +8,10 @@ platform: template
 sensors:
   zoe_max_range:
     value_template: >
-      {{ (state_attr('sensor.zoe' , 'remaining_range') | float 
-      / states('sensor.zoe') | float * 100) 
-      | round(0) }}
+      {% if states('sensor.zoe') | float != 0.0 %}
+        {{ (state_attr('sensor.zoe' , 'remaining_range') | float 
+        / states('sensor.zoe') | float * 100) 
+       | round(0) }}
+      {% endif %}
     friendly_name: "Autonomie maximum à 100%"
     unit_of_measurement: "km"
