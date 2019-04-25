@@ -1,0 +1,8 @@
+zone.travail_alex:
+  friendly_name: 'Travail'
+
+zone.travail_benoit:
+  friendly_name: 'Travail'
+
+zone.home:
+  friendly_name: 'Maison'

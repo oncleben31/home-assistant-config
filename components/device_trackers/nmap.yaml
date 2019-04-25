@@ -1,0 +1,12 @@
+---
+# NMAP tracker
+#
+# Allows to track my Android phone
+#
+# https://www.home-assistant.io/components/nmap_tracker/
+#
+platform: nmap_tracker
+hosts: 
+  - !secret local_ip_phone_benoit
+  - !secret local_ip_phone_alex
+home_interval: 10

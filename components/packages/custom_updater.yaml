@@ -7,3 +7,6 @@ custom_updater:
   track:
     - components
     - cards
+  card_urls:
+    - https://raw.githubusercontent.com/malcolmrigg/WizardClock/master/repo.json
+

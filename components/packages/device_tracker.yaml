@@ -1,0 +1,8 @@
+---
+# device_tracker are tracking devicess.
+#
+# This loads up my device_tracker configurations
+#
+# https://www.home-assistant.io/components/sensor/
+#
+device_tracker: !include_dir_list ../device_trackers
