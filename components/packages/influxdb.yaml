@@ -9,7 +9,43 @@ influxdb:
   host: !secret local_ip_influxdb
   port: !secret port_influxdb
   database: home-assistant
-  username: home-assistant
+  username: !secret influxdb_user_name
   password: !secret influxdb_user_password
   max_retries: 3
   default_measurement: state
+  include:
+    entities: 
+      - sensor.disk_use_percent
+      - sensor.memory_use_percent
+      - sensor.exterieur_humidity
+      - sensor.exterieur_temperature
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_precip_accumulation
+      - sensor.aurade_wind_speed
+      - sensor.aurade_next_rain
+      - sensor.aurade_temperature
+      - sensor.zoe
+      - sensor.zoe_max_range
+      - sensor.humidity_158d0002273af3
+      - sensor.humidity_158d0002288031
+      - sensor.speedtest_download
+      - sensor.speedtest_ping
+      - sensor.speedtest_upload
+      - sensor.prise_pc_powe
+      - sensor.prise_tv_power
+      - sensor.linky
+      - sensor.plex
+      - sensor.trajet_maison_travail_alex
+      - sensor.trajet_maison_travail_benoit
+      - binary_sensor.garage_door
+      - binary_sensor.main_door
+      - sensor.detecteur_de_fumee_temperature
+      - binary_sensor.garage_door
+      - binary_sensor.main_door
+      - binary_sensor.water_leak_sensor_buanderie
+      - binary_sensor.workday_sensor
+      - sensor.temperature_athenais
+      - sensor.temperature_noah
+      - sensor.temperature_parents
+      - sensor.temperature_salon
+      - sensor.temperature_soren
