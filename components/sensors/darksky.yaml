@@ -12,7 +12,7 @@ monitored_conditions:
 # - precip_type
 # - precip_intensity
   - precip_probability
-# - precip_accumulation
+  - precip_accumulation
   - temperature
   - wind_speed
   - wind_bearing
