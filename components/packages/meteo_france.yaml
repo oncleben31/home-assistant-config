@@ -3,7 +3,7 @@
 #
 # https://www.home-assistant.io/components/meteo_france/
 #
-meteo_france:
+meteo_france_custom:
   - city: !secret city
     monitored_conditions:
         - rain_chance
@@ -15,3 +15,4 @@ meteo_france:
         - wind_speed
         - temperature
         - uv
+        - weather_alert
