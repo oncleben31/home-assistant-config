@@ -33,6 +33,7 @@
   trigger:
     - platform: state
       entity_id: sensor.vacuum_cleaner_error_sensor
+      from: 'error'
       to: 'No Error'
   action:
     - service: notify.telegram
