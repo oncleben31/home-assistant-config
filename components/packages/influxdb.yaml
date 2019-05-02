@@ -12,7 +12,7 @@ influxdb:
   username: !secret influxdb_user_name
   password: !secret influxdb_user_password
   max_retries: 3
-  default_measurement: state
+#  default_measurement: state
   include:
     entities: 
       - sensor.disk_use_percent
