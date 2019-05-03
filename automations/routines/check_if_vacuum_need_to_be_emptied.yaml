@@ -3,7 +3,7 @@
 #
 # If yes send a reminder on telegram asking to confirm it's done.
 # we can postponed in 30 minutes or cancel: 
-#
+# {{ relative_time(states.input_boolean.vacuum_need_to_be_emptied.last_updated) }}
 
 # Main automation checking the state of the vacuum
 - alias: Rappeler de vider Rocky le soir
@@ -20,7 +20,7 @@
       data:
         inline_keyboard:
         - Oui:/resetRocky, Redemande:/redemandeRocky, Demain:/demainRocky
-      message: Rocky a été utilisé aujourd'hui. Il a besoin que l'on vide son bac. C'est fait ?
+      message: Rocky a été utilisé aujourd'hui et le bac n'a pas été vidé depuis {{ relative_time(states.input_boolean.vacuum_need_to_be_emptied.last_updated) }}. Il a besoin que l'on vide son bac. Est-ce déjà fait ?
     service: notify.telegram
   condition:
   - condition: state
