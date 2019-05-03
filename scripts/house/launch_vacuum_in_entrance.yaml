@@ -1,7 +1,6 @@
 ---
 # Launch my Xiaomi Vacuum in the entrance
 #
-# Integration in Telegram inspired by https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
 # https://www.home-assistant.io/components/vacuum/
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
 #
@@ -15,7 +14,7 @@ launch_vacuum_in_the_entrance:
     - service: vacuum.xiaomi_clean_zone
       data_template:
         entity_id: vacuum.xiaomi_vacuum_cleaner
-        repeats: 1
+        repeats: "{{ repetition | default(1) }}"
         zone:
         - [23000,29700,25500,34100]
     - service: input_boolean.turn_on
