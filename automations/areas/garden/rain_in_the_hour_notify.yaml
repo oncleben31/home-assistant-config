@@ -1,0 +1,12 @@
+---
+# Sent a telegram notification if rain is expected in the hour
+#
+- alias: 'Send notification when rain is expectedd'
+  initial_state: true
+  trigger:
+    platform: template
+    value_template: "{% if is_state('sensor.aurade_next_rain', 'No rain') %}false{% endif %}"
+  action:
+    - service: notify.telegram
+      data_template:
+        message: "La pluie est attendue dans {{states(sensor.aurade_next_rain)}} minutes."
