@@ -58,8 +58,10 @@ influxdb:
       - sensor.temperature_parents
       - sensor.temperature_salon
       - sensor.temperature_soren
-      - sensor.humidity_158d0002273af3
-      - sensor.humidity_158d0002288031
+      - sensor.temperature_cave
+      - sensor.humidity_parents
+      - sensor.humidity_cave
+      - sensor.humidity_salon
 
       # Others
       - sensor.plex

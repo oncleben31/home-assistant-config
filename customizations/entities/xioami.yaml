@@ -1,17 +1,11 @@
 ---
 # Set some friendly names for Xiaomi devices
 #  
-#sensor.Temperature_158d0002288031:
-sensor.humidity_158d0002288031:
-  friendly_name: 'Parents'
-sensor.humidity_158d0002273af3:
-  friendly_name: 'Salon'
+
 sensor.humidity_158d00022736d0:
   friendly_name: 'Noah'
 sensor.humidity_158d00022730f3:
   friendly_name: 'Athénaïs'
-sensor.humidity_158d000224cd8d:
-  friendly_name: 'Test'
 sensor.humidity_158d0002273576:
   friendly_name: 'Sören'
 sensor.Pressure_158d000224cd8d:
