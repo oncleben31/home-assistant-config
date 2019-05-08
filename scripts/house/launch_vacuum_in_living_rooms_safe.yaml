@@ -16,8 +16,8 @@ launch_vacuum_in_livingroom_safe:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         repeats: "{{ repetition | default(1) }}"
         zone:
-        # Avoid curtains, chairs and small carpets
-        - [20600,25600,30000,29300]
+        # Avoid zone with lot of stuff, curtains, chairs and small carpets
+        - [25600,25600,30000,29300]
         - [25500,29300,27800,32600]
     - service: input_boolean.turn_on
       data:
