@@ -1,0 +1,8 @@
+---
+# boolean to know if vacuum can clean the the room
+#
+# If yes the room will be cleaned today.
+# As the kitchen is cleaned every workday, set to no when done.
+#
+vacuum_can_clean_the_kitchen:
+  name: La cuisine peut être nettoyée

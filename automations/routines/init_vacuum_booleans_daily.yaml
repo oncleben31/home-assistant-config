@@ -1,0 +1,21 @@
+---
+# Set all input_boolean entities used fot vacuum daily routine at midnight
+#
+- alias: Initialisation de la routine de Rocky
+  initial_state: true
+  trigger: 
+    platform: time
+    at: '00:00:00'
+  action:
+    - service: input_boolean.turn_off
+      entity_id:
+        - input_boolean.vacuum_can_clean_athenais_bedroom
+        - input_boolean.vacuum_can_clean_noah_bedroom
+        - input_boolean.vacuum_can_clean_the_living_room
+        - input_boolean.vacuum_can_clean_the_office
+        - input_boolean.vacuum_can_clean_soren_bedroom
+    - service: input_boolean.turn_on
+      entity_id:
+        - input_boolean.vacuum_can_clean_the_entrance
+        - input_boolean.vacuum_can_clean_the_kitchen
+        - input_boolean.vacuum_can_clean_the_living_room_safe

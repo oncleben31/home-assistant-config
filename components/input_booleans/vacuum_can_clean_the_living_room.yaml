@@ -1,0 +1,8 @@
+---
+# boolean to know if vacuum can clean the living_room
+#
+# If yes the room is setted to secure no obstacle will pertubate the vacuum.
+# If no the room will be clean by avoiding standard obstacles
+#
+vacuum_can_clean_the_living_room:
+  name: Le salon peut être nettoyé

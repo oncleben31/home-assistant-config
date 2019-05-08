@@ -1,0 +1,8 @@
+---
+# boolean to know if vacuum can clean the the room
+#
+# If yes the room is setted to secure no obstacle will pertubate the vacuum.
+# If no the room won't be cleaned during daily vacuum routine
+#
+vacuum_can_clean_soren_bedroom:
+  name: La chambre de Sören peut être nettoyée
