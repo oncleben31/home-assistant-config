@@ -33,4 +33,4 @@ vacuum_map_construct:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_goto_target
         params: [25500,25600]
-    - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner.entrance', 'idle') }}"
+    - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'idle') }}"

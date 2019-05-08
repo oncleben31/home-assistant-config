@@ -1,29 +1,34 @@
 ---
 # Sequence used for the vacuum each workdays
 #
+# Inspired by https://community.home-assistant.io/t/howto-xiaomi-vacuum-zoned-cleaning/51293/193?u=oncleben31
+# https://www.home-assistant.io/components/script/
 # https://www.home-assistant.io/docs/scripts/
 #
-vacuum_on_the_carpet_workday_sequence:
-  alias: Sequence de nettoyage de Rocky
+vacuum_workday_sequence:
+  alias: Sequence de nettoyage quotidienne de Rocky
   sequence:
-    # Start with kitchen cleaning
-    - service: script.turn_on
-      entity_id: script.launch_vacuum_in_kitchen
+    # Start with kitchen cleaning.
+    - service: script.launch_daily_vacuum_in_room
+      data_template:
+        room_script: script.launch_vacuum_in_kitchen
+        room_bool: input_boolean.vacuum_can_clean_the_kitchen
+        #repetition: 2
+    - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+      
+    # Then clean the entrance.
+    - service: script.launch_daily_vacuum_in_room
       data:
-        variables:
-          repetition: 2
-    - wait_template: "{{ (is_state('vacuum.xiaomi_vacuum_cleaner', 'docked'))or (is_state('vacuum.xiaomi_vacuum_cleaner', 'idle'))}}"
-    # then clean the entrance
-    - service: script.turn_on
-      entity_id: script.launch_vacuum_in_the_entrance
+        room_script: script.launch_vacuum_in_the_entrance
+        room_bool: input_boolean.vacuum_can_clean_the_entrance
+        #repetition: 2
+    - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+    
+    # Then clean the living room avoiding potential obstacles
+    - service: script.launch_daily_vacuum_in_room
       data:
-        variables:
-          repetition: 2
-    - wait_template: "{{ (is_state('vacuum.xiaomi_vacuum_cleaner', 'docked'))or (is_state('vacuum.xiaomi_vacuum_cleaner', 'idle'))}}"
-    # then clean the living room avoiding potential obstacles
-    - service: script.turn_on
-      entity_id: script.launch_vacuum_in_livingroom_safe
-      data:
-        variables:
-          repetition: 2
+        room_script: script.launch_vacuum_in_livingroom_safe
+        room_bool: input_boolean.vacuum_can_clean_the_living_room_safe
+        #repetition: 2
+    - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
           
