@@ -20,5 +20,5 @@
         state: 'Normal'
   action: 
     service: script.turn_on
-    entity_id: script.vacuum_on_the_carpet_workday_sequence
+    entity_id: script.vacuum_workday_sequence
     
