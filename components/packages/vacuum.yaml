@@ -28,7 +28,11 @@
 #  - tapis(bl): [28000,25900]
 #  - entree(tr): [25500,34100]
 #  - entree(bl): [23000,29700]
-#
+#  - bureau_z1(bl): [24700,35000]
+#  - bureau_z1(tr): [25800,35800]
+#  - bureau_z2(bl): [21950,35800]
+#  - bureau_z2(tr): [25800,38700]
+# 
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
 #
 vacuum:
