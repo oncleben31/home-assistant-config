@@ -7,3 +7,5 @@ custom_updater:
   track:
     - components
     - cards
+  card_urls:
+    - https://raw.githubusercontent.com/benct/lovelace-multiple-entity-row/master/tracker.json
