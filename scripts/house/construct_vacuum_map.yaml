@@ -35,28 +35,28 @@ vacuum_map_construct:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_goto_target
         params: [27500,25500]
-    - delay: '00:00:10'
+    - delay: '00:00:15'
     - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'idle') }}"
     - service: vacuum.send_command
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_goto_target
         params: [25500,22300]
-    - delay: '00:00:10'
+    - delay: '00:00:15'
     - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'idle') }}"
     - service: vacuum.send_command
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_goto_target
         params: [21600,21600]
-    - delay: '00:00:10'
+    - delay: '00:00:15'
     - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'idle') }}"
     - service: vacuum.send_command
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_goto_target
         params: [21600,24000]
-    - delay: '00:00:05'
+    - delay: '00:00:15'
     - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'idle') }}"
     # [25500,34100] haut du couloir
     # [23300,35600] devant le bureau
