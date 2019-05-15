@@ -4,10 +4,22 @@
 # Inspired by https://community.home-assistant.io/t/howto-xiaomi-vacuum-zoned-cleaning/51293/193?u=oncleben31
 # https://www.home-assistant.io/components/script/
 # https://www.home-assistant.io/docs/scripts/
+# https://github.com/rogro82/hass-variables
 #
 vacuum_workday_sequence:
   alias: Sequence de nettoyage quotidienne de Rocky
   sequence:
+    # Save vacum states (count, time, area)
+    - service: variable.set_variable
+      data:
+        variable: nb_cleaning_before_daily_routine
+        value_template: "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'cleaning_count') }}"
+        attributes_template: >
+          {
+            "time": "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'total_cleaning_time') }}",
+            "area": "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'total_cleaned_area') }}"
+          }
+
     # Start with kitchen cleaning.
     - service: script.launch_daily_vacuum_in_room
       data_template:
@@ -24,6 +36,12 @@ vacuum_workday_sequence:
         repetition: 2
     - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
+    # Then clean the carpet
+    - service: script.launch_daily_vacuum_in_room
+      data:
+        room_script: script.launch_vacuum_on_the_carpet
+        room_bool: input_boolean.vacuum_can_clean_the_carpet
+    - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
     # Then clean the entrance.
     - service: script.launch_daily_vacuum_in_room
@@ -41,4 +59,13 @@ vacuum_workday_sequence:
         room_bool: input_boolean.vacuum_can_clean_the_office
         repetition: 2
     - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
-      
+
+    # Notify when finished
+    - service: notify.telegram
+      data_template:
+        message: >
+          Aspiration quotidienne terminée. Rocky a fait 
+          {{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'cleaning_count') | int - states('variable.nb_cleaning_before_daily_routine') | int }}
+          nettoyages ({{state_attr('vacuum.xiaomi_vacuum_cleaner','total_cleaned_area') | int - state_attr('variable.nb_cleaning_before_daily_routine','area')| int }}
+          m²) en {{state_attr('vacuum.xiaomi_vacuum_cleaner','total_cleaning_time') | int - state_attr('variable.nb_cleaning_before_daily_routine','time')| int }}
+          minutes.

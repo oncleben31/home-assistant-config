@@ -16,8 +16,8 @@ launch_vacuum_in_office:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         repeats: "{{ repetition | default(1) }}"
         zone:
-        - [24700,35000,25800,35800]
-        - [21950,35800,25800,38700]
+        - [24050,34950,25150,35750]
+        - [21300,35750,25150,38650]
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.vacuum_need_to_be_emptied
