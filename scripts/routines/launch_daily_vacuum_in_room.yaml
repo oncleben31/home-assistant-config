@@ -5,6 +5,7 @@
 # parameters passed to this script are:
 #  - room_bool: the imput_boolean linked to the room to know if it as alredy donne today
 #  - room_script: the name of the script to launch the cleaning
+#  - room_name: name of the zone used for logbook entry
 #
 # Inspired by https://community.home-assistant.io/t/howto-xiaomi-vacuum-zoned-cleaning/51293/193?u=oncleben31
 # https://www.home-assistant.io/components/script/
@@ -23,11 +24,16 @@ launch_daily_vacuum_in_room:
         variables:
           repetition: "{{ repetition }}"
     # Wait at least 30 seconds before testing if finished
-    - delay: '00:00:30'
+    - delay: "00:00:30"
     # Test if finished
-    - wait_template: "{{ (is_state('vacuum.xiaomi_vacuum_cleaner', 'docked'))or (is_state('vacuum.xiaomi_vacuum_cleaner', 'idle'))}}"
+    - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'docked') }}"
     # Change the value of the boolean to make it done
     - service: input_boolean.turn_off
       data_template:
         entity_id: "{{ room_bool }}"
-      
+    - service: logbook.log
+      data_template:
+        name: Rocky
+        message: has just finished cleaning the {{ room_name }}
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        domain: vacuum

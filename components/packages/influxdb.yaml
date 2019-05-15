@@ -14,7 +14,7 @@ influxdb:
   max_retries: 3
   default_measurement: state
   include:
-    entities: 
+    entities:
       # Raspberry monitoring
       - sensor.disk_use_percent
       - sensor.memory_use_percent
@@ -66,5 +66,4 @@ influxdb:
       # Others
       - sensor.plex
       - binary_sensor.workday_sensor
-
-    
+      - vacuum.xiaomi_vacuum_cleaner

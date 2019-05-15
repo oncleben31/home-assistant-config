@@ -9,7 +9,8 @@ logbook:
   include:
     domains:
       - sensor
-      - vacuum
+      - input_boolean
+      - input_select
       - binary_sensor
   exclude:
     entities:

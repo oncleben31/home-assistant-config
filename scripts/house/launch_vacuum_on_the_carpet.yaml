@@ -6,10 +6,10 @@
 #
 launch_vacuum_on_the_carpet:
   alias: Lance Rocky sur le tapis
-  sequence: 
+  sequence:
     # Set fan speed at maximum power
     - service: vacuum.set_fan_speed
-      data: 
+      data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         fan_speed: max
     # Clean the carpet 3 times.
@@ -18,9 +18,13 @@ launch_vacuum_on_the_carpet:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         repeats: 3
         zone:
-        - [28000,25900,30200,28900]
+          - [28000, 25900, 30200, 28900]
+    - service: logbook.log
+      data_template:
+        name: Rocky
+        message: starts cleaning the carpet
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        domain: vacuum
     - service: input_boolean.turn_on
       data_template:
         entity_id: input_boolean.vacuum_need_to_be_emptied
-
-

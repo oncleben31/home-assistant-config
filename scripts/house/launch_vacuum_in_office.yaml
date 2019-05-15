@@ -6,9 +6,9 @@
 #
 launch_vacuum_in_office:
   alias: Lance Rocky dans le bureau
-  sequence: 
+  sequence:
     - service: vacuum.set_fan_speed
-      data: 
+      data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         fan_speed: balanced
     - service: vacuum.xiaomi_clean_zone
@@ -16,8 +16,14 @@ launch_vacuum_in_office:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         repeats: "{{ repetition | default(1) }}"
         zone:
-        - [24050,34950,25150,35750]
-        - [21300,35750,25150,38650]
+          - [24050, 34950, 25150, 35750]
+          - [21300, 35750, 25150, 38650]
+    - service: logbook.log
+      data_template:
+        name: Rocky
+        message: starts cleaning the office
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        domain: vacuum
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.vacuum_need_to_be_emptied

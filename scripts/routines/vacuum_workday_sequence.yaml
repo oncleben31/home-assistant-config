@@ -25,6 +25,7 @@ vacuum_workday_sequence:
       data_template:
         room_script: script.launch_vacuum_in_kitchen
         room_bool: input_boolean.vacuum_can_clean_the_kitchen
+        room_name: "kitchen"
         repetition: 2
     - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
@@ -33,6 +34,7 @@ vacuum_workday_sequence:
       data:
         room_script: script.launch_vacuum_in_livingroom_safe
         room_bool: input_boolean.vacuum_can_clean_the_living_room_safe
+        room_name: "living room (safe mode)"
         repetition: 2
     - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
@@ -41,6 +43,7 @@ vacuum_workday_sequence:
       data:
         room_script: script.launch_vacuum_on_the_carpet
         room_bool: input_boolean.vacuum_can_clean_the_carpet
+        room_name: "carpet"
     - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
     # Then clean the entrance.
@@ -48,15 +51,16 @@ vacuum_workday_sequence:
       data:
         room_script: script.launch_vacuum_in_the_entrance
         room_bool: input_boolean.vacuum_can_clean_the_entrance
+        room_name: "entrance"
         repetition: 2
     - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
-    
-    
+
     # Then clean the office.
     - service: script.launch_daily_vacuum_in_room
       data:
         room_script: script.launch_vacuum_in_office
         room_bool: input_boolean.vacuum_can_clean_the_office
+        room_name: "office"
         repetition: 2
     - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
