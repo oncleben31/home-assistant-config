@@ -9,11 +9,11 @@ launch_vacuum_in_livingroom_safe:
   sequence:
     - service: vacuum.set_fan_speed
       data:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         fan_speed: balanced
     - service: vacuum.xiaomi_clean_zone
       data_template:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         repeats: "{{ repetition | default(1) }}"
         zone:
           # Avoid zone with lot of stuff, curtains, chairs and small carpets
@@ -23,7 +23,7 @@ launch_vacuum_in_livingroom_safe:
       data_template:
         name: Rocky
         message: starts cleaning the living room (safe mode)
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         domain: vacuum
 
     - service: input_boolean.turn_on

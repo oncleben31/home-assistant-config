@@ -1,14 +1,14 @@
 # Integration of Xiaomi Vacuum Cleaner
 #
-# Tips: 
-# - Increasing the x coordinate will move the robot relative to the starting point to the right 
+# Tips:
+# - Increasing the x coordinate will move the robot relative to the starting point to the right
 #   (decreasing to the left)
-# - Increasing the y coordinate will move the robot relative to the starting point to the top 
+# - Increasing the y coordinate will move the robot relative to the starting point to the top
 #   (decreasing to the bottom)
 # - To serach key coordinates, use the service "vacuum.send_command" in GUI with the
 #   parameters below. You can check on the Mi app to see where is the target:
 # {
-#  "entity_id": "vacuum.xiaomi_vacuum_cleaner",
+#  "entity_id": "vacuum.rocky",
 #  "command": "app_goto_target",
 #  "params": [25500,25600]
 # }
@@ -32,18 +32,11 @@
 #  - bureau_z1(tr): [25800,35800]
 #  - bureau_z2(bl): [21950,35800]
 #  - bureau_z2(tr): [25800,38700]
-# 
+#
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
 #
 vacuum:
   - platform: xiaomi_miio
     host: !secret local_ip_vacuum
     token: !secret vacuum_xiaomi_token
-
-
-
-
-
-
-
-          
+    name: Rocky

@@ -13,78 +13,76 @@ vacuum_map_construct:
   sequence:
     # first put the fan_speed at minimum to avoid noise
     - service: vacuum.set_fan_speed
-      data: 
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+      data:
+        entity_id: vacuum.rocky
         fan_speed: quiet
 
     # launch a standard clean during 10 secondes to create the first part of the map
     - service: vacuum.start
-      data: 
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+      data:
+        entity_id: vacuum.rocky
     - delay:
         seconds: 20
     - service: vacuum.stop
-      data: 
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+      data:
+        entity_id: vacuum.rocky
     #
     # send goto_target commands to pilot the robot thru the house
     #
     # Kitchen
     - service: vacuum.send_command
       data:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         command: app_goto_target
-        params: [27500,25500]
-    - delay: '00:00:30'
-    - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'idle') }}"
+        params: [27500, 25500]
+    - delay: "00:00:30"
+    - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
     - service: vacuum.send_command
       data:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         command: app_goto_target
-        params: [25500,22300]
-    - delay: '00:00:30'
-    - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'idle') }}"
+        params: [25500, 22300]
+    - delay: "00:00:30"
+    - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
     - service: vacuum.send_command
       data:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         command: app_goto_target
-        params: [21600,21600]
-    - delay: '00:00:30'
-    - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'idle') }}"
+        params: [21600, 21600]
+    - delay: "00:00:30"
+    - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
     - service: vacuum.send_command
       data:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         command: app_goto_target
-        params: [21600,24000]
-    - delay: '00:00:30'
-    - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'idle') }}"
-    
+        params: [21600, 24000]
+    - delay: "00:00:30"
+    - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+
     # Living room
     - service: vacuum.send_command
       data:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         command: app_goto_target
         params: [26000, 31500]
-    - delay: '00:00:30'
-    - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'idle') }}"
-    
+    - delay: "00:00:30"
+    - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+
     # Office
     - service: vacuum.send_command
       data:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         command: app_goto_target
-        params: [25500,34100]
-    - delay: '00:00:30'
-    - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'idle') }}"
+        params: [25500, 34100]
+    - delay: "00:00:30"
+    - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
     - service: vacuum.send_command
       data:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         command: app_goto_target
-        params: [24700,37100]
-    - delay: '00:00:30'
-    - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'idle') }}"
-   
+        params: [24700, 37100]
+    - delay: "00:00:30"
+    - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
     # [25500,34100] haut du couloir
     # [23300,35600] devant le bureau
     #  [24700,37100] dans le bureau
-    

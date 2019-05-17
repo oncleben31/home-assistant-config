@@ -13,11 +13,11 @@ vacuum_workday_sequence:
     - service: variable.set_variable
       data:
         variable: nb_cleaning_before_daily_routine
-        value_template: "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'cleaning_count') }}"
+        value_template: "{{ state_attr('vacuum.rocky', 'cleaning_count') }}"
         attributes_template: >
           {
-            "time": "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'total_cleaning_time') }}",
-            "area": "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'total_cleaned_area') }}"
+            "time": "{{ state_attr('vacuum.rocky', 'total_cleaning_time') }}",
+            "area": "{{ state_attr('vacuum.rocky', 'total_cleaned_area') }}"
           }
 
     # Start with kitchen cleaning.
@@ -78,7 +78,7 @@ vacuum_workday_sequence:
       data_template:
         message: >
           Aspiration quotidienne terminée. Rocky a fait 
-          {{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'cleaning_count') | int - states('variable.nb_cleaning_before_daily_routine') | int }}
-          nettoyages ({{state_attr('vacuum.xiaomi_vacuum_cleaner','total_cleaned_area') | int - state_attr('variable.nb_cleaning_before_daily_routine','area')| int }}
-          m²) en {{state_attr('vacuum.xiaomi_vacuum_cleaner','total_cleaning_time') | int - state_attr('variable.nb_cleaning_before_daily_routine','time')| int }}
+          {{ state_attr('vacuum.rocky', 'cleaning_count') | int - states('variable.nb_cleaning_before_daily_routine') | int }}
+          nettoyages ({{state_attr('vacuum.rocky','total_cleaned_area') | int - state_attr('variable.nb_cleaning_before_daily_routine','area')| int }}
+          m²) en {{state_attr('vacuum.rocky','total_cleaning_time') | int - state_attr('variable.nb_cleaning_before_daily_routine','time')| int }}
           minutes.

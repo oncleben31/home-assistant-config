@@ -26,7 +26,7 @@ launch_daily_vacuum_in_room:
     # Wait at least 30 seconds before testing if finished
     - delay: "00:00:30"
     # Test if finished
-    - wait_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'docked') }}"
+    - wait_template: "{{ is_state('vacuum.rocky', 'docked') }}"
     # Change the value of the boolean to make it done
     - service: input_boolean.turn_off
       data_template:
@@ -35,5 +35,5 @@ launch_daily_vacuum_in_room:
       data_template:
         name: Rocky
         message: has just finished cleaning the {{ room_name }}
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         domain: vacuum

@@ -66,4 +66,4 @@ influxdb:
       # Others
       - sensor.plex
       - binary_sensor.workday_sensor
-      - vacuum.xiaomi_vacuum_cleaner
+      - vacuum.rocky

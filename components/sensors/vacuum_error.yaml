@@ -9,8 +9,8 @@ sensors:
   vacuum_cleaner_error_sensor:
     friendly_name: Vacuum Cleaner Error Sensor
     value_template: >-
-      {% if states.vacuum.xiaomi_vacuum_cleaner.attributes.error is defined %}
-        {{states.vacuum.xiaomi_vacuum_cleaner.attributes.error}}
+      {% if states.vacuum.rocky.attributes.error is defined %}
+        {{states.vacuum.rocky.attributes.error}}
       {% else %}
         No Error
       {% endif %}

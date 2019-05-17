@@ -9,11 +9,11 @@ launch_vacuum_in_office:
   sequence:
     - service: vacuum.set_fan_speed
       data:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         fan_speed: balanced
     - service: vacuum.xiaomi_clean_zone
       data_template:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         repeats: "{{ repetition | default(1) }}"
         zone:
           - [24050, 34950, 25150, 35750]

@@ -11,11 +11,11 @@ launch_vacuum_in_livingroom:
   sequence:
     - service: vacuum.set_fan_speed
       data:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         fan_speed: balanced
     - service: vacuum.xiaomi_clean_zone
       data_template:
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         repeats: "{{ repetition | default(1) }}"
         zone:
           - [20600, 25000, 30500, 29300]
@@ -24,7 +24,7 @@ launch_vacuum_in_livingroom:
       data_template:
         name: Rocky
         message: starts cleaning the living room
-        entity_id: vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
         domain: vacuum
 
     - service: input_boolean.turn_on

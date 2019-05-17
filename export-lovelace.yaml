@@ -320,7 +320,7 @@ views:
     title: Map
   - cards:
       - entities:
-          - entity: vacuum.xiaomi_vacuum_cleaner
+          - entity: vacuum.rocky
         show_header_toggle: false
         title: Rocky
         type: entities
