@@ -6,9 +6,9 @@
 #
 launch_vacuum_in_kitchen_and_livingroom:
   alias: Lance Rocky dans la cuisine et le salon et l'entrée
-  sequence: 
+  sequence:
     - service: vacuum.set_fan_speed
-      data: 
+      data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         fan_speed: balanced
     - service: vacuum.xiaomi_clean_zone
@@ -16,9 +16,9 @@ launch_vacuum_in_kitchen_and_livingroom:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         repeats: 1
         zone:
-        - [20600,21000,30500,29300]
-        - [25500,25500,30600,32600]
-        - [23000,29700,25500,34100]
+          - [20600, 25500, 30500, 29300]
+          - [25500, 25500, 30600, 32600]
+          - [23000, 29700, 25500, 34100]
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.vacuum_need_to_be_emptied

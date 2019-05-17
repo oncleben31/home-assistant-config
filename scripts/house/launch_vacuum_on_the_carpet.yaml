@@ -23,8 +23,7 @@ launch_vacuum_on_the_carpet:
       data_template:
         name: Rocky
         message: starts cleaning the carpet
-        entity_id: vacuum.xiaomi_vacuum_cleaner
-        domain: vacuum
+
     - service: input_boolean.turn_on
       data_template:
         entity_id: input_boolean.vacuum_need_to_be_emptied

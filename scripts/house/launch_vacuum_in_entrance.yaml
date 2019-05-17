@@ -21,8 +21,7 @@ launch_vacuum_in_the_entrance:
       data_template:
         name: Rocky
         message: starts cleaning the entrance
-        entity_id: vacuum.xiaomi_vacuum_cleaner
-        domain: vacuum
+
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.vacuum_need_to_be_emptied

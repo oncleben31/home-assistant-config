@@ -20,9 +20,8 @@ launch_vacuum_in_kitchen:
     - service: logbook.log
       data_template:
         name: Rocky
-        message: starts cleaning the Kitchen
-        entity_id: vacuum.xiaomi_vacuum_cleaner
-        domain: vacuum
+        message: starts cleaning the kitchen
+
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.vacuum_need_to_be_emptied

@@ -12,6 +12,7 @@ logbook:
       - input_boolean
       - input_select
       - binary_sensor
+      - vacuum
   exclude:
     entities:
       - sensor.since_last_boot
