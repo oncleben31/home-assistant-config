@@ -38,6 +38,15 @@ vacuum_workday_sequence:
         repetition: 2
     - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
+    # Or clean the living room in normal mode. Family should have set the room.
+    - service: script.launch_daily_vacuum_in_room
+      data:
+        room_script: script.launch_vacuum_in_livingroom
+        room_bool: input_boolean.vacuum_can_clean_the_living_room
+        room_name: "living room"
+        repetition: 2
+    - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
     # Then clean the carpet
     - service: script.launch_daily_vacuum_in_room
       data:
