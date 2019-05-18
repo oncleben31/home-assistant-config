@@ -13,6 +13,8 @@ logbook:
       - input_select
       - binary_sensor
       - vacuum
+      - script
+      - automation
   exclude:
     entities:
       - sensor.since_last_boot

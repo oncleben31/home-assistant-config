@@ -25,3 +25,5 @@ recorder:
       - device_tracker
       - input_select
       - input_boolean
+      - script
+      - automation
