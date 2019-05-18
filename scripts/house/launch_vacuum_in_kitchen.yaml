@@ -4,24 +4,23 @@
 # https://www.home-assistant.io/components/vacuum/
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
 #
-launch_vacuum_in_kitchen:
-  alias: Lance Rocky dans la cuisine
-  sequence:
-    - service: vacuum.set_fan_speed
-      data:
-        entity_id: vacuum.rocky
-        fan_speed: balanced
-    - service: vacuum.xiaomi_clean_zone
-      data_template:
-        entity_id: vacuum.rocky
-        repeats: "{{ repetition | default(1) }}"
-        zone:
-          - [20600, 21000, 27800, 25200]
-    - service: logbook.log
-      data_template:
-        name: Rocky
-        message: starts cleaning the kitchen
+alias: Lance Rocky dans la cuisine
+sequence:
+  - service: vacuum.set_fan_speed
+    data:
+      entity_id: vacuum.rocky
+      fan_speed: balanced
+  - service: vacuum.xiaomi_clean_zone
+    data_template:
+      entity_id: vacuum.rocky
+      repeats: "{{ repetition | default(1) }}"
+      zone:
+        - [20600, 21000, 27800, 25200]
+  - service: logbook.log
+    data_template:
+      name: Rocky
+      message: starts cleaning the kitchen
 
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.vacuum_need_to_be_emptied
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.vacuum_need_to_be_emptied
