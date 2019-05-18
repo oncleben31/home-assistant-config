@@ -32,6 +32,11 @@
 #  - bureau_z1(tr): [25800,35800]
 #  - bureau_z2(bl): [21950,35800]
 #  - bureau_z2(tr): [25800,38700]
+#  - sdb_enfant(tr): [22000,35500]
+#  - sdb_enfant(bl): [19200,32500]
+#  - chambre_a(tr): [19200,36500]
+#  - chambre_a(bl): [15200,32500]
+#
 #
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
 #

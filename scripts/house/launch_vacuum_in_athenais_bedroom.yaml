@@ -1,0 +1,28 @@
+---
+# Launch my Xiaomi Vacuum in the office
+#
+# https://www.home-assistant.io/components/vacuum/
+# https://www.home-assistant.io/components/vacuum.xiaomi_miio/
+#
+launch_vacuum_in_athenais_bedroom:
+  alias: Lance Rocky dans la chambre d'Athénaïs
+  sequence:
+    - service: vacuum.set_fan_speed
+      data:
+        entity_id: vacuum.rocky
+        fan_speed: balanced
+
+    - service: vacuum.xiaomi_clean_zone
+      data_template:
+        entity_id: vacuum.rocky
+        repeats: "{{ repetition | default(1) }}"
+        zone:
+          - [15200, 32500, 19200, 36500]
+    - service: logbook.log
+      data_template:
+        name: Rocky
+        message: starts cleaning Athénaïs bedroom
+
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.vacuum_need_to_be_emptied

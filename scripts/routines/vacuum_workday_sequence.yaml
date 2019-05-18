@@ -73,6 +73,15 @@ vacuum_workday_sequence:
         repetition: 2
     - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
+    # Then clean Athénaïs bedroom.
+    - service: script.launch_daily_vacuum_in_room
+      data:
+        room_script: script.launch_vacuum_in_athenais_bedroom
+        room_bool: input_boolean.vacuum_can_clean_athenais_bedroom
+        room_name: "Athénaïs bedroom"
+        repetition: 2
+    - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
     # Notify when finished
     - service: notify.telegram
       data_template:
