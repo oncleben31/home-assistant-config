@@ -20,6 +20,8 @@ sequence:
     data_template:
       name: Rocky
       message: starts cleaning the entrance
+      entity_id: vacuum.rocky
+      domain: vacuum
 
   - service: input_boolean.turn_on
     data:

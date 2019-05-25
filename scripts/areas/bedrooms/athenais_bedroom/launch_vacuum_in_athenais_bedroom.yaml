@@ -1,5 +1,5 @@
 ---
-# Launch my Xiaomi Vacuum in the office
+# Launch my Xiaomi Vacuum in Athénaïs' bedroom
 #
 # https://www.home-assistant.io/components/vacuum/
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
@@ -21,6 +21,8 @@ sequence:
     data_template:
       name: Rocky
       message: starts cleaning Athénaïs bedroom
+      entity_id: vacuum.rocky
+      domain: vacuum
 
   - service: input_boolean.turn_on
     data:

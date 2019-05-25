@@ -1,10 +1,10 @@
 ---
-# Launch my Xiaomi Vacuum in the office
+# Launch my Xiaomi Vacuum in the parental suite
 #
 # https://www.home-assistant.io/components/vacuum/
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
 #
-alias: Lance Rocky dans la chambre d'Athénaïs
+alias: Lance Rocky dans la suite parentale
 sequence:
   - service: vacuum.set_fan_speed
     data:
@@ -16,11 +16,11 @@ sequence:
       entity_id: vacuum.rocky
       repeats: "{{ repetition | default(1) }}"
       zone:
-        - [19200, 32500, 22000, 35500]
+        - [22600, 38600, 28800, 44000]
   - service: logbook.log
     data_template:
       name: Rocky
-      message: starts cleaning kids bathroom
+      message: starts cleaning the parental suite
       entity_id: vacuum.rocky
       domain: vacuum
 

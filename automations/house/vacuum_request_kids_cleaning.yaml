@@ -43,8 +43,31 @@
       data_template:
         message: >-
           {% if is_state('input_boolean.vacuum_can_clean_athenais_bedroom', 'on')  %}
-            OK, Rocky nettoiera a chambre d'Athénaïs aujourd'hui.
+            OK, Rocky nettoiera la chambre d'Athénaïs aujourd'hui.
           {% else %}
             OK, Rocky ne s'occupera pas de la chambre d'Athénaïs aujourd'hui.
+          {% endif %}
+        language: "fr"
+
+- alias: "Demande le nettoyage de la chambre de Sören aujourd'hui"
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.wall_switch_both_soren_bedroom
+      click_type: single
+  action:
+    - service: input_boolean.toggle
+      data:
+        entity_id: input_boolean.vacuum_can_clean_soren_bedroom
+    - service: tts.google_translate_say
+      entity_id: media_player.google_home
+      data_template:
+        message: >-
+          {% if is_state('input_boolean.vacuum_can_clean_athenais_bedroom', 'on')  %}
+            OK, Rocky nettoiera la chambre de Sören aujourd'hui.
+          {% else %}
+            OK, Rocky ne s'occupera pas de la chambre de Sören aujourd'hui.
           {% endif %}
         language: "fr"

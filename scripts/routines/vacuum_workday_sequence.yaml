@@ -6,6 +6,7 @@
 # https://www.home-assistant.io/docs/scripts/
 # https://github.com/rogro82/hass-variables
 #
+
 alias: Sequence de nettoyage quotidienne de Rocky
 sequence:
   # Save vacum states (count, time, area)
@@ -72,12 +73,57 @@ sequence:
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
-  # Then clean Athénaïs bedroom.
+  # Then clean the coridor.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_the_coridor
+      room_bool: input_boolean.vacuum_can_clean_the_coridor
+      room_name: "coridor"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then clean Athénaïs' bedroom.
   - service: script.launch_daily_vacuum_in_room
     data:
       room_script: script.launch_vacuum_in_athenais_bedroom
       room_bool: input_boolean.vacuum_can_clean_athenais_bedroom
-      room_name: "Athénaïs bedroom"
+      room_name: "Athénaïs' bedroom"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then clean Noah's bedroom.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_noah_bedroom
+      room_bool: input_boolean.vacuum_can_clean_noah_bedroom
+      room_name: "Noah's bedroom"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then clean Soren's bedroom.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_soren_bedroom
+      room_bool: input_boolean.vacuum_can_clean_soren_bedroom
+      room_name: "Sören's bedroom"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then kids bathroom.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_kids_bathroom
+      room_bool: input_boolean.vacuum_can_clean_kids_bathroom
+      room_name: "kids bathroom"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then clean parental suite.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_parental_suite
+      room_bool: input_boolean.vacuum_can_clean_parental_suite
+      room_name: "parental suite"
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
