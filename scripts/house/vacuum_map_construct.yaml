@@ -82,6 +82,57 @@ sequence:
       params: [24700, 37100]
   - delay: "00:00:30"
   - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
-  # [25500,34100] haut du couloir
-  # [23300,35600] devant le bureau
-  #  [24700,37100] dans le bureau
+
+  # Coridor
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.rocky
+      command: app_goto_target
+      params: [25500, 37000]
+  - delay: "00:00:30"
+  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+
+  # Kid bathroom
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.rocky
+      command: app_goto_target
+      params: [20500, 34000]
+  - delay: "00:00:30"
+  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+
+  # Athénaïs' bedroom
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.rocky
+      command: app_goto_target
+      params: [18000, 35000]
+  - delay: "00:00:30"
+  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+
+  # Noah's bedroom
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.rocky
+      command: app_goto_target
+      params: [17000, 41000]
+  - delay: "00:00:30"
+  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+
+  # Soren's bedroom
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.rocky
+      command: app_goto_target
+      params: [20000, 41000]
+  - delay: "00:00:30"
+  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+
+  # Parental suite
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.rocky
+      command: app_goto_target
+      params: [24000, 40000]
+  - delay: "00:00:30"
+  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
