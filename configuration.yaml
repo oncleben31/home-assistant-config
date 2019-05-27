@@ -23,19 +23,16 @@ homeassistant:
   # Location required to calculate the time the sun rises and sets
   latitude: !secret latitude_home
   longitude: !secret longitude_home
-  
+
   # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: !secret altitude_home
 
   # metric for Metric, imperial for Imperial
   unit_system: metric
-  
+
   # Pick yours from here:
   # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Paris
 
   # Load packages
-  packages: !include_dir_named components/packages
-
-
-
+  packages: !include_dir_named integrations

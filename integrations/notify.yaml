@@ -5,4 +5,4 @@
 #
 # https://www.home-assistant.io/components/notify
 #
-notify: !include_dir_list ../notify
+notify: !include_dir_list ../entities/notify

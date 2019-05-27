@@ -1,6 +1,7 @@
 *
 !*.yaml
 !*.py
+!*.disable
 !scenes
 !.gitignore
 !automations/

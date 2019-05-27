@@ -4,4 +4,4 @@
 #
 # https://www.home-assistant.io/components/light/
 #
-light: !include_dir_list ../lights
+light: !include_dir_list ../entities/lights
