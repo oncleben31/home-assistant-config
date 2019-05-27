@@ -20,4 +20,5 @@
         state: 'Normal'
   action: 
     service: script.turn_on
-    entity_id: script.launch_vacuum_in_kitchen  
+    entity_id: script.vacuum_workday_sequence
+    

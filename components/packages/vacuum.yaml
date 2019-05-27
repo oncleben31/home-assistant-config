@@ -1,14 +1,14 @@
 # Integration of Xiaomi Vacuum Cleaner
 #
-# Tips: 
-# - Increasing the x coordinate will move the robot relative to the starting point to the right 
+# Tips:
+# - Increasing the x coordinate will move the robot relative to the starting point to the right
 #   (decreasing to the left)
-# - Increasing the y coordinate will move the robot relative to the starting point to the top 
+# - Increasing the y coordinate will move the robot relative to the starting point to the top
 #   (decreasing to the bottom)
 # - To serach key coordinates, use the service "vacuum.send_command" in GUI with the
 #   parameters below. You can check on the Mi app to see where is the target:
 # {
-#  "entity_id": "vacuum.xiaomi_vacuum_cleaner",
+#  "entity_id": "vacuum.rocky",
 #  "command": "app_goto_target",
 #  "params": [25500,25600]
 # }
@@ -16,19 +16,27 @@
 # Usefull coordinates:
 #  - dock: [25500,25500]
 #  - buanderie(bl): [20600,21000]
-#  - salon(br): []
+#  - salon(bl): [20600, 25500]
 #  - salon(tr): [30500, 29300]
 #  - cuisine(bl): []
 #  - cuisine(tr): [27800,25200]
 #  - maison(bl): []
 #  - maison(tr): []
-#  - tapis(bl): []
-#  - tapis(tr): []
+#  - salleamanger(bl): [25500, 29300]
 #  - salleamanger(tr): [30600, 32600]
 #  - tapis(tr): [30200,28900]
 #  - tapis(bl): [28000,25900]
 #  - entree(tr): [25500,34100]
 #  - entree(bl): [23000,29700]
+#  - bureau_z1(bl): [24700,35000]
+#  - bureau_z1(tr): [25800,35800]
+#  - bureau_z2(bl): [21950,35800]
+#  - bureau_z2(tr): [25800,38700]
+#  - sdb_enfant(tr): [22000,35500]
+#  - sdb_enfant(bl): [19200,32500]
+#  - chambre_a(tr): [19200,36500]
+#  - chambre_a(bl): [15200,32500]
+#
 #
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
 #
@@ -36,11 +44,4 @@ vacuum:
   - platform: xiaomi_miio
     host: !secret local_ip_vacuum
     token: !secret vacuum_xiaomi_token
-
-
-
-
-
-
-
-          
+    name: Rocky

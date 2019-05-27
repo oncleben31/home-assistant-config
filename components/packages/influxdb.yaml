@@ -14,7 +14,7 @@ influxdb:
   max_retries: 3
   default_measurement: state
   include:
-    entities: 
+    entities:
       # Raspberry monitoring
       - sensor.disk_use_percent
       - sensor.memory_use_percent
@@ -63,8 +63,11 @@ influxdb:
       - sensor.humidity_cave
       - sensor.humidity_salon
 
+      # scripts
+      - script.vacuum_workday_sequence
+      - script.launch_daily_vacuum_in_room
+
       # Others
       - sensor.plex
       - binary_sensor.workday_sensor
-
-    
+      - vacuum.rocky

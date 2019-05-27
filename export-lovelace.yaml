@@ -9,11 +9,14 @@ resources:
     url: /customcards/github/thomasloven/card-tools.js?track=true
   - type: js
     url: /customcards/github/thomasloven/auto-entities.js?track=true
+  - type: js
+    url: /customcards/weasley-card.js
 title: Maison
 views:
   - badges:
-      - sensor.vigilance_meteo
       - sun.sun
+      - sensor.aurade_next_rain
+      - sensor.aurade_weather_alert
     cards:
       - entity: weather.dark_sky
         name: Météo DarkSky
@@ -31,13 +34,9 @@ views:
           - entity: sensor.temperature_noah
           - entity: sensor.temperature_athenais
           - entity: sensor.temperature_soren
+          - entity: sensor.temperature_cave
         show_header_toggle: false
         title: Températures
-        type: entities
-      - entities:
-          - entity: vacuum.xiaomi_vacuum_cleaner
-        show_header_toggle: false
-        title: Rocky
         type: entities
       - cards: null
         elements:
@@ -288,13 +287,61 @@ views:
     title: Réseau
   - badges: []
     cards:
+      - fontname: itcblkad_font
+        locations:
+          - Maison
+          - Travail
+          - Collège
+          - École
+        lost: Perdu
+        travelling: En voyage
+        type: 'custom:weasley-card'
+        wizards:
+          - entity: person.benoit
+            name: Benoit
+          - entity: device_tracker.hermiones_phone
+            name: Alex
+          - entity: calendar.ron
+            name: Noah
+          - entity: calendat.noah
+            name: Athénaïs
+          - entity: calendar.ginny
+            name: Sören
       - aspect_ratio: '16:9'
         entities:
           - entity: zone.home
           - entity: zone.travail_alex
           - entity: zone.travail_benoit
-          - entity: device_tracker.benoit_motog6
+          - entity: zone.college
+          - entity: zone.ecole
         type: map
     icon: 'mdi:map-marker'
-    panel: true
+    panel: false
     title: Map
+  - cards:
+      - entities:
+          - entity: vacuum.rocky
+        show_header_toggle: false
+        title: Rocky
+        type: entities
+      - type: entities
+        entities:
+          - entity: input_boolean.vacuum_can_clean_the_kitchen
+          - entity: input_boolean.vacuum_can_clean_the_entrance
+          - entity: input_boolean.vacuum_can_clean_the_living_room_safe
+          - entity: input_boolean.vacuum_can_clean_the_living_room
+          - entity: input_boolean.vacuum_can_clean_the_office
+          - entity: input_boolean.vacuum_can_clean_soren_bedroom
+          - entity: input_boolean.vacuum_can_clean_athenais_bedroom
+        title: Pièces à nettoyer aujourd'hui
+      - type: entities
+        entities:
+          - entity: script.vacuum_on_the_carpet_workday_sequence
+          - entity: script.launch_daily_vacuum_in_room
+          - entity: script.launch_vacuum_in_kitchen
+          - entity: script.launch_vacuum_in_the_entrance
+          - entity: script.launch_vacuum_in_livingroom_safe
+        title: Scripts de la routine
+    badges: []
+    title: Rocky
+    icon: 'mdi:robot-vacuum'

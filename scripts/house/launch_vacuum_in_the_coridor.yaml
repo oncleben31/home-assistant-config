@@ -1,0 +1,29 @@
+---
+# Launch my Xiaomi Vacuum in the coridor
+#
+# https://www.home-assistant.io/components/vacuum/
+# https://www.home-assistant.io/components/vacuum.xiaomi_miio/
+#
+alias: Lance Rocky dans le couloir
+sequence:
+  - service: vacuum.set_fan_speed
+    data:
+      entity_id: vacuum.rocky
+      fan_speed: balanced
+  - service: vacuum.xiaomi_clean_zone
+    data_template:
+      entity_id: vacuum.rocky
+      repeats: "{{ repetition | default(1) }}"
+      zone:
+        - [19500, 35600, 22600, 38600]
+        - [15300, 38600, 22600, 39800]
+  - service: logbook.log
+    data_template:
+      name: Rocky
+      message: starts cleaning the coridor
+      entity_id: vacuum.rocky
+      domain: vacuum
+
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.vacuum_need_to_be_emptied

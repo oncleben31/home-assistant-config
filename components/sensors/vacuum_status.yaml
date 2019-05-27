@@ -10,4 +10,4 @@ sensors:
   vacuum_cleaner_status_sensor:
     friendly_name: Vacuum Cleaner Status Sensor
     value_template: >-
-        {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.status }}
+        {{ states.vacuum.rocky.attributes.status }}

@@ -1,0 +1,29 @@
+---
+# Launch my Xiaomi Vacuum in Noah's bredroom
+#
+# https://www.home-assistant.io/components/vacuum/
+# https://www.home-assistant.io/components/vacuum.xiaomi_miio/
+#
+alias: Lance Rocky dans la chambre de Noah
+sequence:
+  - service: vacuum.set_fan_speed
+    data:
+      entity_id: vacuum.rocky
+      fan_speed: balanced
+
+  - service: vacuum.xiaomi_clean_zone
+    data_template:
+      entity_id: vacuum.rocky
+      repeats: "{{ repetition | default(1) }}"
+      zone:
+        - [15300, 39800, 18800, 43600]
+  - service: logbook.log
+    data_template:
+      name: Rocky
+      message: starts cleaning Noah bedroom
+      entity_id: vacuum.rocky
+      domain: vacuum
+
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.vacuum_need_to_be_emptied

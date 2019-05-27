@@ -1,0 +1,28 @@
+---
+# Manage the input_boolean used to define if the vacuum clean the living room
+# in safe mode or not
+#
+
+- alias: swich_living_room_normal_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.vacuum_can_clean_the_living_room_safe
+    from: "off"
+    to: "on"
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.vacuum_can_clean_the_living_room
+
+- alias: swich_living_room_safe_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.vacuum_can_clean_the_living_room
+    from: "off"
+    to: "on"
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.vacuum_can_clean_the_living_room_safe

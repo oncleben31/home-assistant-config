@@ -9,8 +9,16 @@ logbook:
   include:
     domains:
       - sensor
-      - vacuum
+      - input_boolean
+      - input_select
       - binary_sensor
+      - vacuum
+      - automation
   exclude:
     entities:
       - sensor.since_last_boot
+      - automation.update_last_motion
+      - automation.notify_zoe_charge_start
+      - binary_sensor.presence_couloir_motion
+      - binary_sensor.motion_sensor_livingroom
+      - binary_sensor.motion_house_meta

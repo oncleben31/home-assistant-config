@@ -11,3 +11,17 @@ variable:
     restore: true
     attributes:
       icon: mdi:map-marker
+  nb_cleaning_before_daily_routine:
+    name: "Avant routine Rocky"
+    value: 'unknown'
+    restore: true
+    attributes:
+      time: 'unknown'
+      area: 'unknown'
+  nb_cleaning_last_dust_bin_emptied:
+    name: "Status lors du dernier vidage du bac"
+    value: 'unknown'
+    restore: true
+    attributes:
+      time: 'unknown'
+      area: 'unknown'

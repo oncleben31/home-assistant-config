@@ -10,13 +10,13 @@
   # Launch vacuum with Google Home through IFTTT. User can select the room name
   alias: lance Rocky
   initial_state: true
-  trigger: 
+  trigger:
     platform: event
     event_type: ifttt_webhook_received
     event_data:
       action: call_rocky
-  action: 
-    # select the script depending of the command recognized by IFTTT     
+  action:
+    # select the script depending of the command recognized by IFTTT
     service: script.turn_on
     data_template:
       entity_id: >
@@ -31,43 +31,43 @@
         {% endif %}
 
 - id: stop_vacuum
-# Stop vacuum with Google Home through IFTTT. And go back to dock
+  # Stop vacuum with Google Home through IFTTT. And go back to dock
   alias: stop Rocky
   initial_state: true
-  trigger: 
+  trigger:
     platform: event
     event_type: ifttt_webhook_received
     event_data:
       action: stop_rocky
-  action: 
+  action:
     - service: vacuum.return_to_home
       data:
-        entity_id: vacuum.vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
 
 - id: pause_vacuum
-# Ask the vacuum to stay in pause
+  # Ask the vacuum to stay in pause
   alias: Rocky en pause
   initial_state: true
-  trigger: 
+  trigger:
     platform: event
     event_type: ifttt_webhook_received
     event_data:
       action: pause_rocky
-  action: 
+  action:
     - service: vacuum.pause
       data:
-        entity_id: vacuum.vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky
 
 - id: resume_vacuum
-# Ask vacuum to resume the task put in pause previously
+  # Ask vacuum to resume the task put in pause previously
   alias: Relance Rocky
   initial_state: true
-  trigger: 
+  trigger:
     platform: event
     event_type: ifttt_webhook_received
     event_data:
       action: resume_rocky
-  action: 
+  action:
     - service: vacuum.start
       data:
-        entity_id: vacuum.vacuum.xiaomi_vacuum_cleaner
+        entity_id: vacuum.rocky

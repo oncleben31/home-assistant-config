@@ -1,0 +1,138 @@
+---
+# Sequence used for the vacuum each workdays
+#
+# Inspired by https://community.home-assistant.io/t/howto-xiaomi-vacuum-zoned-cleaning/51293/193?u=oncleben31
+# https://www.home-assistant.io/components/script/
+# https://www.home-assistant.io/docs/scripts/
+# https://github.com/rogro82/hass-variables
+#
+
+alias: Sequence de nettoyage quotidienne de Rocky
+sequence:
+  # Save vacum states (count, time, area)
+  - service: variable.set_variable
+    data:
+      variable: nb_cleaning_before_daily_routine
+      value_template: "{{ state_attr('vacuum.rocky', 'cleaning_count') }}"
+      attributes_template: >
+        {
+          "time": "{{ state_attr('vacuum.rocky', 'total_cleaning_time') }}",
+          "area": "{{ state_attr('vacuum.rocky', 'total_cleaned_area') }}"
+        }
+
+  # Start with kitchen cleaning.
+  - service: script.launch_daily_vacuum_in_room
+    data_template:
+      room_script: script.launch_vacuum_in_kitchen
+      room_bool: input_boolean.vacuum_can_clean_the_kitchen
+      room_name: "kitchen"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then clean the living room avoiding potential obstacles
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_livingroom_safe
+      room_bool: input_boolean.vacuum_can_clean_the_living_room_safe
+      room_name: "living room (safe mode)"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Or clean the living room in normal mode. Family should have set the room.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_livingroom
+      room_bool: input_boolean.vacuum_can_clean_the_living_room
+      room_name: "living room"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then clean the carpet
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_on_the_carpet
+      room_bool: input_boolean.vacuum_can_clean_the_carpet
+      room_name: "carpet"
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then clean the entrance.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_the_entrance
+      room_bool: input_boolean.vacuum_can_clean_the_entrance
+      room_name: "entrance"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then clean the office.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_office
+      room_bool: input_boolean.vacuum_can_clean_the_office
+      room_name: "office"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then clean the coridor.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_the_coridor
+      room_bool: input_boolean.vacuum_can_clean_the_coridor
+      room_name: "coridor"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then clean Athénaïs' bedroom.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_athenais_bedroom
+      room_bool: input_boolean.vacuum_can_clean_athenais_bedroom
+      room_name: "Athénaïs' bedroom"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then clean Noah's bedroom.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_noah_bedroom
+      room_bool: input_boolean.vacuum_can_clean_noah_bedroom
+      room_name: "Noah's bedroom"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then clean Soren's bedroom.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_soren_bedroom
+      room_bool: input_boolean.vacuum_can_clean_soren_bedroom
+      room_name: "Sören's bedroom"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then kids bathroom.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_kids_bathroom
+      room_bool: input_boolean.vacuum_can_clean_kids_bathroom
+      room_name: "kids bathroom"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Then clean parental suite.
+  - service: script.launch_daily_vacuum_in_room
+    data:
+      room_script: script.launch_vacuum_in_parental_suite
+      room_bool: input_boolean.vacuum_can_clean_parental_suite
+      room_name: "parental suite"
+      repetition: 2
+  - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
+
+  # Notify when finished
+  - service: notify.telegram
+    data_template:
+      message: >
+        Aspiration quotidienne terminée. Rocky a fait 
+        {{ state_attr('vacuum.rocky', 'cleaning_count') | int - states('variable.nb_cleaning_before_daily_routine') | int }}
+        nettoyages ({{state_attr('vacuum.rocky','total_cleaned_area') | int - state_attr('variable.nb_cleaning_before_daily_routine','area')| int }}
+        m²) en {{state_attr('vacuum.rocky','total_cleaning_time') | int - state_attr('variable.nb_cleaning_before_daily_routine','time')| int }}
+        minutes.
