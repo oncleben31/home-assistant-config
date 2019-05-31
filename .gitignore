@@ -1,25 +1,33 @@
-*
-!*.yaml
-!*.py
-!scenes
-!.gitignore
-!automations/
-!automations/**
-!components
-!components/**
-!themes
-!custom_components
-!custom_components/**
-!esphome
-!scripts
-!scripts/**
-!customizations
-!customizations/**
-!www
-!www/**
-!README.md
+# Generic ignores
+*.log
+*.db
+*.pyc
+._*
+__pycache__
 
-secrets.yaml
-known_devices.yaml
-ip_bans.yaml
+# Directory (contents) ignores
+config/.cloud
+config/.storage
+config/deps
+
+# Specific file ignores
+config/.uuid
+config/ip_bans.yaml
+config/known_devices.yaml
+config/options.xml
+config/OZW_Log.txt
+config/plex.conf
+config/pyozw.sqlite
+config/secrets.yaml
+config/zwcfg_*
+config/zwscene.xml
+
+# ESPHome ignores
+config/esphome/secrets.yaml
+config/esphome/**/
+
+# Ignore files created by IDE's
+.vscode
+
+# OS files
 .DS_Store

@@ -1,4 +1,3 @@
-
 ---
 # Sets up Home Assistant.
 #
@@ -6,12 +5,11 @@
 # main configuration.yaml.
 #
 homeassistant:
-
   # Lets me customize individual entities
-  customize: !include_dir_merge_named ../../customizations/entities
+  customize: !include_dir_merge_named ../customizations/entities
 
   # Lets me custimize all entities in a domain
-  customize_domain: !include_dir_merge_named ../../customizations/domains
+  customize_domain: !include_dir_merge_named ../customizations/domains
 
   # Lets me custimize entities based on a matching pattern
-  customize_glob: !include_dir_merge_named ../../customizations/globs
+  customize_glob: !include_dir_merge_named ../customizations/globs
