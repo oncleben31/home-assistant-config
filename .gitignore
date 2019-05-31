@@ -4,20 +4,9 @@
 !*.disable
 !scenes
 !.gitignore
-!automations/
-!automations/**
-!components
-!components/**
-!themes
-!custom_components
-!custom_components/**
-!esphome
-!scripts
-!scripts/**
-!customizations
-!customizations/**
-!www
-!www/**
+!config/
+!config/**
+
 !README.md
 
 secrets.yaml
