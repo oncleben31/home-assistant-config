@@ -1,0 +1,7 @@
+---
+# REST command to check HA is still up or can reach internet
+#
+# https://healthchecks.io/
+# https://www.home-assistant.io/components/rest_command/
+#
+url: !secret url_healthcheckio

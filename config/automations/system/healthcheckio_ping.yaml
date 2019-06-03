@@ -1,0 +1,18 @@
+---
+# Automation for HA weekly backup.
+# First we generate the backup then we copy on Google using the
+# "Backup Hassio to Google Drive" addon by samccauley
+#
+# https://community.home-assistant.io/t/hassio-0-61-snapshot-service/39690/3
+# https://github.com/samccauley/addon-hassiogooglebackup
+#
+
+# Sync the archive on Google Drive
+- alias: Healthcheck.io ping toutes les 5 minutes
+  initial_state: "on"
+  trigger:
+    platform: time_pattern
+    # You can also match on interval. This will match every 5 minutes
+    minutes: "/5"
+  action:
+    - service: rest_command.healthcheckio

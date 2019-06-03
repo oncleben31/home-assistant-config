@@ -1,12 +1,9 @@
 ---
-# REST command to trigger a copy of the backup to Google Drive. It use the 
+# REST command to trigger a copy of the backup to Google Drive. It use the
 # "Backup Hassio to Google Drive" addon by samccauley
 #
 # https://github.com/samccauley/addon-hassiogooglebackup
 # https://www.home-assistant.io/components/rest_command/
 #
-rest_command:
-  google_backup:
-    url: !secret url_gdrive_backup
-    timeout: '300'
-    
+url: !secret url_gdrive_backup
+timeout: "300"

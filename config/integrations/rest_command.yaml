@@ -1,0 +1,6 @@
+---
+# REST command use for different services
+#
+# https://www.home-assistant.io/components/rest_command/
+#
+rest_command: !include_dir_named ../entities/rest_commands
