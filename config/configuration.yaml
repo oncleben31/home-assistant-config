@@ -36,3 +36,7 @@ homeassistant:
 
   # Load packages
   packages: !include_dir_named integrations
+
+# This integration doesn't work in split configuration see #48
+hacs:
+  token: !secret my_github_access_token

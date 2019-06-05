@@ -1,0 +1,8 @@
+---
+# Manage (Install, track, upgrade) custom elements for Home Assistant directly from the UI
+# Can't put it here. Currently only compatible if put in configuration.yaml
+#
+# https://github.com/custom-components/hacs
+#
+hacs:
+  token: !secret my_github_access_token
