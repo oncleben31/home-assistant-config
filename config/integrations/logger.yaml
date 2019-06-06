@@ -5,7 +5,8 @@
 #
 logger:
   default: warning
-#  logs:
+  logs:
+    homeassistant.components.meteoalarm: debug
 #    homeassistant.components.xiaomi_aqara: debug
 #    custom_components.linky_custom: debug
 #    homeassistant.components.recorder: debug
