@@ -1,0 +1,10 @@
+---
+# Used for motion detection
+#
+# https://github.com/rogro82/hass-variables
+#
+name: "Dernier mouvement"
+value: "Inconnu"
+restore: true
+attributes:
+  icon: mdi:map-marker
