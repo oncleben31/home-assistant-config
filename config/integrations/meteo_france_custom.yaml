@@ -16,3 +16,4 @@ meteo_france_custom:
         - temperature
         - uv
         - weather_alert
+  - city: Paris
