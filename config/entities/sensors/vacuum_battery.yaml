@@ -1,0 +1,11 @@
+---
+# Sensor to extract range estimation from attribute of Renault Zoé sensor
+#
+# https://github.com/epenet/hassRenaultZE
+#
+platform: template
+sensors:
+  vacuum_battery:
+    value_template: "{{ state_attr('vacuum.rocky' , 'battery_level') }}"
+    friendly_name: "Batterie Rocky"
+    unit_of_measurement: "%"
