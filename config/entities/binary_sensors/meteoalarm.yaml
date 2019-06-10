@@ -4,6 +4,6 @@
 # https://www.home-assistant.io/components/meteoalarm/
 #
 platform: meteoalarm
-country: "FR"
-province: "Gers"
-language: "fr"
+country: 'FR'
+province: 'Gers'
+language: 'fr'
