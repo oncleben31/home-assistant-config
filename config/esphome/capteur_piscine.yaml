@@ -16,7 +16,7 @@ api:
 ota:
   password: !secret ota_password
 
-# Example configuration entry
+# 1wire configuration
 dallas:
   - id: dallas_hub1
     pin: 4
@@ -30,9 +30,30 @@ sensor:
     name: "Température Piscine"
     icon: "mdi:oil-temperature"
 
+  - platform: wifi_signal
+    name: "WiFi Signal Sensor"
+    update_interval: 20s
+
 deep_sleep:
-  run_duration: 20s
-  sleep_duration: 1h
+#  run_duration: 20s
+#  sleep_duration: 1h
+  run_duration: 30s
+  sleep_duration: 1min
+  id: deep_sleep_1
   #TODO: prevent deep sleep
 
-#TODO: signal wifi
+binary_sensor:
+  # Node status in Home Assistant
+  - platform: status
+    name: "Capteur piscine"
+
+  # get from HA a binary switch for pausing/resuming deep sleep
+  - platform: homeassistant
+    name: "Input Boolean From Home Assistant"
+    entity_id: input_boolean.stop_deep_sleep
+    on_press:
+      then: 
+        - deep_sleep.prevent: deep_sleep_1
+    on_release:
+      then:
+        - deep_sleep.enter: deep_sleep_1

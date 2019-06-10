@@ -1,0 +1,8 @@
+---
+# Input boolean to manage deep sleep mode of my ESPHome nodes
+#
+# https://esphome.io/components/deep_sleep.html#deep-sleep-prevent-action
+# https://esphome.io/components/binary_sensor/homeassistant.html
+#
+stop_deep_sleep:
+  name: Désactiver le Deep Sleep.
