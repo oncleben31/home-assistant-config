@@ -17,6 +17,7 @@ sequence:
       repeats: "{{ repetition | default(1) }}"
       zone:
         - [22600, 38600, 28800, 44000]
+        - [25150, 37350, 28800, 38650]
   - service: logbook.log
     data_template:
       name: Rocky
