@@ -1,22 +1,25 @@
 resources:
-  - type: module
-    url: /customcards/github/custom-cards/tracker-card.js?track=true
   - type: js
-    url: /customcards/github/thomasloven/fold-entity-row.js?track=true
+    url: /community_plugin/lovelace-fold-entity-row/fold-entity-row.js
   - type: js
     url: /local/linky-card.js?v=4
+  - url: /community_plugin/lovelace-card-tools/card-tools.js
+    type: js
   - type: js
-    url: /customcards/github/thomasloven/card-tools.js?track=true
-  - type: js
-    url: /customcards/github/thomasloven/auto-entities.js?track=true
+    url: /community_plugin/lovelace-auto-entities/auto-entities.js
   - type: js
     url: /customcards/weasley-card.js
+  - url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
+    type: js
+  - url: /community_plugin/lovelace-multiple-entity-row/multiple-entity-row.js
+    type: js
 title: Maison
 views:
   - badges:
       - sun.sun
       - sensor.aurade_next_rain
       - sensor.aurade_weather_alert
+      - binary_sensor.meteoalarm
     cards:
       - entity: weather.dark_sky
         name: Météo DarkSky
@@ -38,67 +41,43 @@ views:
         show_header_toggle: false
         title: Températures
         type: entities
-      - cards: null
-        elements:
-          - entity: sensor.zoe
-            prefix: 'Batterie: '
-            style:
-              background-color: 'rgb(54, 65, 78)'
-              border-color: 'rgb(34, 154, 210)'
-              border-right-style: solid
-              bottom: 5%
-              color: 'rgb(255, 255, 255)'
-              font-family: Trebuchet MS
-              font-size: 90%
-              font-weight: bold
-              opacity: 0.8
-              right: 5%
-              text-shadow: 1px 1px black
-              transform: 'translate(0%,0%)'
-            tap_action:
-              action: more-info
-            type: state-label
-          - entity: sensor.zoe_remaining_range
-            style:
-              background-color: 'rgb(54, 65, 78)'
-              border-color: 'rgb(34, 154, 210)'
-              border-right-style: solid
-              color: 'rgb(255, 255, 255)'
-              font-family: Trebuchet MS
-              font-size: 90%
-              font-weight: bold
-              opacity: 0.8
-              right: 5%
-              text-shadow: 1px 1px black
-              top: 5%
-              transform: 'translate(0%,0%)'
-            suffix: ' restants'
-            tap_action:
-              action: more-info
-            type: state-label
-          - entity: sensor.zoe_textual_status
-            style:
-              background-color: 'rgb(54, 65, 78)'
-              border-color: 'rgb(34, 154, 210)'
-              border-left-style: solid
-              color: 'rgb(255, 255, 255)'
-              font-family: Trebuchet MS
-              font-size: 90%
-              font-weight: bold
-              left: 5%
-              opacity: 0.8
-              text-shadow: 1px 1px black
-              top: 5%
-              transform: 'translate(0%,0%)'
-            tap_action:
-              action: more-info
-            type: state-label
-        image: /local/renault-zoe-charging.jpg
-        title: Ma Zoé
-        type: picture-elements
     icon: 'mdi:home'
     path: default_view
     title: Maison
+  - badges: []
+    cards:
+      - entities:
+          - entity: vacuum.rocky
+          - entity: sensor.vacuum_cleaner_error_sensor
+          - entity: sensor.vacuum_cleaner_status_sensor
+        show_header_toggle: false
+        title: Rocky
+        type: entities
+      - entities:
+          - entity: input_boolean.vacuum_can_clean_the_kitchen
+          - entity: input_boolean.vacuum_can_clean_the_entrance
+          - entity: input_boolean.vacuum_can_clean_the_living_room_safe
+          - entity: input_boolean.vacuum_can_clean_the_living_room
+          - entity: input_boolean.vacuum_can_clean_the_coridor
+          - entity: input_boolean.vacuum_can_clean_the_office
+          - entity: input_boolean.vacuum_can_clean_athenais_bedroom
+          - entity: input_boolean.vacuum_can_clean_noah_bedroom
+          - entity: input_boolean.vacuum_can_clean_soren_bedroom
+          - entity: input_boolean.vacuum_can_clean_the_carpet
+          - entity: input_boolean.vacuum_can_clean_kids_bathroom
+          - entity: input_boolean.vacuum_can_clean_parental_suite
+        title: Pièces à nettoyer aujourd'hui
+        type: entities
+      - entities:
+          - entity: input_boolean.vacuum_need_to_be_emptied
+        type: entities
+      - entities:
+          - entity: script.vacuum_workday_sequence
+          - entity: script.vacuum_map_construct
+        title: Scripts de la routine
+        type: entities
+    icon: 'mdi:robot-vacuum'
+    title: Rocky
   - badges: []
     cards:
       - entity: alarm_control_panel.ha_alarm
@@ -144,7 +123,7 @@ views:
         severity:
           green: 0
           red: 200
-          yellow: 5
+          yellow: 7
         theme: default
         type: gauge
       - entity: sensor.prise_tv_power
@@ -169,6 +148,8 @@ views:
           title: Lights on
           type: glance
         filter:
+          exclude:
+            - entity_id: light.home_hassistant
           include:
             - domain: light
               options:
@@ -222,6 +203,10 @@ views:
               state: home
         show_empty: true
         type: 'custom:auto-entities'
+      - entities:
+          - entity: sensor.illumination_158d0001e575b0
+          - entity: sensor.humidity_cave
+        type: entities
     icon: 'mdi:robot'
     title: Automatismes
   - badges:
@@ -261,12 +246,16 @@ views:
             - domain: vacuum
             - entity_id: '*pressure*'
             - entity_id: '*humidity*'
+            - entity_id: sensor.presence_couloir_temperature
+            - entity_id: sensor.presence_couloir_light_level
           include:
             - attributes:
                 battery_level: <= 30
+              options:
+                secondary_info: 'Battery_level: [[ {entity}.attributes.battery_level ]]'
+                type: 'custom:secondaryinfo-entity-row'
         show_empty: true
         type: 'custom:auto-entities'
-      - type: 'custom:tracker-card'
       - entities:
           - entity: sensor.processor_use
           - entity: sensor.disk_use_percent
@@ -283,6 +272,22 @@ views:
           - zwave.prise_pc
         title: Z-Wave
         type: entities
+      - card:
+          show_header_toggle: false
+          title: Entites indisponibles
+          type: entities
+        filter:
+          exclude:
+            - domain: vacuum
+            - entity_id: '*pressure*'
+            - entity_id: '*humidity*'
+            - entity_id: sensor.presence_couloir_temperature
+            - entity_id: sensor.presence_couloir_light_level
+            - entity_id: group.all_vacuum_cleaners
+          include:
+            - state: unknown
+        show_empty: true
+        type: 'custom:auto-entities'
     icon: 'mdi:lan'
     title: Réseau
   - badges: []
@@ -318,30 +323,19 @@ views:
     icon: 'mdi:map-marker'
     panel: false
     title: Map
-  - cards:
-      - entities:
-          - entity: vacuum.rocky
-        show_header_toggle: false
-        title: Rocky
-        type: entities
-      - type: entities
-        entities:
-          - entity: input_boolean.vacuum_can_clean_the_kitchen
-          - entity: input_boolean.vacuum_can_clean_the_entrance
-          - entity: input_boolean.vacuum_can_clean_the_living_room_safe
-          - entity: input_boolean.vacuum_can_clean_the_living_room
-          - entity: input_boolean.vacuum_can_clean_the_office
-          - entity: input_boolean.vacuum_can_clean_soren_bedroom
-          - entity: input_boolean.vacuum_can_clean_athenais_bedroom
-        title: Pièces à nettoyer aujourd'hui
-      - type: entities
-        entities:
-          - entity: script.vacuum_on_the_carpet_workday_sequence
-          - entity: script.launch_daily_vacuum_in_room
-          - entity: script.launch_vacuum_in_kitchen
-          - entity: script.launch_vacuum_in_the_entrance
-          - entity: script.launch_vacuum_in_livingroom_safe
-        title: Scripts de la routine
-    badges: []
-    title: Rocky
-    icon: 'mdi:robot-vacuum'
+  - badges:
+      - sensor.exterieur_temperature
+    cards:
+      - entity: sensor.aurade_uv
+        max: 10
+        min: 0
+        name: Indice UV
+        severity:
+          green: 1
+          red: 6
+          yellow: 3
+        theme: default
+        type: gauge
+    icon: 'mdi:pool'
+    title: Piscine
+
