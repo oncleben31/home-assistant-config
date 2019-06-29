@@ -24,3 +24,4 @@ logbook:
       - binary_sensor.motion_sensor_livingroom
       - binary_sensor.motion_house_meta
       - automation.healthcheck_io_ping_toutes_les_5_minutes
+      - binary_sensor.capteur_piscine
