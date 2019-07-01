@@ -1,0 +1,23 @@
+---
+# Manage the update of the integration due to API call limitation per day
+#
+# Integration configured through the Home Assistant UI. Lovelace integrationinspired by Ali Kiaie
+# post on community forum.
+#
+# https://www.home-assistant.io/components/openuv/
+# https://community.home-assistant.io/t/cool-uv-index-gauge-for-my-swimming-pool-area/116223
+#
+- alias: Update OpenUV every 30 minutes during the daytime
+  initial_state: true
+  trigger:
+    platform: time_pattern
+    minutes: "/30"
+  condition:
+    condition: and
+    conditions:
+      - condition: sun
+        after: sunrise
+      - condition: sun
+        before: sunset
+  action:
+    service: openuv.update_data
