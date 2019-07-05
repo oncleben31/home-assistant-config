@@ -1,0 +1,31 @@
+---
+# Send Telegram notification when wheather alert is raised.
+#
+# Send Telegram notification when alert is raised, ends or send a reminder at 7 AM if
+# alert is still active.
+#
+- alias: "Send notification when weather alert is raised"
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.aurade_weather_alert
+    - platform: time
+      at: "7:00:00"
+  condition:
+    - condition: template
+      value_template: "{% if is_state('sensor.aurade_weather_alert', 'Vert') %}false{% endif %}"
+  action:
+    - service: notify.telegram
+      data_template:
+        message: "Alerte météo {{states('sensor.aurade_weather_alert')}} en cours."
+
+- alias: "Send notification when weather alert ends"
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.aurade_weather_alert
+      to: "Vert"
+  action:
+    - service: notify.telegram
+      data_template:
+        message: "Fin de l'alerte météo."

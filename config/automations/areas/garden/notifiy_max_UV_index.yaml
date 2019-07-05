@@ -1,0 +1,13 @@
+---
+# Notify the max UV index every day after first update of the sensor value
+#
+- alias: Notify the max UV index daily
+  trigger:
+    platform: state
+    entity_id: sensor.max_uv_index
+  action:
+    - service: notify.telegram
+      data_template:
+        message: >-
+          Index UV max de la journée: {{states('sensor.max_uv_index') | round}}.
+          Il faudra se protéger entre {{ state_attr("binary_sensor.protection_window","start_time")  | as_timestamp() | timestamp_custom("%X") }} et {{ state_attr("binary_sensor.protection_window","end_time")  | as_timestamp() | timestamp_custom("%X") }} aujourd'hui.
