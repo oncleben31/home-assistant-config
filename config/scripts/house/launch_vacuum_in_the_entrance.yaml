@@ -15,7 +15,7 @@ sequence:
       entity_id: vacuum.rocky
       repeats: "{{ repetition | default(1) }}"
       zone:
-        - [23000, 29700, 25500, 34100]
+        - [23000, 29700, 25400, 34100]
   - service: logbook.log
     data_template:
       name: Rocky
