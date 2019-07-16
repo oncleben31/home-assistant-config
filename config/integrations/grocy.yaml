@@ -1,0 +1,11 @@
+---
+# Grocy integration
+#
+# https://github.com/custom-components/grocy
+# https://github.com/isabellaalstrom/lovelace-grocy-chores-card
+#
+grocy:
+  url: !secret grocy_api_url
+  api_key: !secret grocy_token
+  sensor:
+    - enabled: true

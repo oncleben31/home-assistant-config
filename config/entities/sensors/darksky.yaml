@@ -9,21 +9,21 @@ scan_interval: 00:05
 language: fr
 monitored_conditions:
   - summary
-# - precip_type
-# - precip_intensity
+  # - precip_type
+  # - precip_intensity
   - precip_probability
   - precip_accumulation
   - temperature
   - wind_speed
   - wind_bearing
-# - cloud_cover
+  # - cloud_cover
   - humidity
-# - visibility
-# - hourly_summary
-# - daily_summary
-# - temperature_max
-# - temperature_min
-# - apparent_temperature_max
-# - apparent_temperature_min
-# - precip_intensity_max
-# - uv_index
+  # - visibility
+  # - hourly_summary
+  # - daily_summary
+  # - temperature_max
+  # - temperature_min
+  # - apparent_temperature_max
+  # - apparent_temperature_min
+  # - precip_intensity_max
+  - uv_index
