@@ -1,0 +1,14 @@
+---
+# Stop the workday sequence 
+#
+alias: Arret de la séquence de netoyage quotidienne de Rocky
+sequence:
+  # stop the main script to avoid vacuum going to next zone
+  - service: script.turn_off
+    data: 
+      entity_id: script.vacuum_workday_sequence
+  # Ask Rocky to return on dock station.
+  - service: vacuum.return_to_base
+    data:
+      entity_id: vacuum.rocky
+
