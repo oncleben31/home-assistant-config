@@ -7,4 +7,4 @@
 platform: version
 name: version_available
 source: hassio
-image: default
+image: raspberrypi3
