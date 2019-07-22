@@ -1,25 +1,34 @@
+button_card_templates:
+  vacuum_zone:
+    aspect_ratio: 1/1
+    color_type: card
 resources:
   - type: js
     url: /community_plugin/lovelace-fold-entity-row/fold-entity-row.js
   - type: js
     url: /local/linky-card.js?v=4
-  - url: /community_plugin/lovelace-card-tools/card-tools.js
-    type: js
+  - type: js
+    url: /community_plugin/lovelace-card-tools/card-tools.js
   - type: js
     url: /community_plugin/lovelace-auto-entities/auto-entities.js
   - type: js
     url: /customcards/weasley-card.js
-  - url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
-    type: js
-  - url: /community_plugin/lovelace-multiple-entity-row/multiple-entity-row.js
-    type: js
+  - type: js
+    url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
+  - type: js
+    url: /community_plugin/lovelace-multiple-entity-row/multiple-entity-row.js
+  - type: module
+    url: /community_plugin/button-card/button-card.js
+  - type: module
+    url: /community_plugin/canvas-gauge-card/canvas-gauge-card.js
+  - type: js
+    url: /community_plugin/lovelace-card-modder/card-modder.js
 title: Maison
 views:
   - badges:
       - sun.sun
       - sensor.aurade_next_rain
       - sensor.aurade_weather_alert
-      - binary_sensor.meteoalarm
     cards:
       - entity: weather.dark_sky
         name: Météo DarkSky
@@ -27,6 +36,7 @@ views:
       - entities:
           - entity: sensor.exterieur_temperature
           - entity: sensor.exterieur_humidity
+          - entity: sensor.temperature_piscine
         title: Extérieur
         type: glance
       - entity: weather.aurade
@@ -46,38 +56,275 @@ views:
     title: Maison
   - badges: []
     cards:
+      - cards:
+          - cards:
+              - color_type: card
+                entity: script.vacuum_workday_sequence
+                size: 30%
+                hold_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.stop_vacuum_workday_sequence
+                icon: 'mdi:robot-vacuum'
+                label_template: >
+                  return (states['sensor.vacuum_cleaner_status_sensor'].state)
+                  +' (' + (states['sensor.vacuum_battery'].state) + ' %)'
+                name: Lancer la routine de Rocky
+                show_label: true
+                state:
+                  - spin: true
+                    value: 'on'
+                tap_action:
+                  action: toggle
+                type: 'custom:button-card'
+            type: horizontal-stack
+          - cards:
+              - entity: input_boolean.vacuum_can_clean_the_kitchen
+                hold_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.launch_vacuum_in_kitchen
+                icon: 'mdi:silverware-fork-knife'
+                name: Cuisine
+                tap_action:
+                  action: toggle
+                template: vacuum_zone
+                type: 'custom:button-card'
+              - entity: input_boolean.vacuum_can_clean_the_living_room_safe
+                hold_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.launch_vacuum_in_livingroom_safe
+                icon: 'mdi:sofa'
+                name: "Salon \U0001F6E1"
+                tap_action:
+                  action: toggle
+                template: vacuum_zone
+                type: 'custom:button-card'
+              - entity: input_boolean.vacuum_can_clean_the_living_room
+                hold_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.launch_vacuum_in_livingroom
+                icon: 'mdi:sofa'
+                name: Salon
+                tap_action:
+                  action: toggle
+                template: vacuum_zone
+                type: 'custom:button-card'
+              - entity: input_boolean.vacuum_can_clean_the_carpet
+                hold_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.launch_vacuum_on_the_carpet
+                icon: 'mdi:camera-metering-matrix'
+                name: Tapis
+                tap_action:
+                  action: toggle
+                template: vacuum_zone
+                type: 'custom:button-card'
+            type: horizontal-stack
+          - cards:
+              - entity: input_boolean.vacuum_can_clean_the_entrance
+                hold_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.vacuum_can_clean_the_entrance
+                icon: 'mdi:door'
+                name: Entrée
+                tap_action:
+                  action: toggle
+                template: vacuum_zone
+                type: 'custom:button-card'
+              - entity: input_boolean.vacuum_can_clean_the_coridor
+                hold_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.launch_vacuum_in_the_coridor
+                icon: 'mdi:treasure-chest'
+                name: Couloir
+                tap_action:
+                  action: toggle
+                template: vacuum_zone
+                type: 'custom:button-card'
+              - entity: input_boolean.vacuum_can_clean_the_office
+                hold_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.launch_vacuum_in_office
+                icon: 'mdi:laptop'
+                name: Bureau
+                tap_action:
+                  action: toggle
+                template: vacuum_zone
+                type: 'custom:button-card'
+              - entity: input_boolean.vacuum_can_clean_kids_bathroom
+                hold_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.launch_vacuum_in_kids_bathroom
+                icon: 'mdi:shower'
+                name: SdB Enfants
+                tap_action:
+                  action: toggle
+                template: vacuum_zone
+                type: 'custom:button-card'
+            type: horizontal-stack
+          - cards:
+              - entity: input_boolean.vacuum_can_clean_athenais_bedroom
+                hold_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.launch_vacuum_in_athenais_bedroom
+                icon: 'mdi:hotel'
+                name: Athénaïs
+                tap_action:
+                  action: toggle
+                template: vacuum_zone
+                type: 'custom:button-card'
+              - entity: input_boolean.vacuum_can_clean_noah_bedroom
+                hold_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.launch_vacuum_in_noah_bedroom
+                icon: 'mdi:hotel'
+                name: Noah
+                tap_action:
+                  action: toggle
+                template: vacuum_zone
+                type: 'custom:button-card'
+              - entity: input_boolean.vacuum_can_clean_soren_bedroom
+                hold_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.launch_vacuum_in_soren_bedroom
+                icon: 'mdi:hotel'
+                name: Sören
+                tap_action:
+                  action: toggle
+                template: vacuum_zone
+                type: 'custom:button-card'
+              - entity: input_boolean.vacuum_can_clean_parental_suite
+                hold_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.launch_vacuum_in_parental_suite
+                icon: 'mdi:human-male-female'
+                name: Parents
+                tap_action:
+                  action: toggle
+                template: vacuum_zone
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
       - entities:
-          - entity: vacuum.rocky
-          - entity: sensor.vacuum_cleaner_error_sensor
-          - entity: sensor.vacuum_cleaner_status_sensor
+          - entity: script.vacuum_map_construct
         show_header_toggle: false
-        title: Rocky
-        type: entities
-      - entities:
-          - entity: input_boolean.vacuum_can_clean_the_kitchen
-          - entity: input_boolean.vacuum_can_clean_the_entrance
-          - entity: input_boolean.vacuum_can_clean_the_living_room_safe
-          - entity: input_boolean.vacuum_can_clean_the_living_room
-          - entity: input_boolean.vacuum_can_clean_the_coridor
-          - entity: input_boolean.vacuum_can_clean_the_office
-          - entity: input_boolean.vacuum_can_clean_athenais_bedroom
-          - entity: input_boolean.vacuum_can_clean_noah_bedroom
-          - entity: input_boolean.vacuum_can_clean_soren_bedroom
-          - entity: input_boolean.vacuum_can_clean_the_carpet
-          - entity: input_boolean.vacuum_can_clean_kids_bathroom
-          - entity: input_boolean.vacuum_can_clean_parental_suite
-        title: Pièces à nettoyer aujourd'hui
+        title: Scripts de la routine
         type: entities
       - entities:
           - entity: input_boolean.vacuum_need_to_be_emptied
         type: entities
-      - entities:
-          - entity: script.vacuum_workday_sequence
-          - entity: script.vacuum_map_construct
-        title: Scripts de la routine
-        type: entities
     icon: 'mdi:robot-vacuum'
     title: Rocky
+  - badges: []
+    cards:
+      - entities:
+          - entity: sensor.exterieur_temperature
+          - entity: sensor.temperature_piscine
+        type: entities
+      - entities:
+          - entity: binary_sensor.protection_window
+          - entity: sensor.aurade_uv
+        type: entities
+      - card:
+          elements:
+            - entity: sensor.dark_sky_uv_index
+              gauge:
+                animationDuration: 1500
+                animationRule: linear
+                borders: 'no'
+                colorValueBoxRect: '#222'
+                colorValueBoxRectEnd: '#333'
+                height: 200
+                highlights:
+                  - color: 'rgba(247, 228, 1, .75)'
+                    from: 2.5
+                    to: 5.5
+                  - color: 'rgba(40, 149, 0, .75)'
+                    from: 0
+                    to: 2.5
+                  - color: 'rgba(248, 123, 1, .75)'
+                    from: 5.5
+                    to: 7.5
+                  - color: 'rgba(216, 23, 0, .75)'
+                    from: 7.5
+                    to: 10.5
+                  - color: 'rgba(75, 46, 154, .75)'
+                    from: 10.5
+                    to: 13
+                majorTicks:
+                  - '0'
+                  - '1'
+                  - '2'
+                  - '3'
+                  - '4'
+                  - '5'
+                  - '6'
+                  - '7'
+                  - '8'
+                  - '9'
+                  - '10'
+                  - '11'
+                  - '12'
+                  - '13'
+                maxValue: 13
+                minValue: 0
+                minorTicks: 5
+                needleCircleInner: false
+                needleCircleOuter: true
+                needleCircleSize: 7
+                needleType: arrow
+                needleWidth: 4
+                startAngle: 40
+                strokeTicks: true
+                ticksAngle: 280
+                title: UV Index
+                type: radial-gauge
+                valueBox: true
+                valueBoxBorderRadius: 10
+                valueDec: 2
+                valueInt: 2
+                width: 200
+              style:
+                left: 50%
+                top: 50%
+              type: 'custom:canvas-gauge-card'
+          image: /local/UV_indice_background.png
+          type: picture-elements
+        style:
+          border-radius: 25px
+        type: 'custom:card-modder'
+      - entities:
+          - entity: sensor.wifi_signal_sensor
+          - entity: input_boolean.stop_deep_sleep
+          - entity: binary_sensor.capteur_piscine
+        type: entities
+    icon: 'mdi:pool'
+    title: Piscine
   - badges: []
     cards:
       - entity: alarm_control_panel.ha_alarm
@@ -257,6 +504,10 @@ views:
         show_empty: true
         type: 'custom:auto-entities'
       - entities:
+          - entity: sensor.hacs
+        title: Mise à jour
+        type: entities
+      - entities:
           - entity: sensor.processor_use
           - entity: sensor.disk_use_percent
           - entity: sensor.memory_use_percent
@@ -288,6 +539,12 @@ views:
             - state: unknown
         show_empty: true
         type: 'custom:auto-entities'
+      - entities:
+          - entity: vacuum.rocky
+          - entity: sensor.vacuum_cleaner_error_sensor
+        show_header_toggle: false
+        title: Rocky
+        type: entities
     icon: 'mdi:lan'
     title: Réseau
   - badges: []
@@ -323,19 +580,3 @@ views:
     icon: 'mdi:map-marker'
     panel: false
     title: Map
-  - badges:
-      - sensor.exterieur_temperature
-    cards:
-      - entity: sensor.aurade_uv
-        max: 10
-        min: 0
-        name: Indice UV
-        severity:
-          green: 1
-          red: 6
-          yellow: 3
-        theme: default
-        type: gauge
-    icon: 'mdi:pool'
-    title: Piscine
-
