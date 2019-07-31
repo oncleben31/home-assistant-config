@@ -1,0 +1,30 @@
+# rsync rules file
+#
+# To be use with a command like:
+# rsync -rlptzv --filter=._PATH_TO_THIS-FILE/.rsync-filter --progress --delete SOURCE DESTINATION
+# 
+# Warning: be sure to have latest version of rsync. On MacOS the rsync installed
+# is an old one with inconsitent behaviour with this type of rules file.
+#
+- .git
+- .vscode
+- .DS_Store
+- .gitignore
+-/ __pycache__/***
++/ automations/***
++/ custom_components/***
++/ customizations/***
++/ entities/***
++/ esphome/
++/ esphome/*.yaml
++/ integrations/***
++/ scripts/***
++/ themes/***
++/ www/***
++/ configuration.yaml
++/ known_devices.yaml
++/ secrets.yaml
++/ zwave_device_config.yaml
++/ HA_VERSION
+- export-lovelace.yaml
+- *
