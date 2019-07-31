@@ -48,7 +48,7 @@ You can find in my automations and scripts the following features:
 To help me I used the following custom compoents:
 
 - [Linky](https://github.com/home-assistant/home-assistant/pull/20535) integration. Thanks to **PirionFr** and **Grea04**
-- Renault Zoé: waiting a new one as former API doesn't work anymore
+- [hassRenaultZE](https://github.com/epenet/hassRenaultZE): to follow battery status of my Zoé eletric car thanks to **epenet**
 - [HACS](https://github.com/custom-components/hacs) to follow updates of custom components and cards
 - [variable](https://github.com/rogro82/hass-variables) integration thanks to **rogro82**.
 
