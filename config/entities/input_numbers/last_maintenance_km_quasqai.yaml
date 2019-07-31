@@ -1,0 +1,10 @@
+---
+# Follow the mileage of the last maintenance of the Qashqai
+#
+last_maintenance_km_qashqai:
+  name: Kilométrage de la dernière révision du Qashqai
+  icon: mdi:counter
+  min: 0
+  max: 300000
+  step: 100
+  unit_of_measurement: km

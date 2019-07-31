@@ -1,0 +1,6 @@
+---
+# input_datetimes allows to follow some dates
+#
+# https://www.home-assistant.io/components/input_datetime/
+#
+input_datetime: !include_dir_merge_named ../entities/input_datetimes

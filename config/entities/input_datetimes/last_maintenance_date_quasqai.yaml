@@ -1,0 +1,7 @@
+---
+# Follow the date of the last maintenance of the Qashqai
+#
+last_maintenance_date_qashqai:
+  name: Date de la dernière révision du Qashqai
+  has_date: true
+  has_time: false

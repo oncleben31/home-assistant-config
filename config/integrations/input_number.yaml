@@ -1,0 +1,6 @@
+---
+# input_number allows to follow some numbers
+#
+# https://www.home-assistant.io/components/input_number/
+#
+input_number: !include_dir_merge_named ../entities/input_numbers

@@ -1,0 +1,7 @@
+---
+# Follow the date of the last maintenance of the Zoé
+#
+last_maintenance_date_zoe:
+  name: Date de la dernière révision de la Zoé
+  has_date: true
+  has_time: false
