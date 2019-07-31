@@ -60,7 +60,6 @@ views:
           - cards:
               - color_type: card
                 entity: script.vacuum_workday_sequence
-                size: 30%
                 hold_action:
                   action: call-service
                   service: script.turn_on
@@ -72,6 +71,7 @@ views:
                   +' (' + (states['sensor.vacuum_battery'].state) + ' %)'
                 name: Lancer la routine de Rocky
                 show_label: true
+                size: 30%
                 state:
                   - spin: true
                     value: 'on'
@@ -240,6 +240,72 @@ views:
         type: entities
     icon: 'mdi:robot-vacuum'
     title: Rocky
+  - cards:
+      - elements:
+          - entity: sensor.zoe
+            prefix: 'Batterie: '
+            style:
+              background-color: 'rgb(54, 65, 78)'
+              border-color: 'rgb(34, 154, 210)'
+              border-right-style: solid
+              bottom: 5%
+              color: 'rgb(255, 255, 255)'
+              font-family: Trebuchet MS
+              font-size: 90%
+              font-weight: bold
+              opacity: 0.8
+              right: 5%
+              text-shadow: 1px 1px black
+              transform: 'translate(0%,0%)'
+            tap_action:
+              action: more-info
+            type: state-label
+          - entity: sensor.zoe_remaining_range
+            style:
+              background-color: 'rgb(54, 65, 78)'
+              border-color: 'rgb(34, 154, 210)'
+              border-right-style: solid
+              color: 'rgb(255, 255, 255)'
+              font-family: Trebuchet MS
+              font-size: 90%
+              font-weight: bold
+              opacity: 0.8
+              right: 5%
+              text-shadow: 1px 1px black
+              top: 5%
+              transform: 'translate(0%,0%)'
+            suffix: ' restants'
+            tap_action:
+              action: more-info
+            type: state-label
+          - entity: sensor.zoe_textual_status
+            style:
+              background-color: 'rgb(54, 65, 78)'
+              border-color: 'rgb(34, 154, 210)'
+              border-left-style: solid
+              color: 'rgb(255, 255, 255)'
+              font-family: Trebuchet MS
+              font-size: 90%
+              font-weight: bold
+              left: 5%
+              opacity: 0.8
+              text-shadow: 1px 1px black
+              top: 5%
+              transform: 'translate(0%,0%)'
+            tap_action:
+              action: more-info
+            type: state-label
+        image: /local/renault-zoe-charging.jpg
+        title: Ma Zoé
+        type: picture-elements
+      - entities:
+          - entity: sensor.trajet_maison_travail_benoit
+          - entity: sensor.trajet_maison_travail_alex
+        title: Trajets
+        type: glance
+    badges: []
+    title: Voitures
+    icon: 'mdi:car-side'
   - badges: []
     cards:
       - entities:
@@ -405,11 +471,6 @@ views:
               state: 'on'
         show_empty: true
         type: 'custom:auto-entities'
-      - entities:
-          - entity: sensor.trajet_maison_travail_benoit
-          - entity: sensor.trajet_maison_travail_alex
-        title: Trajets
-        type: glance
       - entities:
           - card:
               head:
