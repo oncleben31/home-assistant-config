@@ -4,11 +4,10 @@ import asyncio
 import logging
 import time
 import json
+import aiohttp
+import traceback
 from datetime import datetime, timedelta
-from .myrenaultservice.MyRenaultService import (
-    MyRenaultService,
-    MyRenaultServiceException
-    )
+from pyze.api import Gigya, Kamereon, Vehicle
 
 import voluptuous as vol
 
@@ -25,6 +24,8 @@ ATTR_PLUGGED = 'plugged'
 ATTR_CHARGE_LEVEL = 'charge_level'
 ATTR_REMAINING_RANGE = 'remaining_range'
 ATTR_LAST_UPDATE = 'last_update'
+ATTR_BATTERY_TEMPERATURE = 'battery_temperature'
+ATTR_MILEAGE = 'mileage'
 
 CONF_VIN = 'vin'
 CONF_ANDROID_LNG = 'android_lng'
@@ -44,13 +45,37 @@ async def async_setup_platform(hass, config, async_add_entities,
                                discovery_info=None):
     """Setup the sensor platform."""
     _LOGGER.debug("Initialising renaultze platform")
-    wrapper = MyRenaultService(config.get(CONF_USERNAME),
-                               config.get(CONF_PASSWORD))
-    await wrapper.initialise_configuration(config.get(CONF_ANDROID_LNG))
+    
+    g_url = None
+    g_key = None
+    k_url = None
+    k_key = None
+    
+    url = 'https://renault-wrd-prod-1-euw1-myrapp-one.s3-eu-west-1.amazonaws.com/configuration/android/config_%s.json' % config.get(CONF_ANDROID_LNG)
+    async with aiohttp.ClientSession(
+            ) as session:
+        async with session.get(url) as response:
+            responsetext = await response.text()
+            if responsetext == '':
+                responsetext = '{}'
+            jsonresponse = json.loads(responsetext)
+            
+            g_url = jsonresponse['servers']['gigyaProd']['target']
+            g_key = jsonresponse['servers']['gigyaProd']['apikey']
+            k_url = jsonresponse['servers']['wiredProd']['target']
+            k_key = jsonresponse['servers']['wiredProd']['apikey']
+
+    g = Gigya(api_key=g_key,root_url=g_url)
+    g.login(config.get(CONF_USERNAME),
+                          config.get(CONF_PASSWORD))
+    g.account_info()
+    
+    k = Kamereon(api_key=k_key,root_url=k_url,gigya=g)
+    
+    v = Vehicle(config.get(CONF_VIN), k)
 
     devices = [
-        RenaultZESensor(wrapper,
-                        config.get(CONF_VIN),
+        RenaultZESensor(v,
                         config.get(CONF_NAME, config.get(CONF_VIN))
                         )
         ]
@@ -60,12 +85,11 @@ async def async_setup_platform(hass, config, async_add_entities,
 class RenaultZESensor(Entity):
     """Representation of a Sensor."""
 
-    def __init__(self, wrapper, vin, name):
+    def __init__(self, vehicle, name):
         """Initialize the sensor."""
         _LOGGER.debug("Initialising RenaultZESensor %s" % name)
         self._state = None
-        self._wrapper = wrapper
-        self._vin = vin
+        self._vehicle = vehicle
         self._name = name
         self._attrs = {}
         self._lastdeepupdate = 0
@@ -90,24 +114,42 @@ class RenaultZESensor(Entity):
         """Return the unit of measurement."""
         return '%'
 
-    def process_response(self, jsonresult):
+    def process_battery_response(self, jsonresult):
         """Update new state data for the sensor."""
         self._state = jsonresult['batteryLevel']
 
-        self._attrs[ATTR_CHARGING] = jsonresult['chargeStatus'] > 0
-        self._attrs[ATTR_LAST_UPDATE] = jsonresult['lastUpdateTime']
-        self._attrs[ATTR_PLUGGED] = jsonresult['plugStatus'] > 0
-        self._attrs[ATTR_REMAINING_RANGE] = jsonresult['rangeHvacOff']
+        if 'chargeStatus' in jsonresult:
+            self._attrs[ATTR_CHARGING] = jsonresult['chargeStatus'] > 0
+        if 'lastUpdateTime' in jsonresult:
+            self._attrs[ATTR_LAST_UPDATE] = jsonresult['lastUpdateTime']
+        if 'plugStatus' in jsonresult:
+            self._attrs[ATTR_PLUGGED] = jsonresult['plugStatus'] > 0
+        if 'batteryTemperature' in jsonresult:
+            self._attrs[ATTR_BATTERY_TEMPERATURE] = jsonresult['batteryTemperature']
+        if 'rangeHvacOff' in jsonresult:
+            self._attrs[ATTR_REMAINING_RANGE] = jsonresult['rangeHvacOff']
 
-    async def async_update(self):
+    def process_mileage_response(self, jsonresult):
+        """Update new state data for the sensor."""
+        if 'totalMileage' in jsonresult:
+            self._attrs[ATTR_MILEAGE] = jsonresult['totalMileage']
+
+    def update(self):
         """Fetch new state data for the sensor.
 
         This is the only method that should fetch new data for Home Assistant.
         """
         # Run standard update
         try:
-            jsonresult = await self._wrapper.apiGetBatteryStatus(self._vin)
-            _LOGGER.debug("Update result: %s" % jsonresult)
-            self.process_response(jsonresult['data']['attributes'])
-        except MyRenaultServiceException as e:
-            _LOGGER.error("Update failed: %s" % e)
+            jsonresult = self._vehicle.battery_status()
+            _LOGGER.debug("Battery update result: %s" % jsonresult)
+            self.process_battery_response(jsonresult)
+        except Exception as e:
+            _LOGGER.warning("Battery update failed: %s" % traceback.format_exc())
+
+        try:
+            jsonresult =  self._vehicle.mileage()
+            _LOGGER.debug("Mileage update result: %s" % jsonresult)
+            self.process_mileage_response(jsonresult)
+        except Exception as e:
+            _LOGGER.warning("Mileage update failed: %s" % traceback.format_exc())

@@ -1,0 +1,13 @@
+---
+# Sensor to get the mileage of Renault Zoé
+#
+# https://github.com/epenet/hassRenaultZE
+#
+platform: template
+sensors:
+  zoe_mileage:
+    value_template:  "{{ state_attr('sensor.zoe' , 'mileage') }}"
+    friendly_name: "kilométrage"
+    unit_of_measurement: "km"
+    friendly_name: "Autonomie maximum à 100%"
+    unit_of_measurement: "km"

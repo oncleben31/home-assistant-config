@@ -25,6 +25,6 @@
 +/ known_devices.yaml
 +/ secrets.yaml
 +/ zwave_device_config.yaml
-+/ HA_VERSION
++/ .HA_VERSION
 - export-lovelace.yaml
 - *
