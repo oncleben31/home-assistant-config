@@ -12,11 +12,9 @@ pr:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: python --version
-  displayName: 'Check python version'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+jobs:
+- job: 'YAML_lint'
+  container: sdesbure/yamllint
+  steps:
+  - script: yamllint .
+    displayName: 'Run yamllint'
