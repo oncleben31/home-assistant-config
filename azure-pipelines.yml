@@ -9,13 +9,18 @@ trigger:
 pr:
 - master
 
+resources:
+  containers:
+  - container: yamllint
+    image: sdesbure/yamllint
+
 stages:
 - stage: 'Validation'
   jobs:
   - job: 'YAML_lint'
     pool:
       vmImage: 'ubuntu-latest'
-    container: sdesbure/yamllint
+    container: yamllint
     steps:
     - script: yamllint .
       displayName: 'Run yamllint'
