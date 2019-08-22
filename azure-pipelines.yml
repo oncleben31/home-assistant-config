@@ -12,9 +12,11 @@ pr:
 pool:
   vmImage: 'ubuntu-latest'
 
-jobs:
-- job: 'YAML_lint'
-  container: sdesbure/yamllint
-  steps:
-  - script: yamllint .
-    displayName: 'Run yamllint'
+stages:
+- stage: 'Validation'
+  jobs:
+  - job: 'YAML_lint'
+    container: sdesbure/yamllint
+    steps:
+    - script: yamllint .
+      displayName: 'Run yamllint'
