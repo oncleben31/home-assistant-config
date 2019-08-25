@@ -23,8 +23,9 @@
             - Oui:/resetRocky, Redemande:/redemandeRocky, Demain:/demainRocky
         message: >
           Rocky a été utilisé aujourd'hui et le bac n'a pas été vidé depuis
-          {{ state_attr('vacuum.rocky', 'cleaning_count') | int - states('variable.nb_cleaning_last_dust_bin_emptied') | int }}
-          nettoyages ({{state_attr('vacuum.rocky','total_cleaned_area') | int - state_attr('variable.nb_cleaning_last_dust_bin_emptied','area')| int }}
+          {{ state_attr('vacuum.rocky', 'cleaning_count') | int - states('variable.nb_cleaning_last_dust_bin_emptied')
+          | int }} nettoyages ({{state_attr('vacuum.rocky','total_cleaned_area')
+          | int - state_attr('variable.nb_cleaning_last_dust_bin_emptied','area')| int }}
           m²). Il a besoin que l'on vide son bac. Est-ce déjà fait ?
 
   condition:

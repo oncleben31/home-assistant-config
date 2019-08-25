@@ -6,11 +6,11 @@
 #
 - alias: notify_zoe_charge_start
   initial_state: true
-  trigger: 
+  trigger:
     - platform: state
       entity_id: binary_sensor.zoe_charging
       to: 'on'
-  action: 
+  action:
     - service: notify.telegram
       data_template:
         message: >
@@ -18,11 +18,11 @@
 
 - alias: notify_zoe_charge_end
   initial_state: true
-  trigger: 
+  trigger:
     - platform: state
       entity_id: binary_sensor.zoe_charging
       to: 'off'
-  action: 
+  action:
     - service: notify.telegram
       data_template:
         message: >

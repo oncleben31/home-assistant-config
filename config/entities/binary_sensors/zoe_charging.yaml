@@ -9,17 +9,16 @@ sensors:
   zoe_charging:
     friendly_name: "Charge en cours"
     value_template: >-
-      {%- if is_state_attr('sensor.zoe', 'charging', true) 
+      {%- if is_state_attr('sensor.zoe', 'charging', true)
       -%}
       true
       {%- else -%}
       false
       {%- endif %}
     icon_template: >-
-      {%- if is_state_attr('sensor.zoe', 'charging', true) 
+      {%- if is_state_attr('sensor.zoe', 'charging', true)
       -%}
       mdi:battery-charging-30
       {%- else -%}
       mdi:battery-30
       {%- endif %}
-    

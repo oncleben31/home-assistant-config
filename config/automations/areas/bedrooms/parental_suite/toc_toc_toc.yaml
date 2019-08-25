@@ -14,17 +14,17 @@
       click_type: single
   action:
     - service: light.turn_on
-      data: 
+      data:
         entity_id: light.lumieres_dimmable_du_salon
         flash: short
     - delay: 0.5
     - service: light.turn_on
-      data: 
+      data:
         entity_id: light.lumieres_dimmable_du_salon
         flash: short
     - delay: 0.5
     - service: light.turn_on
-      data: 
+      data:
         entity_id: light.lumieres_dimmable_du_salon
         flash: short
     - service: notify.telegram

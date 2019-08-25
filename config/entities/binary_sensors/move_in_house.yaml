@@ -1,5 +1,5 @@
 ---
-# This binary motion sensor, allow to track if any of the sensors of the house 
+# This binary motion sensor, allow to track if any of the sensors of the house
 # detect a movement.
 # Currently only one motion sensor live in the house.
 #
@@ -11,7 +11,7 @@ sensors:
     friendly_name: "Mouvement dans la maison"
     device_class: motion
     value_template: >-
-      {%- if is_state("binary_sensor.motion_sensor_livingroom", "on") 
+      {%- if is_state("binary_sensor.motion_sensor_livingroom", "on")
       -%}
       True
       {%- else -%}

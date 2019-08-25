@@ -1,3 +1,4 @@
+---
 # Ping internal devices to check all systems are up.
 #
 # https://www.home-assistant.io/components/binary_sensor.ping/

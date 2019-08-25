@@ -1,13 +1,13 @@
 ---
-# Notification on reboot 
+# Notification on reboot
 #
 - alias: notification au reboot de Home Assistant
   initial_state: true
   condition: []
   trigger:
-  - event: start
-    platform: homeassistant
+    - event: start
+      platform: homeassistant
   action:
-  - service: notify.telegram
-    data:
-      message: "Home Assitant a redémarré !"
+    - service: notify.telegram
+      data:
+        message: "Home Assitant a redémarré !"

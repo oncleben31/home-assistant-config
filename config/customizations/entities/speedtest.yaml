@@ -1,5 +1,5 @@
 ---
-# Change Speedtest UI friendly name 
+# Change Speedtest UI friendly name
 #
 sensor.speedtest_download:
   friendly_name: 'Download'

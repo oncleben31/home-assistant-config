@@ -1,6 +1,6 @@
 ---
 # Linky provide power consumtion in France.
-# I use of a custom component by grea09 as the official component is 
+# I use of a custom component by grea09 as the official component is
 # too simple
 #
 # https://github.com/home-assistant/home-assistant/pull/20535
@@ -11,6 +11,6 @@ username: !secret linky_username
 password: !secret linky_password
 # No HP/HC
 peak_hours:
-  - ["00:00","24:00"]
+  - ["00:00", "24:00"]
 peak_hours_cost: 0.09864
 offpeak_hours_cost: 0.09864

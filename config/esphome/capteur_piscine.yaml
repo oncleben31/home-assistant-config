@@ -1,3 +1,4 @@
+---
 esphome:
   name: capteur_piscine
   platform: ESP32
@@ -35,12 +36,11 @@ sensor:
     update_interval: 20s
 
 deep_sleep:
-#  run_duration: 20s
-#  sleep_duration: 1h
+  # run_duration: 20s
+  # sleep_duration: 1h
   run_duration: 30s
   sleep_duration: 1min
   id: deep_sleep_1
-  #TODO: prevent deep sleep
 
 binary_sensor:
   # Node status in Home Assistant
@@ -52,7 +52,7 @@ binary_sensor:
     name: "Input Boolean From Home Assistant"
     entity_id: input_boolean.stop_deep_sleep
     on_press:
-      then: 
+      then:
         - deep_sleep.prevent: deep_sleep_1
     on_release:
       then:

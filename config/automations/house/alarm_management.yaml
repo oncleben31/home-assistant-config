@@ -19,7 +19,7 @@
     entity_id: alarm_control_panel.ha_alarm
     state: 'armed_away'
 
-#Notify if alarm is triggered
+# Notify if alarm is triggered
 - alias: 'Send notification when alarm triggered'
   initial_state: true
   trigger:

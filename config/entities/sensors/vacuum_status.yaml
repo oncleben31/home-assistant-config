@@ -1,7 +1,8 @@
 ---
 # Sensor to monitor internal states of my Xiaomi Vacuum Cleaner.
 # Indeed, states of the vacuum component is standard for all vacuum platforms
-# Integration in Telegram inspired by https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
+# Integration in Telegram inspired by
+# https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
 #
 # https://www.home-assistant.io/components/sensor.template/
 #

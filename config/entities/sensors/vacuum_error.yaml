@@ -1,6 +1,7 @@
 ---
 # Sensor to monitor error states of my Xiaomi Vacuum Cleaner.
-# Integration in Telegram inspired by https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
+# Integration in Telegram inspired by
+# https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
 #
 # https://www.home-assistant.io/components/sensor.template/
 #
