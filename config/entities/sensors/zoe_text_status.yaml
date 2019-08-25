@@ -18,4 +18,3 @@ sensors:
       {%- else -%}
       Non Branchée
       {%- endif %}
-    

@@ -7,7 +7,7 @@
 
 platform: group
 name: "Lumières dimmable du salon"
-entities: 
+entities:
   - light.salon_coin
   - light.salon_droite
   - light.salon_gauche

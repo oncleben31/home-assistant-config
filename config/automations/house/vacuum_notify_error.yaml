@@ -1,7 +1,8 @@
 ---
 # Send a notification on Telegram if the Vacuum raise an Error
 #
-# Integration in Telegram inspired by https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
+# Integration in Telegram inspired by
+# https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
 #
 # for the Xiaomi Vacuum plateform:
 #   - state: return a standadr state used by all vacuum component

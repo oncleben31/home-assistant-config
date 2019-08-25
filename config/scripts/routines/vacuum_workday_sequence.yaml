@@ -131,8 +131,9 @@ sequence:
   - service: notify.telegram
     data_template:
       message: >
-        Aspiration quotidienne terminée. Rocky a fait 
-        {{ state_attr('vacuum.rocky', 'cleaning_count') | int - states('variable.nb_cleaning_before_daily_routine') | int }}
-        nettoyages ({{state_attr('vacuum.rocky','total_cleaned_area') | int - state_attr('variable.nb_cleaning_before_daily_routine','area')| int }}
-        m²) en {{state_attr('vacuum.rocky','total_cleaning_time') | int - state_attr('variable.nb_cleaning_before_daily_routine','time')| int }}
-        minutes.
+        Aspiration quotidienne terminée. Rocky a fait
+        {{ state_attr('vacuum.rocky', 'cleaning_count') | int - states('variable.nb_cleaning_before_daily_routine')
+        | int }} nettoyages ({{state_attr('vacuum.rocky','total_cleaned_area')
+        | int - state_attr('variable.nb_cleaning_before_daily_routine','area')| int }} m²) en
+         {{state_attr('vacuum.rocky','total_cleaning_time')
+        | int - state_attr('variable.nb_cleaning_before_daily_routine','time')| int }} minutes.

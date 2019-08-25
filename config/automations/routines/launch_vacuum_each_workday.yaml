@@ -6,10 +6,10 @@
 #
 - alias: Lancemnent quotidien de Rocky
   initial_state: true
-  trigger: 
+  trigger:
     platform: time
     at: '10:00:00'
-  condition: 
+  condition:
     condition: and
     conditions:
       - condition: state
@@ -18,7 +18,6 @@
       - condition: state
         entity_id: input_select.house_mode
         state: 'Normal'
-  action: 
+  action:
     service: script.turn_on
     entity_id: script.vacuum_workday_sequence
-    

@@ -1,7 +1,7 @@
 ---
 # Notifications to monitor internal devices.
 # One when detected down. Another when back online.
-# 
+#
 - alias: 'Notification de système KO'
   initial_state: true
   trigger:
@@ -58,11 +58,11 @@
 
 - alias: "Notification memory left too low"
   initial_state: true
-  trigger: 
+  trigger:
     - platform: numeric_state
       entity_id: sensor.memory_use_percent
       above: 90
-  action: 
+  action:
     - service: notify.telegram
       data_template:
         message: >
@@ -73,4 +73,3 @@
         message: >-
           Attention la mémoire utilisée à dépassé 90%.
         notification_id: memomry_too_high
-      

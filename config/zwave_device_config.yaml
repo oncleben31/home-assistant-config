@@ -1,3 +1,4 @@
+---
 sensor.prise_pc_current:
   ignored: true
   polling_intensity: 0

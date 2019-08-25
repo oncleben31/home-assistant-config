@@ -13,4 +13,4 @@ devices:
     data_type:
       - Humidity
       - Temperature
-automatic_add: True
+automatic_add: true

@@ -1,3 +1,4 @@
+---
 esphome:
   name: capteur_piscine
   platform: ESP32
@@ -31,5 +32,3 @@ sensor:
       name: "Xiaomi MiFlora Soil Conductivity"
     battery_level:
       name: "Xiaomi MiFlora Battery Level"
-
-

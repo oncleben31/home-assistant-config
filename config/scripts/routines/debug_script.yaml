@@ -1,3 +1,4 @@
+---
 alias: debug_script
 sequence:
   - service: input_boolean.turn_off

@@ -9,7 +9,7 @@
   radius: 250
   passive: false
   icon: mdi:airplane-takeoff
-  
+
 - name: Travail Alex
   latitude: !secret latitude_work_A
   longitude: !secret longitude_work_A

@@ -1,6 +1,7 @@
 ---
 # Timer component allow to manage time related event
 #
-#https://www.home-assistant.io/components/timer/
+# https://www.home-assistant.io/components/timer/
 #
 timer: !include_dir_merge_named ../entities/timers
+
