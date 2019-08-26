@@ -59,3 +59,7 @@ To help me I used the following custom compoents:
 - [InfluxDB](https://github.com/hassio-addons/addon-influxdb)
 - [SSH & Web Terminal](https://github.com/hassio-addons/addon-ssh)
 - [Unifi Controller](https://github.com/hassio-addons/addon-unifi)
+
+## one more thing
+
+I have and will add specific explanations in the wiki. So don't forget to visit it.
