@@ -28,11 +28,11 @@ discord:
   sidebar-text-color: "#696d68"
   sidebar-selected-text-color: "var(--accent-color)"
   sidebar-selected-icon-color: "#ffffff"
-  
+
   label-badge-border-color: "green"
   primary-background-color: "#40444B"
   secondary-background-color: "#202225"
-  
+
   label-badge-text-color: "var(--primary-text-color)"
   label-badge-background-color: "#2E333A"
   label-badge-red: "#DF4C1E"
@@ -45,7 +45,7 @@ discord:
   paper-grey-200: "#3e4248"
   paper-grey-500: "#9e9e9e"
 
-  #popup
+  # popup
   iron-overlay-backdrop-background-color: "#000000"
   iron-overlay-backdrop-opacity: "0.8"
   more-info-header-color: "#7289da"
@@ -53,7 +53,7 @@ discord:
   paper-dialog-background-color: "#202225"
   paper-dialog-color: "#43B581"
 
-  #derived colors, to keep existing themes mostly working
+  # derived colors, to keep existing themes mostly working
   paper-card-header-color: "var(--accent-color)"
   paper-card-background-color: "#2F3136"
   paper-item-icon-color: "var(--primary-text-color)"
@@ -70,16 +70,17 @@ discord:
   paper-toggle-button-unchecked-button-color: "var(--disabled-text-color)"
   paper-toggle-button-unchecked-bar-color: "var(--disabled-text-color)"
   paper-toggle-button-unchecked-ink-color: "var(--disabled-text-color)"
-  
+
   paper-slider-knob-color: "var(--accent-color)"
   paper-slider-knob-start-color: "var(--accent-color)"
   paper-slider-pin-color: "var(--accent-color)"
   paper-slider-active-color: "var(--accent-color)"
-  paper-slider-container-color: "linear-gradient(var(--primary-background-color), var(--secondary-background-color)) no-repeat"
+  paper-slider-container-color: "linear-gradient(var(--primary-background-color),
+    var(--secondary-background-color)) no-repeat"
   paper-slider-secondary-color: "var(--secondary-background-color)"
   paper-slider-disabled-active-color: "var(--disabled-text-color)"
   paper-slider-disabled-secondary-color: "var(--disabled-text-color)"
-  
+
   # for paper-spinner
   google-red-500: "#db4437"
   google-blue-500: "#4285f4"
@@ -94,4 +95,3 @@ discord:
   light-primary-opacity: "1.0"
 
   mdc-theme-primary: "#43B581"
-  
