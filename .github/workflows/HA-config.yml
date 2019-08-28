@@ -1,6 +1,7 @@
+---
 name: Home Assistant configuration
 
-on: push
+"on": push
 
 jobs:
   build:
