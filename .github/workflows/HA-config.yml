@@ -1,6 +1,7 @@
+___
 name: Home Assistant configuration
 
-on: [push, pull_request]
+on: push
 
 jobs:
   build:
@@ -8,16 +9,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Set up Python 3.7
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.7
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        # pip install -r requirements_test_all.txt
-    - name: YAML Lint
-      run: |
-        pip install yamllint
-        yamllint .
+      - uses: actions/checkout@v1
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # pip install -r requirements_test_all.txt
+      - name: YAML Lint
+        run: |
+          pip install yamllint
+          yamllint .
