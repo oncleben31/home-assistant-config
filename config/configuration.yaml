@@ -40,3 +40,7 @@ homeassistant:
 # This integration doesn't work in split configuration see #48
 hacs:
   token: !secret my_github_access_token
+  sidepanel_title: HACS
+  python_script: true
+  theme: true
+
