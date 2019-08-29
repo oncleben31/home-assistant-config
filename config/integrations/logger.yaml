@@ -5,9 +5,9 @@
 #
 logger:
   default: warning
-  logs:
-    homeassistant.components.meteo_france: debug
-    custom_components.renaultze: debug
+# logs:
+#    homeassistant.components.meteo_france: debug
+#    custom_components.renaultze: debug
 #    homeassistant.components.xiaomi_aqara: debug
 #    custom_components.linky_custom: debug
 #    homeassistant.components.recorder: debug
