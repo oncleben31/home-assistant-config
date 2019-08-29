@@ -1,9 +1,0 @@
----
-# Google Home compent for tracket and timer access
-#
-# https://www.home-assistant.io/components/googlehome/
-#
-googlehome:
-  devices:
-    - host: !secret local_ip_google_home
-      track_devices: false
