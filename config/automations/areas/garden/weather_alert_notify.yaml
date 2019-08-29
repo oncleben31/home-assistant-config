@@ -20,7 +20,6 @@
           {% for attr in ['Vent violent', 'Pluie-innodation', 'Orages', 'Inondation', 'Neige-verglas',
                           'Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion'] %}
           {% if state_attr('sensor.aurade_weather_alert', attr) != 'Vert' %}
-
           - {{attr}}: {{ state_attr('sensor.aurade_weather_alert', attr) }}
           {% endif %}
           {% endfor %}
