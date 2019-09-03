@@ -27,3 +27,4 @@ recorder:
       - input_boolean
       - script
       - automation
+      - person
