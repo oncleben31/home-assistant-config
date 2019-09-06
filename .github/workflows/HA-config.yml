@@ -5,9 +5,7 @@ name: Home Assistant configuration
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
       - name: Set up Python 3.7
@@ -22,3 +20,11 @@ jobs:
         run: |
           pip install yamllint
           yamllint .
+
+  markdown-link-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 1
+    - uses: gaurav-nelson/github-action-markdown-link-check@v0.2.0
