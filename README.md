@@ -1,4 +1,13 @@
+
+
 # My Home Assistant config
+
+![Project Maintenance][maintenance-shield]
+[![License][license-shield]](LICENSE.md)
+
+[![][workflow-shield]][workflow]
+[![GitHub Activity][commits-shield]][commits]
+[![GitHub Last Commit][last-commit-shield]][commits]
 
 Welcome to my Home Assistant configuration!
 
@@ -76,3 +85,11 @@ The following integrations are not configured in YAML files. So you won't see it
 ## one more thing
 
 I have and will add specific explanations in the wiki. So don't forget to visit it.
+
+[commits-shield]: https://img.shields.io/github/commit-activity/y/oncleben31/home-assistant-config
+[commits]: https://github.com/oncleben31/home-assistant-config/commits/master
+[last-commit-shield]: https://img.shields.io/github/last-commit/oncleben31/home-assistant-config.svg
+[license-shield]: https://img.shields.io/github/license/oncleben31/home-assistant-config.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2019.svg
+[workflow-shield]: https://github.com/oncleben31/home-assistant-config/workflows/Home%20Assistant%20configuration/badge.svg
+[workflow]: https://github.com/oncleben31/home-assistant-config/actions
