@@ -42,6 +42,7 @@ You can find in my automations and scripts the following features:
 - Alarm management.
 - Check and notification if lights could be switch off.
 - Send notification in case of weather alert or rain expected.
+- Send notification according to UV forecast condition.
 
 ## Custom components used
 
