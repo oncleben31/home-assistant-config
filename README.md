@@ -9,6 +9,9 @@
 [![GitHub Activity][commits-shield]][commits]
 [![GitHub Last Commit][last-commit-shield]][commits]
 
+[![Discord francophone][discord-shield]][discord]
+[![Community Forum][forum-shield]][forum]
+
 Welcome to my Home Assistant configuration!
 
 Don't be scared by the non standard structure of the Home Assistant configuration folder.
@@ -88,6 +91,10 @@ I have and will add specific explanations in the wiki. So don't forget to visit 
 
 [commits-shield]: https://img.shields.io/github/commit-activity/y/oncleben31/home-assistant-config
 [commits]: https://github.com/oncleben31/home-assistant-config/commits/master
+[discord-shield]: https://img.shields.io/discord/542746125292273674
+[discord]: https://discord.gg/JeTFJzE
+[forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
+[forum]: https://community.home-assistant.io/?u=oncleben31
 [last-commit-shield]: https://img.shields.io/github/last-commit/oncleben31/home-assistant-config.svg
 [license-shield]: https://img.shields.io/github/license/oncleben31/home-assistant-config.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2019.svg
