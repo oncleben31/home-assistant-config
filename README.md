@@ -23,7 +23,7 @@ You can watch [a video by Franck](https://www.youtube.com/watch?v=lndeybw21PY) e
 
 I try to add comments and link with external documentations for each YAML file when needed.
 
-## Devices Used
+## Devices used
 
 - Raspbery Pi v3 for hosting Hass.io
 - Xiaomi devices:
