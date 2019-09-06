@@ -7,10 +7,12 @@ I'm inspired by [the strucutre propsed by Franck Nijhof](https://github.com/fren
 
 This system is very modular and very differently structured compared to other configurations you'll find online.
 Basically, each file in the repository does 1 (one, uno, eins)
-thing only! Search file with the name of the component, click through it, you'll get it pretty fast. The configuration.yaml is only used to bootstrap the system
-and contains some minimal, but vital, settings.
+thing only! Search file with the name of the component, click through it, you'll get it pretty fast. The `configuration.yaml`
+is only used to bootstrap the system and contains some minimal, but vital, settings.
 
 You can watch [a video by Franck](https://www.youtube.com/watch?v=lndeybw21PY) explaining why is doing that way.
+
+I try to add comments and link with external documentations for each YAML file when needed.
 
 ## Devices Used
 
