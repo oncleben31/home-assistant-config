@@ -29,3 +29,15 @@ jobs:
           fetch-depth: 1
       - name: Link Checker
         uses: gaurav-nelson/github-action-markdown-link-check@0.2.0
+  
+  markdown-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: install dependencies
+        run: |
+          gem install mdl
+          mdl --version
+      - name: Markdown lint
+        run: |
+          mdl --style all --warnings .
