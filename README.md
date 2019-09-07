@@ -66,13 +66,13 @@ You can find in my automations and scripts the following features:
 To help me I used the following custom components:
 
 - [Linky](https://github.com/home-assistant/home-assistant/pull/20535)
-integration. Thanks to **PirionFr** and **Grea04**.
+  integration. Thanks to **PirionFr** and **Grea04**.
 - [hassRenaultZE](https://github.com/epenet/hassRenaultZE): to follow battery
-status of my Zoé eletric car thanks to **epenet**.
+  status of my Zoé eletric car thanks to **epenet**.
 - [HACS](https://github.com/custom-components/hacs) to follow updates of custom
-components and cards.
+  components and cards.
 - [variable](https://github.com/rogro82/hass-variables) integration thanks to
-**rogro82**.
+  **rogro82**.
 
 ## Integrations configured thru HA GUI
 
@@ -80,15 +80,15 @@ The following integrations are not configured in YAML files. So you won't see it
 in this repository:
 
 - [ESPHome](https://www.home-assistant.io/components/esphome/) devices
-integration in HA.
+  integration in HA.
 - [OpenUV](https://www.home-assistant.io/components/openuv/) for UV sensors and
-alert automation with my swiming pool.
+  alert automation with my swiming pool.
 - [IFTTT](https://www.home-assistant.io/components/ifttt/) used for piloting the
-vacuum robot from the Google Home.
+  vacuum robot from the Google Home.
 - [Google Cast](https://www.home-assistant.io/components/cast/) used for some
-TTS messages in the house.
+  TTS messages in the house.
 - [Unifi](https://www.home-assistant.io/components/unifi/) for presence
-detection and system monitoring.
+  detection and system monitoring.
 
 ## Addons used
 
