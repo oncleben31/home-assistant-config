@@ -1,11 +1,9 @@
-
-
 # My Home Assistant config
 
 ![Project Maintenance][maintenance-shield]
 [![License][license-shield]](LICENSE.md)
 
-![][workflow-shield]
+![Github workwlow][workflow-shield]
 [![GitHub Activity][commits-shield]][commits]
 [![GitHub Last Commit][last-commit-shield]][commits]
 
