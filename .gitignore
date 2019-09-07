@@ -26,8 +26,8 @@ config/zwscene.xml
 config/esphome/secrets.yaml
 config/esphome/**/
 
-# Ignore files created by IDE's
-.vscode
-
 # OS files
 .DS_Store
+
+# Virtual environement
+venv

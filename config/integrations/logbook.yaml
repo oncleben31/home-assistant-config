@@ -15,6 +15,7 @@ logbook:
       - vacuum
       - automation
       - device_tracker
+      - person
   exclude:
     entities:
       - sensor.since_last_boot
