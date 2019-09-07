@@ -34,11 +34,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Setup Ruby 
+      - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.x' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
-      - name: install dependencies
+          ruby-version: '2.x'
+      - name: Install dependencies
         run: |
           gem install mdl
           mdl --version
