@@ -1,3 +1,8 @@
+---
+# A Discord theme by @Wimip
+#
+# https://github.com/wimip/home-assistant-themes
+#
 wiki:
   primary-color: "#000000"
   accent-color: "#66e62bdb"
@@ -41,7 +46,8 @@ wiki:
   paper-slider-knob-start-color: "var(--accent-color)"
   paper-slider-pin-color: "var(--accent-color)"
   paper-slider-active-color: "var(--accent-color)"
-  paper-slider-container-color: "linear-gradient(var(--primary-background-color), var(--secondary-background-color)) no-repeat"
+  paper-slider-container-color: "linear-gradient(var(--primary-background-color),
+    var(--secondary-background-color)) no-repeat"
   paper-slider-secondary-color: "var(--secondary-background-color)"
   paper-slider-disabled-active-color: "var(--disabled-text-color)"
   paper-slider-disabled-secondary-color: "var(--disabled-text-color)"
@@ -49,3 +55,4 @@ wiki:
   google-green-500: "#39E949"
 
   off-color: "#3c331d"
+  
