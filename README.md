@@ -93,7 +93,7 @@ in this repository:
 ## Addons used
 
 - [Backup Hassio to Google Drive](https://github.com/samccauley/addon-hassiogooglebackup#readme)
-to manage backup automaticaly.
+  to manage backup automaticaly.
 - [ESPHome](https://esphome.io)
 - [InfluxDB](https://github.com/hassio-addons/addon-influxdb)
 - [SSH & Web Terminal](https://github.com/hassio-addons/addon-ssh)
