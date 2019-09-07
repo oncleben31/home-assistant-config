@@ -4,7 +4,7 @@ name: Home Assistant configuration
 "on": push
 
 jobs:
-  build:
+  yaml-lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -21,10 +21,11 @@ jobs:
           pip install yamllint
           yamllint .
 
-  markdown-link-check:
+  link-checker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - name: Link Checker
+        uses: peter-evans/link-checker@v1.0.1
         with:
-          fetch-depth: 1
-      - uses: gaurav-nelson/github-action-markdown-link-check@0.2.0
+          args: -v -r *
