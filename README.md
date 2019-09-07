@@ -12,17 +12,22 @@
 
 Welcome to my Home Assistant configuration!
 
-Don't be scared by the non standard structure of the Home Assistant configuration folder.
+Don't be scared by the non standard structure of the Home Assistant
+configuration folder.
 I'm inspired by [the strucutre propsed by Franck Nijhof](https://github.com/frenck/home-assistant-config).
 
-This system is very modular and very differently structured compared to other configurations you'll find online.
-Basically, each file in the repository does 1 (one, uno, eins)
-thing only! Search file with the name of the component, click through it, you'll get it pretty fast. The `configuration.yaml`
-is only used to bootstrap the system and contains some minimal, but vital, settings.
+This system is very modular and very differently structured compared to other
+configurations you'll find online.
+Basically, each file in the repository does 1 (one, uno, eins) thing only!
+Search file with the name of the component, click through it, you'll get it
+pretty fast. The `configuration.yaml` is only used to bootstrap the system and
+contains some minimal, but vital, settings.
 
-You can watch [a video by Franck](https://www.youtube.com/watch?v=lndeybw21PY) explaining why is doing that way.
+You can watch [a video by Franck](https://www.youtube.com/watch?v=lndeybw21PY)
+explaining why is doing that way.
 
-I try to add comments and link with external documentations for each YAML file when needed.
+I try to add comments and link with external documentations for each YAML file
+when needed.
 
 ## Devices used
 
@@ -43,7 +48,7 @@ I try to add comments and link with external documentations for each YAML file w
 - Plex server running on my NAS
 
 ## Automations
-  
+
 You can find in my automations and scripts the following features:
 
 - Regular Home Assistant backup
@@ -60,24 +65,35 @@ You can find in my automations and scripts the following features:
 
 To help me I used the following custom components:
 
-- [Linky](https://github.com/home-assistant/home-assistant/pull/20535) integration. Thanks to **PirionFr** and **Grea04**.
-- [hassRenaultZE](https://github.com/epenet/hassRenaultZE): to follow battery status of my Zoé eletric car thanks to **epenet**.
-- [HACS](https://github.com/custom-components/hacs) to follow updates of custom components and cards.
-- [variable](https://github.com/rogro82/hass-variables) integration thanks to **rogro82**.
+- [Linky](https://github.com/home-assistant/home-assistant/pull/20535)
+integration. Thanks to **PirionFr** and **Grea04**.
+- [hassRenaultZE](https://github.com/epenet/hassRenaultZE): to follow battery
+status of my Zoé eletric car thanks to **epenet**.
+- [HACS](https://github.com/custom-components/hacs) to follow updates of custom
+components and cards.
+- [variable](https://github.com/rogro82/hass-variables) integration thanks to
+**rogro82**.
 
 ## Integrations configured thru HA GUI
 
-The following integrations are not configured in YAML files. So you won't see it in this repository:
+The following integrations are not configured in YAML files. So you won't see it
+in this repository:
 
-- [ESPHome](https://www.home-assistant.io/components/esphome/) devices integration in HA.
-- [OpenUV](https://www.home-assistant.io/components/openuv/) for UV sensors and alert automation with my swiming pool.
-- [IFTTT](https://www.home-assistant.io/components/ifttt/) used for piloting the vacuum robot from the Google Home.
-- [Google Cast](https://www.home-assistant.io/components/cast/) used for some TTS messages in the house.
-- [Unifi](https://www.home-assistant.io/components/unifi/) for presence detection and system monitoring.
+- [ESPHome](https://www.home-assistant.io/components/esphome/) devices
+integration in HA.
+- [OpenUV](https://www.home-assistant.io/components/openuv/) for UV sensors and
+alert automation with my swiming pool.
+- [IFTTT](https://www.home-assistant.io/components/ifttt/) used for piloting the
+vacuum robot from the Google Home.
+- [Google Cast](https://www.home-assistant.io/components/cast/) used for some
+TTS messages in the house.
+- [Unifi](https://www.home-assistant.io/components/unifi/) for presence
+detection and system monitoring.
 
 ## Addons used
 
-- [Backup Hassio to Google Drive](https://github.com/samccauley/addon-hassiogooglebackup#readme) to manage backup automaticaly.
+- [Backup Hassio to Google Drive](https://github.com/samccauley/addon-hassiogooglebackup#readme)
+to manage backup automaticaly.
 - [ESPHome](https://esphome.io)
 - [InfluxDB](https://github.com/hassio-addons/addon-influxdb)
 - [SSH & Web Terminal](https://github.com/hassio-addons/addon-ssh)
@@ -85,7 +101,8 @@ The following integrations are not configured in YAML files. So you won't see it
 
 ## one more thing
 
-I have and will add specific explanations in the wiki. So don't forget to visit it.
+I have and will add specific explanations in the wiki. So don't forget to visit
+it.
 
 [commits-shield]: https://img.shields.io/github/commit-activity/y/oncleben31/home-assistant-config
 [commits]: https://github.com/oncleben31/home-assistant-config/commits/master
