@@ -4,12 +4,10 @@ name: Home Assistant configuration
 "on": push
 
 jobs:
-  build:
-
+  yaml-lint:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@master
       - name: Set up Python 3.7
         uses: actions/setup-python@v1
         with:
@@ -22,3 +20,28 @@ jobs:
         run: |
           pip install yamllint
           yamllint .
+
+  link-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Link Checker
+        uses: gaurav-nelson/github-action-markdown-link-check@0.2.0
+
+  markdown-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.x'
+      - name: Install dependencies
+        run: |
+          gem install mdl
+          mdl --version
+      - name: Markdown lint
+        run: |
+          mdl --style all --warnings .
