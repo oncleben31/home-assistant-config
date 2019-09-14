@@ -1,9 +1,0 @@
----
-# Computation of the theoretical mileage commited for the Zoé
-# 
-platform: template
-sensors:
-  zoe_mileage_comitment:
-    value_template: "{{ (((as_timestamp(now()) - as_timestamp('2018-08-11 0:0:00+02:00'))/ 86400) * 17500 / 365 + 3000) | round}}"
-    friendly_name: "kilométrage cible"
-    unit_of_measurement: "km"

@@ -28,3 +28,4 @@ recorder:
       - script
       - automation
       - person
+      - variable

@@ -1,0 +1,9 @@
+---
+# Difference between mileage targeted and current mileage
+#
+platform: template
+sensors:
+  zoe_mileage_diff:
+    value_template: "{{ states('sensor.zoe_mileage')| int - states('sensor.zoe_mileage_target') | int}}"
+    friendly_name: "Écart de kilométrage"
+    unit_of_measurement: "km"

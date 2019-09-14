@@ -9,3 +9,4 @@ sensors:
     value_template: "{{ state_attr('sensor.zoe', 'mileage')}}"
     friendly_name: "kilométrage"
     unit_of_measurement: "km"
+    icon_template: mdi:counter

@@ -16,6 +16,8 @@ logbook:
       - automation
       - device_tracker
       - person
+    entities:
+      - variable.zoe_weekly_mileage
   exclude:
     entities:
       - sensor.since_last_boot

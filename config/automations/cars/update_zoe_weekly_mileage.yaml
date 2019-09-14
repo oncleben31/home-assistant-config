@@ -1,0 +1,22 @@
+---
+# Update the history of last motion using the 'last_motion' variable
+#
+- alias: "Update Last Zoe weekly mileage"
+  initial_state: true
+  trigger:
+    - platform: time
+      at: "00:00:00"
+  condition:
+    - condition: template
+      # update every monday at 00h00
+      value_template: "{{  now().isoweekday() == 1 }}"
+  action:
+    - service: variable.set_variable
+      data:
+        variable: zoe_weekly_mileage
+        attributes_template: >
+            {
+              "last_mileage": "{{ states('sensor.zoe_mileage') }}"
+            }
+      data_template:
+        value: "{{ states('sensor.zoe_mileage') | int - variable.attributes.last_mileage | int }}"
