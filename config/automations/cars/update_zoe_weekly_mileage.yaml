@@ -20,3 +20,12 @@
             }
       data_template:
         value: "{{ states('sensor.zoe_mileage') | int - variable.attributes.last_mileage | int }}"
+    - service: notify.telegram
+      data_template:
+        message: >
+          La Zoé a parcouru {{ states.variable.zoe_weekly_mileage.state_with_unit }} cette semaine.
+          {% if states('variable.zoe_weekly_mileage') | int > 335 -%}
+          C'est {{ states('variable.zoe_weekly_mileage') | int - 335 }} km de plus que prévu.
+          {%- else -%}
+          C'est {{ 335 - states('variable.zoe_weekly_mileage') | int  }} km de moins que prévu.
+          {%- endif %}
