@@ -4,6 +4,11 @@
 platform: template
 sensors:
   zoe_mileage_diff:
-    value_template: "{{ states('sensor.zoe_mileage')| int - states('sensor.zoe_mileage_target') | int}}"
-    friendly_name: "Écart de kilométrage"
+    value_template: >-
+      {% if states('sensor.zoe') == 'unknown' -%}
+      unknown
+      {%- else -%}
+      {{ states('sensor.zoe_mileage')| int - states('sensor.zoe_mileage_target') | int}}
+      {%- endif %}
     unit_of_measurement: "km"
+    friendly_name: "Écart de kilométrage"

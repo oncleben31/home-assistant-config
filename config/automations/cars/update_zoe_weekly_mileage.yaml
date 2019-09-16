@@ -18,8 +18,7 @@
             {
               "last_mileage": "{{ states('sensor.zoe_mileage') }}"
             }
-      data_template:
-        value: "{{ states('sensor.zoe_mileage') | int - variable.attributes.last_mileage | int }}"
+        value_template: "{{ states('sensor.zoe_mileage') | int - variable.attributes.last_mileage | int }}"
     - service: notify.telegram
       data_template:
         message: >
