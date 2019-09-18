@@ -1,0 +1,16 @@
+---
+# Curent mileage in the week.
+#
+# Reset on monday at 00h00
+#
+platform: template
+sensors:
+  zoe_curent_week_mileage:
+    value_template: >-
+      {% if states('sensor.zoe') == 'unknown' -%}
+      unknown
+      {%- else -%}
+      {{ states('sensor.zoe_mileage')| int - state_attr('variable.zoe_weekly_mileage', 'last_mileage')}}
+      {%- endif %}
+    unit_of_measurement: "km"
+    friendly_name: "Kilométrage de cette semaine"
