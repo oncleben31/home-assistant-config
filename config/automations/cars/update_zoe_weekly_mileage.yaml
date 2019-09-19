@@ -1,5 +1,5 @@
 ---
-# Update the history of last motion using the 'last_motion' variable
+# Update the previous week weekly mileage 'zoe_weekly_mileage' variable
 #
 - alias: "Update Last Zoe weekly mileage"
   initial_state: true

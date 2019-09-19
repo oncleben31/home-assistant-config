@@ -6,7 +6,12 @@
 platform: template
 sensors:
   zoe_mileage:
-    value_template: "{{ state_attr('sensor.zoe', 'mileage')}}"
+    value_template: >-
+      {% if states('sensor.zoe') == 'unknown' -%}
+      unknown
+      {%- else -%}
+      {{ state_attr('sensor.zoe', 'mileage')}}
+      {%- endif %}
     friendly_name: "kilométrage"
     unit_of_measurement: "km"
     icon_template: mdi:counter
