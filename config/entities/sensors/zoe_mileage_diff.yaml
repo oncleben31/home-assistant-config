@@ -5,9 +5,7 @@ platform: template
 sensors:
   zoe_mileage_diff:
     value_template: >-
-      {% if (states('sensor.zoe') == 'unknown') or states('sensor.zoe_mileage') == 'unknown' -%}
-      unknown
-      {%- else -%}
+      {% if states('sensor.zoe_mileage') is not none -%}
       {{ states('sensor.zoe_mileage')| int - states('sensor.zoe_mileage_target') | int}}
       {%- endif %}
     unit_of_measurement: "km"

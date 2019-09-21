@@ -8,7 +8,7 @@ platform: template
 sensors:
   zoe_max_range:
     value_template: >
-      {% if states('sensor.zoe') | float != 0.0 %}
+      {% if (states('sensor.zoe') | float != 0.0) and (state_attr('sensor.zoe' , 'remaining_range') is not none) %}
         {{ (state_attr('sensor.zoe' , 'remaining_range') | float
         / states('sensor.zoe') | float * 100)
        | round(0) }}

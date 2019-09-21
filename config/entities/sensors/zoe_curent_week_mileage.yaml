@@ -7,10 +7,8 @@ platform: template
 sensors:
   zoe_curent_week_mileage:
     value_template: >-
-      {% if states('sensor.zoe') == 'unknown' -%}
-      unknown
-      {%- else -%}
-      {{ states('sensor.zoe_mileage')| int - state_attr('variable.zoe_weekly_mileage', 'last_mileage')}}
+      {% if state_attr('sensor.zoe' , 'mileage') is not none -%}
+        {{ state_attr('sensor.zoe' , 'mileage') | int - state_attr('variable.zoe_weekly_mileage', 'last_mileage')}}
       {%- endif %}
     unit_of_measurement: "km"
     friendly_name: "Kilométrage de cette semaine"
