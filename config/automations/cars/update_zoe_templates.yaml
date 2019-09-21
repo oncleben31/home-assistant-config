@@ -1,0 +1,12 @@
+---
+# Update a template sensor every 6 hours
+#
+- alias: update target mileage
+  initial_state: true
+  trigger:
+    platform: time_pattern
+    hours: "/6"
+  action:
+    - service: homeassistant.update_entity
+      data_template:
+        entity_id: sensor.zoe_mileage_target

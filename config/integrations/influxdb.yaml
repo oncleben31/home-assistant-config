@@ -32,10 +32,15 @@ influxdb:
       - sensor.aurade_wind_speed
       - sensor.aurade_next_rain
       - sensor.aurade_temperature
+      - sensor.aurade_weather_alert
+      - sensor.aurade_uv
 
-      # Renaault Zoe monitoring
+      # Renault Zoe monitoring
       - sensor.zoe
       - sensor.zoe_max_range
+      - sensor.zoe_mileage_diff
+      - variable.zoe_weekly_mileage
+      - sensor.zoe_curent_week_mileage
 
       # Electrical consumtion monitoring
       - sensor.prise_pc_powe

@@ -1,0 +1,11 @@
+---
+# Used for weekly mileage computation
+#
+# https://github.com/rogro82/hass-variables
+#
+name: "Kilométrage hebdomadaire"
+value: "unknown"
+restore: true
+attributes:
+  icon: mdi:map-marker-distance
+  unit_of_measurement: "km"

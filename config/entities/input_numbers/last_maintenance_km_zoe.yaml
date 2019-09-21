@@ -4,7 +4,7 @@
 last_maintenance_km_zoe:
   name: Kilométrage de la dernière révision de la Zoé
   icon: mdi:counter
+  mode: box
   min: 0
   max: 300000
-  step: 100
   unit_of_measurement: km

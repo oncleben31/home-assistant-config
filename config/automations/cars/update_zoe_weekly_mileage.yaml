@@ -1,0 +1,30 @@
+---
+# Update the previous week weekly mileage 'zoe_weekly_mileage' variable
+#
+- alias: "Update Last Zoe weekly mileage"
+  initial_state: true
+  trigger:
+    - platform: time
+      at: "00:00:00"
+  condition:
+    - condition: template
+      # update every monday at 00h00
+      value_template: "{{  now().isoweekday() == 1 }}"
+  action:
+    - service: variable.set_variable
+      data:
+        variable: zoe_weekly_mileage
+        attributes_template: >
+            {
+              "last_mileage": "{{ states('sensor.zoe_mileage') }}"
+            }
+        value_template: "{{ states('sensor.zoe_mileage') | int - variable.attributes.last_mileage | int }}"
+    - service: notify.telegram
+      data_template:
+        message: >
+          La Zoé a parcouru {{ states.variable.zoe_weekly_mileage.state_with_unit }} cette semaine.
+          {% if states('variable.zoe_weekly_mileage') | int > 335 -%}
+          C'est {{ states('variable.zoe_weekly_mileage') | int - 335 }} km de plus que prévu.
+          {%- else -%}
+          C'est {{ 335 - states('variable.zoe_weekly_mileage') | int  }} km de moins que prévu.
+          {%- endif %}

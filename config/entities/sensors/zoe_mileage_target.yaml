@@ -1,0 +1,14 @@
+---
+# Computation of the theoretical mileage target for the Zoé
+#
+# To check consistency compared to battery and car leasing contract
+#
+platform: template
+sensors:
+  zoe_mileage_target:
+    value_template: >-
+      {{ (((as_timestamp(now()) - as_timestamp('2018-08-11 0:0:00+02:00'))
+      / 86400) * 17500 / 365 + 3000) | round}}
+    friendly_name: "kilométrage cible"
+    unit_of_measurement: "km"
+    icon_template: mdi:bullseye-arrow

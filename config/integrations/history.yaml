@@ -16,3 +16,5 @@ history:
       - sun
       - vacuum
       - person
+    entities:
+      - variable.zoe_weekly_mileage
