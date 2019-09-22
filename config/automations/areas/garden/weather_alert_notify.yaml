@@ -15,14 +15,13 @@
   action:
     - service: notify.telegram
       data_template:
-        message: >-
-          Alerte météo {{states('sensor.aurade_weather_alert')}} en cours.
-          {% for attr in ['Vent violent', 'Pluie-innodation', 'Orages', 'Inondation', 'Neige-verglas',
-                          'Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion'] %}
-          {% if state_attr('sensor.aurade_weather_alert', attr) != 'Vert' %}
-          - {{attr}}: {{ state_attr('sensor.aurade_weather_alert', attr) }}
-          {% endif %}
-          {% endfor %}
+        message: "Alerte météo {{states('sensor.aurade_weather_alert')}} en cours:\n
+          {%- for attr in ['Vent violent', 'Pluie-innodation', 'Orages', 'Inondation', 'Neige-verglas',
+                          'Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion'] -%}
+          {%- if state_attr('sensor.aurade_weather_alert', attr) != 'Vert' %}\n
+          - {{attr}}: {{state_attr('sensor.aurade_weather_alert', attr)}}
+          {%- endif -%}
+          {%- endfor -%}"
 
 - alias: "Send notification when weather alert ends"
   initial_state: true
