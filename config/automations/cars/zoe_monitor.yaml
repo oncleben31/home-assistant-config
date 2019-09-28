@@ -13,8 +13,8 @@
   action:
     - service: notify.telegram
       data_template:
-        message: >
-          La Zoé a commencé une charge à {{ states.sensor.zoe.state_with_unit }}.
+        message: "La Zoé a commencé une charge à
+        {{ states('sensor.zoe')}}\u202F{{state_attr('sensor.zoe', 'unit_of_measurement') }}"
 
 - alias: notify_zoe_charge_end
   initial_state: true
@@ -25,5 +25,5 @@
   action:
     - service: notify.telegram
       data_template:
-        message: >
-          La Zoé a terminé une charge à {{ states.sensor.zoe.state_with_unit }}.
+        message: "La Zoé a terminé une charge à
+        {{ states('sensor.zoe')}}\u202F{{state_attr('sensor.zoe', 'unit_of_measurement') }}"
