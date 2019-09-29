@@ -5,3 +5,42 @@
 # https://www.home-assistant.io/components/cloud/
 #
 cloud:
+  google_actions:
+    # entity and domain filter in the Hass.io UI
+    entity_config:
+      sensor.temperature_parents:
+        name: Température de la chambre des parents
+        aliases:
+         - Température de la suite parentale
+        room: Chambre des Parents
+      sensor.temperature_salon:
+        name: Température du salon
+        room: Salon
+      sensor.temperature_noah:
+        name: Température de la chambre de Noah
+        room: Chambre de Noah
+      sensor.temperature_soren:
+        name: Température de la chambre de Sören
+        room: Chambre de Sören
+      sensor.temperature_athenais:
+        name: Température de la chambre d'Athénaïs
+        room: Chambre de d'Athénaïs
+      sensor.temperature_cave:
+        name: Température de la cave
+        room: Garage
+      switch.prise_tv_switch:
+        name: Prise télé
+        room: Salon
+      switch.prise_pc_switch:
+        name: Prise PC
+        room: Bureau
+      binary_sensor.garage_door:
+        name: Porte du garage
+        aliases:
+          - Porte du sous-sol
+        room: Garage
+      binary_sensor.main_door:
+        name: Porte d'entrée
+        aliases: 
+          - Porte principale
+        room: Entrée

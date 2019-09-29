@@ -89,6 +89,8 @@ in this repository:
   TTS messages in the house.
 - [Unifi](https://www.home-assistant.io/components/unifi/) for presence
   detection and system monitoring.
+- [Cloud](https://www.home-assistant.io/components/cloud/) to expose some
+  entities to Google Assistant and support HA project ;-)
 
 ## Addons used
 
@@ -97,7 +99,8 @@ in this repository:
 - [ESPHome](https://esphome.io)
 - [InfluxDB](https://github.com/hassio-addons/addon-influxdb)
 - [SSH & Web Terminal](https://github.com/hassio-addons/addon-ssh)
-- [Unifi Controller](https://github.com/hassio-addons/addon-unifi)
+- [Unifi Controller](https://github.com/hassio-addons/addon-unifi): warning this
+  one use a lot of memory and can be the root cause of issues on Raspberry Pi 3.
 
 ## one more thing
 
