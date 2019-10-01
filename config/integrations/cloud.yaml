@@ -11,7 +11,7 @@ cloud:
       sensor.temperature_parents:
         name: Température de la chambre des parents
         aliases:
-         - Température de la suite parentale
+          - Température de la suite parentale
         room: Chambre des Parents
       sensor.temperature_salon:
         name: Température du salon
@@ -24,7 +24,7 @@ cloud:
         room: Chambre de Sören
       sensor.temperature_athenais:
         name: Température de la chambre d'Athénaïs
-        room: Chambre de d'Athénaïs
+        room: Chambre d'Athénaïs
       sensor.temperature_cave:
         name: Température de la cave
         room: Garage
@@ -41,6 +41,6 @@ cloud:
         room: Garage
       binary_sensor.main_door:
         name: Porte d'entrée
-        aliases: 
+        aliases:
           - Porte principale
         room: Entrée
