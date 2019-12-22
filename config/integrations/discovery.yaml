@@ -6,3 +6,4 @@
 discovery:
   ignore:
     - igd
+    - plex_mediaserver

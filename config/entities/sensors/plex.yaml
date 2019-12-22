@@ -1,9 +1,0 @@
----
-# show number of current users of Plex
-#
-# https://www.home-assistant.io/components/sensor.plex/
-#
-platform: plex
-host: !secret local_ip_plex
-port: !secret port_plex
-token: !secret plex_token
