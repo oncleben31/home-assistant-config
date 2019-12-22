@@ -67,12 +67,14 @@ To help me I used the following custom components:
 
 - [Linky](https://github.com/home-assistant/home-assistant/pull/20535)
   integration. Thanks to **PirionFr** and **Grea04**.
-- [hassRenaultZE](https://github.com/epenet/hassRenaultZE): to follow battery
+- [hassRenaultZE](https://github.com/epenet/hassRenaultZE)&#42;: to follow battery
   status of my Zoé eletric car thanks to **epenet**.
-- [HACS](https://github.com/custom-components/hacs) to follow updates of custom
+- [HACS](https://github.com/custom-components/hacs)&#42; to follow updates of custom
   components and cards.
 - [variable](https://github.com/rogro82/hass-variables) integration thanks to
   **rogro82**.
+
+(&#42;): integrations update managed with HACS
 
 ## Integrations configured thru HA GUI
 
@@ -91,6 +93,8 @@ in this repository:
   detection and system monitoring.
 - [Cloud](https://www.home-assistant.io/components/cloud/) to expose some
   entities to Google Assistant and support HA project ;-)
+- [Plex](https://www.home-assistant.io/integrations/plex/) to connect my Plex
+  server.
 
 ## Addons used
 
