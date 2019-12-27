@@ -46,6 +46,7 @@ when needed.
 - Renault Zoé my new electric car
 - Linky electrcity monitoring system
 - Plex server running on my NAS
+- Conbee 2 for managing Zigbee devices (migration in progress)
 
 ## Automations
 
@@ -71,7 +72,7 @@ To help me I used the following custom components:
   status of my Zoé eletric car thanks to **epenet**.
 - [HACS](https://github.com/custom-components/hacs)&#42; to follow updates of custom
   components and cards.
-- [variable](https://github.com/rogro82/hass-variables) integration thanks to
+- [variable](https://github.com/rogro82/hass-variables)&#42; integration thanks to
   **rogro82**.
 
 (&#42;): integrations update managed with HACS
@@ -95,6 +96,8 @@ in this repository:
   entities to Google Assistant and support HA project ;-)
 - [Plex](https://www.home-assistant.io/integrations/plex/) to connect my Plex
   server.
+- [deCONZ](https://www.home-assistant.io/integrations/deconz/) to manage Zigbee
+  devices.
 
 ## Addons used
 
@@ -105,6 +108,7 @@ in this repository:
 - [SSH & Web Terminal](https://github.com/hassio-addons/addon-ssh)
 - [Unifi Controller](https://github.com/hassio-addons/addon-unifi): warning this
   one use a lot of memory and can be the root cause of issues on Raspberry Pi 3.
+- [deCONZ](https://github.com/home-assistant/hassio-addons/tree/master/deconz)
 
 ## one more thing
 
