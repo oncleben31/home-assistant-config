@@ -37,7 +37,7 @@ homeassistant:
   # Load packages
   packages: !include_dir_named integrations
 
-# This integration doesn't work in split configuration see #48
+# This integration doesn't work in split configuration see #48 (won't be fixed)
 hacs:
   token: !secret my_github_access_token
   sidepanel_title: HACS

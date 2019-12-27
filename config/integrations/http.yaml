@@ -14,5 +14,3 @@ http:
   # Number of failed login attempts from a single IP after which it will
   # be automatically banned.
   login_attempts_threshold: 4
-
-# WARNING don't use 'trusted_networks' when using a reverse proxy.
