@@ -8,24 +8,24 @@
   initial_state: true
   trigger:
     platform: event
-    event_type: xiaomi_aqara.click
+    event_type: deconz_event
     event_data:
-      entity_id: binary_sensor.switch_158d0002134c3d
-      click_type: single
+      id: xiaomi_bouton
+      event: 1002
   action:
     - service: light.turn_on
       data:
-        entity_id: light.lumieres_dimmable_du_salon
+        entity_id: light.salon
         flash: short
     - delay: 0.5
     - service: light.turn_on
       data:
-        entity_id: light.lumieres_dimmable_du_salon
+        entity_id: light.salon
         flash: short
     - delay: 0.5
     - service: light.turn_on
       data:
-        entity_id: light.lumieres_dimmable_du_salon
+        entity_id: light.salon
         flash: short
     - service: notify.telegram
       data:

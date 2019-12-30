@@ -7,10 +7,10 @@
   initial_state: true
   trigger:
     platform: event
-    event_type: xiaomi_aqara.click
+    event_type: deconz_event
     event_data:
-      entity_id: binary_sensor.wall_switch_right_noah_bedroom
-      click_type: single
+      id: xiaomi_wireless_double
+      event: 2002
   action:
     - service: input_boolean.toggle
       data:
@@ -20,7 +20,7 @@
       data_template:
         message: >-
           {% if is_state('input_boolean.vacuum_can_clean_noah_bedroom', 'on')  %}
-            OK, Rocky nettoiera a chambre de Noah aujourd'hui.
+            OK, Rocky nettoiera la chambre de Noah aujourd'hui.
           {% else %}
             OK, Rocky ne s'occupera pas de la chambre de Noah aujourd'hui.
           {% endif %}
@@ -30,10 +30,10 @@
   initial_state: true
   trigger:
     platform: event
-    event_type: xiaomi_aqara.click
+    event_type: deconz_event
     event_data:
-      entity_id: binary_sensor.wall_switch_left_athenais_bedroom
-      click_type: single
+      id: xiaomi_wireless_double
+      event: 1002
   action:
     - service: input_boolean.toggle
       data:
@@ -53,10 +53,10 @@
   initial_state: true
   trigger:
     platform: event
-    event_type: xiaomi_aqara.click
+    event_type: deconz_event
     event_data:
-      entity_id: binary_sensor.wall_switch_both_soren_bedroom
-      click_type: both
+      id: xiaomi_wireless_double
+      event: 3002
   action:
     - service: input_boolean.toggle
       data:
