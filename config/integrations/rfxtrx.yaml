@@ -5,4 +5,4 @@
 # https://www.home-assistant.io/components/rfxtrx/
 #
 rfxtrx:
-  device: /dev/ttyUSB0
+  device: !secret serial_USB_id_rfxcom
