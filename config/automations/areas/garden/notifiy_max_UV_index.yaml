@@ -1,10 +1,13 @@
 ---
 # Notify the max UV index every day after first update of the sensor value
 #
-- alias: Notify the max UV index daily
+- alias: "Notify the max UV index daily"
   trigger:
     platform: state
     entity_id: sensor.max_uv_index
+  condition: 
+    condition: template
+    value_template: "{{ state_attr('binary_sensor.protection_window','start_time') != none }}"
   action:
     - service: notify.telegram
       data_template:
