@@ -12,38 +12,27 @@ cloud:
         name: Température de la chambre des parents
         aliases:
           - Température de la suite parentale
-        room: Chambre des Parents
       sensor.temperature_salon:
         name: Température du salon
-        room: Salon
       sensor.temperature_noah:
         name: Température de la chambre de Noah
-        room: Chambre de Noah
       sensor.temperature_soren:
         name: Température de la chambre de Sören
-        room: Chambre de Sören
       sensor.temperature_athenais:
         name: Température de la chambre d'Athénaïs
-        room: Chambre d'Athénaïs
       sensor.temperature_sous_sol:
         name: Température du sous-sol
-        room: Sous-Sol
       sensor.temperature_bureau:
         name: Température du bureau
-        room: Bureau
       switch.prise_tv_switch:
         name: Prise télé
-        room: Salon
       switch.prise_pc_switch:
         name: Prise PC
-        room: Bureau
       binary_sensor.porte_sous_sol:
         name: Porte du Sous-Sol
         aliases:
           - Porte du garage
-        room: Sous-Sol
       binary_sensor.porte_d_entree:
         name: Porte d'entrée
         aliases:
           - Porte principale
-        room: Entrée
