@@ -101,9 +101,7 @@ in this repository:
 
 ## Addons used
 
-- [Backup Hassio to Google Drive](https://github.com/samccauley/addon-hassiogooglebackup#readme)
-  to manage backup automaticaly.
-- [ESPHome](https://esphome.io)
+- @[ESPHome](https://esphome.io)
 - [InfluxDB](https://github.com/hassio-addons/addon-influxdb)
 - [SSH & Web Terminal](https://github.com/hassio-addons/addon-ssh)
 - [Unifi Controller](https://github.com/hassio-addons/addon-unifi): warning this
@@ -118,7 +116,7 @@ it.
 [commits-shield]: https://img.shields.io/github/commit-activity/y/oncleben31/home-assistant-config
 [commits]: https://github.com/oncleben31/home-assistant-config/commits/master
 [discord-shield]: https://img.shields.io/discord/542746125292273674?label=Discord%20francophone&logo=discord
-[discord]: https://discord.gg/JeTFJzE
+[discord]: https://discord.gg/JeTFJzE$
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
 [forum]: https://community.home-assistant.io/?u=oncleben31
 [last-commit-shield]: https://img.shields.io/github/last-commit/oncleben31/home-assistant-config.svg
