@@ -14,7 +14,7 @@
     - service: notify.telegram
       data_template:
         message: "La Zoé a commencé une charge à
-        {{ states('sensor.zoe')}}\u202F{{state_attr('sensor.zoe', 'unit_of_measurement') }}"
+          {{ states('sensor.zoe')}}\u202F{{state_attr('sensor.zoe', 'unit_of_measurement') }}"
 
 - alias: notify_zoe_charge_end
   initial_state: true
@@ -26,7 +26,7 @@
     - service: notify.telegram
       data_template:
         message: "La Zoé a terminé une charge à
-        {{ states('sensor.zoe')}}\u202F{{state_attr('sensor.zoe', 'unit_of_measurement') }}"
+          {{ states('sensor.zoe')}}\u202F{{state_attr('sensor.zoe', 'unit_of_measurement') }}"
 
 - alias: "Notify me if Zoé is not charging and battery is below 70%"
   initial_state: true
@@ -44,5 +44,5 @@
     - service: notify.telegram
       data_template:
         message: "La batterie de la Zoé est à 
-        {{ states('sensor.zoe')}}\u202F{{state_attr('sensor.zoe', 'unit_of_measurement') }}
-        et elle ne charge pas. Tu as peut-être oublié de la brancher ?"
+          {{ states('sensor.zoe')}}\u202F{{state_attr('sensor.zoe', 'unit_of_measurement') }}
+          et elle ne charge pas. Tu as peut-être oublié de la brancher ?"
