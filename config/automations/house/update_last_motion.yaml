@@ -5,8 +5,7 @@
   initial_state: true
   trigger:
     - platform: state
-      # entity_id: binary_sensor.mouvement_couloir, binary_sensor.motion_sensor_158d0001e575b0
-      entity_id: binary_sensor.motion_sensor_livingroom
+      entity_id: binary_sensor.motion_sensor_livingroom, binary_sensor.presence_sous_sol
       to: 'on'
   action:
     - service: variable.set_variable

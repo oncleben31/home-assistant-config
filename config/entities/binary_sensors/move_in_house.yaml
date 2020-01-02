@@ -11,7 +11,8 @@ sensors:
     friendly_name: "Mouvement dans la maison"
     device_class: motion
     value_template: >-
-      {%- if is_state("binary_sensor.motion_sensor_livingroom", "on")
+      {%- if is_state("binary_sensor.motion_sensor_livingroom", "on") or
+      is_state("binary_sensor.presence_sous_sol ", "on")
       -%}
       True
       {%- else -%}

@@ -1,7 +1,0 @@
----
-# Custom components for accessing Hue motion sensor data 
-# This motion sensor for temperature and luminosity sensors
-#
-# https://github.com/robmarkcole/Hue-sensors-HASS
-#
-platform: hue
