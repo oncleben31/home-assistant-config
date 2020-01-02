@@ -8,7 +8,7 @@
 hassio snapshots new --name $(date +"%Y_%m_%d__%H_%M_%S")
 
 # use rsync to copy only archives that dont already exist on NAS
-rsync -rtvu --rsync-path=/usr/bin/rsync /backup/ nas:~/hassio-backup/
+rsync -rtvu --rsync-path=/usr/bin/rsync /backup/ nas:~/hassio-backup/snapshots/
 
 # delete snapshots older than 14 days to save disk space
 find /backup/ -type f -name '*.tar' -mtime +14 -exec rm {} \;

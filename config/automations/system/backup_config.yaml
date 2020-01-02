@@ -20,7 +20,7 @@
     - service: hassio.addon_stdin
       data:
         addon: a0d7b954_ssh
-        input: "/config/scripts/bash/hassio_backup.sh"
+        input: "/config/scripts/shell/hassio_backup.sh"
     - service: notify.telegram
       data_template:
         message: Creation du backup hebomadaire."
