@@ -47,7 +47,8 @@ views:
           - entity: sensor.temperature_noah
           - entity: sensor.temperature_athenais
           - entity: sensor.temperature_soren
-          - entity: sensor.temperature_cave
+          - entity: sensor.temperature_sous_sol
+          - entity: sensor.temperature_bureau
         show_header_toggle: false
         title: Températures
         type: entities
@@ -66,15 +67,20 @@ views:
                   service_data:
                     entity_id: script.stop_vacuum_workday_sequence
                 icon: 'mdi:robot-vacuum'
-                label_template: >
-                  return (states['sensor.vacuum_cleaner_status_sensor'].state)
-                  +' (' + (states['sensor.vacuum_battery'].state) + ' %)'
+                label: >
+                  [[[return
+                  (states['sensor.vacuum_cleaner_status_sensor'].state) +' (' +
+                  (states['sensor.vacuum_battery'].state) + ' %)';]]]
                 name: Lancer la routine de Rocky
                 show_label: true
                 size: 30%
                 state:
                   - spin: true
                     value: 'on'
+                styles:
+                  label:
+                    - color: gray
+                    - font-size: 70%
                 tap_action:
                   action: toggle
                 type: 'custom:button-card'
@@ -235,12 +241,10 @@ views:
         show_header_toggle: false
         title: Scripts de la routine
         type: entities
-      - entities:
-          - entity: input_boolean.vacuum_need_to_be_emptied
-        type: entities
     icon: 'mdi:robot-vacuum'
     title: Rocky
-  - cards:
+  - badges: []
+    cards:
       - elements:
           - entity: sensor.zoe
             prefix: 'Batterie: '
@@ -303,9 +307,24 @@ views:
           - entity: sensor.trajet_maison_travail_alex
         title: Trajets
         type: glance
-    badges: []
-    title: Voitures
+      - entities:
+          - entity: input_datetime.last_maintenance_date_zoe
+          - entity: input_number.last_maintenance_km_zoe
+          - entity: input_datetime.last_maintenance_date_qashqai
+          - entity: input_number.last_maintenance_km_qashqai
+        type: entities
+      - entities:
+          - entity: sensor.zoe_mileage
+          - entity: sensor.zoe_mileage_diff
+          - entity: sensor.zoe_curent_week_mileage
+          - entity: variable.zoe_weekly_mileage
+          - entity: sensor.zoe_max_range
+          - entity: sensor.zoe
+        show_header_toggle: false
+        title: Zoé
+        type: entities
     icon: 'mdi:car-side'
+    title: Voitures
   - badges: []
     cards:
       - entities:
@@ -403,8 +422,8 @@ views:
           - entity: input_select.house_mode
         type: glance
       - entities:
-          - entity: binary_sensor.main_door
-          - entity: binary_sensor.garage_door
+          - entity: binary_sensor.porte_d_entree
+          - entity: binary_sensor.porte_sous_sol
         type: glance
       - entities:
           - entity: binary_sensor.water_leak_sensor_buanderie
@@ -415,6 +434,7 @@ views:
           - entity: binary_sensor.motion_house_meta
           - entity: variable.last_motion
           - entity: binary_sensor.motion_sensor_livingroom
+          - entity: binary_sensor.presence_sous_sol
         show_header_toggle: false
         title: Détecteurs de mouvement
         type: entities
@@ -463,6 +483,8 @@ views:
         filter:
           exclude:
             - entity_id: light.home_hassistant
+            - entity_id: light.lumieres_dimmable_du_salon
+            - entity_id: light.salon
           include:
             - domain: light
               options:
@@ -507,35 +529,34 @@ views:
           type: glance
         filter:
           include:
-            - domain: device_tracker
+            - domain: person
               state: home
         show_empty: true
         type: 'custom:auto-entities'
-      - entities:
-          - entity: sensor.illumination_158d0001e575b0
-          - entity: sensor.humidity_cave
-        type: entities
     icon: 'mdi:robot'
     title: Automatismes
   - badges:
-      - sensor.plex
+      - entity: sensor.plex_nas_synology
     cards:
       - entity: media_player.tele
         type: media-control
       - entity: media_player.google_home
         type: media-control
-      - entity: media_player.samsung_led48_ue48h6200
-        type: media-control
     icon: 'mdi:theater'
     title: Média
   - badges: []
     cards:
-      - entities:
-          - entity: binary_sensor.xiaomi_gateway
-          - entity: binary_sensor.rocky
-          - entity: binary_sensor.hue_gateway
+      - columns: 3
+        entities:
           - entity: binary_sensor.nas
+          - entity: binary_sensor.rocky
           - entity: binary_sensor.google_home
+          - entity: binary_sensor.google_home_mini
+          - entity: binary_sensor.xiaomi_gateway
+          - entity: binary_sensor.hue_gateway
+        show_icon: true
+        show_name: true
+        show_state: true
         title: Systèmes
         type: glance
       - entities:
@@ -566,6 +587,7 @@ views:
         type: 'custom:auto-entities'
       - entities:
           - entity: sensor.hacs
+        show_header_toggle: false
         title: Mise à jour
         type: entities
       - entities:
@@ -582,6 +604,7 @@ views:
           - zwave.detecteur_de_fumee
           - zwave.prise_tv
           - zwave.prise_pc
+        show_header_toggle: false
         title: Z-Wave
         type: entities
       - card:
@@ -598,6 +621,7 @@ views:
             - entity_id: group.all_vacuum_cleaners
           include:
             - state: unknown
+            - state: unavailable
         show_empty: true
         type: 'custom:auto-entities'
       - entities:
@@ -610,26 +634,6 @@ views:
     title: Réseau
   - badges: []
     cards:
-      - fontname: itcblkad_font
-        locations:
-          - Maison
-          - Travail
-          - Collège
-          - École
-        lost: Perdu
-        travelling: En voyage
-        type: 'custom:weasley-card'
-        wizards:
-          - entity: person.benoit
-            name: Benoit
-          - entity: device_tracker.hermiones_phone
-            name: Alex
-          - entity: calendar.ron
-            name: Noah
-          - entity: calendat.noah
-            name: Athénaïs
-          - entity: calendar.ginny
-            name: Sören
       - aspect_ratio: '16:9'
         entities:
           - entity: zone.home
@@ -637,6 +641,7 @@ views:
           - entity: zone.travail_benoit
           - entity: zone.college
           - entity: zone.ecole
+          - entity: person.benoit
         type: map
     icon: 'mdi:map-marker'
     panel: false
