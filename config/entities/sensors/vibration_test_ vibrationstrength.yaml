@@ -1,0 +1,11 @@
+---
+# Split attributes of vibration sensor
+#
+# No documentation
+#
+platform: template
+sensors:
+  vibration_test_vibrationstrength:
+    value_template: >-
+      {{ state_attr('binary_sensor.vibration_test', 'vibrationstrength') | int}}
+    unit_of_measurement: "-"

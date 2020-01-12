@@ -1,0 +1,15 @@
+---
+# Split attributes of vibration sensor
+#
+# No documentation
+#
+platform: template
+sensors:
+  vibration_test_on:
+    value_template: >-
+      {%- if is_state_attr('binary_sensor.vibration_test', 'on', true)
+      -%}
+      true
+      {%- else -%}
+      false
+      {%- endif %}

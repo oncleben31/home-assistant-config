@@ -1,0 +1,10 @@
+---
+# Set the sensibility for Xiaomi vibration sensor
+#
+# https://www.home-assistant.io/integrations/input_number/
+#
+vibration_sensibility:
+  name: Sensibilté vibration
+  mode: slider
+  min: 1
+  max: 31
