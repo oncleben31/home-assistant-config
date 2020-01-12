@@ -1,0 +1,11 @@
+---
+# Sensor to extract battery temperature from attribute of Renault Zoé sensor
+#
+# https://github.com/epenet/hassRenaultZE
+#
+platform: template
+sensors:
+  zoe_battery_temperature:
+    value_template: "{{ state_attr('sensor.zoe' , 'battery_temperature') }}"
+    friendly_name: "Température batterie"
+    unit_of_measurement: "°C"
