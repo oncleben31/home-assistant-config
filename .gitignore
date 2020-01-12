@@ -21,6 +21,7 @@ config/pyozw.sqlite
 config/secrets.yaml
 config/zwcfg_*
 config/zwscene.xml
+test.rest
 
 # ESPHome ignores
 config/esphome/secrets.yaml
