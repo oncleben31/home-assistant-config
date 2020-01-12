@@ -5,7 +5,6 @@
 # and clean local old backup.
 #
 
-
 # Generate the HA config archive weekly
 - alias: Weekly Backup Monday at 3 AM
   initial_state: 'on'

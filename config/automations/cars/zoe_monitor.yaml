@@ -43,6 +43,6 @@
   action:
     - service: notify.telegram
       data_template:
-        message: "La batterie de la Zoé est à 
+        message: "La batterie de la Zoé est à
           {{ states('sensor.zoe')}}\u202F{{state_attr('sensor.zoe', 'unit_of_measurement') }}
           et elle ne charge pas. Tu as peut-être oublié de la brancher ?"
