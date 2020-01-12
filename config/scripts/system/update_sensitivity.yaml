@@ -1,0 +1,15 @@
+---
+# Script to update de Xiaomi vibration sensor
+#
+# https://www.home-assistant.io/integrations/deconz/
+#
+alias: Mise à jour de la sensitibilité du capteur de vibration
+sequence:
+
+  # Update the sensitivity
+  - service: deconz.configure
+    data_template:
+      entity: binary_sensor.vibration_test
+      field: "/config"
+      data:
+        sensitivity: "{{ states('input_number.vibration_sensibility') | int}}"
