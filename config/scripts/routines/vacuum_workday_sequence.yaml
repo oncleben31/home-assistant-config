@@ -83,7 +83,7 @@ sequence:
       room_script: script.launch_vacuum_in_the_coridor
       room_bool: input_boolean.vacuum_can_clean_the_coridor
       room_name: "coridor"
-      room_battery_needed: 13
+      room_battery_needed: 15
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
