@@ -8,4 +8,3 @@ sensors:
   vibration_moteur_piscine_orientation:
     value_template: >-
       {{ state_attr('binary_sensor.vibration_moteur_piscine', 'orientation')}}
-  

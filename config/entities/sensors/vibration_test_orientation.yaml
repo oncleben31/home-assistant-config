@@ -8,4 +8,3 @@ sensors:
   vibration_test_orientation:
     value_template: >-
       {{ state_attr('binary_sensor.vibration_test', 'orientation')}}
-  
