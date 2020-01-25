@@ -34,27 +34,27 @@ sequence:
   # Test if rocky have enough battery before launching the cleaning.
   # To avoid cleaning stopeed and waiting vacuum charge from 20% to 80% before resuming
   - wait_template: "{{ states('sensor.vacuum_battery')| float - room_battery_needed | default(0) > 20 }}"
-  
+
   # Launch the cleaning
   - service: script.turn_on
     data_template:
       entity_id: "{{ room_script }}"
       variables:
         repetition: "{{ repetition }}"
-  
+
   # Test if cleaning have started
   # Warning if battery reach low trigger (20%) the vacuum will return to dock for
   # charging to 80%. Currently no way to catch that.
   - wait_template: "{{ is_state('vacuum.rocky', 'docked') != True}}"
-  
+
   # Test if finished
   - wait_template: "{{ is_state('vacuum.rocky', 'docked') }}"
-  
+
   # Change the value of the boolean to make it done
   - service: input_boolean.turn_off
     data_template:
       entity_id: "{{ room_bool }}"
-  
+
   # Add a message in logbook
   - service: logbook.log
     data_template:
@@ -62,13 +62,14 @@ sequence:
       message: has just finished cleaning the {{ room_name }}
       entity_id: vacuum.rocky
       domain: vacuum
-  
+
   # For testing: notify with battey consumption when finished
   - service: notify.telegram
     data_template:
       message: >
         Aspiration de {{ room_name }} terminée. Rocky a nettoyé
-        {{state_attr('vacuum.rocky','total_cleaned_area')| int - state_attr('variable.nb_cleaning_before_room','area')| int }} m²
-        en {{state_attr('vacuum.rocky','total_cleaning_time') | int - state_attr('variable.nb_cleaning_before_room','time')| int }} minutes.
-        {{ state_attr('variable.nb_cleaning_before_room','battery') | int - state_attr('vacuum.rocky', 'battery_level') | int }} % de batterie
-        ont été utilisés.
+        {{state_attr('vacuum.rocky','total_cleaned_area')| int - state_attr('variable.nb_cleaning_before_room','area')|
+        int }} m² en {{state_attr('vacuum.rocky','total_cleaning_time') | int -
+        state_attr('variable.nb_cleaning_before_room','time')| int }} minutes.
+        {{ state_attr('variable.nb_cleaning_before_room','battery') | int - state_attr('vacuum.rocky', 'battery_level')
+        | int }} % de batterie ont été utilisés.
