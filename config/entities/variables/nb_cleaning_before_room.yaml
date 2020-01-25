@@ -1,0 +1,12 @@
+---
+# Used for statistic report of the latest room cleaned
+#
+# https://github.com/rogro82/hass-variables
+#
+name: "Avant la pièce"
+value: "unknown"
+restore: true
+attributes:
+  time: "unknown"
+  area: "unknown"
+  battery: "unknown"

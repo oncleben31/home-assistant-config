@@ -26,6 +26,7 @@ sequence:
       room_script: script.launch_vacuum_in_kitchen
       room_bool: input_boolean.vacuum_can_clean_the_kitchen
       room_name: "kitchen"
+      room_battery_needed: 12
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
@@ -35,6 +36,7 @@ sequence:
       room_script: script.launch_vacuum_in_livingroom_safe
       room_bool: input_boolean.vacuum_can_clean_the_living_room_safe
       room_name: "living room (safe mode)"
+      room_battery_needed: 20
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
@@ -44,6 +46,7 @@ sequence:
       room_script: script.launch_vacuum_in_livingroom
       room_bool: input_boolean.vacuum_can_clean_the_living_room
       room_name: "living room"
+      room_battery_needed: 40
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
@@ -61,6 +64,7 @@ sequence:
       room_script: script.launch_vacuum_in_the_entrance
       room_bool: input_boolean.vacuum_can_clean_the_entrance
       room_name: "entrance"
+      room_battery_needed: 8
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
@@ -79,6 +83,7 @@ sequence:
       room_script: script.launch_vacuum_in_the_coridor
       room_bool: input_boolean.vacuum_can_clean_the_coridor
       room_name: "coridor"
+      room_battery_needed: 15
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
@@ -88,6 +93,7 @@ sequence:
       room_script: script.launch_vacuum_in_athenais_bedroom
       room_bool: input_boolean.vacuum_can_clean_athenais_bedroom
       room_name: "Athénaïs' bedroom"
+      room_battery_needed: 10
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
@@ -97,6 +103,7 @@ sequence:
       room_script: script.launch_vacuum_in_noah_bedroom
       room_bool: input_boolean.vacuum_can_clean_noah_bedroom
       room_name: "Noah's bedroom"
+      room_battery_needed: 10
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
@@ -106,6 +113,7 @@ sequence:
       room_script: script.launch_vacuum_in_soren_bedroom
       room_bool: input_boolean.vacuum_can_clean_soren_bedroom
       room_name: "Sören's bedroom"
+      room_battery_needed: 10
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
@@ -115,6 +123,7 @@ sequence:
       room_script: script.launch_vacuum_in_kids_bathroom
       room_bool: input_boolean.vacuum_can_clean_kids_bathroom
       room_name: "kids bathroom"
+      room_battery_needed: 1
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
@@ -124,6 +133,7 @@ sequence:
       room_script: script.launch_vacuum_in_parental_suite
       room_bool: input_boolean.vacuum_can_clean_parental_suite
       room_name: "parental suite"
+      room_battery_needed: 26
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
@@ -135,5 +145,5 @@ sequence:
         {{ state_attr('vacuum.rocky', 'cleaning_count') | int - states('variable.nb_cleaning_before_daily_routine')
         | int }} nettoyages ({{state_attr('vacuum.rocky','total_cleaned_area')
         | int - state_attr('variable.nb_cleaning_before_daily_routine','area')| int }} m²) en
-         {{state_attr('vacuum.rocky','total_cleaning_time')
+        {{state_attr('vacuum.rocky','total_cleaning_time')
         | int - state_attr('variable.nb_cleaning_before_daily_routine','time')| int }} minutes.

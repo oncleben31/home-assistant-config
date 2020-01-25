@@ -6,6 +6,8 @@
 #  - room_bool: the imput_boolean linked to the room to know if it as alredy donne today
 #  - room_script: the name of the script to launch the cleaning
 #  - room_name: name of the zone used for logbook entry
+#  - room_battery_needed
+#  - repetition
 #
 # Inspired by https://community.home-assistant.io/t/howto-xiaomi-vacuum-zoned-cleaning/51293/193?u=oncleben31
 # https://www.home-assistant.io/components/script/
@@ -13,23 +15,46 @@
 #
 alias: Lance le nettoyage quotidient dans une pièce
 sequence:
+  # Save vacum states (count, time, area) / for testing
+  - service: variable.set_variable
+    data:
+      variable: nb_cleaning_before_room
+      value_template: "{{ state_attr('vacuum.rocky', 'cleaning_count') }}"
+      attributes_template: >
+        {
+          "time": "{{ state_attr('vacuum.rocky', 'total_cleaning_time') }}",
+          "area": "{{ state_attr('vacuum.rocky', 'total_cleaned_area') }}",
+          "battery": "{{ state_attr('vacuum.rocky', 'battery_level') }}"
+        }
+
   # Test if boolean is 'on' (not yet done today)
   - condition: template
     value_template: "{{ is_state(room_bool, 'on') }}"
+
+  # Test if rocky have enough battery before launching the cleaning.
+  # To avoid cleaning stopeed and waiting vacuum charge from 20% to 80% before resuming
+  - wait_template: "{{ states('sensor.vacuum_battery')| float - room_battery_needed | default(0) > 20 }}"
+
   # Launch the cleaning
   - service: script.turn_on
     data_template:
       entity_id: "{{ room_script }}"
       variables:
         repetition: "{{ repetition }}"
-  # Wait at least 30 seconds before testing if finished
-  - delay: "00:00:30"
+
+  # Test if cleaning have started
+  # Warning if battery reach low trigger (20%) the vacuum will return to dock for
+  # charging to 80%. Currently no way to catch that.
+  - wait_template: "{{ is_state('vacuum.rocky', 'docked') != True}}"
+
   # Test if finished
   - wait_template: "{{ is_state('vacuum.rocky', 'docked') }}"
+
   # Change the value of the boolean to make it done
   - service: input_boolean.turn_off
     data_template:
       entity_id: "{{ room_bool }}"
+
   # Add a message in logbook
   - service: logbook.log
     data_template:
@@ -37,3 +62,14 @@ sequence:
       message: has just finished cleaning the {{ room_name }}
       entity_id: vacuum.rocky
       domain: vacuum
+
+  # For testing: notify with battey consumption when finished
+  - service: notify.telegram
+    data_template:
+      message: >
+        Aspiration de {{ room_name }} terminée. Rocky a nettoyé
+        {{state_attr('vacuum.rocky','total_cleaned_area')| int - state_attr('variable.nb_cleaning_before_room','area')|
+        int }} m² en {{state_attr('vacuum.rocky','total_cleaning_time') | int -
+        state_attr('variable.nb_cleaning_before_room','time')| int }} minutes.
+        {{ state_attr('variable.nb_cleaning_before_room','battery') | int - state_attr('vacuum.rocky', 'battery_level')
+        | int }} % de batterie ont été utilisés.
