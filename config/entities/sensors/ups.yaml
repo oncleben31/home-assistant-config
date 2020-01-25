@@ -5,7 +5,7 @@
 #
 platform: nut
 name: UPC Back-UPS
-host : !secret local_ip_nas
+host: !secret local_ip_nas
 resources:
   - ups.model
   - ups.status.display
