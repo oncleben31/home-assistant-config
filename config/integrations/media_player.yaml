@@ -1,0 +1,8 @@
+---
+# Media_players are alowing to play media
+#
+# This loads up my media_player configurations
+#
+# https://www.home-assistant.io/components/media_player
+#
+media_player: !include_dir_list ../entities/media_players

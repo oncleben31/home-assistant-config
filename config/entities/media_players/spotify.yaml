@@ -1,0 +1,8 @@
+---
+# Spotify integration
+#
+# https://www.home-assistant.io/integrations/spotify/
+#
+platform: spotify
+client_id: !secret spotify_id
+client_secret: !secret spotify_secret
