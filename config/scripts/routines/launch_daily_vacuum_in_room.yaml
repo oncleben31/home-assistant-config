@@ -15,6 +15,14 @@
 #
 alias: Lance le nettoyage quotidient dans une pièce
 sequence:
+  # Test if boolean is 'on' (not yet done today)
+  - condition: template
+    value_template: "{{ is_state(room_bool, 'on') }}"
+
+  # Test if rocky have enough battery before launching the cleaning.
+  # To avoid cleaning stopeed and waiting vacuum charge from 20% to 80% before resuming
+  - wait_template: "{{ states('sensor.vacuum_battery')| float - room_battery_needed | default(0) > 20 }}"
+
   # Save vacum states (count, time, area) / for testing
   - service: variable.set_variable
     data:
@@ -26,14 +34,6 @@ sequence:
           "area": "{{ state_attr('vacuum.rocky', 'total_cleaned_area') }}",
           "battery": "{{ state_attr('vacuum.rocky', 'battery_level') }}"
         }
-
-  # Test if boolean is 'on' (not yet done today)
-  - condition: template
-    value_template: "{{ is_state(room_bool, 'on') }}"
-
-  # Test if rocky have enough battery before launching the cleaning.
-  # To avoid cleaning stopeed and waiting vacuum charge from 20% to 80% before resuming
-  - wait_template: "{{ states('sensor.vacuum_battery')| float - room_battery_needed | default(0) > 20 }}"
 
   # Launch the cleaning
   - service: script.turn_on
