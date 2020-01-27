@@ -1,0 +1,8 @@
+---
+# Custom component to start Spotify playback on an idle chromecast device
+#
+# https://github.com/fondberg/spotcast
+#
+spotcast:
+  username: !secret spotify_username
+  password: !secret spotify_password
