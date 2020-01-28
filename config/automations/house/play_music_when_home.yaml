@@ -1,0 +1,35 @@
+---
+# Play a music when I arrive at home
+#
+- alias: 'Play music when arriving at Home'
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: person.benoit
+      to: 'home'
+  condition:
+    - condition: time
+      before: '21:30:00'
+      after: '10:00:00'
+  action:
+    - service: media_player.volume_mute
+      data:
+        entity_id: media_player.google_home
+        is_volume_muted: true
+    - service: spotcast.start
+      data:
+        entity_id: media_player.google_home
+        uri: 'spotify:track:5V3b2UB9tCAHuqXj2b2EP7'  # track with 1 second of silence 
+    - service: media_player.volume_mute
+      data:
+        entity_id: media_player.google_home
+        is_volume_muted: false
+    - service: spotcast.start
+      data:
+        entity_id: media_player.google_home
+        uri: spotify:track:75riiKSuZZPY1l6yNVZPcd
+    - delay: 00:00:54
+    - service: media_player.media_pause
+      data:
+        entity_id: media_player.spotify
+
