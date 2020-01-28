@@ -74,6 +74,7 @@ To help me I used the following custom components:
   components and cards.
 - [variable](https://github.com/rogro82/hass-variables)&#42; integration thanks to
   **rogro82**.
+- [spotcast](hhttps://github.com/fondberg/spotcast)&#42; to start playing spotify on a Google cast device thanks to **fondberg**.
 
 (&#42;): integrations update managed with HACS
 
@@ -121,6 +122,6 @@ it.
 [forum]: https://community.home-assistant.io/?u=oncleben31
 [last-commit-shield]: https://img.shields.io/github/last-commit/oncleben31/home-assistant-config.svg
 [license-shield]: https://img.shields.io/github/license/oncleben31/home-assistant-config.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2019.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2020.svg
 [workflow-shield]: https://github.com/oncleben31/home-assistant-config/workflows/Home%20Assistant%20configuration/badge.svg
 [workflow]: https://github.com/oncleben31/home-assistant-config/actions
