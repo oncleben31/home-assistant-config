@@ -22,6 +22,7 @@ config/secrets.yaml
 config/zwcfg_*
 config/zwscene.xml
 test.rest
+config/.google_maps_location_sharing*
 
 # ESPHome ignores
 config/esphome/secrets.yaml
