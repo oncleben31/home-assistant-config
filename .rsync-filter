@@ -26,5 +26,6 @@
 +/ secrets.yaml
 +/ zwave_device_config.yaml
 +/ .HA_VERSION
++/ .google_maps_location_sharing.*
 - export-lovelace.yaml
 - *

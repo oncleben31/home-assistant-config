@@ -1,0 +1,6 @@
+---
+# Sensor with the list of the Google cast devices available
+#
+# https://github.com/fondberg/spotcast
+#
+platform: spotcast

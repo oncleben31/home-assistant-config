@@ -1,0 +1,9 @@
+---
+# Google map integration
+#
+# To follow kids position as they are in Google Family link
+#
+# link to documentation
+#
+platform: google_maps
+username: !secret google_maps_email
