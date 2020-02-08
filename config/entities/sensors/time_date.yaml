@@ -1,0 +1,10 @@
+---
+# Add a sensor to have current date
+#
+# This is used to avoid the warning message in template using only now()
+#
+# https://www.home-assistant.io/integrations/time_date/
+#
+platform: time_date
+display_options:
+  - 'date'
