@@ -10,7 +10,6 @@
 # Main automation checking the state of the light
 - alias: Eteindre éclairage au levé du soleil
   initial_state: true
-  hide_entity: false
   trigger:
     - event: sunrise
       offset: "0:15:00"
@@ -36,7 +35,6 @@
 # Command received by Telegram to ask again in 15 minutes
 - alias: Redemande dans 15 minutes
   initial_state: true
-  hide_entity: true
   trigger:
     platform: event
     event_type: telegram_callback
@@ -54,7 +52,6 @@
 # Command received by telegram to not switch off the lights
 - alias: Ne pas éteindre les lumières
   initial_state: true
-  hide_entity: true
   trigger:
     platform: event
     event_type: telegram_callback
@@ -74,7 +71,6 @@
 # Command received by Telegram to switch off the lights
 - alias: Éteindre les lumières
   initial_state: true
-  hide_entity: true
   trigger:
     platform: event
     event_type: telegram_callback
