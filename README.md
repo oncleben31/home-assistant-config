@@ -34,7 +34,7 @@ when needed.
 - Raspbery Pi v3 for hosting Hass.io
 - Xiaomi devices:
   - Vacuum Roborock cleaner
-  - Aqara gateway and sensors
+  - Aqara gateway (not really used anymore as I migrate the sensor to the Conbee 2)
 - Zwaves:
   - Switchs with energy monitoring
   - Fire detectors
@@ -46,7 +46,7 @@ when needed.
 - Renault Zoé my new electric car
 - Linky electrcity monitoring system
 - Plex server running on my NAS
-- Conbee 2 for managing Zigbee devices (migration in progress)
+- Conbee 2 for managing Zigbee devices (Xiaomi, Hue and OSRAM)
 
 ## Automations
 
@@ -61,6 +61,7 @@ You can find in my automations and scripts the following features:
 - Check and notification if lights could be switch off.
 - Send notification in case of weather alert or rain expected.
 - Send notification according to UV forecast condition.
+- And many other things...
 
 ## Custom components used
 
@@ -103,7 +104,7 @@ in this repository:
 
 ## Addons used
 
-- @[ESPHome](https://esphome.io)
+- [ESPHome](https://esphome.io)
 - [InfluxDB](https://github.com/hassio-addons/addon-influxdb)
 - [SSH & Web Terminal](https://github.com/hassio-addons/addon-ssh)
 - [Unifi Controller](https://github.com/hassio-addons/addon-unifi): warning this
