@@ -74,7 +74,8 @@ To help me I used the following custom components:
   components and cards.
 - [variable](https://github.com/rogro82/hass-variables)&#42; integration thanks to
   **rogro82**.
-- [spotcast](hhttps://github.com/fondberg/spotcast)&#42; to start playing spotify on a Google cast device thanks to **fondberg**.
+- [spotcast](hhttps://github.com/fondberg/spotcast)&#42; to start playing spotify
+  on a Google cast device thanks to **fondberg**.
 
 (&#42;): integrations update managed with HACS
 
