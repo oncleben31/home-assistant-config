@@ -36,7 +36,6 @@
 # Command received by Telegram to ask again in 30 minutes
 - alias: Redemande dans 30 minutes
   initial_state: true
-  hide_entity: true
   trigger:
     platform: event
     event_type: telegram_callback
@@ -54,7 +53,6 @@
 # Command received by telegram to not ask again today
 - alias: Arrete de redemander aujourd'hui
   initial_state: true
-  hide_entity: true
   trigger:
     platform: event
     event_type: telegram_callback
@@ -74,7 +72,6 @@
 # Command received by Telegram to confirm vacuum emptied
 - alias: Bac du Rocky vidé
   initial_state: true
-  hide_entity: true
   trigger:
     platform: event
     event_type: telegram_callback
