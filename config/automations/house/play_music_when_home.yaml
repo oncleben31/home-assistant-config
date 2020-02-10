@@ -51,7 +51,7 @@
     - service: spotcast.start
       data:
         entity_id: media_player.google_home
-        uri: 'spotify:track:5V3b2UB9tCAHuqXj2b2EP7'  # track with 1 second of silence 
+        uri: 'spotify:track:5V3b2UB9tCAHuqXj2b2EP7'  # track with 1 second of silence
     - service: media_player.volume_mute
       data:
         entity_id: media_player.google_home

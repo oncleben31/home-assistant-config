@@ -11,7 +11,7 @@
     # Sometimes familly stop the vacuum and it stays idle in the midlle of the house.
     - service: script.turn_on
       entity_id: script.stop_vacuum_workday_sequence
-    
+
     - service: input_boolean.turn_off
       entity_id:
         - input_boolean.vacuum_can_clean_athenais_bedroom

@@ -34,7 +34,8 @@ when needed.
 - Raspbery Pi v3 for hosting Hass.io
 - Xiaomi devices:
   - Vacuum Roborock cleaner
-  - Aqara gateway (not really used anymore as I migrate the sensor to the Conbee 2)
+  - Aqara gateway (not really used anymore as I migrate the sensor to the
+    Conbee 2)
 - Zwaves:
   - Switchs with energy monitoring
   - Fire detectors
