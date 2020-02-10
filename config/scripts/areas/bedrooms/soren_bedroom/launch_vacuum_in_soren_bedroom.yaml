@@ -9,7 +9,7 @@ sequence:
   - service: vacuum.set_fan_speed
     data:
       entity_id: vacuum.rocky
-      fan_speed: balanced
+      fan_speed: Standard
 
   - service: xiaomi_miio.vacuum_clean_zone
     data_template:
