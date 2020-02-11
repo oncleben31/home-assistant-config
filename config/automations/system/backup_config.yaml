@@ -22,4 +22,4 @@
         input: "/config/scripts/shell/hassio_backup.sh"
     - service: notify.telegram
       data_template:
-        message: Creation du backup hebomadaire."
+        message: Creation du backup hebomadaire.
