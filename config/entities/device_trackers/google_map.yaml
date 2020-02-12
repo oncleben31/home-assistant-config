@@ -3,7 +3,7 @@
 #
 # To follow kids position as they are in Google Family link
 #
-# link to documentation
+# https://www.home-assistant.io/integrations/google_maps/
 #
 platform: google_maps
 username: !secret google_maps_email
