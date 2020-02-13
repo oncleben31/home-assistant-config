@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: checkout HA config
         uses: actions/checkout@master
-        
+
       - name: Link Checker
         uses: gaurav-nelson/github-action-markdown-link-check@0.6.0
 

@@ -2,14 +2,14 @@
 name: Wiki
 
 # "on": gollum
-"on": 
+"on":
   push:     # on each push to master. Could break link from wiki
     branches:
       - master
   gollum:   # on each wiki page creation or update.
 
 jobs:
-  
+
   link-checker:
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +18,7 @@ jobs:
         with:
           repository: oncleben31/home-assistant-config.wiki
           ref: master
-        
+
       - name: Link Checker
         uses: gaurav-nelson/github-action-markdown-link-check@0.6.0
         with:
