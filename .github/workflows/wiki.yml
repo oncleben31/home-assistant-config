@@ -2,7 +2,11 @@
 name: Wiki
 
 # "on": gollum
-"on": push
+"on": 
+  push:     # on each push to master. Could break link from wiki
+    branches:
+      - master
+  gollum:   # on each wiki page creation or update.
 
 jobs:
   
@@ -17,3 +21,5 @@ jobs:
         
       - name: Link Checker
         uses: gaurav-nelson/github-action-markdown-link-check@0.5.0
+        with:
+          use-quiet-mode: 'yes'
