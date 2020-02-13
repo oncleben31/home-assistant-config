@@ -24,9 +24,9 @@ jobs:
   link-checker:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-        with:
-          fetch-depth: 1
+      - name: checkout HA config
+        uses: actions/checkout@master
+        
       - name: Link Checker
         uses: gaurav-nelson/github-action-markdown-link-check@0.5.0
 
