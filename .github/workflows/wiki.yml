@@ -1,0 +1,15 @@
+---
+name: Wiki
+
+"on": gollum
+
+jobs:
+  
+  link-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout wiki
+        uses: actions/checkout@master
+        
+      - name: Link Checker
+        uses: gaurav-nelson/github-action-markdown-link-check@0.5.0
