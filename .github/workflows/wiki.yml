@@ -20,6 +20,6 @@ jobs:
           ref: master
         
       - name: Link Checker
-        uses: gaurav-nelson/github-action-markdown-link-check@0.5.0
+        uses: gaurav-nelson/github-action-markdown-link-check@0.6.0
         with:
           use-quiet-mode: 'yes'
