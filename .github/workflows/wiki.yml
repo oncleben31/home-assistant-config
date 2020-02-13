@@ -12,7 +12,7 @@ jobs:
       - name: checkout wiki
         uses: actions/checkout@master
         with:
-          repository: oncleben31/home-assistant-config/wiki
+          repository: oncleben31/home-assistant-config.wiki
           ref: master
         
       - name: Link Checker
