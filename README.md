@@ -112,9 +112,9 @@ in this repository:
   one use a lot of memory and can be the root cause of issues on Raspberry Pi 3.
 - [deCONZ](https://github.com/home-assistant/hassio-addons/tree/master/deconz)
 
-## one more thing
+## One more thing
 
-I have and will add specific explanations in the wiki. So don't forget to visit
+I have and will add specific explanations in the [wiki](https://github.com/oncleben31/home-assistant-config/wiki). So don't forget to visit
 it.
 
 [commits-shield]: https://img.shields.io/github/commit-activity/y/oncleben31/home-assistant-config
