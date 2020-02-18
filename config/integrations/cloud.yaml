@@ -6,7 +6,7 @@
 #
 cloud:
   google_actions:
-    # entity and domain filter in the Hass.io UI
+    # entity and domain filter in the Home Assistant UI
     entity_config:
       sensor.temperature_parents:
         name: Température de la chambre des parents

@@ -31,7 +31,7 @@ when needed.
 
 ## Devices used
 
-- Raspbery Pi v3 for hosting Hass.io
+- Raspbery Pi v3 for hosting HassOS
 - Xiaomi devices:
   - Vacuum Roborock cleaner
   - Aqara gateway (not really used anymore as I migrate the sensor to the

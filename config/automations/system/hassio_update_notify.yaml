@@ -1,5 +1,5 @@
 ---
-# Notification if Hass.io update available
+# Notification if Home Assistant update available
 #
 - alias: 'Notification de mise à jour disponible'
   initial_state: true
@@ -28,13 +28,12 @@
   action:
     - service: notify.telegram
       data:
-        # title: "*Hass.io*"
         message: >
-          Une mise à jour de Home Assistant pour Hass.io est disponible:  {{ states('sensor.version_available') }}
+          Une mise à jour de Home Assistant est disponible:  {{ states('sensor.version_available') }}
     - service: persistent_notification.create
       data_template:
         title: Mise à jour disponible !
         message: >-
-          Une mise à jour de Home Assistant pour Hass.io est disponible !
+          Une mise à jour de Home Assistant est disponible !
           La version {{ states('sensor.version_available') }} vient d'être déployée !
         notification_id: hassio_upgrade
