@@ -23,12 +23,14 @@ resources:
     url: /community_plugin/canvas-gauge-card/canvas-gauge-card.js
   - type: js
     url: /community_plugin/lovelace-card-modder/card-modder.js
+  - type: module
+    url: /community_plugin/spotify-card/spotify-card.js
+  - type: module
+    url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
 title: Maison
 views:
   - badges:
-      - sun.sun
-      - sensor.aurade_next_rain
-      - sensor.aurade_weather_alert
+      - entity: sensor.home_weather_alert
     cards:
       - entity: weather.dark_sky
         name: Météo DarkSky
@@ -39,8 +41,209 @@ views:
           - entity: sensor.temperature_piscine
         title: Extérieur
         type: glance
-      - entity: weather.aurade
+      - entity: weather.home
         type: weather-forecast
+      - cards:
+          - color_type: card
+            entity: sensor.home_next_rain
+            name: Now
+            show_icon: false
+            show_state: false
+            state:
+              - color: 'rgb(204, 217, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_0min == 2)
+                  ]]]
+              - color: 'rgb(128, 159, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_0min == 3)
+                  ]]]
+              - color: 'rgb(51, 102, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_0min == 4)
+                  ]]]
+              - color: 'rgb(255, 255, 255)'
+                operator: default
+            styles:
+              card:
+                - height: 50px
+            type: 'custom:button-card'
+          - color_type: card
+            entity: sensor.home_next_rain
+            name: 10
+            show_icon: false
+            show_state: false
+            state:
+              - color: 'rgb(204, 217, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_10min == 2)
+                  ]]]
+              - color: 'rgb(128, 159, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_10min == 3)
+                  ]]]
+              - color: 'rgb(51, 102, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_10min == 4)
+                  ]]]
+              - color: 'rgb(255, 255, 255)'
+                operator: default
+            styles:
+              card:
+                - height: 50px
+            type: 'custom:button-card'
+          - color_type: card
+            entity: sensor.home_next_rain
+            name: 20
+            show_icon: false
+            show_state: false
+            state:
+              - color: 'rgb(204, 217, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_20min == 2)
+                  ]]]
+              - color: 'rgb(128, 159, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_20min == 3)
+                  ]]]
+              - color: 'rgb(51, 102, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_20min == 4)
+                  ]]]
+              - color: 'rgb(255, 255, 255)'
+                operator: default
+            styles:
+              card:
+                - height: 50px
+            type: 'custom:button-card'
+          - color_type: card
+            entity: sensor.home_next_rain
+            name: 30
+            show_icon: false
+            show_state: false
+            state:
+              - color: 'rgb(204, 217, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_30min == 2)
+                  ]]]
+              - color: 'rgb(128, 159, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_30min == 3)
+                  ]]]
+              - color: 'rgb(51, 102, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_30min == 4)
+                  ]]]
+              - color: 'rgb(255, 255, 255)'
+                operator: default
+            styles:
+              card:
+                - height: 50px
+            type: 'custom:button-card'
+          - color_type: card
+            entity: sensor.home_next_rain
+            name: 40
+            show_icon: false
+            show_state: false
+            state:
+              - color: 'rgb(204, 217, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_40min == 2)
+                  ]]]
+              - color: 'rgb(128, 159, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_40min == 3)
+                  ]]]
+              - color: 'rgb(51, 102, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_40min == 4)
+                  ]]]
+              - color: 'rgb(255, 255, 255)'
+                operator: default
+            styles:
+              card:
+                - height: 50px
+            type: 'custom:button-card'
+          - color_type: card
+            entity: sensor.home_next_rain
+            name: 50
+            show_icon: false
+            show_state: false
+            state:
+              - color: 'rgb(204, 217, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_50min == 2)
+                  ]]]
+              - color: 'rgb(128, 159, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_50min == 3)
+                  ]]]
+              - color: 'rgb(51, 102, 255)'
+                operator: template
+                value: |
+                  [[[
+                    return states['sensor.home_next_rain'].attributes
+                    && (states['sensor.home_next_rain'].attributes.rain_level_50min == 4)
+                  ]]]
+              - color: 'rgb(255, 255, 255)'
+                operator: default
+            styles:
+              card:
+                - height: 50px
+            type: 'custom:button-card'
+        title: Pluie
+        type: horizontal-stack
       - entities:
           - entity: sensor.temperature_salon
           - entity: sensor.temperature_parents
@@ -52,6 +255,12 @@ views:
         show_header_toggle: false
         title: Températures
         type: entities
+      - align_state: center
+        entities:
+          - entity: sensor.temperature_salon
+            index: 0
+        hours_to_show: 72
+        type: 'custom:mini-graph-card'
     icon: 'mdi:home'
     path: default_view
     title: Maison
@@ -242,6 +451,7 @@ views:
         title: Scripts de la routine
         type: entities
     icon: 'mdi:robot-vacuum'
+    path: rocky
     title: Rocky
   - badges: []
     cards:
@@ -320,10 +530,12 @@ views:
           - entity: variable.zoe_weekly_mileage
           - entity: sensor.zoe_max_range
           - entity: sensor.zoe
+          - entity: sensor.zoe_battery_temperature
         show_header_toggle: false
         title: Zoé
         type: entities
     icon: 'mdi:car-side'
+    path: voiture
     title: Voitures
   - badges: []
     cards:
@@ -409,6 +621,7 @@ views:
           - entity: binary_sensor.capteur_piscine
         type: entities
     icon: 'mdi:pool'
+    path: piscine
     title: Piscine
   - badges: []
     cards:
@@ -440,6 +653,7 @@ views:
         type: entities
     icon: 'mdi:shield-home'
     panel: false
+    path: securite
     title: Sécurité
   - badges: []
     cards:
@@ -472,10 +686,11 @@ views:
       - entity: sensor.linky
         type: 'custom:linky-card'
     icon: 'mdi:power-plug'
+    path: energie
     title: Énerige
   - badges:
-      - binary_sensor.temp_falling
-      - binary_sensor.temp_rising
+      - entity: binary_sensor.temp_falling
+      - entity: binary_sensor.temp_rising
     cards:
       - card:
           title: Lights on
@@ -519,8 +734,16 @@ views:
         title: Automatismes
         type: entities
       - entities:
-          - head: group.all_scripts
-            type: 'custom:fold-entity-row'
+          - card:
+              head:
+                label: Tous les scripts
+                type: section
+              type: 'custom:fold-entity-row'
+            filter:
+              include:
+                - domain: script
+            show_empty: false
+            type: 'custom:auto-entities'
         show_header_toggle: false
         title: Scripts
         type: entities
@@ -533,7 +756,26 @@ views:
               state: home
         show_empty: true
         type: 'custom:auto-entities'
+      - entities:
+          - entity: binary_sensor.vibration_test
+          - entity: sensor.vibration_test_vibrationstrength
+          - entity: sensor.vibration_test_tiltangle
+          - entity: sensor.vibration_test_orientation
+          - entity: input_number.vibration_sensibility
+          - entity: script.update_sensitivity
+        show_header_toggle: false
+        title: Vibration test
+        type: entities
+      - entities:
+          - entity: binary_sensor.vibration_moteur_piscine
+          - entity: sensor.vibration_moteur_piscine_vibrationstrength
+          - entity: sensor.vibration_moteur_piscine_tiltangle
+          - entity: sensor.vibration_moteur_piscine_orientation
+        show_header_toggle: false
+        title: Vibration Moteur Piscine
+        type: entities
     icon: 'mdi:robot'
+    path: automatismes
     title: Automatismes
   - badges:
       - entity: sensor.plex_nas_synology
@@ -542,7 +784,14 @@ views:
         type: media-control
       - entity: media_player.google_home
         type: media-control
+      - entity: media_player.google_home_mini
+        type: media-control
+      - entity: media_player.spotify
+        type: media-control
+      - client_id: 47ad34518fae4ebe84312ddaac859833
+        type: 'custom:spotify-card'
     icon: 'mdi:theater'
+    path: media
     title: Média
   - badges: []
     cards:
@@ -552,13 +801,19 @@ views:
           - entity: binary_sensor.rocky
           - entity: binary_sensor.google_home
           - entity: binary_sensor.google_home_mini
-          - entity: binary_sensor.xiaomi_gateway
           - entity: binary_sensor.hue_gateway
         show_icon: true
         show_name: true
         show_state: true
         title: Systèmes
         type: glance
+      - entities:
+          - entity: sensor.upc_back_ups_status
+          - entity: sensor.upc_back_ups_battery_runtime
+          - entity: sensor.upc_back_ups_load
+        show_header_toggle: false
+        title: UPC Back-UPS
+        type: entities
       - entities:
           - entity: binary_sensor.blizzard
           - entity: sensor.speedtest_ping
@@ -631,6 +886,7 @@ views:
         title: Rocky
         type: entities
     icon: 'mdi:lan'
+    path: reseau
     title: Réseau
   - badges: []
     cards:
@@ -642,7 +898,11 @@ views:
           - entity: zone.college
           - entity: zone.ecole
           - entity: person.benoit
+          - entity: person.alex
+          - entity: person.athenais
+          - entity: person.noah
         type: map
     icon: 'mdi:map-marker'
-    panel: false
-    title: Map
+    panel: true
+    path: carte
+    title: Carte
