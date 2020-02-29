@@ -102,6 +102,10 @@ in this repository:
   server.
 - [deCONZ](https://www.home-assistant.io/integrations/deconz/) to manage Zigbee
   devices.
+- [Météo-France](https://www.home-assistant.io/integrations/meteo_france/) to
+  have weather alerts and rain forecast within the hour.
+- [Zone](https://www.home-assistant.io/integrations/zone) to manage the different
+  zones used by automations.
 
 ## Addons used
 

@@ -29,11 +29,11 @@ influxdb:
       - sensor.exterieur_temperature
       - sensor.dark_sky_humidity
       - sensor.dark_sky_precip_accumulation
-      - sensor.aurade_wind_speed
-      - sensor.aurade_next_rain
-      - sensor.aurade_temperature
-      - sensor.aurade_weather_alert
-      - sensor.aurade_uv
+      - sensor.home_wind_speed
+      - sensor.home_next_rain
+      - sensor.home_temperature
+      - sensor.home_weather_alert
+      - sensor.home_uv
 
       # Renault Zoe monitoring
       - sensor.zoe
