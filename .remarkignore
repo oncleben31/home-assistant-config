@@ -1,0 +1,2 @@
+# Ignore markdown file installed by HACS
+config/www/community/**/
