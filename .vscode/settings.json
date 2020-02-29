@@ -4,4 +4,8 @@
     "python.testing.unittestEnabled": false,
     "python.testing.nosetestsEnabled": false,
     "python.pythonPath": "venv/bin/python",
+    "markdownlint.config": {
+            "MD007": { "start_indented": true }
+    }
+
 }
