@@ -5,8 +5,8 @@
   initial_state: true
   trigger:
     platform: template
-    value_template: "{% if is_state('sensor.aurade_next_rain', 'No rain') %}false{% else %}true{% endif %}"
+    value_template: "{% if is_state('sensor.home_next_rain', 'No rain') %}false{% else %}true{% endif %}"
   action:
     - service: notify.telegram
       data_template:
-        message: "La pluie est attendue dans {{states('sensor.aurade_next_rain')}} minutes."
+        message: "La pluie est attendue dans {{states('sensor.home_next_rain')}} minutes."

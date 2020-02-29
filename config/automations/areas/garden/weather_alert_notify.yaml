@@ -8,18 +8,18 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.aurade_weather_alert
+      entity_id: sensor.home_weather_alert
   condition:
     - condition: template
-      value_template: "{% if is_state('sensor.aurade_weather_alert', 'Vert')  %}false{% else %}true{% endif %}"
+      value_template: "{% if is_state('sensor.home_weather_alert', 'Vert')  %}false{% else %}true{% endif %}"
   action:
     - service: notify.telegram
       data_template:
-        message: "Alerte météo {{states('sensor.aurade_weather_alert')}} en cours:\n
+        message: "Alerte météo {{states('sensor.home_weather_alert')}} en cours:\n
           {%- for attr in ['Vent violent', 'Pluie-innodation', 'Orages', 'Inondation', 'Neige-verglas',
                           'Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion'] -%}
-          {%- if state_attr('sensor.aurade_weather_alert', attr) != 'Vert' %}\n
-          - {{attr}}: {{state_attr('sensor.aurade_weather_alert', attr)}}
+          {%- if state_attr('sensor.home_weather_alert', attr) != 'Vert' %}\n
+          - {{attr}}: {{state_attr('sensor.home_weather_alert', attr)}}
           {%- endif -%}
           {%- endfor -%}"
 
@@ -27,7 +27,7 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.aurade_weather_alert
+      entity_id: sensor.home_weather_alert
       to: "Vert"
   action:
     - service: notify.telegram

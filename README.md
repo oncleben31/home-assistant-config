@@ -3,7 +3,7 @@
 ![Project Maintenance][maintenance-shield]
 [![License][license-shield]](LICENSE.md)
 
-![Github workwlow][workflow-shield]
+[![Github workwlow][workflow-shield]][workflow]
 [![GitHub Activity][commits-shield]][commits]
 [![GitHub Last Commit][last-commit-shield]][commits]
 
@@ -62,6 +62,7 @@ You can find in my automations and scripts the following features:
 - Check and notification if lights could be switch off.
 - Send notification in case of weather alert or rain expected.
 - Send notification according to UV forecast condition.
+- Send notification if I forget to plug the electrical car.
 - And many other things...
 
 ## Custom components used
@@ -102,6 +103,10 @@ in this repository:
   server.
 - [deCONZ](https://www.home-assistant.io/integrations/deconz/) to manage Zigbee
   devices.
+- [Météo-France](https://www.home-assistant.io/integrations/meteo_france/) to
+  have weather alerts and rain forecast within the hour.
+- [Zone](https://www.home-assistant.io/integrations/zone) to manage the different
+  zones used by automations.
 
 ## Addons used
 

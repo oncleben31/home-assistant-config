@@ -1,26 +1,20 @@
 ---
 name: Home Assistant configuration
 
-"on": push
+"on":
+  push:
+  pull_request:
 
 jobs:
-  yaml-lint:
+  yamllint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v1
+      - name: Getting your configuration from GitHub
+        uses: actions/checkout@v1
+      - name: Running YAMLlint
+        uses: "docker://pipelinecomponents/yamllint:latest"
         with:
-          python-version: 3.7
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          # pip install -r requirements_test_all.txt
-      - name: YAML Lint
-        run: |
-          pip install yamllint
-          yamllint .
-
+          args: yamllint .
   link-checker:
     runs-on: ubuntu-latest
     steps:
@@ -30,18 +24,13 @@ jobs:
       - name: Link Checker
         uses: gaurav-nelson/github-action-markdown-link-check@0.6.0
 
-  markdown-lint:
-    runs-on: ubuntu-latest
+  remarklint:
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@master
-      - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+      - name: Getting HA configuration from GitHub
+        uses: actions/checkout@v1
+      - name: Running Remark lint
+        uses: "docker://pipelinecomponents/remark-lint:latest"
+        continue-on-error: true
         with:
-          ruby-version: '2.x'
-      - name: Install dependencies
-        run: |
-          gem install mdl
-          mdl --version
-      - name: Markdown lint
-        run: |
-          mdl --style all --warnings .
+          args: "remark --no-stdout --color --frail --use preset-lint-recommended ."
