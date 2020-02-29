@@ -62,6 +62,7 @@ You can find in my automations and scripts the following features:
 - Check and notification if lights could be switch off.
 - Send notification in case of weather alert or rain expected.
 - Send notification according to UV forecast condition.
+- Send notification if I forget to plug the electrical car.
 - And many other things...
 
 ## Custom components used
