@@ -1,7 +1,7 @@
 ---
 name: Home Assistant configuration
 
-"on": 
+"on":
   push:
   pull_request:
 
