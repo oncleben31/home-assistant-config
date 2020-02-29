@@ -30,18 +30,14 @@ jobs:
       - name: Link Checker
         uses: gaurav-nelson/github-action-markdown-link-check@0.6.0
 
-  markdown-lint:
-    runs-on: ubuntu-latest
+  remarklint:
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@master
-      - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+      - name: Getting HA configuration from GitHub
+        uses: actions/checkout@v1
+      - name: Running Remark lint
+        uses: "docker://pipelinecomponents/remark-lint:latest"
+        continue-on-error: true
         with:
-          ruby-version: '2.x'
-      - name: Install dependencies
-        run: |
-          gem install mdl
-          mdl --version
-      - name: Markdown lint
-        run: |
-          mdl --style all --warnings .
+          args: "remark --no-stdout --color --frail --use preset-lint-recommended ."
+  
