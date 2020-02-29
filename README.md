@@ -3,7 +3,7 @@
 ![Project Maintenance][maintenance-shield]
 [![License][license-shield]](LICENSE.md)
 
-[!Github workwlow][workflow-shield][workflow]
+[![Github workwlow][workflow-shield]][workflow]
 [![GitHub Activity][commits-shield]][commits]
 [![GitHub Last Commit][last-commit-shield]][commits]
 
