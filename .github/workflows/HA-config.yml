@@ -40,4 +40,3 @@ jobs:
         continue-on-error: true
         with:
           args: "remark --no-stdout --color --frail --use preset-lint-recommended ."
-  
