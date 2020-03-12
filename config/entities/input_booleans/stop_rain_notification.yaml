@@ -1,0 +1,9 @@
+---
+# Used for the automation sending telegram and audio message when rain is comming
+#
+# This message allow to avoid sending multiple notification or audio warning.
+#
+stop_rain_notification:
+  name: "Arêter les notifications pour la pluie"
+  initial: false
+  icon: mdi:weather-pouring

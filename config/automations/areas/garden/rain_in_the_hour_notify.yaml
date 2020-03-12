@@ -1,12 +1,75 @@
 ---
 # Sent a telegram notification if rain is expected in the hour
 #
+# Need to use trigger state and condition template because trigger template
+# doesn't work as expected. The condition template to have a false value
+# before triggering it another time.
+#
+# https://www.home-assistant.io/docs/automation/trigger/#template-trigger
+# https://www.home-assistant.io/docs/scripts/conditions/#template-condition
+#
 - alias: "Send notification when rain is expectedd"
   initial_state: true
   trigger:
-    platform: template
-    value_template: "{% if is_state('sensor.home_next_rain', 'No rain') %}false{% else %}true{% endif %}"
+    platform: state
+    entity_id: sensor.home_next_rain
+  condition:
+    - condition: template
+      value_template: "{% if is_state('sensor.home_next_rain', 'No rain') %}false{% else %}true{% endif %}"
+    - condition: state
+      entity_id: input_boolean.stop_rain_notification
+      state: 'off'
   action:
     - service: notify.telegram
       data_template:
         message: "La pluie est attendue dans {{states('sensor.home_next_rain')}} minutes."
+
+- alias: "Send notification when no more rain is expected"
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.home_next_rain
+    to: 'No rain'
+  action:
+    - service: notify.telegram
+      data:
+        message: "Plus de pluie attendue dans la prochaine heure."
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.stop_rain_notification
+ 
+
+- alias: "Stop sending notification"
+  initial_state: true
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.home_next_rain
+    below: 6
+  action:
+    # Protection to ensure other automations are triggered and conditions OK
+    - delay: '00:01'
+    # No more notification after having notify rain in following 5 minutes.
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.stop_rain_notification
+
+- alias: "Send audio warning when rain is coming"
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.home_next_rain
+  condition:
+    - condition: template
+      value_template: "{% if is_state('sensor.home_next_rain', '5') %}true{% else %}false{% endif %}"
+    - condition: time
+      before: '21:30:00'
+      after: '10:00:00'
+    - condition: state
+      entity_id: input_boolean.stop_rain_notification
+      state: 'off'
+  action:
+    - service: tts.google_translate_say
+      entity_id: media_player.google_home
+      data:
+        message: "Chères residents, la pluie est attendue dans quelques minutes."
+    
