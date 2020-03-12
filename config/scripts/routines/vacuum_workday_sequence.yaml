@@ -104,7 +104,7 @@ sequence:
       room_script: script.launch_vacuum_in_noah_bedroom
       room_bool: input_boolean.vacuum_can_clean_noah_bedroom
       room_name: "Noah's bedroom"
-      room_battery_needed: 6
+      room_battery_needed: 10
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
@@ -124,7 +124,7 @@ sequence:
       room_script: script.launch_vacuum_in_kids_bathroom
       room_bool: input_boolean.vacuum_can_clean_kids_bathroom
       room_name: "kids bathroom"
-      room_battery_needed: 1
+      room_battery_needed: 6
       repetition: 2
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
