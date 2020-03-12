@@ -1,0 +1,23 @@
+---
+# Check if cellar door is close at night
+#
+# If door is open, send a notification on telegram
+#
+# https://www.home-assistant.io/components/sun/
+#
+# Main automation checking the state of the light
+- alias: Vérfie fermeture de la porte du sous-sol
+  initial_state: true
+  trigger:
+    platform: sun
+    event: sunset
+  condition: 
+    - condition: state
+      entity_id: binary_sensor.porte_sous_sol
+      state: "on"
+  action:
+    - service: notify.telegram
+      data:
+        message: "La porte du sous-sol est toujours ouverte !"
+
+    
