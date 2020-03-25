@@ -11,7 +11,7 @@
   trigger:
     platform: sun
     event: sunset
-  condition: 
+  condition:
     - condition: state
       entity_id: binary_sensor.porte_sous_sol
       state: "on"
@@ -19,5 +19,3 @@
     - service: notify.telegram
       data:
         message: "La porte du sous-sol est toujours ouverte !"
-
-    

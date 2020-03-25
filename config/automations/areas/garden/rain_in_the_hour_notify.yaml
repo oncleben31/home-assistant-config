@@ -37,7 +37,6 @@
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.stop_rain_notification
- 
 
 - alias: "Stop sending notification"
   initial_state: true
@@ -72,4 +71,3 @@
       entity_id: media_player.google_home
       data:
         message: "Chères residents, la pluie est attendue dans quelques minutes."
-    
