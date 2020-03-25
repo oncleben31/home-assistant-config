@@ -1,0 +1,30 @@
+---
+# Monitoring the last date of the maintenance of the sceptic tank
+#
+# Status displayed in Lovelace using template-entity-row from @thomasloven using code:
+# ---
+# entities:
+# - type: 'custom:template-entity-row'
+#   name: Entretien fosse sceptique
+#   secondary: >-
+#     {{
+#     relative_time(strptime(state_attr('input_datetime.last_maintenance_date_tank','timestamp')
+#     | timestamp_custom('%Y-%m-%d %H:%M:%S %z'), '%Y-%m-%d %H:%M:%S %z')) }}
+#     ago
+#   state: >-
+#     {% if as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) -
+#     state_attr('input_datetime.last_maintenance_date_tank','timestamp') >
+#     86400 * 365 * 3 %}A prévoir{% else %}OK{% endif %}
+#   entity: input_datetime.last_maintenance_date_tank
+# ---
+# https://www.home-assistant.io/docs/configuration/templating/#time
+# 
+- alias: 'Send notification when need to do sceptic tank maintenance'
+  initial_state: true
+  trigger:
+    platform: template
+    value_template: "{{ as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) - state_attr('input_datetime.last_maintenance_date_tank','timestamp') > 86400 * 365 * 3}}"
+  action:
+    - service: notify.telegram
+      data_template:
+        message: "Il est temps de faire la maintenance de la fosse sceptique."

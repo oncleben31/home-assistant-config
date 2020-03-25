@@ -1,0 +1,7 @@
+---
+# Follow the date of the last maintenance of the house boiler
+#
+last_maintenance_date_boiler:
+  name: Date de la dernière révision de la chaudière
+  has_date: true
+  has_time: false

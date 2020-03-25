@@ -1,0 +1,7 @@
+---
+# Follow the date of the last maintenance of the Sceptic tank
+#
+last_maintenance_date_tank:
+  name: Date de la dernière vidange de la fosse
+  has_date: true
+  has_time: false
