@@ -1,0 +1,11 @@
+---
+# Sensor to get the mileage since the last maintneance of the Qashqai
+#
+platform: template
+sensors:
+  qashqai_mileage_since_last_maintenance:
+    value_template: >-
+      {{ states('input_number.qashqai_current_mileage') | int - states('input_number.qashqai_last_maintenance_km') | int}}
+    friendly_name: "kilométrage depuis dernière révision"
+    unit_of_measurement: "km"
+    icon_template: mdi:counter

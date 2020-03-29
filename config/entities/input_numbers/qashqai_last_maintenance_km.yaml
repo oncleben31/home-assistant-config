@@ -1,7 +1,7 @@
 ---
 # Follow the mileage of the last maintenance of the Qashqai
 #
-last_maintenance_km_qashqai:
+qashqai_last_maintenance_km:
   name: Kilométrage de la dernière révision du Qashqai
   icon: mdi:counter
   mode: box

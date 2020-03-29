@@ -1,0 +1,10 @@
+---
+# Follow the current mileage of the Qashqai
+#
+qashqai_current_mileage:
+  name: Kilométrage du Qashqai
+  icon: mdi:counter
+  mode: box
+  min: 0
+  max: 300000
+  unit_of_measurement: km

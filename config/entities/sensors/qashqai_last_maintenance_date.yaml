@@ -1,0 +1,15 @@
+---
+# Sensor with date of the last maintneance of the Qashqai
+#
+# Copy of the imput_datetime with complete datetime string to allow lovelace display
+# like "6 months ago" translated in the Home Assistant core used language.
+#
+platform: template
+sensors:
+  qashqai_last_maintenance_date:
+    value_template: >-
+      {{ state_attr('input_datetime.qashqai_last_maintenance_date','timestamp')
+      | timestamp_custom('%Y-%m-%dT%H:%M:%S%z') }}
+    friendly_name: "date de la dernière révision"
+    icon_template: mdi:counter
+    device_class: timestamp

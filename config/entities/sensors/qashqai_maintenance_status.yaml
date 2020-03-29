@@ -1,0 +1,14 @@
+---
+# Status to follow/recomand Qashqai maintenance.
+#
+# Notify maintenance if mileage since last maintenance is more than ??
+# or if last mantenance older than xx months
+#
+#
+platform: template
+sensors:
+  qashqai_maintenance_status:
+    value_template: >-
+      OK
+    friendly_name: "Status de la révision du Qashqai"
+    icon_template: mdi:tools
