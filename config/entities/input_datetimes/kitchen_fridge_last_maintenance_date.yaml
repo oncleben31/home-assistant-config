@@ -1,0 +1,7 @@
+---
+# Follow the date Kitchen fridge last maintenance
+#
+kitchen_fridge_last_maintenance_date:
+  name: Date du dernier nettoyage du Frigo de la cuisine
+  has_date: true
+  has_time: false
