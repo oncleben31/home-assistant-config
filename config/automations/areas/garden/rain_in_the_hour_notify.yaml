@@ -9,7 +9,6 @@
 # https://www.home-assistant.io/docs/scripts/conditions/#template-condition
 #
 - alias: "Send notification when rain is expectedd"
-  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.home_next_rain
@@ -25,7 +24,6 @@
         message: "La pluie est attendue dans {{states('sensor.home_next_rain')}} minutes."
 
 - alias: "Send notification when no more rain is expected"
-  initial_state: true
   trigger:
     platform: state
     entity_id: sensor.home_next_rain
@@ -39,7 +37,6 @@
         entity_id: input_boolean.stop_rain_notification
 
 - alias: "Stop sending notification"
-  initial_state: true
   trigger:
     platform: numeric_state
     entity_id: sensor.home_next_rain

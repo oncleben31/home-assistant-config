@@ -2,7 +2,6 @@
 # Play a music when someone arrive at home
 #
 - alias: 'Play music when Benoit arriving at Home'
-  initial_state: true
   trigger:
     - platform: state
       entity_id: person.benoit
@@ -34,7 +33,6 @@
         entity_id: media_player.spotify
 
 - alias: 'Play music when Alex arriving at Home'
-  initial_state: true
   trigger:
     - platform: state
       entity_id: person.alex

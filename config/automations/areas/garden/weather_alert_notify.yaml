@@ -5,7 +5,6 @@
 # alert is still active.
 #
 - alias: "Send notification when weather alert is raised"
-  initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.home_weather_alert
@@ -24,7 +23,6 @@
           {%- endfor -%}"
 
 - alias: "Send notification when weather alert ends"
-  initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.home_weather_alert

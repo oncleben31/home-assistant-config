@@ -5,7 +5,6 @@
 # https://github.com/epenet/hassRenaultZE
 #
 - alias: notify_zoe_charge_start
-  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.zoe_charging
@@ -17,7 +16,6 @@
           {{ states('sensor.zoe')}}\u202F{{state_attr('sensor.zoe', 'unit_of_measurement') }}"
 
 - alias: notify_zoe_charge_end
-  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.zoe_charging
