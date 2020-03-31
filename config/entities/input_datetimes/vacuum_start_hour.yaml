@@ -1,0 +1,7 @@
+---
+# Set the hour to launch the daily routine for the vacuum
+#
+vacuum_start_hour:
+  name: Heure de démarrage de Rocky
+  has_date: false
+  has_time: true

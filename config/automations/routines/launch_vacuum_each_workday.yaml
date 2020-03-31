@@ -1,5 +1,5 @@
 ---
-# Launch the vacuum every work day at 10:00
+# Launch the vacuum every work day at the selected hour
 #
 # Exception if the house is put in mode holidays with the thru an
 # input_select
@@ -7,8 +7,10 @@
 - alias: Lancemnent quotidien de Rocky
   initial_state: true
   trigger:
-    platform: time
-    at: '10:00:00'
+    # platform: time
+    # at: '10:00:00'
+    platform: template
+    value_template: "{{ states('sensor.time') == state_attr('input_datetime.vacuum_start_hour', 'timestamp') | timestamp_custom('%H:%M', False) }}"
   condition:
     condition: and
     conditions:
