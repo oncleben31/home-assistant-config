@@ -10,7 +10,8 @@
     # platform: time
     # at: '10:00:00'
     platform: template
-    value_template: "{{ states('sensor.time') == state_attr('input_datetime.vacuum_start_hour', 'timestamp') | timestamp_custom('%H:%M', False) }}"
+    value_template: "{{ states('sensor.time') == state_attr('input_datetime.vacuum_start_hour', 'timestamp')
+    | timestamp_custom('%H:%M', False) }}"
   condition:
     condition: and
     conditions:
