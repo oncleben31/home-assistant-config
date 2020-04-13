@@ -34,8 +34,7 @@ when needed.
 - Raspbery Pi v3 for hosting HassOS
 - Xiaomi devices:
   - Vacuum Roborock cleaner
-  - Aqara gateway (not really used anymore as I migrate the sensor to the
-    Conbee 2)
+  - Lot of sensors and switchs
 - Zwaves:
   - Switchs with energy monitoring
   - Fire detectors
@@ -44,10 +43,12 @@ when needed.
 - DIY with esp32 using [esphomeyaml](https://esphomelib.com/esphomeyaml/)
 - Telegram
 - Google home and Chromecast
-- Renault Zoé my new electric car
+- Renault Zoé my electric car
 - Linky electrcity monitoring system
 - Plex server running on my NAS
 - Conbee 2 for managing Zigbee devices (Xiaomi, Hue and OSRAM)
+- UPC Back-UPS to protect against power failure my Raspberry Pi, my switch and
+  my NAS.
 
 ## Automations
 
@@ -107,6 +108,8 @@ in this repository:
   have weather alerts and rain forecast within the hour.
 - [Zone](https://www.home-assistant.io/integrations/zone) to manage the different
   zones used by automations.
+- [Network UPS Tool (NUT)](https://www.home-assistant.io/integrations/nut) to
+  monitor my UPC Back-UPS.
 
 ## Addons used
 
