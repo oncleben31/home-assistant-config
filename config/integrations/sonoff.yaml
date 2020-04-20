@@ -1,0 +1,10 @@
+---
+# SonOff device integration
+#
+# Using the methods without flashing the SonOff firmware
+#
+# https://github.com/AlexxIT/SonoffLAN
+#
+sonoff:
+  username: !secret sonoff_username
+  password: !secret sonoff_password
