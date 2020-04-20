@@ -1,0 +1,7 @@
+---
+# Follow the date of the last maintenance of the vacuum robot
+#
+last_maintenance_rocky:
+  name: Date de la dernière maintenance de Rocky
+  has_date: true
+  has_time: false

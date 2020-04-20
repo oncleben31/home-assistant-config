@@ -1,0 +1,7 @@
+---
+# Follow the date of the last maintenance of the swiming pool
+#
+last_maintenance_pool:
+  name: Date de la dernière maintenance de la piscine
+  has_date: true
+  has_time: false
