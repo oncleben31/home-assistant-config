@@ -49,6 +49,7 @@ when needed.
 - Conbee 2 for managing Zigbee devices (Xiaomi, Hue and OSRAM)
 - UPC Back-UPS to protect against power failure my Raspberry Pi, my switch and
   my NAS.
+- Sonoff POW R2 for managing the swiming pool pump (in progress)
 
 ## Automations
 
@@ -80,6 +81,8 @@ To help me I used the following custom components:
   **rogro82**.
 - [spotcast](https://github.com/fondberg/spotcast)&#42; to start playing spotify
   on a Google cast device thanks to **fondberg**.
+- [sonoff LAN](https://github.com/AlexxIT/SonoffLAN)&#42; to integrate sonoff devices
+  without flashing the firmware thanks to **AlexxIT**
 
 (&#42;): integrations update managed with HACS
 
@@ -110,6 +113,8 @@ in this repository:
   zones used by automations.
 - [Network UPS Tool (NUT)](https://www.home-assistant.io/integrations/nut) to
   monitor my UPC Back-UPS.
+- [Brother](https://www.home-assistant.io/integrations/brother/) to have a status
+  of my new printer.
 
 ## Addons used
 
