@@ -1,0 +1,15 @@
+---
+# Pool Pump mode
+#
+# Select the different mode of the pool pump
+#
+# Inpired by exxamalte implementation: https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump
+#
+pool_pump:
+  name: Pool Pump mode
+  options:
+    - 'Auto'
+    - 'On'
+    - 'Off'
+  initial: 'Auto'
+  icon: mdi:water-pump

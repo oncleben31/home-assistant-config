@@ -1,0 +1,11 @@
+---
+# Binary to monitor when the pool pump is realy running
+#
+# Inpired by AlexxIT implementation: https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump
+#
+platform: template
+sensors:
+  pool_pump_running:
+    value_template: "{{ state_attr('switch.sonoff_pow_piscine', 'power') | float > 3 }}"
+    friendly_name: "Pool Pump running"
+    device_class: moving

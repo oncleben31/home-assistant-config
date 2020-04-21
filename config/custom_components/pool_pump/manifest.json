@@ -1,0 +1,9 @@
+{
+  "domain": "pool_pump",
+  "name": "Pool Pump Manager",
+  "requirements": [],
+  "dependencies": [],
+  "codeowners": [
+    "@exxamalte"
+  ]
+}

@@ -1,0 +1,12 @@
+---
+# pool_pump custom integration configuration
+#
+# Inpired by exxamalte implementation: https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump
+#
+pool_pump:
+  switch_entity_id: switch.sonoff_pow_piscine
+  pool_pump_mode_entity_id: input_select.pool_pump
+  swimming_season_entity_id: input_boolean.swimming_season
+  run_pool_pump_hours_swimming_season_entity_id: input_number.run_pool_pump_hours_swimming_season
+  run_pool_pump_hours_off_season_entity_id: input_number.run_pool_pump_hours_off_season
+#  water_level_critical_entity_id: binary_sensor.pool_water_level_critical

@@ -1,0 +1,54 @@
+---
+# Pool pump manageement automations
+#
+# Automations linked to input select to define the different mode of the pool pump
+#
+# Inpired by AlexxIT implementation: https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump
+#
+- alias: 'Pool Pump On'
+  trigger:
+    - platform: state
+      entity_id: input_select.pool_pump
+      to: 'On'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.sonoff_pow_piscine
+- alias: 'Pool Pump Off'
+  trigger:
+    - platform: state
+      entity_id: input_select.pool_pump
+      to: 'Off'
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.sonoff_pow_piscine
+- alias: 'Check Pool Pump Periodically'
+  trigger:
+    - platform: time_pattern
+      minutes: '/5'
+      seconds: 00
+  condition:
+    condition: and
+    conditions:
+      - condition: sun
+        after: sunrise
+        after_offset: '-1:00:00'
+      - condition: sun
+        before: sunset
+        before_offset: '1:30:00'
+  action:
+    service: pool_pump.check
+- alias: 'Check Pool Pump on Event'
+  trigger:
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: input_select.pool_pump
+      to: 'Auto'
+    - platform: state
+      entity_id:
+        - input_boolean.swimming_season
+        - input_number.run_pool_pump_hours_swimming_season
+        - input_number.run_pool_pump_hours_off_season
+#        - binary_sensor.pool_water_level_critical
+  action:
+    service: pool_pump.check

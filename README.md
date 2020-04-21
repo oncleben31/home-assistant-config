@@ -65,6 +65,7 @@ You can find in my automations and scripts the following features:
 - Send notification in case of weather alert or rain expected.
 - Send notification according to UV forecast condition.
 - Send notification if I forget to plug the electrical car.
+- Manage the pool pump schedule.
 - And many other things...
 
 ## Custom components used
@@ -83,6 +84,8 @@ To help me I used the following custom components:
   on a Google cast device thanks to **fondberg**.
 - [sonoff LAN](https://github.com/AlexxIT/SonoffLAN)&#42; to integrate sonoff devices
   without flashing the firmware thanks to **AlexxIT**
+- [pool-pump](https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump)
+  to manage the swiming pool pump thanks to **exxamalte**
 
 (&#42;): integrations update managed with HACS
 
