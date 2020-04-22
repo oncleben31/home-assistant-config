@@ -49,6 +49,6 @@
         - input_boolean.swimming_season
         - input_number.run_pool_pump_hours_swimming_season
         - input_number.run_pool_pump_hours_off_season
-#        - binary_sensor.pool_water_level_critical
+        # - binary_sensor.pool_water_level_critical
   action:
     service: pool_pump.check
