@@ -4,7 +4,7 @@
 # Inpired by exxamalte implementation: https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump
 #
 pool_pump:
-  switch_entity_id: switch.sonoff_pow_piscine
+  switch_entity_id: switch.esphome_pompe_piscine_switch
   pool_pump_mode_entity_id: input_select.pool_pump
   swimming_season_entity_id: input_boolean.swimming_season
   run_pool_pump_hours_swimming_season_entity_id: input_number.run_pool_pump_hours_swimming_season

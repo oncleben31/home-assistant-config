@@ -12,7 +12,7 @@
       to: 'On'
   action:
     service: homeassistant.turn_on
-    entity_id: switch.sonoff_pow_piscine
+    entity_id: switch.esphome_pompe_piscine_switch
 - alias: 'Pool Pump Off'
   trigger:
     - platform: state
@@ -20,7 +20,7 @@
       to: 'Off'
   action:
     service: homeassistant.turn_off
-    entity_id: switch.sonoff_pow_piscine
+    entity_id: switch.esphome_pompe_piscine_switch
 - alias: 'Check Pool Pump Periodically'
   trigger:
     - platform: time_pattern

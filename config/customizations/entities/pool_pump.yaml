@@ -1,0 +1,5 @@
+---
+# Change friendly name for Pool pump stuff
+#
+sensor.pool_pump_running_today:
+  friendly_name: Durée quotidienne de fonctionnement
