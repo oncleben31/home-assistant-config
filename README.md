@@ -39,8 +39,8 @@ when needed.
   - Switchs with energy monitoring
   - Fire detectors
 - RFXCOM to access Oregon sensors
-- Philips Hue bulbs, gateway and compatible Zigbee devices
-- DIY with esp32 using [esphomeyaml](https://esphomelib.com/esphomeyaml/)
+- Philips Hue bulbs and compatible Zigbee devices
+- DIY with esp32 using [ESPHome](https://esphome.io)
 - Telegram
 - Google home and Chromecast
 - Renault Zoé my electric car
@@ -50,6 +50,7 @@ when needed.
 - UPC Back-UPS to protect against power failure my Raspberry Pi, my switch and
   my NAS.
 - Sonoff POW R2 for managing the swiming pool pump (in progress)
+- NAS Synology
 
 ## Automations
 
@@ -60,10 +61,9 @@ You can find in my automations and scripts the following features:
 - Monitoring the quality of the internet connexion.
 - Control thru Google Assistant of the Vacuum.
 - Daily routines for cleaning the house with the Vacuum.
-- Alarm management.
+- Alarm management (need rework).
 - Check and notification if lights could be switch off.
 - Send notification in case of weather alert or rain expected.
-- Send notification according to UV forecast condition.
 - Send notification if I forget to plug the electrical car.
 - Manage the pool pump schedule.
 - And many other things...
@@ -82,8 +82,6 @@ To help me I used the following custom components:
   **rogro82**.
 - [spotcast](https://github.com/fondberg/spotcast)&#42; to start playing spotify
   on a Google cast device thanks to **fondberg**.
-- [sonoff LAN](https://github.com/AlexxIT/SonoffLAN)&#42; to integrate sonoff devices
-  without flashing the firmware thanks to **AlexxIT**
 - [pool-pump](https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump)
   to manage the swiming pool pump thanks to **exxamalte**
 
@@ -96,8 +94,6 @@ in this repository:
 
 - [ESPHome](https://www.home-assistant.io/components/esphome/) devices
   integration in HA.
-- [OpenUV](https://www.home-assistant.io/components/openuv/) for UV sensors and
-  alert automation with my swiming pool.
 - [IFTTT](https://www.home-assistant.io/components/ifttt/) used for piloting the
   vacuum robot from the Google Home.
 - [Google Cast](https://www.home-assistant.io/components/cast/) used for some
@@ -121,8 +117,8 @@ in this repository:
 
 ## Addons used
 
-- [ESPHome](https://esphome.io)
-- [InfluxDB](https://github.com/hassio-addons/addon-influxdb)
+- [InfluxDB](https://github.com/hassio-addons/addon-influxdb) deactivated due to
+  hardware issue
 - [SSH & Web Terminal](https://github.com/hassio-addons/addon-ssh)
 - [Unifi Controller](https://github.com/hassio-addons/addon-unifi): warning this
   one use a lot of memory and can be the root cause of issues on Raspberry Pi 3.
