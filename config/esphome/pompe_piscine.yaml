@@ -13,12 +13,12 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   ## use fast_connect if you are connecting to a hidden WiFi network, else comment it out
-  fast_connect: true
+  # fast_connect: true
 
   # # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Pompe_Piscine"
- 
+
 captive_portal:
 
 # Enable logging
@@ -74,12 +74,12 @@ sensor:
       filters:
         # Map from sensor -> measured value
         - calibrate_linear:
-          - 0.0 -> 0.009
-          - 0.38219 -> 0.399
-          - 0.53516 -> 0.557
-          - 2.3991 -> 2.490
-          - 5.94955 -> 6.171
-          - 7.89234 -> 8.188
+            - 0.0 -> 0.009
+            - 0.38219 -> 0.399
+            - 0.53516 -> 0.557
+            - 2.3991 -> 2.490
+            - 5.94955 -> 6.171
+            - 7.89234 -> 8.188
         # Make everything below 0.01A appear as just 0A.
         # Furthermore it corrects 0.009A for the power usage of the plug.
         - lambda: if (x < (0.01 + 0.009)) return 0; else return (x - 0.009);
@@ -91,12 +91,12 @@ sensor:
       filters:
         # Map from sensor -> measured value
         - calibrate_linear:
-          - 0.0 -> 0.0
-          - 229.46669 -> 230.9
-          - 230.89482 -> 231.9
-          - 232.66524 -> 233.5
-          - 235.52 -> 236.6
-        
+            - 0.0 -> 0.0
+            - 229.46669 -> 230.9
+            - 230.89482 -> 231.9
+            - 232.66524 -> 233.5
+            - 235.52 -> 236.6
+
     # Power sensor
     power:
       id: power
@@ -113,9 +113,9 @@ sensor:
             - 989.39340 -> 1029.0
             - 1347.35217 -> 1412.0
             - 1802.86707 -> 1891.0
-        # Make everything below 2W appear as just 0W.
+        # Make everything below 0W appear as just 0W.
         # Furthermore it corrects 0.99W for the power usage of the plug.
-        - lambda: if (x < (2 + 0.99)) return 0; else return (x - 0.99);
+        - lambda: if (x < (0 + 0.99)) return 0; else return (x - 0.99);
 
   - platform: total_daily_energy
     name: esphome_pompe_piscine_daily_energy
@@ -151,7 +151,7 @@ binary_sensor:
     filters:
       - delayed_off: 10s
     lambda: |-
-      return id(power).state > 2;
+      return id(power).state > 1;
   - platform: status
     name: esphome_pompe_piscine_status
 
