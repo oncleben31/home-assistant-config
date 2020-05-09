@@ -12,13 +12,10 @@
       entity_id: binary_sensor.NAS
       to: 'off'
     - platform: state
-      entity_id: binary_sensor.hue_gateway
-      to: 'off'
-    - platform: state
       entity_id: binary_sensor.rocky
       to: 'off'
     - platform: state
-      entity_id: binary_sensor.xiaomi_gateway
+      entity_id: binary_sensor.esphome_pompe_piscine_status
       to: 'off'
   action:
     - service: notify.telegram
@@ -42,14 +39,12 @@
       entity_id: binary_sensor.NAS
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.hue_gateway
-      to: 'on'
-    - platform: state
       entity_id: binary_sensor.rocky
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.xiaomi_gateway
+      entity_id: binary_sensor.esphome_pompe_piscine_status
       to: 'on'
+
   action:
     - service: notify.telegram
       data_template:
