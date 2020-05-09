@@ -1,12 +1,12 @@
 ---
 # Monitor each day the duration where the pool pump was on
 #
-# Inpired by AlexxIT implementation: https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump
+# Inpired by exxamalte implementation: https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump
 # https://www.home-assistant.io/integrations/history_stats/
 #
 platform: history_stats
 name: pool_pump_running_today
-entity_id: binary_sensor.esphome_pompe_piscine_on
+entity_id: switch.esphome_pompe_piscine_switch
 state: 'on'
 type: time
 start: '{{ now().replace(hour=0, minute=0, second=0) }}'

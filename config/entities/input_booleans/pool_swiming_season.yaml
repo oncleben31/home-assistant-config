@@ -1,8 +1,0 @@
----
-# Swiming season
-#
-# Inpired by exxamalte implementation: https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump
-#
-swimming_season:
-  name: Swimming Season
-  icon: mdi:swim

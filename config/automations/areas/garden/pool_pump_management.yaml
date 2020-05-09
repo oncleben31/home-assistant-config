@@ -42,13 +42,8 @@
     - platform: homeassistant
       event: start
     - platform: state
-      entity_id: input_select.pool_pump
-      to: 'Auto'
-    - platform: state
       entity_id:
-        - input_boolean.swimming_season
-        - input_number.run_pool_pump_hours_swimming_season
-        - input_number.run_pool_pump_hours_off_season
-        # - binary_sensor.pool_water_level_critical
+        - input_select.pool_pump
+        - input_number.pool_temperature
   action:
     service: pool_pump.check

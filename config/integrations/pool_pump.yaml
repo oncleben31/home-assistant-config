@@ -6,7 +6,7 @@
 pool_pump:
   switch_entity_id: switch.esphome_pompe_piscine_switch
   pool_pump_mode_entity_id: input_select.pool_pump
-  swimming_season_entity_id: input_boolean.swimming_season
-  run_pool_pump_hours_swimming_season_entity_id: input_number.run_pool_pump_hours_swimming_season
-  run_pool_pump_hours_off_season_entity_id: input_number.run_pool_pump_hours_off_season
-#  water_level_critical_entity_id: binary_sensor.pool_water_level_critical
+  pool_temperature_entity_id: input_number.pool_temperature
+  # optional:
+  # water_level_critical_entity_id: binary_sensor.pool_water_level_critical
+  schedule_break_in_hours: 1.0
