@@ -5,9 +5,6 @@
 # https://www.home-assistant.io/components/http/
 #
 http:
-  # Contains the URL that Home Assistant is available on the internet.
-  base_url: !secret base_url
-
   # Enables additional IP filtering.
   ip_ban_enabled: true
 
