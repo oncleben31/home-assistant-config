@@ -2,248 +2,107 @@ button_card_templates:
   vacuum_zone:
     aspect_ratio: 1/1
     color_type: card
-resources:
-  - type: js
-    url: /community_plugin/lovelace-fold-entity-row/fold-entity-row.js
-  - type: js
-    url: /local/linky-card.js?v=4
-  - type: js
-    url: /community_plugin/lovelace-card-tools/card-tools.js
-  - type: js
-    url: /community_plugin/lovelace-auto-entities/auto-entities.js
-  - type: js
-    url: /customcards/weasley-card.js
-  - type: js
-    url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
-  - type: js
-    url: /community_plugin/lovelace-multiple-entity-row/multiple-entity-row.js
-  - type: module
-    url: /community_plugin/button-card/button-card.js
-  - type: module
-    url: /community_plugin/canvas-gauge-card/canvas-gauge-card.js
-  - type: js
-    url: /community_plugin/lovelace-card-modder/card-modder.js
-  - type: module
-    url: /community_plugin/spotify-card/spotify-card.js
-  - type: module
-    url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
 title: Maison
 views:
-  - badges:
-      - entity: sensor.home_weather_alert
+  - badges: []
     cards:
-      - entity: weather.dark_sky
-        name: Météo DarkSky
-        type: weather-forecast
+      - alertEntity: sensor.home_weather_alert
+        entity: weather.home
+        freezeChanceEntity: sensor.home_freeze_chance
+        name: Maison
+        rainChanceEntity: sensor.home_rain_chance
+        rainForecastEntity: sensor.home_next_rain
+        snowChanceEntity: sensor.home_snow_chance
+        thunderChanceEntity: sensor.home_thunder_chance
+        type: 'custom:meteo-france-weather-card'
+        uvEntity: sensor.home_uv
       - entities:
           - entity: sensor.exterieur_temperature
           - entity: sensor.exterieur_humidity
           - entity: sensor.temperature_piscine
         title: Extérieur
         type: glance
-      - entity: weather.home
-        type: weather-forecast
-      - cards:
-          - color_type: card
-            entity: sensor.home_next_rain
-            name: Now
-            show_icon: false
-            show_state: false
-            state:
-              - color: 'rgb(204, 217, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_0min == 2)
-                  ]]]
-              - color: 'rgb(128, 159, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_0min == 3)
-                  ]]]
-              - color: 'rgb(51, 102, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_0min == 4)
-                  ]]]
-              - color: 'rgb(255, 255, 255)'
-                operator: default
-            styles:
-              card:
-                - height: 50px
-            type: 'custom:button-card'
-          - color_type: card
-            entity: sensor.home_next_rain
-            name: 10
-            show_icon: false
-            show_state: false
-            state:
-              - color: 'rgb(204, 217, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_10min == 2)
-                  ]]]
-              - color: 'rgb(128, 159, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_10min == 3)
-                  ]]]
-              - color: 'rgb(51, 102, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_10min == 4)
-                  ]]]
-              - color: 'rgb(255, 255, 255)'
-                operator: default
-            styles:
-              card:
-                - height: 50px
-            type: 'custom:button-card'
-          - color_type: card
-            entity: sensor.home_next_rain
-            name: 20
-            show_icon: false
-            show_state: false
-            state:
-              - color: 'rgb(204, 217, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_20min == 2)
-                  ]]]
-              - color: 'rgb(128, 159, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_20min == 3)
-                  ]]]
-              - color: 'rgb(51, 102, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_20min == 4)
-                  ]]]
-              - color: 'rgb(255, 255, 255)'
-                operator: default
-            styles:
-              card:
-                - height: 50px
-            type: 'custom:button-card'
-          - color_type: card
-            entity: sensor.home_next_rain
-            name: 30
-            show_icon: false
-            show_state: false
-            state:
-              - color: 'rgb(204, 217, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_30min == 2)
-                  ]]]
-              - color: 'rgb(128, 159, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_30min == 3)
-                  ]]]
-              - color: 'rgb(51, 102, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_30min == 4)
-                  ]]]
-              - color: 'rgb(255, 255, 255)'
-                operator: default
-            styles:
-              card:
-                - height: 50px
-            type: 'custom:button-card'
-          - color_type: card
-            entity: sensor.home_next_rain
-            name: 40
-            show_icon: false
-            show_state: false
-            state:
-              - color: 'rgb(204, 217, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_40min == 2)
-                  ]]]
-              - color: 'rgb(128, 159, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_40min == 3)
-                  ]]]
-              - color: 'rgb(51, 102, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_40min == 4)
-                  ]]]
-              - color: 'rgb(255, 255, 255)'
-                operator: default
-            styles:
-              card:
-                - height: 50px
-            type: 'custom:button-card'
-          - color_type: card
-            entity: sensor.home_next_rain
-            name: 50
-            show_icon: false
-            show_state: false
-            state:
-              - color: 'rgb(204, 217, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_50min == 2)
-                  ]]]
-              - color: 'rgb(128, 159, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_50min == 3)
-                  ]]]
-              - color: 'rgb(51, 102, 255)'
-                operator: template
-                value: |
-                  [[[
-                    return states['sensor.home_next_rain'].attributes
-                    && (states['sensor.home_next_rain'].attributes.rain_level_50min == 4)
-                  ]]]
-              - color: 'rgb(255, 255, 255)'
-                operator: default
-            styles:
-              card:
-                - height: 50px
-            type: 'custom:button-card'
-        title: Pluie
-        type: horizontal-stack
+      - align_state: center
+        entities:
+          - entity: sensor.temperature_salon
+            index: 0
+        hours_to_show: 72
+        type: 'custom:mini-graph-card'
+      - entities:
+          - entity: input_datetime.last_maintenance_date_tank
+            name: Entretien fosse sceptique
+            secondary: >-
+              {{
+              relative_time(strptime(state_attr('input_datetime.last_maintenance_date_tank','timestamp')
+              | timestamp_custom('%Y-%m-%d %H:%M:%S %z'), '%Y-%m-%d %H:%M:%S
+              %z')) }} ago
+            state: >-
+              {% if as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) -
+              state_attr('input_datetime.last_maintenance_date_tank','timestamp')
+              > 86400 * 365 * 3 %}A prévoir{% else %}OK{% endif %}
+            type: 'custom:template-entity-row'
+          - entity: input_datetime.last_maintenance_date_chimney
+            name: Ramonage cheminée
+            secondary: >-
+              {{
+              relative_time(strptime(state_attr('input_datetime.last_maintenance_date_chimney','timestamp')
+              | timestamp_custom('%Y-%m-%d %H:%M:%S %z'), '%Y-%m-%d %H:%M:%S
+              %z')) }} ago
+            state: >-
+              {% if as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) -
+              state_attr('input_datetime.last_maintenance_date_chimney','timestamp')
+              > 86400 * 365 * 1 %}A prévoir{% else %}OK{% endif %}
+            type: 'custom:template-entity-row'
+          - entity: input_datetime.last_maintenance_date_boiler
+            name: Entretien chaudière
+            secondary: >-
+              {{
+              relative_time(strptime(state_attr('input_datetime.last_maintenance_date_boiler','timestamp')
+              | timestamp_custom('%Y-%m-%d %H:%M:%S %z'), '%Y-%m-%d %H:%M:%S
+              %z')) }} ago
+            state: >-
+              {% if as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) -
+              state_attr('input_datetime.last_maintenance_date_boiler','timestamp')
+              > 86400 * 365 * 1 %}A prévoir{% else %}OK{% endif %}
+            type: 'custom:template-entity-row'
+          - entity: input_datetime.kitchen_fridge_last_maintenance_date
+            name: Nettoyage frigo cuisine
+            secondary: >-
+              {{
+              relative_time(strptime(state_attr('input_datetime.kitchen_fridge_last_maintenance_date','timestamp')
+              | timestamp_custom('%Y-%m-%d %H:%M:%S %z'), '%Y-%m-%d %H:%M:%S
+              %z')) }} ago
+            state: >-
+              {% if as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) -
+              state_attr('input_datetime.kitchen_fridge_last_maintenance_date','timestamp')
+              > 86400 * 365 / 2 %}A prévoir{% else %}OK{% endif %}
+            type: 'custom:template-entity-row'
+          - entity: input_datetime.last_maintenance_rocky
+            name: Maintenance Rocky
+            secondary: >-
+              {{
+              relative_time(strptime(state_attr('input_datetime.last_maintenance_rocky','timestamp')
+              | timestamp_custom('%Y-%m-%d %H:%M:%S %z'), '%Y-%m-%d %H:%M:%S
+              %z')) }} ago
+            state: >-
+              {% if as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) -
+              state_attr('input_datetime.last_maintenance_rocky','timestamp') >
+              86400 * 14 %}A prévoir{% else %}OK{% endif %}
+            type: 'custom:template-entity-row'
+          - entity: input_datetime.last_maintenance_pool
+            name: Maintenance piscine
+            secondary: >-
+              {{
+              relative_time(strptime(state_attr('input_datetime.last_maintenance_pool','timestamp')
+              | timestamp_custom('%Y-%m-%d %H:%M:%S %z'), '%Y-%m-%d %H:%M:%S
+              %z')) }} ago
+            state: >-
+              {% if as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) -
+              state_attr('input_datetime.last_maintenance_pool','timestamp') >
+              86400 * 7 %}A prévoir{% else %}OK{% endif %}
+            type: 'custom:template-entity-row'
+        title: Maintenances
+        type: entities
       - entities:
           - entity: sensor.temperature_salon
           - entity: sensor.temperature_parents
@@ -255,12 +114,6 @@ views:
         show_header_toggle: false
         title: Températures
         type: entities
-      - align_state: center
-        entities:
-          - entity: sensor.temperature_salon
-            index: 0
-        hours_to_show: 72
-        type: 'custom:mini-graph-card'
     icon: 'mdi:home'
     path: default_view
     title: Maison
@@ -446,9 +299,11 @@ views:
             type: horizontal-stack
         type: vertical-stack
       - entities:
+          - entity: input_select.house_mode
+          - entity: input_datetime.vacuum_start_hour
           - entity: script.vacuum_map_construct
         show_header_toggle: false
-        title: Scripts de la routine
+        title: Paramétrages
         type: entities
     icon: 'mdi:robot-vacuum'
     path: rocky
@@ -518,10 +373,27 @@ views:
         title: Trajets
         type: glance
       - entities:
+          - label: Zoé
+            type: section
           - entity: input_datetime.last_maintenance_date_zoe
+            name: Révision Zoé
+            secondary: >-
+              {{
+              relative_time(strptime(state_attr('input_datetime.last_maintenance_date_zoe','timestamp')
+              | timestamp_custom('%Y-%m-%d %H:%M:%S %z'), '%Y-%m-%d %H:%M:%S
+              %z')) }} ago
+            state: >-
+              {% if as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) -
+              state_attr('input_datetime.last_maintenance_date_zoe','timestamp')
+              > 86400 * 365 * 1 %}A prévoir{% else %}OK{% endif %}
+            type: 'custom:template-entity-row'
           - entity: input_number.last_maintenance_km_zoe
-          - entity: input_datetime.last_maintenance_date_qashqai
-          - entity: input_number.last_maintenance_km_qashqai
+          - label: Qashqai
+            type: section
+          - entity: sensor.qashqai_last_maintenance_date
+          - entity: sensor.qashqai_mileage_since_last_maintenance
+        show_header_toggle: false
+        title: Révisions voitures
         type: entities
       - entities:
           - entity: sensor.zoe_mileage
@@ -540,85 +412,46 @@ views:
   - badges: []
     cards:
       - entities:
-          - entity: sensor.exterieur_temperature
-          - entity: sensor.temperature_piscine
+          - entity: input_datetime.last_maintenance_pool
+            name: Maintenance piscine
+            secondary: >-
+              {{
+              relative_time(strptime(state_attr('input_datetime.last_maintenance_pool','timestamp')
+              | timestamp_custom('%Y-%m-%d %H:%M:%S %z'), '%Y-%m-%d %H:%M:%S
+              %z')) }} ago
+            state: >-
+              {% if as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) -
+              state_attr('input_datetime.last_maintenance_pool','timestamp') >
+              86400 * 7 %}A prévoir{% else %}OK{% endif %}
+            type: 'custom:template-entity-row'
+        title: Maintenance
         type: entities
       - entities:
-          - entity: binary_sensor.protection_window
-          - entity: sensor.aurade_uv
+          - entity: sensor.exterieur_temperature
+          - entity: sensor.temperature_piscine
+        title: Températures
         type: entities
-      - card:
-          elements:
-            - entity: sensor.dark_sky_uv_index
-              gauge:
-                animationDuration: 1500
-                animationRule: linear
-                borders: 'no'
-                colorValueBoxRect: '#222'
-                colorValueBoxRectEnd: '#333'
-                height: 200
-                highlights:
-                  - color: 'rgba(247, 228, 1, .75)'
-                    from: 2.5
-                    to: 5.5
-                  - color: 'rgba(40, 149, 0, .75)'
-                    from: 0
-                    to: 2.5
-                  - color: 'rgba(248, 123, 1, .75)'
-                    from: 5.5
-                    to: 7.5
-                  - color: 'rgba(216, 23, 0, .75)'
-                    from: 7.5
-                    to: 10.5
-                  - color: 'rgba(75, 46, 154, .75)'
-                    from: 10.5
-                    to: 13
-                majorTicks:
-                  - '0'
-                  - '1'
-                  - '2'
-                  - '3'
-                  - '4'
-                  - '5'
-                  - '6'
-                  - '7'
-                  - '8'
-                  - '9'
-                  - '10'
-                  - '11'
-                  - '12'
-                  - '13'
-                maxValue: 13
-                minValue: 0
-                minorTicks: 5
-                needleCircleInner: false
-                needleCircleOuter: true
-                needleCircleSize: 7
-                needleType: arrow
-                needleWidth: 4
-                startAngle: 40
-                strokeTicks: true
-                ticksAngle: 280
-                title: UV Index
-                type: radial-gauge
-                valueBox: true
-                valueBoxBorderRadius: 10
-                valueDec: 2
-                valueInt: 2
-                width: 200
-              style:
-                left: 50%
-                top: 50%
-              type: 'custom:canvas-gauge-card'
-          image: /local/UV_indice_background.png
-          type: picture-elements
-        style:
-          border-radius: 25px
-        type: 'custom:card-modder'
+      - entities:
+          - entity: input_number.pool_temperature
+          - entity: input_select.pool_pump
+          - entity: pool_pump.total_daily_filtering_duration
+          - entity: pool_pump.next_run_schedule
+          - entity: sensor.pool_pump_running_today
+          - entity: switch.esphome_pompe_piscine_switch
+        show_header_toggle: false
+        title: Gestion Pompe Piscine
+        type: entities
       - entities:
           - entity: sensor.wifi_signal_sensor
           - entity: input_boolean.stop_deep_sleep
           - entity: binary_sensor.capteur_piscine
+        title: 'Capteur '
+        type: entities
+      - entities:
+          - entity: sensor.esphome_pompe_piscine_wifi_signal
+          - entity: binary_sensor.esphome_pompe_piscine_status
+        show_header_toggle: false
+        title: Pompe
         type: entities
     icon: 'mdi:pool'
     path: piscine
@@ -786,14 +619,11 @@ views:
         type: media-control
       - entity: media_player.google_home_mini
         type: media-control
-      - entity: media_player.spotify
-        type: media-control
-      - client_id: 47ad34518fae4ebe84312ddaac859833
-        type: 'custom:spotify-card'
     icon: 'mdi:theater'
     path: media
     title: Média
-  - badges: []
+  - badges:
+      - entity: sensor.hl_l3230cdw_page_counter
     cards:
       - columns: 3
         entities:
@@ -801,11 +631,28 @@ views:
           - entity: binary_sensor.rocky
           - entity: binary_sensor.google_home
           - entity: binary_sensor.google_home_mini
-          - entity: binary_sensor.hue_gateway
         show_icon: true
         show_name: true
         show_state: true
         title: Systèmes
+        type: glance
+      - entities:
+          - entity: binary_sensor.capteur_piscine
+          - entity: binary_sensor.esphome_pompe_piscine_status
+        title: ESPs
+        type: glance
+      - entities:
+          - entity: binary_sensor.orange_livebox_wan_status
+          - entity: sensor.orange_livebox_download_speed
+          - entity: sensor.orange_livebox_upload_speed
+        title: Livebox
+        type: glance
+      - entities:
+          - entity: binary_sensor.blizzard
+          - entity: sensor.speedtest_ping
+          - entity: sensor.speedtest_download
+          - entity: sensor.speedtest_upload
+        title: Internet
         type: glance
       - entities:
           - entity: sensor.upc_back_ups_status
@@ -814,13 +661,6 @@ views:
         show_header_toggle: false
         title: UPC Back-UPS
         type: entities
-      - entities:
-          - entity: binary_sensor.blizzard
-          - entity: sensor.speedtest_ping
-          - entity: sensor.speedtest_download
-          - entity: sensor.speedtest_upload
-        title: Internet
-        type: glance
       - card:
           show_header_toggle: false
           title: Batteries faibles
@@ -841,11 +681,6 @@ views:
         show_empty: true
         type: 'custom:auto-entities'
       - entities:
-          - entity: sensor.hacs
-        show_header_toggle: false
-        title: Mise à jour
-        type: entities
-      - entities:
           - entity: sensor.processor_use
           - entity: sensor.disk_use_percent
           - entity: sensor.memory_use_percent
@@ -861,6 +696,12 @@ views:
           - zwave.prise_pc
         show_header_toggle: false
         title: Z-Wave
+        type: entities
+      - entities:
+          - entity: vacuum.rocky
+          - entity: sensor.vacuum_cleaner_error_sensor
+        show_header_toggle: false
+        title: Rocky
         type: entities
       - card:
           show_header_toggle: false
@@ -879,12 +720,22 @@ views:
             - state: unavailable
         show_empty: true
         type: 'custom:auto-entities'
-      - entities:
-          - entity: vacuum.rocky
-          - entity: sensor.vacuum_cleaner_error_sensor
-        show_header_toggle: false
-        title: Rocky
-        type: entities
+      - columns: 4
+        entities:
+          - entity: sensor.hl_l3230cdw_black_toner_remaining
+          - entity: sensor.hl_l3230cdw_cyan_toner_remaining
+          - entity: sensor.hl_l3230cdw_yellow_toner_remaining
+          - entity: sensor.hl_l3230cdw_magenta_toner_remaining
+          - entity: sensor.hl_l3230cdw_black_drum_remaining_life
+          - entity: sensor.hl_l3230cdw_cyan_drum_remaining_life
+          - entity: sensor.hl_l3230cdw_magenta_drum_remaining_life
+          - entity: sensor.hl_l3230cdw_yellow_drum_remaining_life
+          - entity: sensor.hl_l3230cdw_belt_unit_remaining_life
+          - entity: sensor.hl_l3230cdw_fuser_remaining_life
+          - entity: sensor.hl_l3230cdw_pf_kit_1_remaining_life
+          - entity: sensor.hl_l3230cdw_status
+        title: Imprimante
+        type: glance
     icon: 'mdi:lan'
     path: reseau
     title: Réseau
