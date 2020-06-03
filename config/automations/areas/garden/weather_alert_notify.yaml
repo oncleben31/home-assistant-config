@@ -15,7 +15,7 @@
     - service: notify.telegram
       data_template:
         message: "Alerte météo {{states('sensor.home_weather_alert')}} en cours:\n
-          {%- for attr in ['Vent violent', 'Pluie-innodation', 'Orages', 'Inondation', 'Neige-verglas',
+          {%- for attr in ['Vent violent', 'Pluie-inondation', 'Orages', 'Inondation', 'Neige-verglas',
                           'Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion'] -%}
           {%- if state_attr('sensor.home_weather_alert', attr) != 'Vert' %}\n
           - {{attr}}: {{state_attr('sensor.home_weather_alert', attr)}}
