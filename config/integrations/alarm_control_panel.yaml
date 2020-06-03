@@ -4,13 +4,14 @@
 # https://www.home-assistant.io/components/alarm_control_panel.manual/
 #
 alarm_control_panel:
+  # TODO: review settings
   - platform: manual
     code: !secret alarm_code
-    pending_time: 30
+    arming_time: 30
     delay_time: 20
     trigger_time: 4
     disarmed:
       trigger_time: 0
     armed_home:
-      pending_time: 0
+      arming_time: 0
       delay_time: 0
