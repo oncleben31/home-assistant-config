@@ -10,8 +10,9 @@
   condition: 
     - condition: template
       value_template: >-
-        {% as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) -
-        state_attr('input_datetime.last_maintenance_pool','timestamp') > 86400 * 7 %}
+        {{as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) -
+        state_attr('input_datetime.last_maintenance_pool','timestamp') >= 86400 * 7 }}
+
   action:
     - service: notify.telegram
       data_template:
