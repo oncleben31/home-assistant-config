@@ -1,6 +1,9 @@
 ---
-# Notifications to monitor internal devices.
-# One when detected down. Another when back online.
+# EN: Notifications to monitor internal devices.
+# FR: Notification pour surveillance des appareils de la maison.
+#
+# EN: One when detected down. Another when back online.
+# FR: Une notification quand plus detectée. Un nouvelle quand de nouveau en ligne.
 #
 - alias: 'Notification de système KO'
   initial_state: true
@@ -17,6 +20,7 @@
     - platform: state
       entity_id: binary_sensor.esphome_pompe_piscine_status
       to: 'off'
+
   action:
     - service: notify.telegram
       data_template:
