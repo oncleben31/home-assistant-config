@@ -20,8 +20,7 @@
     - platform: state
       entity_id: binary_sensor.esphome_pompe_piscine_status
       to: 'off'
-      for:
-        seconds: 10
+
   action:
     - service: notify.telegram
       data_template:
