@@ -1,4 +1,6 @@
 ---
+# English:
+# --------
 # Welcome to my Home Assistant configuration!
 #
 # Don't be scared by the size of my configuration file...
@@ -13,27 +15,30 @@
 # The configuration.yaml is only used to bootstrap the system
 # and contains some minimal, but vital, settings.
 #
+#
+# Français:
+# ---------
+# Bienvenue dans ma configuration Home Assistant.
+#
+# Ne soyez pas effrayés par la structure non standard de cette configuration pour
+# Home-Assistant. J'ai été inspiré par la structure propsée par Franck Nijhof.
+#
+# Cette approche est très modulaire et très différente dans sa strucutre des autres
+# configurations que vous trouverez sur Internet.
+#
+# L'idée c'est que chaque fichier dans ce dépôt ne fait qu'une seule chose !
+# Vous pouvez ainsi chercher le fichier qui correspond à un composant, cliquez et
+# vous trouverez rapidement l'information.
+# Le fichier `configuration.yaml` n'est utilisé que pour amorcer le système et
+# contient des paramètres minimaux, mais vitaux.
+#
+# Si vous êtes à l'aise en anglais je conseille le visionnage [de la video de Franck](https://www.youtube.com/watch?v=lndeybw21PY)
+# expliquant pourquoi il a fait ces choix.
+#
 # https://github.com/frenck/home-assistant-config
 # https://www.youtube.com/watch?v=lndeybw21PY
-#
+
 homeassistant:
-  # Name of this Home Assistant instance... Some French touch ;)
-  # name: Maison
-
-  # Location required to calculate the time the sun rises and sets
-  # latitude: !secret latitude_home
-  # longitude: !secret longitude_home
-
-  # Impacts weather/sunrise data (altitude above sea level in meters)
-  # elevation: !secret altitude_home
-
-  # metric for Metric, imperial for Imperial
-  # unit_system: metric
-
-  # Pick yours from here:
-  # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  # time_zone: Europe/Paris
-
   # Load packages
   packages: !include_dir_named integrations
 
