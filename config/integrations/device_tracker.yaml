@@ -1,8 +1,10 @@
 ---
-# Home Assistant can get information from various devices. These can be used,
+# E: Home Assistant can get information from various devices. These can be used,
 # for example, to track the location of your mobile phone.
-#
 # This configuration loads up my device trackers
+# F: Home Assitant peut récupérer les infos de divers appareils. Cette integration
+# peut être utilisée pour suivre la localisation de votre téléphone mobile.
+# Ce fichier de configuration permet de charger mes tracker d'appareil.
 #
 # https://www.home-assistant.io/components/device_tracker/
 #
