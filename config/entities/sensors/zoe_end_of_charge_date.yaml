@@ -1,0 +1,16 @@
+---
+# E: Sensor with date of the end of the Zoé charge
+# F: Sensor avec la date de la fin de charge de la Zoé
+#
+#
+platform: template
+sensors:
+  zoe_end_of_charge_time:
+    value_template: >-
+      {{ (as_timestamp(state_attr('sensor.zoe','last_update'))
+      + state_attr('sensor.zoe','charging_remaining_time')*60) 
+      | timestamp_custom('%Y-%m-%dT%H:%M:%S%z')}}
+
+    friendly_name: "date de fin de charge"
+    icon_template: mdi:counter
+    device_class: timestamp

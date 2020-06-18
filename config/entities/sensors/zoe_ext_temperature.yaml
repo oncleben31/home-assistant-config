@@ -1,0 +1,12 @@
+---
+# E: Sensor to extract external temperature from attribute of Renault Zoé sensor
+# F: Sensor pour extraire la température extérieur du sensor Renault Zoé.
+#
+# https://github.com/epenet/hassRenaultZE
+#
+platform: template
+sensors:
+  zoe_ext_temperature:
+    value_template: "{{ state_attr('sensor.zoe' , 'outside_temperature') }}"
+    friendly_name: "Température extérieure"
+    unit_of_measurement: "°C"

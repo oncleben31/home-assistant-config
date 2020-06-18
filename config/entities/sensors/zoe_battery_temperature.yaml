@@ -1,5 +1,6 @@
 ---
-# Sensor to extract battery temperature from attribute of Renault Zoé sensor
+# E: Sensor to extract battery temperature from attribute of Renault Zoé sensor
+# F: Sensor pour extraire la température de la batterie du sensor Renault Zoé.
 #
 # https://github.com/epenet/hassRenaultZE
 #
