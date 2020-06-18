@@ -1,6 +1,8 @@
 ---
-# Binary sensors gather information about the state of devices which have a
+# E: Binary sensors gather information about the state of devices which have a
 # “digital” return value (either 1 or 0).
+# F: Les capteurs binaires permettent de représenter l'état d'un appareil qui peut
+# retourner une valeure booléene (0 ou 1)
 #
 # https://www.home-assistant.io/components/binary_sensor/
 #

@@ -1,5 +1,6 @@
 ---
-# Panel to control alarm system
+# E: Panel to control alarm system
+# F: Control et paramétrage de l'alarme.
 #
 # https://www.home-assistant.io/components/alarm_control_panel.manual/
 #

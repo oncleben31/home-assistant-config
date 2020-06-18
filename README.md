@@ -19,7 +19,7 @@ Vous trouverez le contenu francophone du README [ici](#pour-les-francophones).
 
 ## Pour les francophones
 
-Ne soyez pas effrayés par la strucutre non standard de cette configuration pour
+Ne soyez pas effrayés par la structure non standard de cette configuration pour
 Home-Assistant. J'ai été inspiré par [la structure propsée par Franck Nijhof](https://github.com/frenck/home-assistant-config).
 
 Cette approche est très modulaire et très différente dans sa strucutre des autres

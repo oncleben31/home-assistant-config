@@ -1,5 +1,6 @@
 ---
-# Discovery component allow to discover some devices automatically
+# E: Discovery component allow to discover some devices automatically
+# F: L'intégration `discovery` permet de detectéer certain équipements automatiquement.
 #
 # https://www.home-assistant.io/components/discovery/
 #

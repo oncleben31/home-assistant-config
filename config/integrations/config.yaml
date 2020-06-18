@@ -1,6 +1,8 @@
 ---
-# The config component enables a set of additional capabilities to manage and
+# E: The config component enables a set of additional capabilities to manage and
 # configure certain parts of Home Assistant straight from the frontend.
+# F: Le composant `config` permet d'activer le panneau de configuration depuis l'interface
+# de Home Assistant.
 #
 # https://www.home-assistant.io/components/config/
 #

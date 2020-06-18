@@ -1,6 +1,8 @@
 ---
-# The Home Assistant Cloud allows you to quickly integrate your local
+# E: The Home Assistant Cloud allows you to quickly integrate your local
 # Home Assistant with various cloud services like Amazon Alexa and Google Home.
+# F: Le Cloud Home Assistant permet d'intégrer rapidement votre installation
+# avec de nombreux services cloud come Amazon Alexa et Google Home.
 #
 # https://www.home-assistant.io/components/cloud/
 #
