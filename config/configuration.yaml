@@ -32,7 +32,8 @@
 # Le fichier `configuration.yaml` n'est utilisé que pour amorcer le système et
 # contient des paramètres minimaux, mais vitaux.
 #
-# Si vous êtes à l'aise en anglais je conseille le visionnage [de la video de Franck](https://www.youtube.com/watch?v=lndeybw21PY)
+# Si vous êtes à l'aise en anglais je conseille le visionnage de la video de Franck
+# sur Youtube: https://www.youtube.com/watch?v=lndeybw21PY
 # expliquant pourquoi il a fait ces choix.
 #
 # https://github.com/frenck/home-assistant-config
