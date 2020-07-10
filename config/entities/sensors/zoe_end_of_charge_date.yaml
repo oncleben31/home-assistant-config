@@ -9,7 +9,7 @@ sensors:
     value_template: >-
       {%  if state_attr('sensor.zoe','charging_remaining_time') is number  %}
       {{ (as_timestamp(state_attr('sensor.zoe','last_update'))
-      + state_attr('sensor.zoe','charging_remaining_time')*60) 
+      + state_attr('sensor.zoe','charging_remaining_time')*60)
       | timestamp_custom('%Y-%m-%dT%H:%M:%S%z')}}
       {% endif %}
     availability_template: >-
