@@ -1,18 +1,22 @@
+---
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 exclude: (?x)^(config/custom_components/.*| config/www/.*)$
 
-
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.4.0
     hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
         exclude: config/.HA_VERSION
-    -   id: check-yaml
+      - id: check-yaml
         args: [--unsafe]
-    -   id: check-added-large-files
-    -   id: check-json
-    -   id: check-merge-conflict
-    -   id: mixed-line-ending
+      - id: check-added-large-files
+      - id: check-json
+      - id: check-merge-conflict
+      - id: mixed-line-ending
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.23.0
+    hooks:
+      - id: yamllint
