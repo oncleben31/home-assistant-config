@@ -17,4 +17,3 @@
         below: 5
   action:
     service: speedtestdotnet.speedtest
-

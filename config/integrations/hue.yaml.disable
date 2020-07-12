@@ -9,4 +9,3 @@ hue:
     - host: !secret local_ip_hue_gateway
       allow_unreachable: false
       allow_hue_groups: false
-

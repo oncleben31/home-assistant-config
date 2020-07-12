@@ -137,7 +137,7 @@ Vous ne les verrez donc pas dans ce dépôt:
 
 ### One more thing
 
-J'ai ajouté d'autres information spécifiques dans le [wiki](https://github.com/oncleben31/home-assistant-config/wiki). 
+J'ai ajouté d'autres information spécifiques dans le [wiki](https://github.com/oncleben31/home-assistant-config/wiki).
 N'oubliez pas de le visiter. Attention pas encore traduit.
 
 ## For English speaking users

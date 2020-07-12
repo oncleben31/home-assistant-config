@@ -3,7 +3,7 @@
 # EN: To be use with a command like:
 # FR: A utiliser avec des commandes du type
 # rsync -rlptzv --filter=._PATH_TO_THIS-FILE/.rsync-filter --progress --delete SOURCE DESTINATION
-# 
+#
 # EN: Warning: be sure to have latest version of rsync. On MacOS the rsync installed
 # is an old one with inconsitent behaviour with this type of rules file.
 # FR: Attention. Assurez vous d'installer la dernière version de rsync. La version installée
