@@ -1,4 +1,7 @@
 ---
+# E: pre-commit settings to avoid commiting with typos or formatting errors
+# F: parametrage de pre-commit pour éviter les erreurs de formatages
+#
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 exclude: (?x)^(config/custom_components/.*| config/www/.*)$
