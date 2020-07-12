@@ -5,7 +5,8 @@ const html = LitElement.prototype.html;
 
 const weatherIconsDay = {
   clear: "day",
-  "clear-night": "night",
+  "clear-night": "day",
+  "nuit claire": "day",
   cloudy: "cloudy",
   fog: "cloudy",
   hail: "rainy-7",
@@ -25,6 +26,7 @@ const weatherIconsDay = {
 const weatherIconsNight = {
   ...weatherIconsDay,
   clear: "night",
+  "clear-night": "night",
   sunny: "night",
   "nuit claire": "night",
   partlycloudy: "cloudy-night-3",
@@ -519,7 +521,15 @@ class WeatherCard extends LitElement {
           width: calc(100% / 12);
           background-color: #e3f2fd;
         }
-        
+
+        .pluie-element:not(:last-child) {
+          border-right: 1px solid var(
+              --lovelace-background,
+              var(--primary-background-color)
+          );
+          width: calc(100% / 12 - 1px);
+        }
+
         .pluie-element.unknown {
           display: block;
           height: 100%;
