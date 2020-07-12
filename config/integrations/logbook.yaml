@@ -21,10 +21,12 @@ logbook:
   exclude:
     entities:
       - sensor.since_last_boot
+      - sensor.time
       - automation.update_last_motion
       - automation.notify_zoe_charge_start
+      - automation.healthcheck_io_ping_toutes_les_5_minutes
+      - automation.check_pool_pump_periodically
       - binary_sensor.presence_couloir_motion
       - binary_sensor.motion_sensor_livingroom
       - binary_sensor.motion_house_meta
-      - automation.healthcheck_io_ping_toutes_les_5_minutes
       - binary_sensor.capteur_piscine
