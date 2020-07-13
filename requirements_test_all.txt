@@ -1,2 +1,2 @@
 homeassistant-cli
-yamllint 
+yamllint

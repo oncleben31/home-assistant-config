@@ -1,6 +1,9 @@
 ---
-# The history component will track everything that is going on within
+# E: The `history` component will track everything that is going on within
 # Home Assistant and allows the user to browse through it.
+# F: Le composaant `history` (traduit en `historique` dans l'interface)
+# va suivre ce qui se passe dans Home Assistant et permet aux utilisateurs
+# d'explorer les enregistrements.
 #
 # https://www.home-assistant.io/components/history/
 #

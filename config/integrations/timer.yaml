@@ -4,4 +4,3 @@
 # https://www.home-assistant.io/components/timer/
 #
 timer: !include_dir_merge_named ../entities/timers
-

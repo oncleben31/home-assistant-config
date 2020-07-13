@@ -11,4 +11,3 @@ sequence:
   - service: vacuum.return_to_base
     data:
       entity_id: vacuum.rocky
-

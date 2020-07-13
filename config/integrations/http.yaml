@@ -1,6 +1,8 @@
 ---
-# The http component serves all files and data required for the
+# E: The http component serves all files and data required for the
 # Home Assistant frontend.
+# F: le composant http gère la communication externe du serveur Home
+# Assistant
 #
 # https://www.home-assistant.io/components/http/
 #
