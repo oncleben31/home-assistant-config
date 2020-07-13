@@ -7,7 +7,7 @@
 # EN: Warning: be sure to have latest version of rsync. On MacOS the rsync installed
 # is an old one with inconsitent behaviour with this type of rules file.
 # FR: Attention. Assurez vous d'installer la dernière version de rsync. La version installée
-# avec MacOS est une ancienne version qui à un comportement incohérent avec ce type de fichier règles.
+# avec MacOS est une ancienne version qui à un comportement incohérent avec ce type de fichier de règles.
 #
 - .git
 - .vscode
@@ -26,6 +26,7 @@
 +/ www/***
 +/ configuration.yaml
 +/ known_devices.yaml
++/ automations.yaml
 +/ secrets.yaml
 +/ zwave_device_config.yaml
 +/ .HA_VERSION
