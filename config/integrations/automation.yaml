@@ -1,6 +1,6 @@
 ---
-# E: This handles the loading of my automations
-# F: Permer de charger mes automations
+# E: This handles the loading of my automations (YAML and UI)
+# F: Permet de charger mes automations (YAML et dans UI)
 #
 # https://www.home-assistant.io/docs/automation/
 #
