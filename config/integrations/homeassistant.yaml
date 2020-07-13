@@ -1,8 +1,10 @@
 ---
-# Sets up Home Assistant.
-#
+# E: Sets up Home Assistant.
 # Basically, everything that doesn't have to be in the
-# main configuration.yaml.
+# main configuration.yaml. Most of the data are now set in the UI
+#
+# F: Paramétrage de Home Assistant.
+# Maintenant la plus part des infos sont configurées dans l'interface.
 #
 homeassistant:
   # Lets me customize individual entities

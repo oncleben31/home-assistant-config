@@ -1,5 +1,6 @@
 ---
-# Configures the official Home Assistant frontend.
+# E: Configures the official Home Assistant frontend.
+# F: Configuration the l'interface de Home Assistant.
 #
 # https://www.home-assistant.io/components/frontend/
 #
