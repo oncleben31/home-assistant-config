@@ -7,8 +7,13 @@
 [![GitHub Activity][commits-shield]][commits]
 [![GitHub Last Commit][last-commit-shield]][commits]
 
-[![Discord francophone][discord-shield]][discord]
-[![Community Forum][forum-shield]][forum]
+[![Discord francophone][discord-shield-fr]][discord-fr]
+[![Forum francophone][forum-shield-fr]][forum-fr]
+[![Awesome francophone][awesome-shield]][awesome-fr]
+
+
+[![Official Discord][discord-shield]][discord]
+[![Official community Forum][forum-shield]][forum]
 
 Welcome to my Home Assistant configuration!
 Bienvenue chez ma configuration Home Assistant !
@@ -262,12 +267,18 @@ it.
 
 [commits-shield]: https://img.shields.io/github/commit-activity/y/oncleben31/home-assistant-config
 [commits]: https://github.com/oncleben31/home-assistant-config/commits/master
-[discord-shield]: https://img.shields.io/discord/542746125292273674?label=Discord%20francophone&logo=discord
-[discord]: https://discord.gg/JeTFJzE$
-[forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
+[discord-shield]: https://img.shields.io/discord/330944238910963714?label=Official%20HA%20Discord&logo=discord
+[discord]: https://discord.gg/c5DvZ4e
+[discord-shield-fr]: https://img.shields.io/discord/706096417000652840?label=Discord%20francophone%20HACF&logo=discord
+[discord-fr]: https://discord.com/invite/PaZFEjX
+[forum-shield]: https://img.shields.io/discourse/topics?label=Official%20HA%20forums&logo=discourse&server=https%3A%2F%2Fcommunity.home-assistant.io%2F
 [forum]: https://community.home-assistant.io/?u=oncleben31
+[forum-shield-fr]: https://img.shields.io/discourse/topics?label=Forum%20francophone%20HACF&logo=discourse&server=https%3A%2F%2Fforum.hacf.fr%2F
+[forum-fr]: https://forum.hacf.fr/
 [last-commit-shield]: https://img.shields.io/github/last-commit/oncleben31/home-assistant-config.svg
 [license-shield]: https://img.shields.io/github/license/oncleben31/home-assistant-config.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2020.svg
 [workflow-shield]: https://github.com/oncleben31/home-assistant-config/workflows/Home%20Assistant%20configuration/badge.svg
 [workflow]: https://github.com/oncleben31/home-assistant-config/actions
+[awesome-shield]: https://awesome.re/badge.svg
+[awesome-fr]: https://github.com/hacf-fr/awesome-francophone-home-assistant
