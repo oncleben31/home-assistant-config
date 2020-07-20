@@ -1,15 +1,20 @@
 ---
-# Pool Pump mode
+# E: Filtering pool Pump mode
 #
-# Select the different mode of the pool pump
+# Select the different mode of the pool pump: Auto / On / Off
 #
 # Inpired by exxamalte implementation: https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump
 #
+#
+# F: Mode de fonctionnement de la pompe de filtration de la piscine
+#
+# Choisir un des différent mode pour la pomoe: Auto / Marche Forcée / Off
+#
+# Inspiré par l'implementation de exxamalte: https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump
 pool_pump:
   name: Pool Pump mode
   options:
     - 'Auto'
     - 'On'
     - 'Off'
-  initial: 'Auto'
   icon: mdi:water-pump
