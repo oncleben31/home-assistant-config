@@ -1,8 +1,22 @@
 ---
-# The frxtrx comonent allows to use RFXCOM devices who communicate
+# F: Le composant rfxtrx permet d'ajouter des capteurs communiquant
+# en radio avec le RFXCOM
+# E: The frxtrx comonent allows to use RFXCOM devices who communicate
 # by radio with other sensors.
 #
 # https://www.home-assistant.io/components/rfxtrx/
 #
 rfxtrx:
   device: !secret serial_USB_id_rfxcom
+  devices:
+    # F: Température et Humidité externe mesurée par une sonde externe Oregon
+    #
+    # Pour changer la batterie, le cpateur doit être reinitialiser, ensuite
+    # cliquer sur  les boutons Mem and Chanel de la base et mettre à jour l'ID
+    # du capteur
+    # E: External Temperature and Humidity coming from Oregon external probe
+    #
+    # If need to change batteries, reset the sensor, click Mem and Chanel button
+    # on base and update the ID of the sensor.
+    0a520101100100e52f0189:
+  automatic_add: true
