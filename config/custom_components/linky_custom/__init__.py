@@ -1,1 +1,0 @@
-"""Custom component for linky"""
