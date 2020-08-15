@@ -1,7 +1,0 @@
----
-# Change friendly name for  RFXCOM sensors
-#
-sensor.exterieur_humidity:
-  friendly_name: 'Humidité'
-sensor.exterieur_temperature:
-  friendly_name: 'Température'
