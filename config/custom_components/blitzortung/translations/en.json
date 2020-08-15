@@ -9,10 +9,8 @@
         }
       }
     },
-    "error": {
-    },
-    "abort": {
-    }
+    "error": {},
+    "abort": {}
   },
   "options": {
     "step": {
@@ -21,6 +19,8 @@
         "description": "Set up Blitzortung lightning detection options",
         "data": {
           "radius": "Lightning detection radius (km)",
+          "time_window": "Time window (minutes, 0 - disabled)",
+          "max_tracked_lightnings": "Max number of tracked lightnings",
           "latitude": "Latitude",
           "longitude": "Longitude"
         }

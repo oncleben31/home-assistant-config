@@ -1,10 +1,19 @@
 """Config flow for blitzortung integration."""
+import voluptuous as vol
+
+import homeassistant.helpers.config_validation as cv
 from homeassistant import config_entries
 from homeassistant.const import CONF_LATITUDE, CONF_LONGITUDE, CONF_NAME
-import voluptuous as vol
-import homeassistant.helpers.config_validation as cv
 
-from .const import DOMAIN, CONF_RADIUS, DEFAULT_RADIUS
+from .const import (
+    CONF_MAX_TRACKED_LIGHTNINGS,
+    CONF_RADIUS,
+    CONF_TIME_WINDOW,
+    DEFAULT_MAX_TRACKED_LIGHTNINGS,
+    DEFAULT_RADIUS,
+    DEFAULT_TIME_WINDOW,
+    DOMAIN,
+)
 
 DEFAULT_CONF_NAME = "Blitzortung"
 
@@ -12,7 +21,7 @@ DEFAULT_CONF_NAME = "Blitzortung"
 class DomainConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for blitzortung."""
 
-    VERSION = 2
+    VERSION = 4
     CONNECTION_CLASS = config_entries.CONN_CLASS_LOCAL_PUSH
 
     async def async_step_user(self, user_input=None):
@@ -40,7 +49,6 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         self.config_entry = config_entry
 
     async def async_step_init(self, user_input=None):
-        print("HERE", self.config_entry.options)
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
 
@@ -64,6 +72,18 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                         CONF_RADIUS,
                         default=self.config_entry.options.get(
                             CONF_RADIUS, DEFAULT_RADIUS
+                        ),
+                    ): int,
+                    vol.Optional(
+                        CONF_TIME_WINDOW,
+                        default=self.config_entry.options.get(
+                            CONF_TIME_WINDOW, DEFAULT_TIME_WINDOW,
+                        ),
+                    ): int,
+                    vol.Optional(
+                        CONF_MAX_TRACKED_LIGHTNINGS,
+                        default=self.config_entry.options.get(
+                            CONF_MAX_TRACKED_LIGHTNINGS, DEFAULT_MAX_TRACKED_LIGHTNINGS,
                         ),
                     ): int,
                 }
