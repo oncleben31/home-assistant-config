@@ -4,11 +4,12 @@
 # To be used with custom component ha-pool_pump
 #
 # https://github.com/oncleben31/ha-pool_pump
+# https://www.home-assistant.io/integrations/input_number/
 #
 pool_temperature:
   name: Température Piscine
   icon: mdi:coolant-temperature
-  mode: slider
+  mode: box
   min: 0
   max: 30
   unit_of_measurement: °C
