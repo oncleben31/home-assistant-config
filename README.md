@@ -89,8 +89,6 @@ Vous trouverez dans mes scripts et automations les fonctionalités suivantes:
 
 Les custom components qui m'aident:
 
-- Intégration [Linky](https://github.com/home-assistant/home-assistant/pull/20535)
-  . Grace à **PirionFr** et **Grea04**.
 - [hassRenaultZE](https://github.com/epenet/hassRenaultZE)&#42;: pour surveiller
   l'état de la batterie de ma Zoé. Merci à **epenet**.
 - [HACS](https://github.com/custom-components/hacs)&#42; pour gérer la mise à jour
@@ -208,8 +206,6 @@ You can find in my automations and scripts the following features:
 
 To help me I used the following custom components:
 
-- [Linky](https://github.com/home-assistant/home-assistant/pull/20535)
-  integration. Thanks to **PirionFr** and **Grea04**.
 - [hassRenaultZE](https://github.com/epenet/hassRenaultZE)&#42;: to follow battery
   status of my Zoé eletric car thanks to **epenet**.
 - [HACS](https://github.com/custom-components/hacs)&#42; to follow updates of custom

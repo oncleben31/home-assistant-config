@@ -3,6 +3,8 @@
 # I use of a custom component by grea09 as the official component is
 # too simple
 #
+# Disabled waiting new integration since Enendis has killed the API
+#
 # https://github.com/home-assistant/home-assistant/pull/20535
 # https://community.home-assistant.io/t/add-a-module-to-retrieve-electricity-use-from-linky/28199
 #
