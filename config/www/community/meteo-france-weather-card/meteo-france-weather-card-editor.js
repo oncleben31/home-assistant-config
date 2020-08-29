@@ -38,8 +38,8 @@ export class WeatherCardEditor extends LitElement {
     return this._config.rainChanceEntity || "";
   }
 
-  get _thunderChanceEntity() {
-    return this._config.thunderChanceEntity || "";
+  get _cloudCoverEntity() {
+    return this._config.cloudCoverEntity || "";
   }
 
   get _snowChanceEntity() {
@@ -159,8 +159,8 @@ export class WeatherCardEditor extends LitElement {
               ? html`
                   <ha-entity-picker
                     .hass="${this.hass}"
-                    .value="${this._thunderChanceEntity}"
-                    .configValue=${"thunderChanceEntity"}
+                    .value="${this._cloudCoverEntity}"
+                    .configValue=${"cloudCoverEntity"}
                     domain-filter="sensor"
                     @change="${this._valueChanged}"
                     allow-custom-entity
@@ -168,9 +168,9 @@ export class WeatherCardEditor extends LitElement {
                 `
               : html`
                   <paper-input
-                    label="Risque d'orage"
-                    .value="${this._thunderChanceEntity}"
-                    .configValue="${"thunderChanceEntity"}"
+                    label="Couverture nuageuse"
+                    .value="${this._cloudCoverEntity}"
+                    .configValue="${"cloudCoverEntity"}"
                     @value-changed="${this._valueChanged}"
                   ></paper-input>
                 `
