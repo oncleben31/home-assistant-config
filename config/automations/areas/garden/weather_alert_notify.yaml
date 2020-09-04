@@ -36,7 +36,7 @@
   condition:
     # F: Vérfie que l'état n'est pas revenue à 'Vert' après que l'entity était non disponible.
     # E: Check if state is back to 'Vert' after entity was unvailable.
-    - platfrom: template
+    - condition: template
       value_template: "{% if trigger.from_state.state != 'unavailable' %}true{% endif %}"
   action:
     - service: notify.telegram
