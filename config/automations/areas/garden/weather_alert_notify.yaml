@@ -1,6 +1,6 @@
 ---
-# E: Send Telegram notification when wheather alert is raised.
-# F: Envoie une notification Telegram quand une alerte météo est en cours.
+# E: Send Telegram notification when wheather alert is raised and when no more weather alert is active
+# F: Envoie une notification Telegram quand une alerte météo est en cours et quand toutes les alertes sont terminées
 #
 # Exemple / Example:
 # ------------------------------
@@ -8,7 +8,9 @@
 # - Orages: Jaune
 # - Canicule: Orange
 #
-- alias: "Send notification when weather alert is raised"
+- alias: "Notification si alerte météo en cours"
+  description: "Envoie une notification sur Telegram si une alerte météo est levée par Météo-France"
+  id: bb9f2730-ee77-11ea-9220-4198f0db79cf
   trigger:
     - platform: state
       entity_id: sensor.home_weather_alert
@@ -28,7 +30,9 @@
           {%- endif -%}
           {%- endfor -%}"
 
-- alias: "Send notification when weather alert ends"
+- alias: "Notification si alerte météo terminée"
+  description: "Envoie un notification sur Telegram si toutes les alertes météos sont terminées"
+  id: ebb22120-ee77-11ea-9220-4198f0db79cf
   trigger:
     - platform: state
       entity_id: sensor.home_weather_alert
