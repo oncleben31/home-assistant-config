@@ -292,7 +292,7 @@ class WeatherCard extends LitElement {
                 stateObj.attributes.wind_speed != 0
                 ? html`
                   <span class="ha-icon"
-                    ><ha-icon icon="mdi:navigation" style="transform: rotate(${stateObj.attributes.wind_bearing}deg);"></ha-icon
+                    ><ha-icon icon="mdi:navigation" style="transform: rotate(${stateObj.attributes.wind_bearing}deg); display: inline-block;"></ha-icon
                   ></span>
                 `
                 : html`<div style="height: 24px;" ></div>`
@@ -438,6 +438,17 @@ class WeatherCard extends LitElement {
                                   <br /><span class="lowTemp"
                                     >${daily.templow}${
                                       this.getUnit("temperature")
+                                    }</span
+                                  >
+                                `
+                              : ""
+                          }
+                          ${
+                            typeof daily.precipitation !== 'undefined'
+                              ? html`
+                                  <br /><span class="rainForcast"
+                                    >${daily.precipitation}${
+                                      this.getUnit("precipitation")
                                     }</span
                                   >
                                 `
@@ -649,7 +660,7 @@ class WeatherCard extends LitElement {
         .forecast {
           width: 100%;
           margin: 0 auto;
-          height: 9em;
+          height: 11em;
         }
 
         .day {
@@ -682,6 +693,10 @@ class WeatherCard extends LitElement {
 
         .lowTemp {
           color: var(--secondary-text-color);
+        }
+
+        .rainForcast {
+          color: var(--secondary-text-color)
         }
 
         .icon.bigger {
