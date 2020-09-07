@@ -8,41 +8,39 @@
 # - Orages: Jaune
 # - Canicule: Orange
 #
-- alias: "Notification si alerte météo en cours"
+- alias: "Notification pour alerte météo"
   description: "Envoie une notification sur Telegram si une alerte météo est levée par Météo-France"
   id: bb9f2730-ee77-11ea-9220-4198f0db79cf
   trigger:
     - platform: state
       entity_id: sensor.home_weather_alert
-  condition:
-    # F: Envoie la notification seulement si une alerte est en cours ( State != Vert et != unvailable)
-    # E: Send a notification only if a weather alert is active ( State != Vert et != unvailable)
-    - condition: template
-      value_template: "{% if (is_state('sensor.home_weather_alert', 'Vert') or is_state('sensor.home_weather_alert', 'unavailable') )  %}false{% else %}true{% endif %}"
+  condition: []
   action:
-    - service: notify.telegram
-      data_template:
-        message: "Alerte météo {{states('sensor.home_weather_alert')}} en cours:\n
-          {%- for attr in ['Vent violent', 'Pluie-inondation', 'Orages', 'Inondation', 'Neige-verglas',
-                          'Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion'] -%}
-          {%- if state_attr('sensor.home_weather_alert', attr) != 'Vert' and state_attr('sensor.home_weather_alert', attr) != None %}\n
-          - {{attr}}: {{state_attr('sensor.home_weather_alert', attr)}}
-          {%- endif -%}
-          {%- endfor -%}"
-
-- alias: "Notification si alerte météo terminée"
-  description: "Envoie un notification sur Telegram si toutes les alertes météos sont terminées"
-  id: ebb22120-ee77-11ea-9220-4198f0db79cf
-  trigger:
-    - platform: state
-      entity_id: sensor.home_weather_alert
-      to: "Vert"
-  condition:
-    # F: Vérfie que l'état n'est pas revenue à 'Vert' après que l'entity était non disponible.
-    # E: Check if state is back to 'Vert' after entity was unvailable.
-    - condition: template
-      value_template: "{% if trigger.from_state.state != 'unavailable' %}true{% endif %}"
-  action:
-    - service: notify.telegram
-      data_template:
-        message: "Fin de l'alerte météo."
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: sensor.home_weather_alert
+              state: ["Jaune", "Orange", "Rouge"]
+          sequence:
+            - service: notify.telegram
+              data_template:
+                message:
+                  "Alerte météo {{states('sensor.home_weather_alert')}} en cours:\n
+                  {%- for attr in ['Vent violent', 'Pluie-inondation', 'Orages', 'Inondation', 'Neige-verglas',
+                  'Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion'] -%}
+                  {%- if state_attr('sensor.home_weather_alert', attr) != 'Vert' and state_attr('sensor.home_weather_alert', attr) != None %}\n
+                  - {{attr}} : {{state_attr('sensor.home_weather_alert', attr)}}
+                  {%- endif -%}
+                  {% endfor -%}"
+        - conditions:
+            - condition: state
+              entity_id: sensor.home_weather_alert
+              state: "Vert"
+            - condition: template
+              # F: Vérfie que l'état n'est pas revenue à 'Vert' après que l'entity était non disponible.
+              # E: Check if state is back to 'Vert' after entity was unvailable.
+              value_template: "{{ trigger.from_state.state != 'unavailable' }}"
+          sequence:
+            - service: notify.telegram
+              data_template:
+                message: "Fin de l'alerte météo."
