@@ -1,7 +1,12 @@
 ---
-# Update the history of last motion using the 'last_motion' variable
+# F: Mise à jour de l'historique des derniers mouvements
+# E: Update the history of last motion using the 'last_motion' variable
 #
-- alias: "Update Last Motion"
+# https://github.com/rogro82/hass-variables/
+#
+- alias: "Mise à jour du dernier mouvement"
+  description: "Met à jour l'historique des derniers mouvement détectés dans les attributs de last_motion."
+  id: 57414134-042e-11eb-adc1-0242ac120002
   initial_state: true
   trigger:
     - platform: state
@@ -13,9 +18,9 @@
         variable: last_motion
         attributes_template: >
             {
-              "history_1": "{{ variable.state }}",
-              "history_2": "{{ variable.attributes.history_1 }}",
-              "history_3": "{{ variable.attributes.history_2 }}"
+              "history_1": "{{ states('variable.last_motion') }}",
+              "history_2": "{{ state_attr('variable.last_motion', 'history_1') }}",
+              "history_3": "{{ state_attr('variable.last_motion', 'history_2') }}"
             }
       data_template:
         value: "{{ trigger.to_state.attributes.friendly_name }}"

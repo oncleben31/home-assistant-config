@@ -1,7 +1,17 @@
 ---
-# Update the previous week weekly mileage 'zoe_weekly_mileage' variable
+# F: Mise à jour du kilmoétrage hebdomadaire de la semaine precedente. Variable 'zoe_weekly_mileage'
+# E: Update the previous week weekly mileage 'zoe_weekly_mileage' variable
 #
-- alias: "Update Last Zoe weekly mileage"
+# F: Calcul le kilométrage hebdomadaire et le compare à la cible prévue. Envoie une notification tous les dimanches
+#    avec l'ecart entre le réalisé et la cible.
+# E: Compute the weekly mileage and compare it to the weekly target. Send a notification every Saturday with the gap
+#    between achieved and target.
+#
+# https://github.com/rogro82/hass-variables/
+#
+- alias: "Mise à jour du kilométrage hebdomadaire de la Zoé"
+  description: "Mise à jour du kilmoétrage hebdomadaire de la Zoé pour la dernière semaine complète écoulée"
+  id: 38a55c3c-042f-11eb-adc1-0242ac120002
   initial_state: true
   trigger:
     - platform: time
@@ -18,13 +28,13 @@
             {
               "last_mileage": "{{ states('sensor.zoe_mileage') }}"
             }
-        value_template: "{{ states('sensor.zoe_mileage') | int - variable.attributes.last_mileage | int }}"
+        value_template: "{{ states('sensor.zoe_mileage') | int - state_attr('variable.zoe_weekly_mileage', 'last_mileage') | int }}"
     - service: notify.telegram
       data_template:
         message: >
           La Zoé a parcouru {{ states.variable.zoe_weekly_mileage.state_with_unit }} cette semaine.
-          {% if states('variable.zoe_weekly_mileage') | int > 335 -%}
-          C'est {{ states('variable.zoe_weekly_mileage') | int - 335 }} km de plus que prévu.
+          {% if states('variable.zoe_weekly_mileage') | int > 317 -%}
+          C'est {{ states('variable.zoe_weekly_mileage') | int - 317 }} km de plus que prévu.
           {%- else -%}
-          C'est {{ 335 - states('variable.zoe_weekly_mileage') | int  }} km de moins que prévu.
+          C'est {{ 317 - states('variable.zoe_weekly_mileage') | int  }} km de moins que prévu.
           {%- endif %}
