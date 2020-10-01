@@ -7,8 +7,8 @@ platform: template
 sensors:
   zoe_mileage_target:
     value_template: >-
-      {{ (((as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) - as_timestamp('2018-08-11 0:0:00+02:00'))
-      / 86400) * 17500 / 365 + 3000) | round}}
+      {{ (((as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) - as_timestamp('2018-08-16 0:0:00+02:00'))
+      / 86400) * 72500 / (365*4 +30)) | round}}
     friendly_name: "kilométrage cible"
     unit_of_measurement: "km"
     icon_template: mdi:bullseye-arrow
