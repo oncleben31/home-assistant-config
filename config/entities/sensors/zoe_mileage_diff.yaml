@@ -1,5 +1,11 @@
 ---
-# Difference between mileage targeted and current mileage
+# F; Difference entre le kilométrage cible et le kilométrage réel
+# E: Difference between mileage targeted and current mileage
+#
+# F: Je calcule la difference entre le kilométrage cible et réel pour vérifier que je ne dépasse pas l'accord
+#    du contrat de location de batterie et du contrat de LOA.
+# E: I compute the difference between target and current mileage to check I'm compliant with battery and leasing
+#    contracts.
 #
 platform: template
 sensors:
@@ -9,4 +15,11 @@ sensors:
       {{ states('sensor.zoe_mileage')| int - states('sensor.zoe_mileage_target') | int}}
       {%- endif %}
     unit_of_measurement: "km"
+    attribute_templates:
+      penalities: >-
+        {% if states('sensor.zoe_mileage_diff') | int < 0 %}
+        0
+        {% else %}
+        {{ ((states('sensor.zoe_mileage_diff') | int) * (5/100 + 49.89/1000)) | round }} €
+        {% endif %}
     friendly_name: "Écart de kilométrage"
