@@ -27,7 +27,7 @@ sequence:
       room_bool: input_boolean.vacuum_can_clean_the_kitchen
       room_name: "kitchen"
       room_battery_needed: 13
-      repetition: 2
+      repetition: 1
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
   # Then clean the living room avoiding potential obstacles
@@ -37,7 +37,7 @@ sequence:
       room_bool: input_boolean.vacuum_can_clean_the_living_room_safe
       room_name: "living room (safe mode)"
       room_battery_needed: 20
-      repetition: 2
+      repetition: 1
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
   # Or clean the living room in normal mode. Family should have set the room.
@@ -47,7 +47,7 @@ sequence:
       room_bool: input_boolean.vacuum_can_clean_the_living_room
       room_name: "living room"
       room_battery_needed: 35
-      repetition: 2
+      repetition: 1
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
   # Then clean the carpet
@@ -66,7 +66,7 @@ sequence:
       room_bool: input_boolean.vacuum_can_clean_the_entrance
       room_name: "entrance"
       room_battery_needed: 8
-      repetition: 2
+      repetition: 1
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
   # Then clean the office.
@@ -75,7 +75,7 @@ sequence:
       room_script: script.launch_vacuum_in_office
       room_bool: input_boolean.vacuum_can_clean_the_office
       room_name: "office"
-      repetition: 2
+      repetition: 1
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
   # Then clean the coridor.
@@ -85,7 +85,7 @@ sequence:
       room_bool: input_boolean.vacuum_can_clean_the_coridor
       room_name: "coridor"
       room_battery_needed: 18
-      repetition: 2
+      repetition: 1
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
   # Then clean Athénaïs' bedroom.
@@ -95,7 +95,7 @@ sequence:
       room_bool: input_boolean.vacuum_can_clean_athenais_bedroom
       room_name: "Athénaïs' bedroom"
       room_battery_needed: 10
-      repetition: 2
+      repetition: 1
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
   # Then clean Noah's bedroom.
@@ -105,7 +105,7 @@ sequence:
       room_bool: input_boolean.vacuum_can_clean_noah_bedroom
       room_name: "Noah's bedroom"
       room_battery_needed: 10
-      repetition: 2
+      repetition: 1
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
   # Then clean Soren's bedroom.
@@ -115,7 +115,7 @@ sequence:
       room_bool: input_boolean.vacuum_can_clean_soren_bedroom
       room_name: "Sören's bedroom"
       room_battery_needed: 10
-      repetition: 2
+      repetition: 1
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
   # Then kids bathroom.
@@ -125,7 +125,7 @@ sequence:
       room_bool: input_boolean.vacuum_can_clean_kids_bathroom
       room_name: "kids bathroom"
       room_battery_needed: 6
-      repetition: 2
+      repetition: 1
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
   # Then clean parental suite.
@@ -135,7 +135,7 @@ sequence:
       room_bool: input_boolean.vacuum_can_clean_parental_suite
       room_name: "parental suite"
       room_battery_needed: 26
-      repetition: 2
+      repetition: 1
   - wait_template: "{{ is_state('script.launch_daily_vacuum_in_room', 'off') }}"
 
   # Notify when finished
