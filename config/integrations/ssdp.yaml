@@ -1,0 +1,9 @@
+---
+# E: The ssdp “Simple Service Discovery Protocol” integration
+# will scan the network for supported devices and services.
+# F: L'intégration ssdp scan le réseau pour détecter les appareils
+# et les services compatibles
+#
+# https://www.home-assistant.io/integrations/ssdp/
+#
+ssdp: ~
