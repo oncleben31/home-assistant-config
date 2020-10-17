@@ -48,22 +48,22 @@ const fireEvent = (node, type, detail, options) => {
 
 function getWindDirectionRotation(direction) {
   let windDirections = [
-    "S",//0
-    "SSO",
-    "SO",
-    "OSO",
-    "O",//90
-    "ONO",
-    "NO",
-    "NNO",
-    "N",//180
+    "N",//0
     "NNE",
     "NE",
     "ENE",
-    "E",//270
+    "E",//90
     "ESE",
     "SE",
-    "SSE"
+    "SSE",
+    "S",//180
+    "SSO",
+    "SO",
+    "OSO",
+    "O",//270
+    "ONO",
+    "NO",
+    "NNO"
   ];
   
   let name = windDirections[Math.round(direction/22.5)%16];
@@ -99,15 +99,18 @@ function getVigilance(color, alertEntity) {
 
 function getRainForecast(rainForecastEntity) {
   
-  let rainForecastColors = ["rgba(95,155,234,0.1)", "rgba(95,155,234,0.4)", "rgba(95,155,234,0.7)", "rgba(95,155,234,1)"];
-  let rainForecastTexts = ["Pas de pluie", "Pluie faible", "Pluie modérée", "Pluie forte"];
-  
+  let rainForecastColors = new Map([
+	    ['Temps sec', 0.1],
+	    ['Pluie faible', 0.4],
+	    ['Pluie modérée', 0.7],
+	    ['Pluie forte', 1]
+  ]);
+
   let rainForecastList = [];
-  for (let [time, value] of Object.entries(rainForecastEntity.attributes)) {
-    time = time.split("_")[2]
+  for (let [time, value] of Object.entries(rainForecastEntity.attributes['1_hour_forecast'])) {
     if(time != undefined && time.match(/[0-9]*min/g)) {
-      time = time.substring(0, time.length-3);
-      rainForecastList.push([time, rainForecastColors[value-1], rainForecastTexts[value-1]]);
+      time = time.replace('min', '').trim();
+      rainForecastList.push([time, rainForecastColors.get(value), value]);
     }
   }
   
@@ -292,7 +295,7 @@ class WeatherCard extends LitElement {
                 stateObj.attributes.wind_speed != 0
                 ? html`
                   <span class="ha-icon"
-                    ><ha-icon icon="mdi:navigation" style="transform: rotate(${stateObj.attributes.wind_bearing}deg); display: inline-block;"></ha-icon
+                    ><ha-icon icon="mdi:navigation" style="transform: rotate(${stateObj.attributes.wind_bearing - 180}deg); display: inline-block;"></ha-icon
                   ></span>
                 `
                 : html`<div style="height: 24px;" ></div>`
@@ -328,23 +331,21 @@ class WeatherCard extends LitElement {
         ${
           rainForecastObj != undefined
           ? html`
-            <span class="pluie">
+            <div class="pluie">
               ${
-                  rainForecastObj.state != "unknown"
-                  ? html`
+                  html`
                       ${
                         getRainForecast(rainForecastObj).map(
                           forecast => html`
-                            <span class="pluie-element" style="background-color: ${forecast[1]}" title="${forecast[2] + " " + ((forecast[0] == 0) ? "actuellement" : "dans " + forecast[0] + " min")}">
-                            </span>
+                            <div class="pluie-element" style="opacity: ${forecast[1]}" title="${forecast[2] + " " + (forecast[0] == 0 ? "actuellement" : "dans " + forecast[0] + " min")}">
+                            </div>
                           `
                         )
                       }
                       
                     `
-                  : html`<span title='Données indisponibles' class='pluie-element unknown'></span>`
               }
-            </span>
+            </div>
           `
           : ""
         }
@@ -515,38 +516,23 @@ class WeatherCard extends LitElement {
         }
         
         .pluie {
-          display: block;
+	  display: flex;
+	  flex-direction: row;
+	  flex-wrap: nowrap;
           height: 15px;
-          border-radius: 5px;
           padding: 0px;
-          font-weight: 600;
           color: var(--primary-text-color);
-          margin: 0px;
           margin: 10px 2px;
+	  overflow: hidden;
         }
         
         .pluie-element {
-          display: block;
-          height: 100%;
-          float: left;
-          width: calc(100% / 12);
-          background-color: #e3f2fd;
-        }
-
-        .pluie-element:not(:last-child) {
+          width: 100%;
+          background-color: var(--paper-item-icon-color);
           border-right: 1px solid var(
               --lovelace-background,
               var(--primary-background-color)
           );
-          width: calc(100% / 12 - 1px);
-        }
-
-        .pluie-element.unknown {
-          display: block;
-          height: 100%;
-          width: 100%;
-          background-color: #9e9e9e;
-          border: 0px;
         }
         
         .pluie-element:first-child {
@@ -557,6 +543,7 @@ class WeatherCard extends LitElement {
         .pluie-element:last-child {
           border-top-right-radius: 5px;
           border-bottom-right-radius: 5px;
+          border: 0;
         }
 
         .clear {
