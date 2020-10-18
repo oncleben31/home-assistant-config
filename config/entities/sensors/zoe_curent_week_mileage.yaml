@@ -1,14 +1,19 @@
 ---
-# Curent mileage in the week.
+# E: Curent mileage in the week.
+# F: Kilométrage hebdomadaire de la semaine en cours.
 #
-# Reset on monday at 00h00
+# E: Reset on monday at 00h00
+# F: Reinitialisé le lundi à 00h00
+#
+# https://github.com/epenet/hassRenaultZE
+# https://github.com/rogro82/hass-variables
 #
 platform: template
 sensors:
   zoe_curent_week_mileage:
     value_template: >-
-      {% if state_attr('sensor.zoe' , 'mileage') is not none -%}
-        {{ state_attr('sensor.zoe' , 'mileage') | int - state_attr('variable.zoe_weekly_mileage', 'last_mileage')
+      {% if states('sensor.zoe_mileage') is not none -%}
+        {{ states('sensor.zoe_mileage') | int - state_attr('variable.zoe_weekly_mileage', 'last_mileage')
         | int}}
       {%- endif %}
     unit_of_measurement: "km"

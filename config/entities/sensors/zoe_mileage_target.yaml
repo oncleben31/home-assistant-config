@@ -1,7 +1,10 @@
 ---
-# Computation of the theoretical mileage target for the Zoé
+# E: Computation of the theoretical mileage target for the Zoé
+# F: Calcul du kilométrage théorique visé pour la Zoé
 #
-# To check consistency compared to battery and car leasing contract
+# E: To check consistency compared to battery and car leasing contract
+# F: Pour vérifier la différence avec l'engagement du contrat de location
+# de la batterie et du contrat de leasing.
 #
 platform: template
 sensors:

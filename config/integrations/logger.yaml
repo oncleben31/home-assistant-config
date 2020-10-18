@@ -6,7 +6,8 @@
 logger:
   default: warning
   logs:
-    custom_components.pool_pump: debug
+    custom_components.renault: debug
+#    custom_components.pool_pump: debug
 #    homeassistant.components.meteo_france: debug
 #    custom_components.renaultze: debug
 #    homeassistant.components.xiaomi_aqara: debug

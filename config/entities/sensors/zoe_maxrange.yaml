@@ -1,6 +1,8 @@
 ---
-# Sensor to estimate evolution of maximum range of Renault Zoé
+# E: Sensor to estimate evolution of maximum range of Renault Zoé
 # when at 100%.
+# F: Snesor pour estimer l'évolution de l'autonomie maximum quand
+# la Zoé est à 100%
 #
 # https://github.com/epenet/hassRenaultZE
 #
@@ -8,9 +10,9 @@ platform: template
 sensors:
   zoe_max_range:
     value_template: >
-      {% if (states('sensor.zoe') | float != 0.0) and (state_attr('sensor.zoe' , 'remaining_range') is not none) %}
-        {{ (state_attr('sensor.zoe' , 'remaining_range') | float
-        / states('sensor.zoe') | float * 100)
+      {% if (states('sensor.zoe_battery_level') | float != 0.0) and (states('ssensor.zoe_range') is not none) %}
+        {{ (states('sensor.zoe_range') | float
+        / states('sensor.zoe_battery_level') | float * 100)
        | round(0) }}
       {% endif %}
     friendly_name: "Autonomie maximum à 100%"
