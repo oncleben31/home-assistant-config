@@ -7,6 +7,10 @@
 # E: I compute the difference between target and current mileage to check I'm compliant with battery and leasing
 #    contracts.
 #
+# https://github.com/epenet/hassRenaultZE
+# https://github.com/rogro82/hass-variables
+#
+
 platform: template
 sensors:
   zoe_mileage_diff:
