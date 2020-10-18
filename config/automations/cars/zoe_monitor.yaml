@@ -1,6 +1,8 @@
 ---
-# Automation to monitor my Renault Zoe
-# Send notification when charge start or stop
+# E: Automation to monitor my Renault Zoe
+#    Send notification when charge start or stop
+# F: Automatisations pour surveiller ma Renault Zoé
+#    Envoie une notification quand une charge commence ou se termine
 #
 # https://github.com/epenet/hassRenaultZE
 #
@@ -8,23 +10,27 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.zoe_charging
+      from: 'off'
       to: 'on'
   action:
     - service: notify.telegram
       data_template:
         message: "La Zoé a commencé une charge à
-          {{ states('sensor.zoe')}}\u202F{{state_attr('sensor.zoe', 'unit_of_measurement') }}"
+          {{ states('sensor.zoe_battery_level')}}\u202F
+          {{state_attr('sensor.zoe_battery_level', 'unit_of_measurement') }}"
 
 - alias: notify_zoe_charge_end
   trigger:
     - platform: state
       entity_id: binary_sensor.zoe_charging
+      from: 'on'
       to: 'off'
   action:
     - service: notify.telegram
       data_template:
         message: "La Zoé a terminé une charge à
-          {{ states('sensor.zoe')}}\u202F{{state_attr('sensor.zoe', 'unit_of_measurement') }}"
+          {{ states('sensor.zoe_battery_level')}}\u202F
+          {{state_attr('sensor.zoe_battery_level', 'unit_of_measurement') }}"
 
 - alias: "Notify me if Zoé is not charging and battery is below 70%"
   initial_state: true
@@ -33,7 +39,7 @@
       at: "22:30:00"
   condition:
     - condition: numeric_state
-      entity_id: sensor.zoe
+      entity_id: sensor.zoe_battery_level
       below: 70
     - condition: state
       entity_id: binary_sensor.zoe_charging
@@ -42,5 +48,6 @@
     - service: notify.telegram
       data_template:
         message: "La batterie de la Zoé est à
-          {{ states('sensor.zoe')}}\u202F{{state_attr('sensor.zoe', 'unit_of_measurement') }}
+          {{ states('sensor.zoe_battery_level')}}\u202F
+          {{state_attr('sensor.zoe_battery_level', 'unit_of_measurement') }}
           et elle ne charge pas. Tu as peut-être oublié de la brancher ?"
