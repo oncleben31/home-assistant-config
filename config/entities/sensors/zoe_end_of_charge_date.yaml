@@ -1,23 +1,24 @@
 ---
-# E: Sensor with date of the end of the Zoé charge
-# F: Sensor avec la date de la fin de charge de la Zoé
+# E: Sensor with the estimated date of the end of charge for the Zoé
+# F: Sensor avec la date estimée de la fin de charge de la Zoé
 #
+# https://github.com/epenet/hassRenaultZE
 #
 platform: template
 sensors:
   zoe_end_of_charge_time:
     value_template: >-
-      {%  if state_attr('sensor.zoe','charging_remaining_time') is number  %}
-      {{ (as_timestamp(state_attr('sensor.zoe','last_update'))
-      + state_attr('sensor.zoe','charging_remaining_time')*60)
+      {%  if states('sensor.zoe_charging_remaining_time') is number  %}
+      {{ (as_timestamp(state_attr('sensor.zoe_charging_remaining_time','last_update'))
+      + states('sensor.zoe_charging_remaining_time')*60)
       | timestamp_custom('%Y-%m-%dT%H:%M:%S%z')}}
       {% endif %}
     availability_template: >-
-      {%  if state_attr('sensor.zoe','charging_remaining_time') is number  %}
+      {%  if states('sensor.zoe_charging_remaining_time') is number  %}
       true
       {% else %}
       false
       {% endif %}
-    friendly_name: "date de fin de charge"
+    friendly_name: "Date de fin de charge"
     icon_template: mdi:battery-charging-100
     device_class: timestamp
