@@ -20,7 +20,7 @@ Bienvenue chez ma configuration Home Assistant !
 
 You will find English README content [here](#for-english-speaking-users).
 
-Vous trouverez le contenu francophone du README [ici](#pour-les-francophones).
+Vous trouverez le contenu en français du README [ici](#pour-les-francophones).
 
 ## Pour les francophones
 
