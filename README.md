@@ -24,26 +24,24 @@ Vous trouverez le contenu en français du README [ici](#pour-les-francophones).
 
 ## Pour les francophones
 
-Ne soyez pas effrayés par la structure non standard de cette configuration pour
-Home-Assistant. J'ai été inspiré par [la structure propsée par Franck Nijhof](https://github.com/frenck/home-assistant-config).
+Ne soyez pas effrayés par la structure non standard de cette configuration pour Home-Assistant.
+J'ai été inspiré par [la structure propsée par Franck Nijhof](https://github.com/frenck/home-assistant-config).
 
-Cette approche est très modulaire et très différente dans sa strucutre des autres
-configurations que vous trouverez sur Internet.
+Cette approche est très modulaire et très différente dans sa strucutre des autres configurations que vous trouverez sur Internet.
 
 L'idée c'est que chaque fichier dans ce dépôt ne fait qu'une seule chose !
-Vous pouvez ainsi chercher le fichier qui correspond à un composant, cliquez et
-vous trouverez rapidement l'information.
-Le fichier `configuration.yaml` n'est utilisé que pour amorcer le système et
-contient des paramètres minimaux, mais vitaux.
+Vous pouvez ainsi chercher le fichier qui correspond à un composant,
+cliquez et vous trouverez rapidement l'information.
+Le fichier `configuration.yaml` n'est utilisé que pour amorcer le système
+et contient des paramètres minimaux, mais vitaux.
 
-Si vous êtes à l'aise en anglais je conseille le visionnage [de la video de Franck](https://www.youtube.com/watch?v=lndeybw21PY)
-eexpliquant pourquoi il a fait ces choix.
+Si vous êtes à l'aise en anglais, je conseille le visionnage [de la video de Franck](https://www.youtube.com/watch?v=lndeybw21PY)
+expliquant pourquoi il a fait ces choix.
 
-J'ai essayé d'ajouter des commentaires et des liens vers la documentation pour
-chaque fichier YAML quand cela à une valeur ajoutée.
+J'ai essayé d'ajouter des commentaires et des liens vers la documentation pour chaque fichier YAML quand cela à une valeur ajoutée.
 
-Attention: ma décision d'avoir une documentation bilingue en ajoutant le français
-est récente. Donc la partie francophone n'est pas encore complète.
+Attention: ma décision d'avoir une documentation bilingue en ajoutant le français est récente.
+Donc la partie francophone n'est pas encore complète.
 
 ### Appareils utilisés
 
@@ -54,7 +52,7 @@ est récente. Donc la partie francophone n'est pas encore complète.
 - Zwaves:
   - Prises avec contrôle de la consomation
   - Détecteurs incendies
-- RFXCOM pour accéder à des capteur Oregon
+- RFXCOM pour accéder à des capteurs Oregon
 - Ampoules Philips Hue et appareils Zigbee compatibles
 - Quelques objets DIY à base d'esp32 en utilisant [ESPHome](https://esphome.io)
 - Telegram pour les notifications
@@ -68,6 +66,8 @@ est récente. Donc la partie francophone n'est pas encore complète.
 - Un Sonoff POW R2 gérer la pompe de filtration de ma piscine (in progress)
 - Un NAS Synology
 - Une imprimante Brother
+- Une Livebox pour ma connexion ADSL.
+- Les téléphones de la maisons (iOS et Android)
 
 ### Automations
 
@@ -145,23 +145,20 @@ N'oubliez pas de le visiter. Attention pas encore traduit.
 
 ## For English speaking users
 
-Don't be scared by the non standard structure of the Home Assistant
-configuration folder.
+Don't be scared by the non standard structure of the Home Assistant configuration folder.
 I'm inspired by [the strucutre propsed by Franck Nijhof](https://github.com/frenck/home-assistant-config).
 
-This system is very modular and very differently structured compared to other
-configurations you'll find online.
+This system is very modular and very differently structured compared to other,configurations you'll find online.
 
 Basically, each file in the repository does 1 (one, uno, eins) thing only!
-Search file with the name of the component, click through it, you'll get it
-pretty fast. The `configuration.yaml` is only used to bootstrap the system and
-contains some minimal, but vital, settings.
+Search file with the name of the component, click through it, you'll get it pretty fast.
+The `configuration.yaml` is only used to bootstrap the system
+and contains some minimal, but vital, settings.
 
 You can watch [a video by Franck](https://www.youtube.com/watch?v=lndeybw21PY)
 explaining why is doing that way.
 
-I try to add comments and link with external documentations for each YAML file
-when needed.
+I try to add comments and link with external documentations for each YAML file when needed.
 
 ### Devices used
 
@@ -185,6 +182,8 @@ when needed.
   my NAS.
 - Sonoff POW R2 for managing the swiming pool pump (in progress)
 - NAS Synology
+- ADSL box from Orange.
+- Family phones (iOS and Android)
 
 ### Automations
 
@@ -258,8 +257,8 @@ in this repository:
 
 ### One more thing
 
-I have and will add specific explanations in the [wiki](https://github.com/oncleben31/home-assistant-config/wiki). So don't forget to visit
-it.
+I have and will add specific explanations in the [wiki](https://github.com/oncleben31/home-assistant-config/wiki).
+So don't forget to visit it.
 
 [commits-shield]: https://img.shields.io/github/commit-activity/y/oncleben31/home-assistant-config
 [commits]: https://github.com/oncleben31/home-assistant-config/commits/master
