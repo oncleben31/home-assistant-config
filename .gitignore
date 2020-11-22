@@ -28,6 +28,9 @@ config/.google_maps_location_sharing*
 config/esphome/secrets.yaml
 config/esphome/**/
 
+# Custom component I don't want to track here
+config/custom_components/cookiecutter_homeassistant_custom_component_instance
+
 # OS files
 .DS_Store
 
