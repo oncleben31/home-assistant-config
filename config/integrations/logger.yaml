@@ -6,13 +6,7 @@
 logger:
   default: warning
   logs:
-    custom_components.renault: debug
 #    custom_components.pool_pump: debug
 #    homeassistant.components.meteo_france: debug
 #    custom_components.renaultze: debug
-#    homeassistant.components.xiaomi_aqara: debug
-#    custom_components.linky_custom: debug
-#    homeassistant.components.recorder: debug
-#    homeassistant.components.logbook: debug
-#    homeassistant.components.zwave: warning
 #    homeassistant.components.vacuum.xiaomi_miio: debug
