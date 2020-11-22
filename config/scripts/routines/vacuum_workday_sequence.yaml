@@ -1,5 +1,6 @@
 ---
-# Sequence used for the vacuum each workdays
+# F: Séquence de nettoyage pour l'aspirateur
+# E: Sequence used for the vacuum each workdays
 #
 # Inspired by https://community.home-assistant.io/t/howto-xiaomi-vacuum-zoned-cleaning/51293/193?u=oncleben31
 # https://www.home-assistant.io/components/script/
@@ -13,16 +14,14 @@ sequence:
   - service: variable.set_variable
     data:
       variable: nb_cleaning_before_daily_routine
-      value_template: "{{ state_attr('vacuum.rocky', 'cleaning_count') }}"
-      attributes_template: >
-        {
-          "time": "{{ state_attr('vacuum.rocky', 'total_cleaning_time') }}",
-          "area": "{{ state_attr('vacuum.rocky', 'total_cleaned_area') }}"
-        }
+      value: "{{ state_attr('vacuum.rocky', 'cleaning_count') }}"
+      attributes:
+        time: "{{ state_attr('vacuum.rocky', 'total_cleaning_time') }}"
+        area: "{{ state_attr('vacuum.rocky', 'total_cleaned_area') }}"
 
   # Start with kitchen cleaning.
   - service: script.launch_daily_vacuum_in_room
-    data_template:
+    data:
       room_script: script.launch_vacuum_in_kitchen
       room_bool: input_boolean.vacuum_can_clean_the_kitchen
       room_name: "kitchen"
@@ -140,7 +139,7 @@ sequence:
 
   # Notify when finished
   - service: notify.telegram
-    data_template:
+    data:
       message: >
         Aspiration quotidienne terminée. Rocky a fait
         {{ state_attr('vacuum.rocky', 'cleaning_count') | int - states('variable.nb_cleaning_before_daily_routine')

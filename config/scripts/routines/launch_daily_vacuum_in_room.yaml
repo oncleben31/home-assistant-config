@@ -1,13 +1,23 @@
 ---
-# Daily launch of the vacuum in a specifc room passed in parameter
+# F: Lancement quotidien de l'aspirateur dans une pièce spécifique passée en argument
+# E: Daily launch of the vacuum in a specifc room passed in parameter
 #
-# If not done yet today, launch the room cleaning
-# parameters passed to this script are:
-#  - room_bool: the imput_boolean linked to the room to know if it as alredy donne today
-#  - room_script: the name of the script to launch the cleaning
-#  - room_name: name of the zone used for logbook entry
-#  - room_battery_needed
-#  - repetition
+#
+# F: S'il n'a pas encore été fait aujourd'hui, lance le nettoyage
+#    Les arguments passés à ce script sont:
+#    - room_bool: le booléen lié à la pièce pour savoir si cela a été déjà fait
+#    - room_script: nom du script à lancer pour démarrer le nettoyage
+#    - room_name: Nom de la pièce utilisé dans le journal
+#    - room_battery_needed: Estimation de la quantité de batterie nécessaire pour faire le nettoyage
+#    - repetition: Nombre de répétition
+#
+# E: If not done yet today, launch the room cleaning
+#    parameters passed to this script are:
+#    - room_bool: the imput_boolean linked to the room to know if it as alredy donne today
+#    - room_script: the name of the script to launch the cleaning
+#    - room_name: name of the zone used for logbook entry
+#    - room_battery_needed: Estimation of batterie needed to clean the room
+#    - repetition: Number of repetition
 #
 # Inspired by https://community.home-assistant.io/t/howto-xiaomi-vacuum-zoned-cleaning/51293/193?u=oncleben31
 # https://www.home-assistant.io/components/script/
@@ -27,17 +37,15 @@ sequence:
   - service: variable.set_variable
     data:
       variable: nb_cleaning_before_room
-      value_template: "{{ state_attr('vacuum.rocky', 'cleaning_count') }}"
-      attributes_template: >
-        {
-          "time": "{{ state_attr('vacuum.rocky', 'total_cleaning_time') }}",
-          "area": "{{ state_attr('vacuum.rocky', 'total_cleaned_area') }}",
-          "battery": "{{ state_attr('vacuum.rocky', 'battery_level') }}"
-        }
+      value: "{{ state_attr('vacuum.rocky', 'cleaning_count') }}"
+      attributes:
+        time: "{{ state_attr('vacuum.rocky', 'total_cleaning_time') }}"
+        area: "{{ state_attr('vacuum.rocky', 'total_cleaned_area') }}"
+        battery: "{{ state_attr('vacuum.rocky', 'battery_level') }}"
 
   # Launch the cleaning
   - service: script.turn_on
-    data_template:
+    data:
       entity_id: "{{ room_script }}"
       variables:
         repetition: "{{ repetition }}"
@@ -52,12 +60,12 @@ sequence:
 
   # Change the value of the boolean to make it done
   - service: input_boolean.turn_off
-    data_template:
+    data:
       entity_id: "{{ room_bool }}"
 
   # Add a message in logbook
   - service: logbook.log
-    data_template:
+    data:
       name: Rocky
       message: >
         has just finished cleaning the {{ room_name }}
@@ -71,7 +79,7 @@ sequence:
 
   # For testing: notify with battey consumption when finished
   - service: notify.telegram
-    data_template:
+    data:
       message: >
         Aspiration de {{ room_name }} terminée. Rocky a nettoyé
         {{state_attr('vacuum.rocky','total_cleaned_area')| int - state_attr('variable.nb_cleaning_before_room','area')|

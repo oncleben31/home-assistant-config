@@ -24,13 +24,12 @@
     - service: variable.set_variable
       data:
         variable: zoe_weekly_mileage
-        attributes_template: >
-            {
-              "last_mileage": "{{ states('sensor.zoe_mileage') }}"
-            }
-        value_template: "{{ states('sensor.zoe_mileage') | int - state_attr('variable.zoe_weekly_mileage', 'last_mileage') | int }}"
+        attributes:
+          last_mileage: "{{ states('sensor.zoe_mileage') }}"
+
+        value: "{{ states('sensor.zoe_mileage') | int - state_attr('variable.zoe_weekly_mileage', 'last_mileage') | int }}"
     - service: notify.telegram
-      data_template:
+      data:
         message: >
           La Zoé a parcouru {{ states.variable.zoe_weekly_mileage.state_with_unit }} cette semaine.
           {% if states('variable.zoe_weekly_mileage') | int > 317 -%}
