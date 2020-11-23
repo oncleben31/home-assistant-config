@@ -1,5 +1,5 @@
 ---
-# E: Automations designed with the UI
-# F: Automations construites dans l'UI
+# E: Automations designed with the UI. Toutes les autres sont dans `./automations/`
+# F: Automations construites dans l'UI. All others are in `./automations/`
 #
 []
