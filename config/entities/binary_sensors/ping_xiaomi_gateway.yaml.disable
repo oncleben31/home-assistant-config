@@ -1,8 +1,0 @@
----
-# Ping internal devices to check all systems are up.
-#
-# https://www.home-assistant.io/components/binary_sensor.ping/
-#
-platform: ping
-name: Xiaomi Gateway
-host: !secret local_ip_xiaomi_gateway
