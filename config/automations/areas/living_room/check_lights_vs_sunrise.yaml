@@ -44,7 +44,7 @@
     - service: timer.start
       entity_id: timer.redemande_leve_du_soleil
     - service: telegram_bot.edit_message
-      data_template:
+      data:
         message_id: "{{ trigger.event.data.message.message_id }}"
         chat_id: "{{ trigger.event.data.user_id }}"
         message: "OK je te redemande dans 15 minutes"
@@ -59,11 +59,11 @@
       data: /do_nothing
   action:
     - service: telegram_bot.answer_callback_query
-      data_template:
+      data:
         callback_query_id: "{{ trigger.event.data.id }}"
         message: Tu as dis non!
     - service: telegram_bot.edit_message
-      data_template:
+      data:
         message_id: "{{ trigger.event.data.message.message_id }}"
         chat_id: "{{ trigger.event.data.user_id }}"
         message: "OK je laisse les lumières allumées"
@@ -78,13 +78,13 @@
       data: /eteintLumiere
   action:
     - service: telegram_bot.answer_callback_query
-      data_template:
+      data:
         callback_query_id: "{{ trigger.event.data.id }}"
         message: J'éteins les lumières
     - service: light.turn_off
       entity_id: light.salon
     - service: telegram_bot.edit_message
-      data_template:
+      data:
         message_id: "{{ trigger.event.data.message.message_id }}"
         chat_id: "{{ trigger.event.data.user_id }}"
         message: "Les lumières du salon sont éteintes"

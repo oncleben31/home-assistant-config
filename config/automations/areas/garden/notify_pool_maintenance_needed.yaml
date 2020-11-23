@@ -15,5 +15,5 @@
 
   action:
     - service: notify.telegram
-      data_template:
+      data:
         message: "L'entretien de la piscine n'a pas été fait depuis plus de 7 jours"

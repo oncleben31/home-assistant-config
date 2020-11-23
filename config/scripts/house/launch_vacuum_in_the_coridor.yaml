@@ -11,14 +11,14 @@ sequence:
       entity_id: vacuum.rocky
       fan_speed: Standard
   - service: xiaomi_miio.vacuum_clean_zone
-    data_template:
+    data:
       entity_id: vacuum.rocky
       repeats: "{{ repetition | default(1) }}"
       zone:
         - [19500, 35600, 22600, 38600]
         - [15300, 38600, 22600, 39800]
   - service: logbook.log
-    data_template:
+    data:
       name: Rocky
       message: starts cleaning the coridor
       entity_id: vacuum.rocky

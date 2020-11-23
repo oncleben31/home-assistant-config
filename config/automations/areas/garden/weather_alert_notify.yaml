@@ -23,7 +23,7 @@
               state: ["Jaune", "Orange", "Rouge"]
           sequence:
             - service: notify.telegram
-              data_template:
+              data:
                 message:
                   "Alerte météo {{states('sensor.home_weather_alert')}} en cours:\n
                   {%- for attr in ['Vent violent', 'Pluie-inondation', 'Orages', 'Inondation', 'Neige-verglas',
@@ -42,5 +42,5 @@
               value_template: "{{ trigger.from_state.state != 'unavailable' }}"
           sequence:
             - service: notify.telegram
-              data_template:
+              data:
                 message: "Fin de l'alerte météo."

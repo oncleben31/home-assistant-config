@@ -11,7 +11,7 @@ sequence:
       entity_id: vacuum.rocky
       fan_speed: Standard
   - service: xiaomi_miio.vacuum_clean_zone
-    data_template:
+    data:
       entity_id: vacuum.rocky
       repeats: 1
       zone:

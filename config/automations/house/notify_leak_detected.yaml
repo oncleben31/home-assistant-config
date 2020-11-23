@@ -9,5 +9,5 @@
       to: 'on'
   action:
     - service: notify.telegram
-      data_template:
+      data:
         message: "ATTENTION! Fuite d'eau detectée {{trigger.to_state.attributes.friendly_name}}."

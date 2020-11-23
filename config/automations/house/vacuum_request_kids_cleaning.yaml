@@ -17,7 +17,7 @@
         entity_id: input_boolean.vacuum_can_clean_noah_bedroom
     - service: tts.google_translate_say
       entity_id: media_player.google_home
-      data_template:
+      data:
         message: >-
           {% if is_state('input_boolean.vacuum_can_clean_noah_bedroom', 'on')  %}
             OK, Rocky nettoiera la chambre de Noah aujourd'hui.
@@ -40,7 +40,7 @@
         entity_id: input_boolean.vacuum_can_clean_athenais_bedroom
     - service: tts.google_translate_say
       entity_id: media_player.google_home
-      data_template:
+      data:
         message: >-
           {% if is_state('input_boolean.vacuum_can_clean_athenais_bedroom', 'on')  %}
             OK, Rocky nettoiera la chambre d'Athénaïs aujourd'hui.
@@ -63,7 +63,7 @@
         entity_id: input_boolean.vacuum_can_clean_soren_bedroom
     - service: tts.google_translate_say
       entity_id: media_player.google_home
-      data_template:
+      data:
         message: >-
           {% if is_state('input_boolean.vacuum_can_clean_soren_bedroom', 'on')  %}
             OK, Rocky nettoiera la chambre de Sören aujourd'hui.

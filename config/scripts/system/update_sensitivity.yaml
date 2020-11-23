@@ -8,7 +8,7 @@ sequence:
 
   # Update the sensitivity
   - service: deconz.configure
-    data_template:
+    data:
       entity: binary_sensor.vibration_test
       field: "/config"
       data:

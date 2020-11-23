@@ -14,7 +14,7 @@
       to: 'on'
   action:
     - service: notify.telegram
-      data_template:
+      data:
         message: "La Zoé a commencé une charge à
           {{ states('sensor.zoe_battery_level')}}\u202F
           {{state_attr('sensor.zoe_battery_level', 'unit_of_measurement') }}"
@@ -27,7 +27,7 @@
       to: 'off'
   action:
     - service: notify.telegram
-      data_template:
+      data:
         message: "La Zoé a terminé une charge à
           {{ states('sensor.zoe_battery_level')}}\u202F
           {{state_attr('sensor.zoe_battery_level', 'unit_of_measurement') }}"
@@ -46,7 +46,7 @@
       state: "off"
   action:
     - service: notify.telegram
-      data_template:
+      data:
         message: "La batterie de la Zoé est à
           {{ states('sensor.zoe_battery_level')}}\u202F
           {{state_attr('sensor.zoe_battery_level', 'unit_of_measurement') }}

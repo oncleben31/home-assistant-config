@@ -13,18 +13,18 @@ sequence:
       fan_speed: max
   # Clean the carpet 3 times.
   - service: xiaomi_miio.vacuum_clean_zone
-    data_template:
+    data:
       entity_id: vacuum.rocky
       repeats: 3
       zone:
         - [28000, 25900, 29700, 28900]
   - service: logbook.log
-    data_template:
+    data:
       name: Rocky
       message: starts cleaning the carpet
       entity_id: vacuum.rocky
       domain: vacuum
 
   - service: input_boolean.turn_on
-    data_template:
+    data:
       entity_id: input_boolean.vacuum_need_to_be_emptied

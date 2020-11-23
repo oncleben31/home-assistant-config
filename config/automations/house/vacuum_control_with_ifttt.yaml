@@ -19,7 +19,7 @@
   action:
     # select the script depending of the command recognized by IFTTT
     service: script.turn_on
-    data_template:
+    data:
       entity_id: >
         {% if (trigger.event.data.room == "la partie jour" or trigger.event.data.room == "dans la partie jour") %}
           script.launch_vacuum_in_kitchen_and_livingroom
