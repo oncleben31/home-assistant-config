@@ -43,6 +43,10 @@ J'ai essayé d'ajouter des commentaires et des liens vers la documentation pour 
 Attention: ma décision d'avoir une documentation bilingue en ajoutant le français est récente.
 Donc la partie francophone n'est pas encore complète.
 
+Si vous avez des questions ou voulez discuter de ma configuration,
+vous pouvez me retrouver sur [le réseau HACF (forum, Discord, organisation GitHub, etc...)
+où on y parle français](https://hacf.fr) ou sur [le réseau Home Assistant officiel](https://www.home-assistant.io/).
+
 ### Appareils utilisés
 
 - Raspbery Pi v3 pour héberger HassOS
@@ -159,6 +163,10 @@ You can watch [a video by Franck](https://www.youtube.com/watch?v=lndeybw21PY)
 explaining why is doing that way.
 
 I try to add comments and link with external documentations for each YAML file when needed.
+
+If you have questions or want to discuss about my configuration,
+you can reach me on [the HACF network (forum, Discord, GitHub organization, etc...)
+where we speak French](https://hacf.fr) or on [the official Home Assistant network](https://www.home-assistant.io/).
 
 ### Devices used
 
