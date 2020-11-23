@@ -23,7 +23,24 @@
 # https://www.home-assistant.io/components/script/
 # https://www.home-assistant.io/docs/scripts/
 #
-alias: Lance le nettoyage quotidient dans une pièce
+alias: "Lance le nettoyage quotidient dans une pièce"
+description: "Gère le pilotage du nettoyage d'une pièce donnée."
+fields:
+  room_bool:
+    description: Le booléen lié à la pièce pour savoir si cela a été déjà fait
+    example: input_boolean.vacuum_can_clean_the_living_room
+  room_script:
+    description: nom du script à lancer pour démarrer le nettoyage
+    example: script.launch_vacuum_in_livingroom
+  room_name:
+    description: Nom de la pièce utilisé dans le journal
+    example: Salon
+  room_battery_needed:
+    description: Éstimation de la quantité de batterie nécessaire pour faire le nettoyage
+    example: 35
+  repetition:
+    description: Nombre de répétition
+    example: 1
 sequence:
   # Test if boolean is 'on' (not yet done today)
   - condition: template
@@ -53,10 +70,16 @@ sequence:
   # Test if cleaning have started
   # Warning if battery reach low trigger (20%) the vacuum will return to dock for
   # charging to 80%. Currently no way to catch that.
-  - wait_template: "{{ is_state('vacuum.rocky', 'docked') != True}}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        from: "docked"
 
   # Test if finished
-  - wait_template: "{{ is_state('vacuum.rocky', 'docked') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "docked"
 
   # Change the value of the boolean to make it done
   - service: input_boolean.turn_off

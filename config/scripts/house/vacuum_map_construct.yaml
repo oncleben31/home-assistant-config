@@ -1,14 +1,20 @@
 ---
-# Script to pilot the Xioami Vacuum when the map is reseted.
+# F: Script pour piloter l'aspirateur et reconstruir la carte
+# E: Script to pilot the Xioami Vacuum when the map is reseted.
 #
-# this script will make the robot go in all house to reconstruct
-# the map
+# F: Ce script va diriger le robot à plusieurs endroits de la maison
+#    pour recontruire la carte.
+#
+# E: This script will make the robot go in all house to reconstruct
+#    the map.
 #
 # https://www.home-assistant.io/components/vacuum/
 # https://www.home-assistant.io/components/vacuum.xiaomi_miio/
 # https://www.home-assistant.io//getting-started/scripts/
 #
-alias: Constuire la map de Rocky
+alias: "Constuire la map de Rocky"
+description: "Pilote Rocky pour reconstruire la carte de la maison"
+mode: single
 sequence:
   # first put the fan_speed at minimum to avoid noise
   - service: vacuum.set_fan_speed
@@ -25,6 +31,10 @@ sequence:
   - service: vacuum.stop
     data:
       entity_id: vacuum.rocky
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
   #
   # send goto_target commands to pilot the robot thru the house
   #
@@ -34,29 +44,37 @@ sequence:
       entity_id: vacuum.rocky
       command: app_goto_target
       params: [27500, 25500]
-  - delay: "00:00:30"
-  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
   - service: vacuum.send_command
     data:
       entity_id: vacuum.rocky
       command: app_goto_target
       params: [25500, 22300]
-  - delay: "00:00:30"
-  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
   - service: vacuum.send_command
     data:
       entity_id: vacuum.rocky
       command: app_goto_target
       params: [21600, 21600]
-  - delay: "00:00:30"
-  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
   - service: vacuum.send_command
     data:
       entity_id: vacuum.rocky
       command: app_goto_target
       params: [21600, 24000]
-  - delay: "00:00:30"
-  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
 
   # Living room
   - service: vacuum.send_command
@@ -64,8 +82,10 @@ sequence:
       entity_id: vacuum.rocky
       command: app_goto_target
       params: [26000, 31500]
-  - delay: "00:00:30"
-  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
 
   # Office
   - service: vacuum.send_command
@@ -73,15 +93,19 @@ sequence:
       entity_id: vacuum.rocky
       command: app_goto_target
       params: [25500, 34100]
-  - delay: "00:00:30"
-  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
   - service: vacuum.send_command
     data:
       entity_id: vacuum.rocky
       command: app_goto_target
       params: [24700, 37100]
-  - delay: "00:00:30"
-  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
 
   # Coridor
   - service: vacuum.send_command
@@ -89,8 +113,10 @@ sequence:
       entity_id: vacuum.rocky
       command: app_goto_target
       params: [25500, 37000]
-  - delay: "00:00:30"
-  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
 
   # Kid bathroom
   - service: vacuum.send_command
@@ -98,8 +124,10 @@ sequence:
       entity_id: vacuum.rocky
       command: app_goto_target
       params: [20500, 34000]
-  - delay: "00:00:30"
-  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
 
   # Athénaïs' bedroom
   - service: vacuum.send_command
@@ -107,8 +135,10 @@ sequence:
       entity_id: vacuum.rocky
       command: app_goto_target
       params: [18000, 35000]
-  - delay: "00:00:30"
-  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
 
   # Noah's bedroom
   - service: vacuum.send_command
@@ -116,8 +146,10 @@ sequence:
       entity_id: vacuum.rocky
       command: app_goto_target
       params: [17000, 41000]
-  - delay: "00:00:30"
-  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
 
   # Soren's bedroom
   - service: vacuum.send_command
@@ -125,8 +157,10 @@ sequence:
       entity_id: vacuum.rocky
       command: app_goto_target
       params: [20000, 41000]
-  - delay: "00:00:30"
-  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
 
   # Parental suite
   - service: vacuum.send_command
@@ -134,5 +168,7 @@ sequence:
       entity_id: vacuum.rocky
       command: app_goto_target
       params: [24000, 40000]
-  - delay: "00:00:30"
-  - wait_template: "{{ is_state('vacuum.rocky', 'idle') }}"
+  - wait_for_trigger:
+      - platform: state
+        entity_id: vacuum.rocky
+        to: "idle"
