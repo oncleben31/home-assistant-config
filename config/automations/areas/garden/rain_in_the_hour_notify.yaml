@@ -25,7 +25,7 @@
     - choose:
         - conditions:
             # If rain is expected and notification are not stop by the input_boolean...
-            - "{{ is_state('sensor.home_next_rain', 'unknown') == false }}"
+            - "{{ trigger.to_state.state != 'unknown' }}"
             - condition: state
               entity_id: input_boolean.stop_rain_notification
               state: 'off'
@@ -59,13 +59,11 @@
                       data:
                         entity_id: media_player.google_home
                         message: "Chères résidents, la pluie est attendue dans quelques minutes."
-
         - conditions:
             # If rain is no more expected...
             # ... Send a notification on Telegram and allow future notifications
-            - condition: state
-              entity_id: sensor.home_next_rain
-              state: 'unknown'
+            - "{{ trigger.to_state.state == 'unknown' }}"
+            - "{{ trigger.from_state.state != 'unknown' }}"
           sequence:
             - service: notify.telegram
               data:
