@@ -15,8 +15,8 @@
 # https://www.home-assistant.io/docs/automation/trigger/#template-trigger
 # https://www.home-assistant.io/docs/scripts/conditions/#template-condition
 #
-- description: Envoie des notifications quand la pluie est attendue dans l'heure
-  alias: send_notifications_when_rain_is_expected
+- alias: Alerte quand pluie attendue
+  description: Envoie des notifications quand la pluie est attendue dans l'heure
   id: 30f4e5a8-df44-11ea-87d0-0242ac130003
   trigger:
     platform: state

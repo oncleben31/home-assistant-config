@@ -1,30 +1,21 @@
 ---
-# Notification if Home Assistant update available
+# FR: Envoie une notification si une MAJ de HA core est disponible
+# EN: Notification if Home Assistant update available
 #
-- alias: 'Notification de mise à jour disponible'
-  initial_state: true
+# https://www.home-assistant.io/integrations/version/
+#
+- alias: "Alerte pour une mise à jour disponible"
+  description: "Envoie une notification lorsque une nouvelle version de HA core est disponible."
+  id: 8387f376-a3ca-4ec1-8838-ebb7bd5a3f8b
   trigger:
     - platform: state
       entity_id: sensor.version_available
     - platform: homeassistant
       event: start
   condition:
-    condition: and
-    conditions:
-      - condition: template
-        value_template: >-
-          {{
-            states('sensor.version_available')
-            !=
-            states('sensor.version_current')
-          }}
-      - condition: template
-        value_template: >-
-          {{
-            'unknown'
-            !=
-            states('sensor.version_current')
-          }}
+    - "{{ states('sensor.version_available') != states('sensor.version_current') }}"
+    - "{{ states('sensor.version_current') != 'unknown' }}"
+
   action:
     - service: notify.telegram
       data:

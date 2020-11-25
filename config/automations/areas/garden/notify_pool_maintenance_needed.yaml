@@ -2,16 +2,15 @@
 # EN: Send notificaiton when swiming pool maintenance should be checked.
 # FR: Envoie une notification quand il faut vérfier la maintenance de la piscine.
 #
-- alias: pool_need_to_be_checked
-  initial_state: true
+- alias: "Alerte entretien piscine nécessaire"
+  description: Envoie une notification si l'entretien de la piscine n'a pas été faire depuis plus d'une semaine.
+  id: 65dd4a0a-2921-4c5e-9998-3ff46babef90
   trigger:
     - platform: time
       at: "09:00:00"
-  condition:
-    - condition: template
-      value_template: >-
-        {{as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) -
-        state_attr('input_datetime.last_maintenance_pool','timestamp') >= 86400 * 7 }}
+  condition: >
+    {{as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) -
+    state_attr('input_datetime.last_maintenance_pool','timestamp') >= 86400 * 7 }}
 
   action:
     - service: notify.telegram

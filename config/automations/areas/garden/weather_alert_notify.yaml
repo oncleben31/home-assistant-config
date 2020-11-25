@@ -28,7 +28,8 @@
                   "Alerte météo {{states('sensor.home_weather_alert')}} en cours:\n
                   {%- for attr in ['Vent violent', 'Pluie-inondation', 'Orages', 'Inondation', 'Neige-verglas',
                   'Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion'] -%}
-                  {%- if state_attr('sensor.home_weather_alert', attr) != 'Vert' and state_attr('sensor.home_weather_alert', attr) != None %}\n
+                  {%- if state_attr('sensor.home_weather_alert', attr) != 'Vert' and state_attr('sensor.home_weather_alert', attr)
+                  != None %}\n
                   - {{attr}} : {{state_attr('sensor.home_weather_alert', attr)}}
                   {%- endif -%}
                   {% endfor -%}"
@@ -36,10 +37,9 @@
             - condition: state
               entity_id: sensor.home_weather_alert
               state: "Vert"
-            - condition: template
-              # F: Vérfie que l'état n'est pas revenue à 'Vert' après que l'entity était non disponible.
-              # E: Check if state is back to 'Vert' after entity was unvailable.
-              value_template: "{{ trigger.from_state.state != 'unavailable' }}"
+            # F: Vérfie que l'état n'est pas revenue à 'Vert' après que l'entity était non disponible.
+            # E: Check if state is back to 'Vert' after entity was unvailable.
+            - "{{ trigger.from_state.state != 'unavailable' }}"
           sequence:
             - service: notify.telegram
               data:
