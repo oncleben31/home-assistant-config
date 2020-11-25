@@ -15,69 +15,61 @@
 # https://www.home-assistant.io/docs/automation/trigger/#template-trigger
 # https://www.home-assistant.io/docs/scripts/conditions/#template-condition
 #
-- description: Envoie une notification quand la pluie est attendue dans l'heure
-  alias: send_notification_when_rain_is_expected
+- description: Envoie des notifications quand la pluie est attendue dans l'heure
+  alias: send_notifications_when_rain_is_expected
   id: 30f4e5a8-df44-11ea-87d0-0242ac130003
   trigger:
     platform: state
     entity_id: sensor.home_next_rain
-  condition:
-    - condition: template
-      value_template: "{{ trigger.to_state.state != trigger.from_state.state }}"
-    - condition: template
-      value_template: "{% if is_state('sensor.home_next_rain', 'unknown') %}false{% else %}true{% endif %}"
-    - condition: state
-      entity_id: input_boolean.stop_rain_notification
-      state: 'off'
   action:
-    - service: notify.telegram
-      data:
-        message: "La pluie est attendue à {{ as_timestamp(states('sensor.home_next_rain')) | timestamp_custom('%H:%M', True) }}."
+    - choose:
+        - conditions:
+            # If rain is expected and notification are not stop by the input_boolean...
+            - "{{ is_state('sensor.home_next_rain', 'unknown') == false }}"
+            - condition: state
+              entity_id: input_boolean.stop_rain_notification
+              state: 'off'
+          sequence:
+            - choose:
+                - conditions:
+                    # If estimated time chance...
+                    # ... Send a notification on Telegram
+                    - "{{ trigger.to_state.state != trigger.from_state.state }}"
+                  sequence:
+                    - service: notify.telegram
+                      data:
+                        message: >
+                          La pluie est attendue à {{ as_timestamp(states('sensor.home_next_rain'))
+                          | timestamp_custom('%H:%M', True) }}.
+            - choose:
+                - conditions:
+                    # If rain is expected in less than 5 mintues...
+                    # ... Stop future notification and send a notification on Google Home
+                    - "{{ state_attr('sensor.home_next_rain', '1_hour_forecast')['0 min'] != 'Temps sec' }}"
+                  sequence:
+                    - service: input_boolean.turn_on
+                      data:
+                        entity_id: input_boolean.stop_rain_notification
+                    # If current time is between 10h00 and 21h30...
+                    # ... Send a notification on Google Home
+                    - condition: time
+                      before: '21:30:00'
+                      after: '10:00:00'
+                    - service: tts.google_translate_say
+                      data:
+                        entity_id: media_player.google_home
+                        message: "Chères résidents, la pluie est attendue dans quelques minutes."
 
-- description: Envoie une notification quand plus de pluie prévue dans la prochaine heure
-  alias: send_notification_when_no_more_rain_is_expected"
-  id: 451a1620-dfdf-11ea-89f8-315bf8b7675d
-  trigger:
-    platform: state
-    entity_id: sensor.home_next_rain
-    to: 'unknown'
-  action:
-    - service: notify.telegram
-      data:
-        message: "Plus de pluie attendue dans la prochaine heure."
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.stop_rain_notification
-
-- alias: "Stop sending notification"
-  trigger:
-    platform: state
-    entity_id: sensor.home_next_rain
-  condition:
-    # Check if rain is expected in less than 5 minutes
-    - "{{ state_attr('sensor.home_next_rain', '1_hour_forecast')['O min'] != 'Temps sec' }}"
-  action:
-    # Protection to ensure other automations are triggered and conditions OK
-    - delay: '00:01'
-    # No more notification after having notify rain in following 5 minutes.
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.stop_rain_notification
-
-- alias: "Send audio warning when rain is coming"
-  trigger:
-    platform: state
-    entity_id: sensor.home_next_rain
-  condition:
-    - "{{ state_attr('sensor.home_next_rain', '1_hour_forecast')['0 min'] != 'Temps sec' }}"
-    - condition: time
-      before: '21:30:00'
-      after: '10:00:00'
-    - condition: state
-      entity_id: input_boolean.stop_rain_notification
-      state: 'off'
-  action:
-    - service: tts.google_translate_say
-      entity_id: media_player.google_home
-      data:
-        message: "Chères résidents, la pluie est attendue dans quelques minutes."
+        - conditions:
+            # If rain is no more expected...
+            # ... Send a notification on Telegram and allow future notifications
+            - condition: state
+              entity_id: sensor.home_next_rain
+              state: 'unknown'
+          sequence:
+            - service: notify.telegram
+              data:
+                message: "Plus de pluie attendue dans la prochaine heure."
+            - service: input_boolean.turn_off
+              data:
+                entity_id: input_boolean.stop_rain_notification
