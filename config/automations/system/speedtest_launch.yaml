@@ -1,8 +1,10 @@
 ---
-# Launch Speedtest measures two times a day if PC and TV are off
+# FR: Lance une mesure Speedtest deux fois par jour is le PC et la TV sont éteints
+# EN: Launch Speedtest measures two times a day if PC and TV are off
 #
-- alias: start speedtest
-  initial_state: true
+- alias: "Lance Speedtest"
+  description: Lance une mesure Speedtest deux fois par jour is le PC et la TV sont éteints
+  id: d78a70d0-3085-11eb-8655-7fbd7c468bda
   trigger:
     platform: time_pattern
     hours: '/6'

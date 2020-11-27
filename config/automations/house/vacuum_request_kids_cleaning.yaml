@@ -1,10 +1,10 @@
 ---
-# Request kids bedroom cleaning with Xiaomi double button
+# FR Demande le nettoyage de la chambre des enfants à l'aide du boutton double Xiaomi
+# EN: Request kids bedroom cleaning with Xiaomi double button
 #
 # https://www.home-assistant.io/components/tts/
 #
 - alias: "Demande le nettoyage de la chambre de Noah aujourd'hui"
-  initial_state: true
   trigger:
     platform: event
     event_type: deconz_event
@@ -27,7 +27,6 @@
         language: "fr"
 
 - alias: "Demande le nettoyage de la chambre d'Athénaïs aujourd'hui"
-  initial_state: true
   trigger:
     platform: event
     event_type: deconz_event
@@ -50,7 +49,6 @@
         language: "fr"
 
 - alias: "Demande le nettoyage de la chambre de Sören aujourd'hui"
-  initial_state: true
   trigger:
     platform: event
     event_type: deconz_event

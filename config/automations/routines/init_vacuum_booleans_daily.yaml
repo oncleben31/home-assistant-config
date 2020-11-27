@@ -1,8 +1,10 @@
 ---
-# Set all input_boolean entities used fot vacuum daily routine at midnight
+# FR: Intialiser tous les booleens utilisés par la routine de netoyage avec le robot aspirateur à 5h00
+# EN: Set all input_boolean entities used fot vacuum daily routine at 05:00 AM
 #
-- alias: Initialisation de la routine de Rocky
-  initial_state: true
+- alias: "Initialisation de la routine de Rocky"
+  description: Intialiser tous les booleens utilisés par la routine de netoyage avec le robot aspirateur à 5h00
+  id: e9d01ae0-3087-11eb-8655-7fbd7c468bda
   trigger:
     platform: time
     at: "05:00:00"

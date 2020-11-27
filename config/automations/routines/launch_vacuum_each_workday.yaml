@@ -1,11 +1,13 @@
 ---
-# Launch the vacuum every work day at the selected hour
+# FR: Lance l'aspiration tous les jours travaillés à une heure définie
+# EN: Launch the vacuum every work day at the selected hour
 #
-# Exception if the house is put in mode holidays with the thru an
-# input_select
+# FR: Lancement ignoré si la maison est en mode 'vacances' via un input_select
+# EN: Launch ignore if the house is put in mode `holidays` with an input_select
 #
-- alias: Lancemnent quotidien de Rocky
-  initial_state: true
+- alias: "Lancemnent quotidien de Rocky"
+  description: Lance l'aspiration tous les jours travaillés à une heure définie
+  id: b70b2f10-3081-11eb-8655-7fbd7c468bda
   trigger:
     # platform: time
     # at: '10:00:00'

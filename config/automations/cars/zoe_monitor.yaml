@@ -1,10 +1,10 @@
 ---
-# E: Automation to monitor my Renault Zoe
-#    Send notification when charge start or stop
-# F: Automatisations pour surveiller ma Renault Zoé
-#    Envoie une notification quand une charge commence ou se termine
+# EN: Automation to monitor my Renault Zoe
+#     Send notification when charge start or stop
+# FR: Automatisations pour surveiller ma Renault Zoé
+#     Envoie une notification quand une charge commence ou se termine
 #
-# https://github.com/epenet/hassRenaultZE
+# https://github.com/hacf-fr/hassRenaultZE
 #
 - alias: notify_zoe_charge_start
   trigger:
@@ -33,7 +33,6 @@
           {{state_attr('sensor.zoe_battery_level', 'unit_of_measurement') }}"
 
 - alias: "Notify me if Zoé is not charging and battery is below 70%"
-  initial_state: true
   trigger:
     - platform: time
       at: "22:30:00"

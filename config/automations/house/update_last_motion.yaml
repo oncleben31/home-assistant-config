@@ -1,13 +1,12 @@
 ---
-# F: Mise à jour de l'historique des derniers mouvements
-# E: Update the history of last motion using the 'last_motion' variable
+# FR: Mise à jour de l'historique des derniers mouvements
+# EN: Update the history of last motion using the 'last_motion' variable
 #
 # https://github.com/rogro82/hass-variables/
 #
 - alias: "Mise à jour du dernier mouvement"
   description: "Met à jour l'historique des derniers mouvement détectés dans les attributs de last_motion."
   id: 57414134-042e-11eb-adc1-0242ac120002
-  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_sensor_livingroom, binary_sensor.presence_sous_sol

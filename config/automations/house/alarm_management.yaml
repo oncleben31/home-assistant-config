@@ -1,12 +1,10 @@
 ---
-# Automations to manage the alarm
-#
-# link to documentation
+# FR: Automatisation pour gérer l'alarme
+# EN: Automations to manage the alarm
 #
 
 # Trigger Alarm if motion detected
 - alias: "Trigger alarm"
-  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_sensor_livingroom
@@ -21,7 +19,6 @@
 
 # Notify if alarm is triggered
 - alias: 'Send notification when alarm triggered'
-  initial_state: true
   trigger:
     - platform: state
       entity_id: alarm_control_panel.ha_alarm

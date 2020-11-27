@@ -1,15 +1,17 @@
 ---
-# Check if lights are still on when sun up
+# FR: Vérfie que les lumières sont éteintes après le levé du soleil
+# EN: Check if lights are still on when sun up
 #
-# If yes send a notification on telegram asking what to do: nothing, switch
-# off or check again in 15 minutes
+# FR: Si allumées, envoie une notification sur Telegram pour demander quoi
+#     faire: rien, éteindre, ou redemander dans 15 minutes.
+# EN: If yes send a notification on telegram asking what to do: nothing, switch
+#     off or check again in 15 minutes
 #
 # https://www.home-assistant.io/components/sun/
 #
 
 # Main automation checking the state of the light
 - alias: Eteindre éclairage au levé du soleil
-  initial_state: true
   trigger:
     - event: sunrise
       offset: "0:15:00"
@@ -34,7 +36,6 @@
 
 # Command received by Telegram to ask again in 15 minutes
 - alias: Redemande dans 15 minutes
-  initial_state: true
   trigger:
     platform: event
     event_type: telegram_callback
@@ -51,7 +52,6 @@
 
 # Command received by telegram to not switch off the lights
 - alias: Ne pas éteindre les lumières
-  initial_state: true
   trigger:
     platform: event
     event_type: telegram_callback
@@ -70,7 +70,6 @@
 
 # Command received by Telegram to switch off the lights
 - alias: Éteindre les lumières
-  initial_state: true
   trigger:
     platform: event
     event_type: telegram_callback

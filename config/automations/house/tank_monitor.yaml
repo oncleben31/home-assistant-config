@@ -20,7 +20,6 @@
 # https://www.home-assistant.io/docs/configuration/templating/#time
 #
 - alias: 'Send notification when need to do sceptic tank maintenance'
-  initial_state: true
   trigger:
     platform: template
     value_template: "{{ as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d'))

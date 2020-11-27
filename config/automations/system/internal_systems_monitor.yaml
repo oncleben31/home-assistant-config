@@ -1,12 +1,11 @@
 ---
 # EN: Notifications to monitor internal devices.
-# FR: Notification pour surveillance des appareils de la maison.
+# FR: Notificationw pour surveillance des appareils de la maison.
 #
 # EN: One when detected down. Another when back online.
 # FR: Une notification quand plus detectée. Un nouvelle quand de nouveau en ligne.
 #
 - alias: 'Notification de système KO'
-  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.google_home
@@ -34,7 +33,6 @@
         notification_id: system_KO
 
 - alias: "Notification système back online"
-  initial_state: true
   trigger:
     - platform: state
       entity_id: binary_sensor.google_home
@@ -56,7 +54,6 @@
           {{ trigger.to_state.attributes.friendly_name }} is back online !.
 
 - alias: "Notification memory left too low"
-  initial_state: true
   trigger:
     - platform: numeric_state
       entity_id: sensor.memory_use_percent

@@ -1,11 +1,15 @@
 ---
-# Virtual internal bell
+# FR: Sonnette virtuelle interne
+# EN: Virtual internal bell
 #
-# Click the Xiaomi button to make living room bulbs flash, send a telegram notification
-# and play a voice message on the Google Home.
+# FR: Un clic sur le boutton Xiaomi déclenche une notification Telegram,
+#     les lumières du salon clignotent et un message sur la Google Home.
+# EN: Click the Xiaomi button to make living room bulbs flash, send a telegram notification
+#     and play a voice message on the Google Home.
 #
-- alias: toc_toc_toc
-  initial_state: true
+- alias: "Toc Toc Toc"
+  description: Sonnette virtuelle interne
+  id: 5c6f8d50-307a-11eb-8655-7fbd7c468bda
   trigger:
     platform: event
     event_type: deconz_event

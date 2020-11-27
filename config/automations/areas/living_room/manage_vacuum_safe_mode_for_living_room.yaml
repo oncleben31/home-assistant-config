@@ -1,10 +1,14 @@
 ---
-# Manage the input_boolean used to define if the vacuum clean the living room
-# in safe mode or not
+# FR: Gestion du mode de nettoyage du salon (sécurisé ou standrd)
+# EN: Mangage livingroom cleaning mode (safe or standard)
+#
+# FR: Permutation du booléen qui permet de définir si l'apirateur nettoie le salon
+#     en mode sécurisé ou non.
+# EN: Permutate the input_boolean used to define if the vacuum clean the living room
+#     in safe mode or not
 #
 
 - alias: swich_living_room_normal_off
-  initial_state: true
   trigger:
     platform: state
     entity_id: input_boolean.vacuum_can_clean_the_living_room_safe
@@ -16,7 +20,6 @@
         entity_id: input_boolean.vacuum_can_clean_the_living_room
 
 - alias: swich_living_room_safe_off
-  initial_state: true
   trigger:
     platform: state
     entity_id: input_boolean.vacuum_can_clean_the_living_room

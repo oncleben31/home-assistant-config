@@ -1,13 +1,15 @@
 ---
-# Check if cellar door is close at night
+# FR: Vérifie si la porte du sous-sol est toujours ouverte à la tombée de la nuit
+# EN: Check if cellar door is close at night
 #
-# If door is open, send a notification on telegram
+# FR: Si la porte est toujours ouverte, envoie une notification sur Telegram
+# EN: If door is open, send a notification on telegram
 #
 # https://www.home-assistant.io/components/sun/
 #
-# Main automation checking the state of the light
-- alias: Vérfie fermeture de la porte du sous-sol
-  initial_state: true
+- alias: "Vérfie fermeture de la porte du sous-sol"
+  description: Vérifie si la porte du sous-sol est toujours ouverte à la tombée de la nuit
+  id: 0af06320-3082-11eb-8655-7fbd7c468bda
   trigger:
     platform: sun
     event: sunset

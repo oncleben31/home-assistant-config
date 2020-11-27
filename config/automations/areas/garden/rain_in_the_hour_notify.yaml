@@ -32,7 +32,7 @@
           sequence:
             - choose:
                 - conditions:
-                    # If estimated time chance...
+                    # If estimated time change...
                     # ... Send a notification on Telegram
                     - "{{ trigger.to_state.state != trigger.from_state.state }}"
                   sequence:

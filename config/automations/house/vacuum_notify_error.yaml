@@ -1,17 +1,18 @@
 ---
-# Send a notification on Telegram if the Vacuum raise an Error
+# FR: Envoie une notification sur Telegram si le robot aspirateur remonte une erreur
+# EN: Send a notification on Telegram if the Vacuum raise an error
 #
 # Integration in Telegram inspired by
 # https://medium.com/@honcheng/how-i-got-my-vacuum-cleaner-to-talk-back-to-me-via-telegram-d4b471b7598c
 #
 # for the Xiaomi Vacuum plateform:
-#   - state: return a standadr state used by all vacuum component
+#   - state: return a standard state used by all vacuum component
 #   - status: return the internal Xiaomi state
 #   - error: Error message return by the Xiaomi vacuum
 
-- id: vacuum_cleaner_error
-  alias: Vacuum Cleaner Error
-  initial_state: true
+- alias: "Alerte si Rocky est en erreur"
+  description: Envoie une notification en cas d'erreur avec Rocky
+  id: 61443cc6-0b38-450c-b91e-0bee4e02ca87
   trigger:
     - platform: state
       entity_id: vacuum.rocky
@@ -30,7 +31,6 @@
 - id: vacuum_cleaner_error_solved
   # Notification to inform when problem solved
   alias: Vacuum Cleaner Error Solved
-  initial_state: true
   trigger:
     - platform: state
       entity_id: sensor.vacuum_cleaner_error_sensor

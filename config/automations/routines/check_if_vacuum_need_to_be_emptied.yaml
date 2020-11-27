@@ -1,17 +1,16 @@
 ---
-# F: Vérifie si l'aspirateur à besoin d'être vidé
-# E: Check vacuum need to be emptied
+# FR: Vérifie si l'aspirateur à besoin d'être vidé
+# EN: Check vacuum need to be emptied
 #
-# F: Si oui, envoie un rappel sur Telegram demandant de confirmer la réalisation.
-#    Il y a la possibilté de repousser de 30 minutes ou d'annuler.
-# E: If yes send a reminder on telegram asking to confirm it's done.
-#   we can postponed in 30 minutes or cancel.
+# FR: Si oui, envoie un rappel sur Telegram demandant de confirmer la réalisation.
+#     Il y a la possibilté de repousser de 30 minutes ou d'annuler.
+# EN: If yes send a reminder on telegram asking to confirm it's done.
+#     we can postponed in 30 minutes or cancel.
 
 # Main automation checking the state of the vacuum
 - alias: "Rappeler de vider Rocky le soir"
   description: "Envoie une notification pour vider le réservoire de Rocky."
   id: e602d1dd-2c63-4427-a851-8fe054cfa554
-  initial_state: true
   trigger:
     - platform: time
       at: "20:00:00"
@@ -41,7 +40,6 @@
 - alias: "Redemande dans 30 minutes"
   description: "Renvoie une notification au bout de 30 minutes."
   id: 3cf025ba-0bd7-4e09-8803-300ff1b8f826
-  initial_state: true
   trigger:
     platform: event
     event_type: telegram_callback
@@ -60,7 +58,6 @@
 - alias: "Arrete de redemander aujourd'hui"
   description: "Annule le rappel pour aujourd'hui."
   id: 206e0c29-b8e5-4ba0-88f0-ae81abc69bc4
-  initial_state: true
   trigger:
     platform: event
     event_type: telegram_callback
@@ -81,7 +78,6 @@
 - alias: "Bac du Rocky vidé"
   description: "Enregistre que le bac de Rocky a été vidé."
   id: ce0cb386-7907-4991-af99-147b9346c771
-  initial_state: true
   trigger:
     platform: event
     event_type: telegram_callback
