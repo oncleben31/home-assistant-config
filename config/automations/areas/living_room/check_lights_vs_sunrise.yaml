@@ -11,7 +11,10 @@
 #
 
 # Main automation checking the state of the light
-- alias: Eteindre éclairage au levé du soleil
+- alias: "Eteindre éclairage au levé du soleil"
+  description: Envoie une notification pour avertir que les lumières sont toujours allumées.
+  mode: restart
+  id: e7de9690-30f4-11eb-8655-7fbd7c468bda
   trigger:
     - event: sunrise
       offset: "0:15:00"
@@ -20,70 +23,56 @@
       event_type: timer.finished
       event_data:
         entity_id: timer.redemande_leve_du_soleil
+  condition:
+    - condition: state
+      entity_id: light.salon
+      state: "on"
   action:
-    - data:
+    - service: notify.telegram
+      data:
         data:
           inline_keyboard:
             - Oui:/eteintLumiere, Non:/do_nothing, Redemande:/redemande
         message:
           Le soleil est levé et il reste des lumières allumées dans le salon.
           Voulez vous les éteindre ?
-      service: notify.telegram
-  condition:
-    - condition: state
-      entity_id: light.salon
-      state: "on"
-
-# Command received by Telegram to ask again in 15 minutes
-- alias: Redemande dans 15 minutes
-  trigger:
-    platform: event
-    event_type: telegram_callback
-    event_data:
-      data: /redemande
-  action:
-    - service: timer.start
-      entity_id: timer.redemande_leve_du_soleil
-    - service: telegram_bot.edit_message
-      data:
-        message_id: "{{ trigger.event.data.message.message_id }}"
-        chat_id: "{{ trigger.event.data.user_id }}"
-        message: "OK je te redemande dans 15 minutes"
-
-# Command received by telegram to not switch off the lights
-- alias: Ne pas éteindre les lumières
-  trigger:
-    platform: event
-    event_type: telegram_callback
-    event_data:
-      data: /do_nothing
-  action:
-    - service: telegram_bot.answer_callback_query
-      data:
-        callback_query_id: "{{ trigger.event.data.id }}"
-        message: Tu as dis non!
-    - service: telegram_bot.edit_message
-      data:
-        message_id: "{{ trigger.event.data.message.message_id }}"
-        chat_id: "{{ trigger.event.data.user_id }}"
-        message: "OK je laisse les lumières allumées"
-
-# Command received by Telegram to switch off the lights
-- alias: Éteindre les lumières
-  trigger:
-    platform: event
-    event_type: telegram_callback
-    event_data:
-      data: /eteintLumiere
-  action:
-    - service: telegram_bot.answer_callback_query
-      data:
-        callback_query_id: "{{ trigger.event.data.id }}"
-        message: J'éteins les lumières
-    - service: light.turn_off
-      entity_id: light.salon
-    - service: telegram_bot.edit_message
-      data:
-        message_id: "{{ trigger.event.data.message.message_id }}"
-        chat_id: "{{ trigger.event.data.user_id }}"
-        message: "Les lumières du salon sont éteintes"
+    - wait_for_trigger:
+        - platform: event
+          event_type: telegram_callback
+    - choose:
+        - conditions:
+            - "{{ wait.trigger.event.data.data == '/redemande' }}"
+          sequence:
+            - service: timer.start
+              entity_id: timer.redemande_leve_du_soleil
+            - service: telegram_bot.edit_message
+              data:
+                message_id: "{{ wait.trigger.event.data.message.message_id }}"
+                chat_id: "{{ wait.trigger.event.data.user_id }}"
+                message: "OK je te redemande dans 15 minutes"
+        - conditions:
+            - "{{ wait.trigger.event.data.data == '/do_nothing' }}"
+          sequence:
+            - service: telegram_bot.answer_callback_query
+              data:
+                callback_query_id: "{{ wait.trigger.event.data.id }}"
+                message: Tu as dis non!
+            - service: telegram_bot.edit_message
+              data:
+                message_id: "{{ wait.trigger.event.data.message.message_id }}"
+                chat_id: "{{ wait.trigger.event.data.user_id }}"
+                message: "OK je laisse les lumières allumées"
+        - conditions:
+            - "{{ wait.trigger.event.data.data == '/eteintLumiere' }}"
+          sequence:
+            - service: telegram_bot.answer_callback_query
+              data:
+                callback_query_id: "{{ wait.trigger.event.data.id }}"
+                message: J'éteins les lumières
+            - service: light.turn_off
+              entity_id: light.salon
+            - service: telegram_bot.edit_message
+              data:
+                message_id: "{{ wait.trigger.event.data.message.message_id }}"
+                chat_id: "{{ wait.trigger.event.data.user_id }}"
+                message: "Les lumières du salon sont éteintes"
