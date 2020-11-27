@@ -1,7 +1,7 @@
 ---
 # Stop the workday sequence
 #
-alias: Arret de la séquence de netoyage quotidienne de Rocky
+alias: Arret de la séquence de nettoyage quotidienne de Rocky
 sequence:
   # stop the main script to avoid vacuum going to next zone
   - service: script.turn_off
