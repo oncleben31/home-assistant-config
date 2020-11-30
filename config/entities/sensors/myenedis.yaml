@@ -1,0 +1,13 @@
+---
+# FR: paramétrage de lintegration MyEnedis (Custom Component)
+# EN: Setting for myEnedis custom component
+#
+# https://github.com/saniho/apiEnedis
+#
+platform: myEnedis
+token: !secret myEnedis_token
+code: !secret myEnedis_password
+heures_creuses: "[['00:00', '24:00']]"
+hc_cout: 0.09864
+hp_cout: 0.09864
+scan_interval: 3600
