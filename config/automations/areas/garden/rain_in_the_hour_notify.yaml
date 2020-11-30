@@ -58,7 +58,7 @@
                     - service: tts.google_translate_say
                       data:
                         entity_id: media_player.google_home
-                        message: "Chères résidents, la pluie est attendue dans quelques minutes."
+                        message: "Chers résidents, la pluie est attendue dans quelques minutes."
         - conditions:
             # If rain is no more expected...
             # ... Send a notification on Telegram and allow future notifications
