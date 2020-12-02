@@ -134,8 +134,7 @@ Vous ne les verrez donc pas dans ce dépôt:
 
 ### Addons utilisés
 
-- [InfluxDB](https://github.com/hassio-addons/addon-influxdb) désactivé depuis
-  que le SSD relié à mon Raspberry ne fonctionne plus.
+- [InfluxDB](https://github.com/hassio-addons/addon-influxdb)
 - [SSH & Web Terminal](https://github.com/hassio-addons/addon-ssh)
 - [Unifi Controller](https://github.com/hassio-addons/addon-unifi): attention
   celui là consomme beaucoup de mémoire et peu être la cause racine de problème
@@ -256,8 +255,7 @@ in this repository:
 
 ### Addons used
 
-- [InfluxDB](https://github.com/hassio-addons/addon-influxdb) deactivated due to
-  hardware issue
+- [InfluxDB](https://github.com/hassio-addons/addon-influxdb)
 - [SSH & Web Terminal](https://github.com/hassio-addons/addon-ssh)
 - [Unifi Controller](https://github.com/hassio-addons/addon-unifi): warning this
   one use a lot of memory and can be the root cause of issues on Raspberry Pi 3.
