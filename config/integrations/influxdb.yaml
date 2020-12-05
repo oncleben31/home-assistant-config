@@ -46,7 +46,7 @@ influxdb:
       - binary_sensor.zoe_plugged_in
       - sensor.zoe_battery_level
       - sensor.zoe_curent_week_mileage
-      - sensor.zoe_max_range
+      - sensor.zoe_battery_autonomy
       - sensor.zoe_mileage
       - sensor.zoe_range
       - sensor.zoe_mileage_diff
