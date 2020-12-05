@@ -1,0 +1,9 @@
+---
+# FR: Suivi du prix des carburants autour de chez moi
+# EN: Fuel price monitoring
+#
+# https://github.com/max5962/prixCarburant-home-assistant
+#
+platform: prixCarburant
+# maxDistance: 20
+stationID: !secret prix_carburant_ID
