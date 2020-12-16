@@ -15,6 +15,7 @@
 - .gitignore
 -/ __pycache__/***
 +/ automations/***
++/ blueprints/***
 +/ custom_components/***
 +/ customizations/***
 +/ entities/***

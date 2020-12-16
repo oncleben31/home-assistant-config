@@ -40,6 +40,7 @@ rules:
     present: true
     ignore: |
       config/known_devices.yaml
+      config/blueprints/*/
   empty-lines:
     level: error
     max: 1
