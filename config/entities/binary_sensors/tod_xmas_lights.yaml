@@ -1,0 +1,10 @@
+---
+# FR: plage horaire pour les lumières de Noël
+# EN: Time of the Day for Xmas lights
+#
+# https://www.home-assistant.io/integrations/tod/
+#
+platform: tod
+name: Plage horaire pour lumières de Noël
+after: "17:30"
+before: "23:30"
