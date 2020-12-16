@@ -1,0 +1,16 @@
+---
+# FR: Allume la lumière du sous sol sur une détection de mouvement
+# EN: Switch on the cellar light on the motion detected
+#
+# https://www.home-assistant.io/docs/automation/using_blueprints/
+#
+- alias: Minuterie dans le sous-sol
+  description: Allume la limière sur une detection de mouvement
+  id: 4b32aed0-3f6d-11eb-aed8-5b6d6624d4d1
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      no_motion_wait: 120
+      motion_entity: binary_sensor.presence_sous_sol
+      light_target:
+        entity_id: light.sous_sol_chaudiere
