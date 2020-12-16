@@ -1,6 +1,0 @@
----
-# This component allows to run diagnostic tools
-#
-# https://www.home-assistant.io/components/system_health/
-#
-system_health:

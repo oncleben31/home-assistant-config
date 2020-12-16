@@ -1,0 +1,7 @@
+---
+# FR: Configuration minimum recommendée.
+# EN: Default configuration with basic integrations
+#
+# https://www.home-assistant.io/integrations/default_config/
+#
+default_config:
