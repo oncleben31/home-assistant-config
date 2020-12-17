@@ -1,0 +1,226 @@
+- id: '1608112116920'
+  name: Versailles
+  entities:
+    light.salon_droite:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 254
+      color_temp: 350
+      is_deconz_group: false
+      friendly_name: Salon droite
+      supported_features: 63
+      state: 'on'
+    light.salon_gauche:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 254
+      color_temp: 350
+      is_deconz_group: false
+      friendly_name: Salon gauche
+      supported_features: 63
+      state: 'on'
+    light.salon_milieu:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 254
+      color_temp: 350
+      is_deconz_group: false
+      friendly_name: Salon milieu
+      supported_features: 63
+      state: 'on'
+    light.etoile:
+      min_mireds: 153
+      max_mireds: 454
+      brightness: 254
+      color_temp: 350
+      is_deconz_group: false
+      friendly_name: Étoile
+      supported_features: 43
+      state: 'on'
+    light.spot:
+      min_mireds: 153
+      max_mireds: 454
+      brightness: 254
+      color_temp: 350
+      is_deconz_group: false
+      friendly_name: Spot
+      supported_features: 43
+      state: 'on'
+    light.led_tele:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 254
+      color_temp: 350
+      is_deconz_group: false
+      friendly_name: LED TV
+      supported_features: 63
+      state: 'on'
+    light.lampe_coin:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 254
+      color_temp: 350
+      is_deconz_group: false
+      friendly_name: Lampe coin
+      supported_features: 63
+      state: 'on'
+- id: '1608113199580'
+  name: Veilleuse
+  entities:
+    light.salon_droite:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 24
+      color_temp: 366
+      is_deconz_group: false
+      friendly_name: Salon droite
+      supported_features: 63
+      state: 'on'
+    light.salon_gauche:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 24
+      color_temp: 366
+      is_deconz_group: false
+      friendly_name: Salon gauche
+      supported_features: 63
+      state: 'on'
+    light.salon_milieu:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 24
+      color_temp: 366
+      is_deconz_group: false
+      friendly_name: Salon milieu
+      supported_features: 63
+      state: 'on'
+    light.etoile:
+      min_mireds: 153
+      max_mireds: 454
+      brightness: 24
+      color_temp: 366
+      is_deconz_group: false
+      friendly_name: Étoile
+      supported_features: 43
+      state: 'on'
+    light.led_tele:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 24
+      color_temp: 366
+      is_deconz_group: false
+      friendly_name: LED TV
+      supported_features: 63
+      state: 'on'
+    light.spot:
+      min_mireds: 153
+      max_mireds: 454
+      brightness: 41
+      color_temp: 366
+      is_deconz_group: false
+      friendly_name: Spot
+      supported_features: 43
+      state: 'on'
+    light.lampe_coin:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 24
+      color_temp: 366
+      is_deconz_group: false
+      friendly_name: Lampe coin
+      supported_features: 63
+      state: 'on'
+- id: '1608113722032'
+  name: Soirée télé
+  entities:
+    light.salon_droite:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 119
+      color_temp: 366
+      is_deconz_group: false
+      friendly_name: Salon droite
+      supported_features: 63
+      state: 'on'
+    light.salon_gauche:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 119
+      color_temp: 366
+      is_deconz_group: false
+      friendly_name: Salon gauche
+      supported_features: 63
+      state: 'on'
+    light.salon_milieu:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 119
+      color_temp: 366
+      is_deconz_group: false
+      friendly_name: Salon milieu
+      supported_features: 63
+      state: 'on'
+    light.etoile:
+      min_mireds: 153
+      max_mireds: 454
+      brightness: 119
+      color_temp: 366
+      is_deconz_group: false
+      friendly_name: Étoile
+      supported_features: 43
+      state: 'on'
+    light.spot:
+      min_mireds: 153
+      max_mireds: 454
+      brightness: 119
+      color_temp: 366
+      is_deconz_group: false
+      friendly_name: Spot
+      supported_features: 43
+      state: 'on'
+    light.led_tele:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      is_deconz_group: false
+      friendly_name: LED TV
+      supported_features: 63
+      state: 'off'
+    light.lampe_coin:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 119
+      color_temp: 366
+      is_deconz_group: false
+      friendly_name: Lampe coin
+      supported_features: 63
+      state: 'on'

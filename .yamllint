@@ -41,6 +41,7 @@ rules:
     ignore: |
       config/known_devices.yaml
       config/blueprints/*/
+      config/scenes.yaml
   empty-lines:
     level: error
     max: 1
@@ -54,6 +55,8 @@ rules:
     spaces: 2
     indent-sequences: true
     check-multi-line-strings: false
+    ignore: |
+      config/scenes.yaml
   key-duplicates:
     level: error
   line-length:

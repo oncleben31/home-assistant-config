@@ -28,6 +28,7 @@
 +/ configuration.yaml
 +/ known_devices.yaml
 +/ automations.yaml
++/ scenes.yaml
 +/ secrets.yaml
 +/ zwave_device_config.yaml
 +/ .HA_VERSION
