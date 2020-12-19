@@ -1,0 +1,52 @@
+blueprint:
+  name: "Notification pour alerte météo"
+  description: "Envoie une notification si une alerte météo est levée par Météo-France"
+  domain: automation
+  input:
+    sensor_weather_alert:
+      name: "Weather Alert"
+      description: "L'entité décrivant les alertes météo"
+      selector:
+        entity:
+          integration: meteo_france
+          domain: sensor
+    notifier:
+      name: "Notification"
+      description: "Nom du service de notification à utiliser"
+
+trigger:
+  - platform: state
+    entity_id: !input sensor_weather_alert
+
+variables:
+  weather_alert_sensor: !input sensor_weather_alert
+
+action:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: !input sensor_weather_alert
+            state: ["Jaune", "Orange", "Rouge"]
+        sequence:
+          - service: !input notifier
+            data:
+              message:
+                "Alerte météo {{states(weather_alert_sensor)}} en cours:\n
+                {%- for attr in ['Vent violent', 'Pluie-inondation', 'Orages', 'Inondation', 'Neige-verglas',
+                'Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion'] -%}
+                {%- if state_attr(weather_alert_sensor, attr) != 'Vert' and state_attr(weather_alert_sensor, attr)
+                != None %}\n
+                - {{attr}} : {{state_attr(weather_alert_sensor, attr)}}
+                {%- endif -%}
+                {% endfor -%}"
+      - conditions:
+          - condition: state
+            entity_id: !input sensor_weather_alert
+            state: "Vert"
+          # F: Vérfie que l'état n'est pas revenue à 'Vert' après que l'entity était non disponible.
+          # E: Check if state is back to 'Vert' after entity was unvailable.
+          - "{{ trigger.from_state.state != 'unavailable' }}"
+        sequence:
+          - service: !input notifier
+            data:
+              message: "Fin de l'alerte météo."
