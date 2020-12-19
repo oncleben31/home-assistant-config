@@ -8,39 +8,11 @@
 # - Orages: Jaune
 # - Canicule: Orange
 #
-- alias: "Notification pour alerte météo"
-  description: "Envoie une notification sur Telegram si une alerte météo est levée par Météo-France"
-  id: bb9f2730-ee77-11ea-9220-4198f0db79cf
-  trigger:
-    - platform: state
-      entity_id: sensor.home_weather_alert
-  condition: []
-  action:
-    - choose:
-        - conditions:
-            - condition: state
-              entity_id: sensor.home_weather_alert
-              state: ["Jaune", "Orange", "Rouge"]
-          sequence:
-            - service: notify.telegram
-              data:
-                message:
-                  "Alerte météo {{states('sensor.home_weather_alert')}} en cours:\n
-                  {%- for attr in ['Vent violent', 'Pluie-inondation', 'Orages', 'Inondation', 'Neige-verglas',
-                  'Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion'] -%}
-                  {%- if state_attr('sensor.home_weather_alert', attr) != 'Vert' and state_attr('sensor.home_weather_alert', attr)
-                  != None %}\n
-                  - {{attr}} : {{state_attr('sensor.home_weather_alert', attr)}}
-                  {%- endif -%}
-                  {% endfor -%}"
-        - conditions:
-            - condition: state
-              entity_id: sensor.home_weather_alert
-              state: "Vert"
-            # F: Vérfie que l'état n'est pas revenue à 'Vert' après que l'entity était non disponible.
-            # E: Check if state is back to 'Vert' after entity was unvailable.
-            - "{{ trigger.from_state.state != 'unavailable' }}"
-          sequence:
-            - service: notify.telegram
-              data:
-                message: "Fin de l'alerte météo."
+- id: bb9f2730-ee77-11ea-9220-4198f0db79cf
+  alias: Notification pour alerte météo
+  description: Envoie une notification sur Telegram en cas d'alerte météo.
+  use_blueprint:
+    path: my_blueprints/meteofrance_weather_alert.yaml
+    input:
+      sensor_weather_alert: sensor.home_weather_alert
+      notifier: notify.telegram
