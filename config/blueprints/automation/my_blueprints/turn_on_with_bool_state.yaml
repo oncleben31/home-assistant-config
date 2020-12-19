@@ -1,0 +1,34 @@
+---
+# FR: un Blueprint pour synchroniser une lumière à un sensor binaire
+# EN: a Blueprint to synchronize a light and a binary_sensor
+#
+blueprint:
+  name: Turn on with boolean state
+  description: "Set the binary state of an entity (ex:switch) followin a binary_sensor (ex: Time of the Day)"
+  domain: automation
+  input:
+    binary_sensor:
+      name: Binary Sensor
+      description: "This sensor will be synchronized with the target entity"
+      selector:
+        entity:
+          domain: binary_sensor
+    target_entity:
+      name: Target entity
+      description: "Any entity that could be turn on or off (ex: light or switch)"
+      selector:
+        target:
+
+trigger:
+  - platform: state
+    entity_id: !input binary_sensor
+
+action:
+  service: >
+    {% if trigger.to_state.state == "on" %}
+      homeassistant.turn_on
+    {% else %}
+    homeassistant.turn_off
+    {% endif %}
+  target: !input target_entity
+mode: single
