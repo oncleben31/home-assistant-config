@@ -7,18 +7,9 @@
 - id: '1608133504042'
   alias: Allumer les lumières de Noël
   description: Allume les lumière de Noël sur une plage horraire
-  mode: single
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.plage_horaire_pour_lumieres_de_noel
-  condition: []
-  action:
-    - choose:
-        - conditions:
-            - condition: state
-              entity_id: binary_sensor.plage_horaire_pour_lumieres_de_noel
-              state: 'on'
-              sequence:
-                - service: homeassistant.turn_on
-                  data: {}
-                  entity_id: switch.noel
+  use_blueprint:
+    path: my_blueprints/turn_on_with_bool_state.yaml
+    input:
+      binary_sensor: binary_sensor.plage_horaire_pour_lumieres_de_noel
+      target_entity:
+        entity_id: switch.noel

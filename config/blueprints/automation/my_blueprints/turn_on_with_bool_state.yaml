@@ -24,11 +24,11 @@ trigger:
     entity_id: !input binary_sensor
 
 action:
-  service: >
-    {% if trigger.to_state.state == "on" %}
-      homeassistant.turn_on
-    {% else %}
-    homeassistant.turn_off
-    {% endif %}
-  target: !input target_entity
+  - service: >
+      {% if trigger.to_state.state == "on" %}
+        homeassistant.turn_on
+      {% else %}
+      homeassistant.turn_off
+      {% endif %}
+    target: !input target_entity
 mode: single
