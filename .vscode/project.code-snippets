@@ -15,29 +15,15 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	"ha__automation": {
-		"scope": "home-assistant",
-		"prefix": "ha_automation",
-		"body": [
-			"alias: ${1:automation alias}",
-			"${2:initial_state: true}",
-			"trigger:",
-			"  ${3:platform: state}",
-			"condition:",
-			"  ${4:condition: template\n    value_template: '{{ states.sun.sun.attributes.elevation < 4 }}'}",
-			"action:",
-			"  ${5:service: }",
-		],
-		"description": "Automation with condition"
-	},
 	"comment_header": {
 		"scope": "home-assistant",
 		"prefix": "---",
 		"body": [
 			"---",
-			"# ${1:Explain what you are doing}",
+			"# FR: $(1:Expliquer ce que vous faites",
+			"# EN: ${2:Explain what you are doing}",
 			"#",
-			"# ${2:link to documentation}",
+			"# ${3:link to documentation}",
 			"#",
 		],
 		"description": "Comment header"
