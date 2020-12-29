@@ -49,7 +49,7 @@ où on y parle français](https://hacf.fr) ou sur [le réseau Home Assistant off
 
 ### Appareils utilisés
 
-- Raspbery Pi v3 pour héberger HassOS
+- Un Microseveur HP Gen8 pour héberger un Machine Virtuelle HassOS
 - Les objets Xiaomi:
   - Robot aspirateur Roborock cleaner
   - Pleins de capteurs et interrupteurs
@@ -65,7 +65,7 @@ où on y parle français](https://hacf.fr) ou sur [le réseau Home Assistant off
 - Linky
 - Serveur Plex qui tourne sur mon NAS
 - Conbee 2 pour controler mes appareils Zigbee (Xiaomi, Hue and OSRAM)
-- UPC Back-UPS pour protéger des coupures électriques mon Raspberry Pi, mon
+- UPC Back-UPS pour protéger des coupures électriques mon Microserveur, mon
   switch et mon NAS.
 - Un Sonoff POW R2 gérer la pompe de filtration de ma piscine (in progress)
 - Un NAS Synology
@@ -177,7 +177,7 @@ where we speak French](https://hacf.fr) or on [the official Home Assistant netwo
 
 ### Devices used
 
-- Raspbery Pi v3 for hosting HassOS
+- A Microserver HP Gen8 to host a HassOS Virtual Machine
 - Xiaomi devices:
   - Vacuum Roborock cleaner
   - Lot of sensors and switchs
@@ -193,7 +193,7 @@ where we speak French](https://hacf.fr) or on [the official Home Assistant netwo
 - Linky electrcity monitoring system
 - Plex server running on my NAS
 - Conbee 2 for managing Zigbee devices (Xiaomi, Hue and OSRAM)
-- UPC Back-UPS to protect against power failure my Raspberry Pi, my switch and
+- UPC Back-UPS to protect against power failure my Microserver, my switch and
   my NAS.
 - Sonoff POW R2 for managing the swiming pool pump (in progress)
 - NAS Synology
