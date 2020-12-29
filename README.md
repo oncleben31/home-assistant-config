@@ -146,6 +146,14 @@ Vous ne les verrez donc pas dans ce dépôt:
 J'ai ajouté d'autres information spécifiques dans le [wiki](https://github.com/oncleben31/home-assistant-config/wiki).
 N'oubliez pas de le visiter. Attention pas encore traduit.
 
+### Me contacter
+
+Si vous voulez discuter de ma configuration, vous pouvez le faire à travers les outils suivant:
+
+- GitHub par l'intermédiare [des issues][issues] ou [des discussions][discussions].
+- Sur [le forum officiel anglophone][forum] ou sur [celui de la communauté HACF en français][forum-fr].
+- Sur le [Discord de la communauté HACF][discord-fr].
+
 ## For English speaking users
 
 Don't be scared by the non standard structure of the Home Assistant configuration folder.
@@ -266,16 +274,27 @@ in this repository:
 I have and will add specific explanations in the [wiki](https://github.com/oncleben31/home-assistant-config/wiki).
 So don't forget to visit it.
 
+### Contact me
+
+If you want to discuss with me about my configuration, you can do it through the following tools:
+
+- GitHub with [the issues][issues] or [the discussions][discussions].
+- On [the official forum in English][forum] or on [the HACF community one in French][forum-fr].
+- On the [HACF community Discord in French][discord-fr].
+
+
 [commits-shield]: https://img.shields.io/github/commit-activity/y/oncleben31/home-assistant-config
 [commits]: https://github.com/oncleben31/home-assistant-config/commits/master
 [discord-shield]: https://img.shields.io/discord/330944238910963714?label=Official%20HA%20Discord&logo=discord
 [discord]: https://discord.gg/c5DvZ4e
 [discord-shield-fr]: https://img.shields.io/discord/706096417000652840?label=Discord%20francophone%20HACF&logo=discord
 [discord-fr]: https://discord.com/invite/PaZFEjX
+[discussions]: https://github.com/oncleben31/home-assistant-config/discussions
 [forum-shield]: https://img.shields.io/discourse/topics?label=Official%20HA%20forums&logo=discourse&server=https%3A%2F%2Fcommunity.home-assistant.io%2F
-[forum]: https://community.home-assistant.io/?u=oncleben31
+[forum]: https://community.home-assistant.io/
 [forum-shield-fr]: https://img.shields.io/discourse/topics?label=Forum%20francophone%20HACF&logo=discourse&server=https%3A%2F%2Fforum.hacf.fr%2F
 [forum-fr]: https://forum.hacf.fr/
+[issues]: https://github.com/oncleben31/home-assistant-config/issues
 [last-commit-shield]: https://img.shields.io/github/last-commit/oncleben31/home-assistant-config.svg
 [license-shield]: https://img.shields.io/github/license/oncleben31/home-assistant-config.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2020.svg
