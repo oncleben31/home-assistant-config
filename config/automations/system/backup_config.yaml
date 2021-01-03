@@ -1,12 +1,17 @@
 ---
-# Automation for HA weekly backup.
+# FR: Automatiastion de la sauvegarde hebdomadaire de Home Assistant
+# EN: Automation for Home Assistant weekly backup.
 #
-# Use bash script to create the snapshot, synchronize with NAS by rsync
-# and clean local old backup.
+# FR: Utilise un script Bash pour crée la sauvegarde, synchroniser avec le NAS
+#     et nettoyer les anciennes sauvegardes.
+# EN: Use a Bash script to create the snapshot, synchronize with NAS by rsync
+#     and clean local old backup.
 #
 
 # Generate the HA config archive weekly
-- alias: Weekly Backup Monday at 3 AM
+- alias: "Sauvegarde hebdomadaire"
+  description: "Lance une sauvegarde tous les lundis à 3h00."
+  id: dcc5e4d0-4db8-11eb-93b7-69b544997889
   initial_state: 'on'
   trigger:
     platform: time
@@ -22,4 +27,4 @@
         input: "/config/scripts/shell/hassio_backup.sh"
     - service: notify.telegram
       data:
-        message: Creation du backup hebomadaire.
+        message: Creation de la sauvegarde hebomadaire.
