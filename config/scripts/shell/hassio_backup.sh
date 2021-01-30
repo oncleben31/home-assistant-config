@@ -19,7 +19,7 @@ ha snapshots new --name $(date +"%Y_%m_%d__%H_%M_%S")
 # EN: Create partial snapshot for MariaDB only with addon stopped to avoid database corruption
 # FR: Création d'une sauvegarde partielle pour MariaDB uniquement avec l'addon arrêté afin d'éviter une corruption de la base de donnée
 ha addons stop core_mariadb
-ha snapshots new --addons core_mariadb --name $(date +"%Y_%m_%d__%H_%M_%S")_core_mariadb --folders ""
+ha snapshots new --addons core_mariadb --name $(date +"%Y_%m_%d__%H_%M_%S")_core_mariadb
 ha addons start core_mariadb
 
 # EN: Use rsync to copy only archives that dont already exist on my NAS
