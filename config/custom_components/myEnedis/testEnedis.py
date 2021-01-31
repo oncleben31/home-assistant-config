@@ -1,4 +1,7 @@
-import apiEnedis
+import myEnedis
+import messages
+
+__version__ = "test_saniho"
 
 def test(myDataEnedis):
     myDataEnedis.updateCurrentWeek()
@@ -46,11 +49,6 @@ def test1(myDataEnedis):
 def test2( myDataEnedis ):
     myDataEnedis.updateContract()
     print(myDataEnedis.getContract())
-    #print(myDataEnedis.getcleanoffpeak_hours("HC (23H30-07H30)"))
-    #print(myDataEnedis.getcleanoffpeak_hours("HC (03H30-07H30)"))
-    #print(myDataEnedis.getcleanoffpeak_hours("HC (18H30-22H30)"))
-    #print(myDataEnedis.getcleanoffpeak_hours("HC (1H04-7H04;14H04-16H04)"))
-    #print(myDataEnedis._heuresCreuses)
     myDataEnedis.updateHCHP()
     print(myDataEnedis._heuresCreuses)
     pass
@@ -73,7 +71,10 @@ def test3( myDateEnedis):
 def testComplet( myDataEnedis ):
     import sensorEnedis, time, logging
     logger = logging.getLogger("testEnedis")
-    status_counts = sensorEnedis.manageSensorState( myDataEnedis, logger )
+    mSS = sensorEnedis.manageSensorState()
+    mSS.init( myDataEnedis, logger )
+    mSS.updateManagerSensor()
+    status_counts, state = mSS.getStatus("production") # selon le type du sensor cree
     if ( myDataEnedis.getStatusLastCall() == False ):
         sensorEnedis.logSensorState(status_counts)
         # on se met en attente 10 secondes, car Enedis HS
@@ -81,7 +82,8 @@ def testComplet( myDataEnedis ):
         myDataEnedis.updateLastMethodCallError( myDataEnedis.getLastMethodCall()) # on met l'etat precedent
         sensorEnedis.logSensorState(status_counts)
         time.sleep( 10 )
-        status_counts = sensorEnedis.manageSensorState(myDataEnedis, logger)
+        mSS.updateManagerSensor()
+        status_counts, state = mSS.getStatus()
     sensorEnedis.logSensorState(status_counts)
 
 def testMulti():
@@ -91,21 +93,44 @@ def testMulti():
     #for qui in ["ENEDIS","ENEDIS2","ENEDIS3","ENEDIS4"]:
     #for qui in ["ENEDIS","ENEDIS7"]:
     #for qui in ["ENEDIS9"]:
-    for qui in ["ENEDIS"]:
+    #for qui in ["ENEDIS","ENEDIS2","ENEDIS3","ENEDIS4","ENEDIS15"]:
+    #for qui in ["ENEDIS18"]:
+    #for qui in ["ENEDIS19"]:
+    #for qui in ["ENEDIS"]:
+    #for qui in ["ENEDIS21"]:
+    for qui in ["ENEDIS21","ENEDIS25"]:
+        print("*** traitement de %s " %(qui))
         token = mon_conteneur[qui]['TOKEN']
         PDL_ID = mon_conteneur[qui]['CODE']
-        print(token, PDL_ID)
-        heureCreusesCh = "[['00:00','05:00'], ['22:00', '24:00']]"
-        myDataEnedis = apiEnedis.apiEnedis( token=token, PDL_ID=PDL_ID, delai=10, \
-            heuresCreuses=eval(heureCreusesCh), heuresCreusesCost=0.0797, heuresPleinesCost=0.1175 )
-        #myDataEnedis._serverName = "http://localhost:5500" # pour mockserver
-        #myDataEnedis._serverName = "http://localhost:5501" # pour record
+        #print(qui , "*", token, PDL_ID)
+        heureCreusesCh = eval("[['00:00','05:00'], ['22:00', '24:00']]")
+        #heureCreusesCh = None
+        heuresCreusesON = True
+        #heuresCreusesON = False
+        myDataEnedis = myEnedis.myEnedis( token=token, PDL_ID=PDL_ID, delai=10,
+            heuresCreuses=heureCreusesCh, heuresCreusesCost=0.0797, heuresPleinesCost=0.1175,
+            version = __version__, heuresCreusesON=heuresCreusesON )
         myDataEnedis.updateContract()
         myDataEnedis.updateHCHP()
-        #print(myDataEnedis.getContract())
-        #print(myDataEnedis.getTypePDL())
+        print("myDataEnedis.getContract() : ", myDataEnedis.getContract())
+        print("myDataEnedis.getContract() : ", myDataEnedis.getContract()['usage_point_status'])
+        print("myDataEnedis.getContract() : ", myDataEnedis.getTypePDL())
+        #print("myDataEnedis.getLastActivationDate() : ", myDataEnedis.getLastActivationDate())
+        #print("myDataEnedis.getHeuresCreuses() : ", myDataEnedis.getHeuresCreuses())
+
+        #myDataEnedis.updateYesterday()
+        #print("cnosommation : %s" %myDataEnedis.getYesterday() )
+        #myDataEnedis.updateProductionYesterday()
+        #print("production : %s" %myDataEnedis.getProductionYesterday() )
+        #myDataEnedis.updateLastYear()
+
+        # myDataEnedis._serverName = "http://localhost:5500" # pour mockserver
+        # myDataEnedis._serverName = "http://localhost:5501" # pour record
+        #myDataEnedis.updateDataYesterdayHCHP()
         testComplet( myDataEnedis )
-        print( myDataEnedis.getLastMethodCallError())
+        #print("***")
+        #print( myDataEnedis.getLastMethodCallError())
+        #print( myDataEnedis.getLastAnswer())
 
 def testMono():
     import configparser
@@ -117,10 +142,11 @@ def testMono():
     print(token, PDL_ID)
 
     heureCreusesCh = "[['00:00','05:00'], ['22:00', '24:00']]"
-    myDataEnedis = apiEnedis.apiEnedis(token=token, PDL_ID=PDL_ID, delai=10, \
+    myDataEnedis = myEnedis.myEnedis(token=token, PDL_ID=PDL_ID, delai=10, \
                                        heuresCreuses=eval(heureCreusesCh),
                                        heuresCreusesCost=0.20,
-                                       heuresPleinesCost=1.30)
+                                       heuresPleinesCost=1.30,
+                                       version = __version__)
     myDataEnedis.updateContract()
     myDataEnedis.updateHCHP()
     print(myDataEnedis.getContract())
@@ -130,14 +156,6 @@ def testMono():
     myDataEnedis.updateYesterday()
     retour = myDataEnedis.getYesterday()
     print("retour", retour)
-    # myDataEnedis = apiEnedis( token=token, PDL_ID=PDL_ID, delai = 10, \
-    #    heuresCreuses=[],
-    #    heuresCreusesCost=0.20,
-    #    heuresPleinesCost=1.30) # on fait un update 10 secondes après le dernier ok
-    #test(myDataEnedis)
-    #test1(myDataEnedis)
-    #test2( myDataEnedis)
-    #test3( myDataEnedis)
 
 def main():
     testMulti()
