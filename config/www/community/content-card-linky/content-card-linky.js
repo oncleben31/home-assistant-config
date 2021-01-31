@@ -56,7 +56,8 @@ class ContentCardLinky extends LitElement {
     if (stateObj) {
         if (( modeCompteur === "consommation" ) || ( !modeCompteur )){
           return html`
-            <ha-card>
+            <ha-card id="card">
+              ${this.addEventListener('click', event => { this._showDetails(this.config.entity); })}
               ${this.renderTitle(this.config)}
               <div class="card">
                 <div class="main-info">
@@ -70,8 +71,8 @@ class ContentCardLinky extends LitElement {
                   ${this.config.showPeakOffPeak
                     ? html`
                       <div class="hp-hc-block">
-                        <span class="conso-hc">${this.toFloat(attributes.offpeak_hours)}</span><span class="conso-unit-hc"> ${attributes.unit_of_measurement} <span class="more-unit">(en HC)</span></span><br />
-                        <span class="conso-hp">${this.toFloat(attributes.peak_hours)}</span><span class="conso-unit-hp"> ${attributes.unit_of_measurement} <span class="more-unit">(en HP)</span></span>
+                        <span class="conso-hc">${this.toFloat(attributes.yesterday_HC)}</span><span class="conso-unit-hc"> ${attributes.unit_of_measurement} <span class="more-unit">(en HC)</span></span><br />
+                        <span class="conso-hp">${this.toFloat(attributes.yesterday_HP)}</span><span class="conso-unit-hp"> ${attributes.unit_of_measurement} <span class="more-unit">(en HP)</span></span>
                       </div>`
                     : html`
                       <div class="cout-block">
@@ -134,6 +135,18 @@ class ContentCardLinky extends LitElement {
             </ha-card>`
         }
     }
+  }
+  _showDetails(myEntity) {
+    const event = new Event('hass-more-info', {
+      bubbles: true,
+      cancelable: false,
+      composed: true
+    });
+    event.detail = {
+      entityId: myEntity
+    };
+    this.dispatchEvent(event);
+    return event;
   }
   renderTitle(config) {
     if (this.config.showTitle === true) {
@@ -331,6 +344,7 @@ class ContentCardLinky extends LitElement {
         margin: auto;
         padding: 1.5em 1em 1em 1em;
         position: relative;
+        cursor: pointer;
       }
 
       .main-title {
