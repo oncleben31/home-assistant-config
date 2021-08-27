@@ -1,0 +1,8 @@
+---
+# FR: Suivre la position de l'ISS
+# EN: Follow ISS position
+#
+# https://www.home-assistant.io/integrations/iss/
+#
+platform: iss
+show_on_map: true
