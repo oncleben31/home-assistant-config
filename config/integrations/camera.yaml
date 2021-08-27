@@ -1,0 +1,6 @@
+---
+# E: camera integration allows to display recorded video stream or images.
+# F: L'intégration camera permet d'afficher des flux vidéo ou des images enregistrées
+#
+# https://www.home-assistant.io/integrations/camera/
+camera: !include_dir_list ../entities/cameras
