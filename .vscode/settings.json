@@ -3,8 +3,15 @@
     "python.testing.pytestEnabled": false,
     "python.testing.unittestEnabled": false,
     "python.testing.nosetestsEnabled": false,
-    "python.pythonPath": "/Users/benoit/.venv/home-assistant-config/bin/python",
+    "python.pythonPath": "/Users/oncleben31/.venv/home-assistant-config/bin/python",
     "files.associations": {
         "*.yaml": "home-assistant"
-    }
+    },
+    "sync-rsync.local": "/Users/oncleben31/Dev/home-assistant-config/config/",
+    "sync-rsync.remote": "root@192.168.1.35:/config",
+    "sync-rsync.args": ["--filter=. /Users/oncleben31/Dev/home-assistant-config/.rsync-filter"],
+    "sync-rsync.delete": true,
+    "sync-rsync.showProgress": false
+    
 }
+
