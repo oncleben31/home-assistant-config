@@ -7,9 +7,18 @@
 # https://www.home-assistant.io/components/http/
 #
 http:
-  # Enables additional IP filtering.
+  # E: Enables additional IP filtering.
+  # F: Active le filtrage des IP
   ip_ban_enabled: true
 
-  # Number of failed login attempts from a single IP after which it will
+  # E: Number of failed login attempts from a single IP after which it will
   # be automatically banned.
+  # F: Nombre de tentatives echouées pour une IP donnée pour déclancher un
+  # ban automatique.
   login_attempts_threshold: 4
+
+  # E: Configure usage with reverse proxy
+  # F: configuration pour l'utilisation d'un reverse proxy
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - !secret local_ip_reverseproxy
