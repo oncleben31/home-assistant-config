@@ -1,10 +1,12 @@
 """Constants for HACS"""
+from aiogithubapi.common.const import ACCEPT_HEADERS
+
 NAME_LONG = "HACS (Home Assistant Community Store)"
 NAME_SHORT = "HACS"
-INTEGRATION_VERSION = "1.10.1"
+INTEGRATION_VERSION = "1.13.2"
 DOMAIN = "hacs"
 CLIENT_ID = "395a8e669c5de9f7c6e8"
-MINIMUM_HA_VERSION = "2020.12.0"
+MINIMUM_HA_VERSION = "2021.2.0"
 PROJECT_URL = "https://github.com/hacs/integration/"
 CUSTOM_UPDATER_LOCATIONS = [
     "{}/custom_components/custom_updater.py",
@@ -17,6 +19,16 @@ DOMAIN_DATA = f"{NAME_SHORT.lower()}_data"
 ELEMENT_TYPES = ["integration", "plugin"]
 
 PACKAGE_NAME = "custom_components.hacs"
+
+HACS_GITHUB_API_HEADERS = {
+    "User-Agent": f"HACS/{INTEGRATION_VERSION}",
+    "Accept": ACCEPT_HEADERS["preview"],
+}
+
+HACS_ACTION_GITHUB_API_HEADERS = {
+    "User-Agent": "HACS/action",
+    "Accept": ACCEPT_HEADERS["preview"],
+}
 
 IFRAME = {
     "title": "HACS",
