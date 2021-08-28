@@ -19,6 +19,7 @@ import datetime, logging
 log = logging.getLogger(__nameMyEnedis__)
 
 from .myCheckData import myCheckData
+from .myDataControl import okDataControl
 
 class myDataEnedisByDayDetail():
     def __init__(self, myCalli, token, version, contrat, multiDays=False):
@@ -31,7 +32,11 @@ class myDataEnedisByDayDetail():
         self._HP = 0
         self._HC = 0
         self._multiDays = multiDays
+        self._dateDeb = None
+        self._dateFin = None
+        self._callOk = None
         self._nbCall = 0
+        self._data = None
 
         self._joursHC = {}
         self._joursHP = {}
@@ -66,38 +71,61 @@ class myDataEnedisByDayDetail():
     def getDateDeb(self):
         return self._dateDeb
 
+    def getCallOk(self):
+        return self._callOk
+
     def getNbCall(self):
         return self._nbCall
 
-    def updateData(self, clefFunction, data=None, dateDeb=None, dateFin=None):
+    def updateData(self, clefFunction, horairePossible=True, data=None, dateDeb=None, dateFin=None, withControl = False, dataControl = None):
         self._nbCall = 0
-        self._dateDeb = dateDeb
-        self._dateFin = dateFin
-        log.info("--updateData %s ( du %s au %s )--" %( clefFunction, dateDeb, dateFin))
-        #print("--updateData %s ( du %s au %s )--" %( clefFunction, dateDeb, dateFin))
-        if (data == None):
-            data, callDone = self.CallgetData(dateDeb, dateFin)
-            self._nbCall = 1
-        else: callDone = True
-        log.info("updateData : data %s" % (data))
-        if ( self._multiDays ):
-            if ( dateDeb == dateFin ):
-                self._HC, self._HP = {}, {}
+        onLance = True
+        if withControl:
+            if okDataControl( clefFunction, dataControl, dateDeb, dateFin ):
+                onLance = True
+                self._callOk = True
             else:
-                if (callDone ) and (myCheckData().checkDataPeriod(data)):
-                    self._joursHC, self._joursHP = self.createMultiDaysHCHP(data)
+                if ( not horairePossible ):
+                    onLance = False
                 else:
+                    self._callOk = None
+                    data = None # si on doit mettre à jour .... sauf si on est pas la
+        if onLance:
+            self._dateDeb = dateDeb
+            self._dateFin = dateFin
+            log.info("--updateData %s ( du %s au %s )--" %( clefFunction, dateDeb, dateFin))
+            self._data = data
+            if (self._data == None):
+                self._data, callDone = self.CallgetData(dateDeb, dateFin)
+                self._nbCall = 1
+            else: callDone = True
+            log.info("updateData : data %s" % (self._data))
+            if ( self._multiDays ):
+                if ( dateDeb == dateFin ):
                     self._HC, self._HP = {}, {}
-        else:
-            if (dateDeb == dateFin):
-                self._HC, self._HP = 0, 0
-            else:
-                if (callDone ) and (myCheckData().checkData(data)):
-                    self.createHCHP(data)
                 else:
+                    if (callDone ) and (myCheckData().checkDataPeriod(self._data)):
+                        self._joursHC, self._joursHP = self.createMultiDaysHCHP(self._data)
+                        self._callOk = True
+                    else:
+                        self._HC, self._HP = {}, {}
+                    self._callOk = callDone
+            else:
+                if (dateDeb == dateFin):
                     self._HC, self._HP = 0, 0
-        log.info("with update !! %s ( du %s au %s )--" %( clefFunction, dateDeb, dateFin))
-        return data
+                else:
+                    if (callDone ) and (myCheckData().checkData(self._data)):
+                        self.createHCHP(self._data)
+                        self._callOk = True
+                    else:
+                        self._HC, self._HP = 0, 0
+                    self._callOk = callDone
+            log.info("with update !! %s ( du %s au %s )--" %( clefFunction, dateDeb, dateFin))
+            log.info("updateData : data %s" % (self._data))
+        else:
+            log.info("noupdate !! %s ( du %s au %s )--" %( clefFunction, dateDeb, dateFin))
+            log.info("no updateData : data %s" % (self._data))
+        return self._data
 
     def getCoeffIntervalLength(self):
         interval = self.getIntervalLength()

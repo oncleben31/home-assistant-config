@@ -15,10 +15,11 @@ except ImportError:
         _formatDateY0101,
     )
 
-import datetime, logging
+import logging
 log = logging.getLogger(__nameMyEnedis__)
 
 from .myCheckData import myCheckData
+from .myDataControl import okDataControl
 
 class myDataEnedisByDay():
     def __init__(self, myCalli, token, version, contrat):
@@ -31,6 +32,7 @@ class myDataEnedisByDay():
         self._dateFin = None
         self._callOk = None
         self._nbCall = 0
+        self._data = None
 
     def CallgetData(self, dateDeb, dateFin):
         val1, val2 = self.myCalli.getDataPeriod(dateDeb, dateFin)
@@ -45,22 +47,29 @@ class myDataEnedisByDay():
     def getDateDeb(self):
         return self._dateDeb
 
+    def getCallOk(self):
+        return self._callOk
+
     def getNbCall(self):
         return self._nbCall
 
-    def updateData(self, clefFunction, data=None, dateDeb=None, dateFin=None, withControl = False):
+    def updateData(self, clefFunction, horairePossible=True, data=None, dateDeb=None, dateFin=None, withControl = False, dataControl = None):
         self._nbCall = 0
         onLance = True
         if withControl:
-            if ( self._dateDeb == dateDeb and self._dateFin == dateFin and self._callOk ):
-                onLance = False # pas de lancement si meme date
+            if okDataControl( clefFunction, dataControl, dateDeb, dateFin ):
+                onLance = True
+                self._callOk = True
             else:
-                self._callOk = None
+                if ( not horairePossible ):
+                    onLance = False
+                else:
+                    self._callOk = None
+                    data = None # si on doit mettre à jour .... sauf si on est pas la
         if onLance:
             self._dateDeb = dateDeb
             self._dateFin = dateFin
             log.info("--updateData %s ( du %s au %s )--" %( clefFunction, dateDeb, dateFin))
-            #print("--updateData %s ( du %s au %s )--" %( clefFunction, dateDeb, dateFin))
             self._data = data
             if (self._data == None):
                 if ( dateDeb == dateFin):
@@ -73,6 +82,7 @@ class myDataEnedisByDay():
                         self._nbCall = 1
                     else:
                         self._value = 0
+                    self._callOk = callDone
             else:
                 callDone = True
                 if (callDone) and (myCheckData().checkDataPeriod(self._data)):
@@ -80,6 +90,7 @@ class myDataEnedisByDay():
                     self._callOk = True
                 else:
                     self._value = 0
+                self._callOk = callDone
             log.info("with update !! %s ( du %s au %s )--" %( clefFunction, dateDeb, dateFin))
             log.info("updateData : data %s" % (self._data))
         else:
