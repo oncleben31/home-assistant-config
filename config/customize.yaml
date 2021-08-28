@@ -1,2 +1,4 @@
 sensor.pool_pump_running_today:
   friendly_name: Durée quotidienne de fonctionnement
+binary_sensor.iss:
+  entity_picture: /local/ISS_emblem_small.png
