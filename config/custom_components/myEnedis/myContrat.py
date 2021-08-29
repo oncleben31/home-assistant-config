@@ -19,10 +19,8 @@ except ImportError:
         _formatDateY0101,
     )
 
-import datetime, logging
+import logging
 log = logging.getLogger(__nameMyEnedis__)
-
-from . import messages
 
 class myContrat():
     def __init__(self, myCalli, token, PDL_ID, version, heuresCreusesON, heuresCreuses):
@@ -69,7 +67,7 @@ class myContrat():
         return self._contract["mode_PDL"]
 
     def updateContract(self, data=None):
-        log.info("--updateContract --")
+        log.info("--updateContract : data %s" % (data))
         if (data == None): data = self.CallgetDataContract()
         log.info("updateContract : data %s" % (data))
         if ( self.checkDataContract(data) ):

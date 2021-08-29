@@ -1,17 +1,12 @@
 ---
 # E: Sets up Home Assistant.
-# Basically, everything that doesn't have to be in the
+# E Basically, everything that doesn't have to be in the
 # main configuration.yaml. Most of the data are now set in the UI
 #
 # F: Paramétrage de Home Assistant.
 # Maintenant la plus part des infos sont configurées dans l'interface.
 #
 homeassistant:
-  # Lets me customize individual entities
-  customize: !include_dir_merge_named ../customizations/entities
-
-  # Lets me custimize all entities in a domain
-  customize_domain: !include_dir_merge_named ../customizations/domains
-
-  # Lets me custimize entities based on a matching pattern
-  customize_glob: !include_dir_merge_named ../customizations/globs
+  # E: Lets me customize individual entities in the UI
+  # E: Permettre de customiser les entités via l'UI
+  customize: !include ../customize.yaml

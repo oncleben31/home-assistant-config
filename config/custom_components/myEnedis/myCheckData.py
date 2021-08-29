@@ -1,6 +1,7 @@
 
 class myCheckData:
     def __init__(self):
+        # pas d'init defini
         pass
 
     def analyseValueAndAdd(self, data):
@@ -34,7 +35,10 @@ class myCheckData:
         if (data == None):  # pas de valeur
             return None
         else:
-            return int(data["meter_reading"]["interval_reading"][0]["value"])
+            if ( "meter_reading" in data.keys()):
+                return int(data["meter_reading"]["interval_reading"][0]["value"])
+            else:
+                return None
 
     def checkData(self, dataAnswer):
         # new version de la réponse
@@ -50,7 +54,7 @@ class myCheckData:
                 return False
             # no_data_found
             if (dataAnswer["error_code"] == "no_data_found"):
-                return False
+                raise Exception('call', "error", "Collecte de données non activée sur le site enedis.fr")
             # No consent can be found for this customer and this usage point
             if dataAnswer["error_code"] in ["ADAM-DC-0008", "ADAM-ERR0069", "UNKERROR_002"]:
                 return False
@@ -59,6 +63,8 @@ class myCheckData:
                 raise Exception('call', "error", "UNKERROR_001")
             else:
                 raise Exception('call', "error", dataAnswer["error_code"])
+        if ( "meter_reading" not in dataAnswer.keys() ):
+            return False
         return True
 
 

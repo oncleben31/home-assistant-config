@@ -1,10 +1,14 @@
 {
     "domain": "variable",
-    "name": "variable",
-    "documentation": "https://github.com/rogro82/hass-variables",
+    "name": "Variables+History",
+    "documentation": "https://github.com/Wibias/hass-variables",
+    "issue_tracker": "https://github.com/Wibias/hass-variables/issues",
     "requirements": [],
     "dependencies": [],
     "codeowners": [
-        "@rogro82"
-    ]
+        "@rogro82",
+        "@wibias"
+    ],
+    "iot_class": "local_push",
+    "version": "2.1.1"
 }
