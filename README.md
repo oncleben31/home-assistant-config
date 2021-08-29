@@ -1,4 +1,4 @@
-# My Home Assistant config
+# My Home Assistant config 
 
 ![Project Maintenance][maintenance-shield]
 [![License][license-shield]](LICENSE.md)
@@ -40,7 +40,7 @@ expliquant pourquoi il a fait ces choix.
 
 J'ai essayé d'ajouter des commentaires et des liens vers la documentation pour chaque fichier YAML quand cela à une valeur ajoutée.
 
-Attention: ma décision d'avoir une documentation bilingue en ajoutant le français est récente.
+Attention: ma décision d'avoir une documentation bilingue en ajoutant le français a été faite dans un second temps.
 Donc la partie francophone n'est pas encore complète.
 
 Si vous avez des questions ou voulez discuter de ma configuration,
@@ -67,7 +67,7 @@ où on y parle français](https://hacf.fr) ou sur [le réseau Home Assistant off
 - Conbee 2 pour controler mes appareils Zigbee (Xiaomi, Hue and OSRAM)
 - UPC Back-UPS pour protéger des coupures électriques mon Microserveur, mon
   switch et mon NAS.
-- Un Sonoff POW R2 gérer la pompe de filtration de ma piscine (in progress)
+- Un Sonoff POW R2 gérer la pompe de filtration de ma piscine
 - Un NAS Synology
 - Une imprimante Brother
 - Une Livebox pour ma connexion ADSL.
@@ -93,14 +93,13 @@ Vous trouverez dans mes scripts et automations les fonctionalités suivantes:
 
 Les custom components qui m'aident:
 
-- [hassRenaultZE](https://github.com/epenet/hassRenaultZE)&#42;: pour surveiller
-  l'état de la batterie de ma Zoé. Merci à **epenet**.
 - [HACS](https://github.com/custom-components/hacs)&#42; pour gérer la mise à jour
   des composants utilisés.
-- intégration [variable](https://github.com/rogro82/hass-variables)&#42; merci à
-  **rogro82**.
-- [pool-pump](https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump)
-  pour piloter la pompe de filtration de ma piscine. Merci à **exxamalte**
+- [variable](https://github.com/Wibias/hass-variables)&#42; merci à
+  **rogro82** pour la création et **Wibias** pour la maintenance.
+- [Pool Pump Manager](https://github.com/oncleben31/ha-pool_pump)&#42; pour piloter la pompe de filtration de ma piscine. Merci à moi même ;-) et à **exxamalte** pour l'inspiration de son module [pool-pump](https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump)
+- [Orange Livebox Router](https://github.com/Cyr-ius/hass-livebox-component)&#42; pour récupérer des information de ma livebox. Merci à **Cyr-ius**
+- [Blitzortung.org lightning detector](https://github.com/mrk-its/homeassistant-blitzortung)&#42; pour détecter les orages près de chez moi. Merci à **mrk-its**.
 
 (&#42;): intégrations gérées avec HACS
 
@@ -109,28 +108,31 @@ Les custom components qui m'aident:
 Les integrations suivantes ne sont pas configurées dans les fichiers YAML.
 Vous ne les verrez donc pas dans ce dépôt:
 
+- [Application mobile](https://www.home-assistant.io/integrations/mobile_app/) pour intégrer les informations des smartphones de la famille.
+- Blitzortung (cf. liste des customs components).
+- [Brother](https://www.home-assistant.io/integrations/brother/) pour avoir
+  l'état de mon imprimante.
+- CO2 Signal
+- [deCONZ](https://www.home-assistant.io/integrations/deconz/) pour piloter mes
+  appareils Zigbee.
 - [ESPHome](https://www.home-assistant.io/components/esphome/) pour intégrer des
   ESP ou SONOFF.
 - [IFTTT](https://www.home-assistant.io/components/ifttt/) utilisé pour piloter
   le robot aspirateur par la voix.
 - [Google Cast](https://www.home-assistant.io/components/cast/) utilisé pour
   envoyer des message TTS sur ma Google Home
-- [Unifi](https://www.home-assistant.io/components/unifi/) pour détecter
-  présence et surveiller les sytèmes sur mon réseau.
-- [Cloud](https://www.home-assistant.io/components/cloud/) pour lier certains
-  appareil à Google Home et soutenir HA.
-- [Plex](https://www.home-assistant.io/integrations/plex/) pour connceter mon
-  serveur Plex
-- [deCONZ](https://www.home-assistant.io/integrations/deconz/) pour piloter mes
-  appareils Zigbee.
 - [Météo-France](https://www.home-assistant.io/integrations/meteo_france/) pour
   avoir la météo, les alertes météo et la prévision de pluie dans l'heure.
-- [Zone](https://www.home-assistant.io/integrations/zone) pour gérer les zones
-  utilisées dans certaines automations.
 - [Network UPS Tool (NUT)](https://www.home-assistant.io/integrations/nut) pour
-  surveiller mon UPC Back-UPS.
-- [Brother](https://www.home-assistant.io/integrations/brother/) pour avoir
-  l'état de mon imprimante.
+  surveiller mon UPC Back-UPS. Pour les NAS synology il y a une astuce sur le site de [Cachem.fr](https://www.cachem.fr/ups-domoticz-synology/)
+- Livebox (cf. liste des customs components).
+- [Plex](https://www.home-assistant.io/integrations/plex/) pour connceter mon
+  serveur Plex
+- [Renault](https://www.home-assistant.io/integrations/renault/) pour remonter les information de ma Zoe. Big up a @epenet qui a investi beaucoup d'energie (avec un peu de mon aide) pour rendre cette integration officielle et aboutie.
+- [RFXTRX](https://www.home-assistant.io/integrations/rfxtrx/) pour gérer mes appareils radios.
+- [SpeedTest](https://www.home-assistant.io/integrations/speedtestdotnet/) pour surveiller ma connexion ADSL.
+- [Synology](https://www.home-assistant.io/integrations/synology_dsm/) pour surveiller mon NAS.
+- [Waze](https://www.home-assistant.io/integrations/waze_travel_time/) pour surveiller la durée des trajets quotidiens de la famille.
 
 ### Addons utilisés
 
@@ -140,6 +142,7 @@ Vous ne les verrez donc pas dans ce dépôt:
   celui là consomme beaucoup de mémoire et peu être la cause racine de problème
   sur un Rasberry Pi 3.
 - [deCONZ](https://github.com/home-assistant/hassio-addons/tree/master/deconz)
+- [MariaDB](https://github.com/home-assistant/addons/tree/master/mariadb) pour héberger ma base de donnée Home Assistant.
 
 ### One more thing
 
@@ -220,16 +223,13 @@ You can find in my automations and scripts the following features:
 
 To help me I used the following custom components:
 
-- [hassRenaultZE](https://github.com/epenet/hassRenaultZE)&#42;: to follow battery
-  status of my Zoé eletric car thanks to **epenet**.
 - [HACS](https://github.com/custom-components/hacs)&#42; to follow updates of custom
   components and cards.
-- [variable](https://github.com/rogro82/hass-variables)&#42; integration thanks to
-  **rogro82**.
-- [spotcast](https://github.com/fondberg/spotcast)&#42; to start playing spotify
-  on a Google cast device thanks to **fondberg**.
-- [pool-pump](https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump)
-  to manage the swiming pool pump thanks to **exxamalte**
+- [variable](https://github.com/Wibias/hass-variables)&#42; integration thanks to
+  **rogro82** for creating it and **Wibias** for maintenance.
+- [Pool Pump Manager](https://github.com/oncleben31/ha-pool_pump)&#42; to manage the swiming pool pump thanks to me ;-) and **exxamalte** for inspiring me with his [pool-pump](https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump) module.
+- [Orange Livebox Router](https://github.com/Cyr-ius/hass-livebox-component)&#42; to monitor my ADSL box. Thanks to **Cyr-ius**
+- [Blitzortung.org lightning detector](https://github.com/mrk-its/homeassistant-blitzortung)&#42; For lightning detection. Thanks to **mrk-its**.
 
 (&#42;): integrations update managed with HACS
 
@@ -238,28 +238,32 @@ To help me I used the following custom components:
 The following integrations are not configured in YAML files. So you won't see it
 in this repository:
 
+
+- [Mobile App](https://www.home-assistant.io/integrations/mobile_app/) to integrate familly smartphones data.
+- Blitzortung (cf. customs components list).
+- [Brother](https://www.home-assistant.io/integrations/brother/) to have a status
+  of my new printer.
+- CO2 Signal
+- [deCONZ](https://www.home-assistant.io/integrations/deconz/) pour control my Zigbee devices.
 - [ESPHome](https://www.home-assistant.io/components/esphome/) devices
   integration in HA.
 - [IFTTT](https://www.home-assistant.io/components/ifttt/) used for piloting the
   vacuum robot from the Google Home.
 - [Google Cast](https://www.home-assistant.io/components/cast/) used for some
   TTS messages in the house.
-- [Unifi](https://www.home-assistant.io/components/unifi/) for presence
-  detection and system monitoring.
-- [Cloud](https://www.home-assistant.io/components/cloud/) to expose some
-  entities to Google Assistant and support HA project ;-)
-- [Plex](https://www.home-assistant.io/integrations/plex/) to connect my Plex
-  server.
-- [deCONZ](https://www.home-assistant.io/integrations/deconz/) to manage Zigbee
-  devices.
 - [Météo-France](https://www.home-assistant.io/integrations/meteo_france/) to
   have weather alerts and rain forecast within the hour.
-- [Zone](https://www.home-assistant.io/integrations/zone) to manage the different
-  zones used by automations.
 - [Network UPS Tool (NUT)](https://www.home-assistant.io/integrations/nut) to
   monitor my UPC Back-UPS.
-- [Brother](https://www.home-assistant.io/integrations/brother/) to have a status
-  of my new printer.
+- Livebox (cf. custom components list).
+- [Plex](https://www.home-assistant.io/integrations/plex/) to connect my Plex
+  server.
+- [Renault](https://www.home-assistant.io/integrations/renault/) to integrate my Zoe data. Kudos to @epenet who has invest a lot of energy with a little support from me to have this official integration.
+- [RFXTRX](https://www.home-assistant.io/integrations/rfxtrx/) to control my radio devices.
+- [SpeedTest](https://www.home-assistant.io/integrations/speedtestdotnet/) to monitor my ISP connexion.
+- [Synology](https://www.home-assistant.io/integrations/synology_dsm/) to monitor my NAS.
+- [Waze](https://www.home-assistant.io/integrations/waze_travel_time/) to monitor the duration of our commutes.
+
 
 ### Addons used
 
@@ -268,6 +272,7 @@ in this repository:
 - [Unifi Controller](https://github.com/hassio-addons/addon-unifi): warning this
   one use a lot of memory and can be the root cause of issues on Raspberry Pi 3.
 - [deCONZ](https://github.com/home-assistant/hassio-addons/tree/master/deconz)
+- [MariaDB](https://github.com/home-assistant/addons/tree/master/mariadb) to host Home Assisant database.
 
 ### One more thing
 
@@ -297,7 +302,7 @@ If you want to discuss with me about my configuration, you can do it through the
 [issues]: https://github.com/oncleben31/home-assistant-config/issues
 [last-commit-shield]: https://img.shields.io/github/last-commit/oncleben31/home-assistant-config.svg
 [license-shield]: https://img.shields.io/github/license/oncleben31/home-assistant-config.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2020.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2021.svg
 [workflow-shield]: https://github.com/oncleben31/home-assistant-config/workflows/Home%20Assistant%20configuration/badge.svg
 [workflow]: https://github.com/oncleben31/home-assistant-config/actions
 [awesome-shield]: https://awesome.re/badge.svg
