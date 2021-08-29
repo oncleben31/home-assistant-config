@@ -128,7 +128,7 @@ Vous ne les verrez donc pas dans ce dépôt:
 - Livebox (cf. liste des customs components).
 - [Plex](https://www.home-assistant.io/integrations/plex/) pour connceter mon
   serveur Plex
-- [Renault](https://www.home-assistant.io/integrations/renault/) pour remonter les information de ma Zoe. Big up a @epenet qui a investi beaucoup d'energie (avec un peu de mon aide) pour rendre cette integration officielle et aboutie.
+- [Renault](https://www.home-assistant.io/integrations/renault/) pour remonter les information de ma Zoe. Big up a **[@epenet](https://github.com/epenet)** qui a investi beaucoup d'energie (avec un peu de mon aide) pour rendre cette integration officielle et aboutie.
 - [RFXTRX](https://www.home-assistant.io/integrations/rfxtrx/) pour gérer mes appareils radios.
 - [SpeedTest](https://www.home-assistant.io/integrations/speedtestdotnet/) pour surveiller ma connexion ADSL.
 - [Synology](https://www.home-assistant.io/integrations/synology_dsm/) pour surveiller mon NAS.
@@ -258,7 +258,7 @@ in this repository:
 - Livebox (cf. custom components list).
 - [Plex](https://www.home-assistant.io/integrations/plex/) to connect my Plex
   server.
-- [Renault](https://www.home-assistant.io/integrations/renault/) to integrate my Zoe data. Kudos to @epenet who has invest a lot of energy with a little support from me to have this official integration.
+- [Renault](https://www.home-assistant.io/integrations/renault/) to integrate my Zoe data. Kudos to **[@epenet](https://github.com/epenet)** who has invest a lot of energy with a little support from me to have this official integration.
 - [RFXTRX](https://www.home-assistant.io/integrations/rfxtrx/) to control my radio devices.
 - [SpeedTest](https://www.home-assistant.io/integrations/speedtestdotnet/) to monitor my ISP connexion.
 - [Synology](https://www.home-assistant.io/integrations/synology_dsm/) to monitor my NAS.
