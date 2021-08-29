@@ -4,6 +4,27 @@ const LitElement = Object.getPrototypeOf(
 const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
+window.customCards = window.customCards || [];
+window.customCards.push({
+  type: "content-card-linky",
+  name: "Carte Enedis par saniho",
+  description: "Carte pour l'intégration myEnedis.",
+  preview: true,
+  documentationURL: "https://github.com/saniho/content-card-linky",
+});
+const fireEvent = (node, type, detail, options) => {
+  options = options || {};
+  detail = detail === null || detail === undefined ? {} : detail;
+  const event = new Event(type, {
+    bubbles: options.bubbles === undefined ? true : options.bubbles,
+    cancelable: Boolean(options.cancelable),
+    composed: options.composed === undefined ? true : options.composed,
+  });
+  event.detail = detail;
+  node.dispatchEvent(event);
+  return event;
+};
+
 function hasConfigOrEntityChanged(element, changedProps) {
   if (changedProps.has("config")) {
     return true;
@@ -26,6 +47,11 @@ class ContentCardLinky extends LitElement {
       config: {},
       hass: {}
     };
+  }
+
+  static async getConfigElement() {
+    await import("./content-card-linky-editor.js");
+    return document.createElement("content-card-linky-editor");
   }
 
   render() {
@@ -544,7 +570,7 @@ class ContentCardLinky extends LitElement {
       }
       .tooltip .tooltiptext {
         visibility: hidden;
-        background: white;
+        background: var( --ha-card-background, var(--card-background-color, white) );
         box-shadow: 2px 2px 6px -4px #999;
         text-align: center;
         cursor: default;
