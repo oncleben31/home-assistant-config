@@ -53,7 +53,7 @@ influxdb:
       - variable.zoe_weekly_mileage
 
       # Electrical consumtion monitoring
-      - sensor.prise_pc_powe
+      - sensor.prise_pc_power
       - sensor.prise_tv_power
 
       # Commute monitoring
