@@ -9,6 +9,7 @@ __pycache__
 config/.cloud
 config/.storage
 config/deps
+config/custom_components/archive
 
 # Specific file ignores
 config/.uuid
