@@ -1,0 +1,11 @@
+{
+    "domain": "esxi_stats",
+    "name": "ESXi Stats",
+    "documentation": "https://github.com/wxt9861/esxi_stats",
+    "issue_tracker": "https://github.com/wxt9861/esxi_stats/issues",
+    "dependencies": [],
+    "codeowners": ["@wxt9861"],
+    "config_flow": true,
+    "requirements": ["pyvmomi==7.0.2"],
+    "version": "0.6.3"
+  }
