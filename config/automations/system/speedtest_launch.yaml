@@ -1,6 +1,6 @@
 ---
-# FR: Lance une mesure Speedtest deux fois par jour is le PC et la TV sont éteints
-# EN: Launch Speedtest measures two times a day if PC and TV are off
+# FR: Lance une mesure Speedtest quatre fois par jour is le PC et la TV sont éteints
+# EN: Launch Speedtest measures four times a day if PC and TV are off
 #
 - alias: "Lance Speedtest"
   description: Lance une mesure Speedtest deux fois par jour is le PC et la TV sont éteints
@@ -15,7 +15,7 @@
         entity_id: 'sensor.prise_pc_power'
         below: 25
       - condition: numeric_state
-        entity_id: 'sensor.prise_pc_power'
+        entity_id: 'sensor.prise_tv_power'
         below: 5
   action:
     service: speedtestdotnet.speedtest
