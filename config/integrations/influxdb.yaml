@@ -77,6 +77,7 @@ influxdb:
       - sensor.humidity_parents
       - sensor.humidity_sous_sol
       - sensor.humidity_salon
+      - sensor.motion_sensor_livingroom_luminosity
 
       # scripts
       - script.vacuum_workday_sequence
