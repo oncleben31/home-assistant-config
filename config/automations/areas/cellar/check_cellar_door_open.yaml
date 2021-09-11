@@ -18,6 +18,11 @@
       entity_id: binary_sensor.porte_sous_sol
       state: "on"
   action:
-    - service: notify.telegram
+    - service: notify.family
       data:
-        message: "La porte du sous-sol est toujours ouverte !"
+        message: "La porte du sous-sol est toujours ouverte ! Un volontaire pour aller la fermer ?"
+    - service: tts.google_translate_say
+      data:
+        entity_id: media_player.google_home
+        message: "Chers résidents, la porte du garage est ouverte. L'un d'entre vous doit aller la fermer."
+
