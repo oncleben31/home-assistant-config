@@ -1,10 +1,10 @@
 """Sensor for Livebox router."""
 import logging
 
-from homeassistant.helpers.entity import Entity
+from homeassistant.components.sensor import SensorEntity
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import ATTR_SENSORS, COORDINATOR, DOMAIN, LIVEBOX_ID
+from .const import COORDINATOR, DOMAIN, LIVEBOX_ID, SENSOR_TYPES
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -15,45 +15,41 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     box_id = datas[LIVEBOX_ID]
     coordinator = datas[COORDINATOR]
     nmc = coordinator.data["nmc"]
-    if nmc.get("WanMode") is not None and "ETHERNET" not in nmc["WanMode"].upper():
-        async_add_entities(
-            [
-                FlowSensor(coordinator, box_id, "down"),
-                FlowSensor(coordinator, box_id, "up"),
-            ],
-            True,
+    entities = [
+        FlowSensor(
+            coordinator,
+            box_id,
+            description,
         )
+        for description in SENSOR_TYPES
+    ]
+    if nmc.get("WanMode") is not None and "ETHERNET" not in nmc["WanMode"].upper():
+        async_add_entities(entities, True)
 
 
-class FlowSensor(CoordinatorEntity, Entity):
+class FlowSensor(CoordinatorEntity, SensorEntity):
     """Representation of a livebox sensor."""
 
-    unit_of_measurement = "Mb/s"
-
-    def __init__(self, coordinator, box_id, flow_direction):
+    def __init__(self, coordinator, box_id, description):
         """Initialize the sensor."""
         self.box_id = box_id
         self.coordinator = coordinator
-        self._attributs = ATTR_SENSORS[flow_direction]
-
-    @property
-    def name(self):
-        """Return the name of the sensor."""
-        return self._attributs["name"]
+        self._attributs = description.attr
+        self._current = description.current_rate
+        self.entity_description = description
 
     @property
     def unique_id(self):
         """Return unique_id."""
-        cr = self._attributs["current_rate"]
+        cr = self._current
         return f"{self.box_id}_{cr}"
 
     @property
-    def state(self):
-        """Return the state of the device."""
-        if self.coordinator.data["dsl_status"].get(self._attributs["current_rate"]):
+    def native_value(self):
+        """Return the native value of the device."""
+        if self.coordinator.data["dsl_status"].get(self._current):
             return round(
-                self.coordinator.data["dsl_status"][self._attributs["current_rate"]]
-                / 1000,
+                self.coordinator.data["dsl_status"][self._current] / 1000,
                 2,
             )
         return None
@@ -67,6 +63,6 @@ class FlowSensor(CoordinatorEntity, Entity):
     def device_state_attributes(self):
         """Return the device state attributes."""
         _attributs = {}
-        for key, value in self._attributs["attr"].items():
+        for key, value in self._attributs.items():
             _attributs[key] = self.coordinator.data["dsl_status"].get(value)
         return _attributs
