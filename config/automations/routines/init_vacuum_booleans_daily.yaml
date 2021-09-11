@@ -10,7 +10,7 @@
     at: "05:00:00"
   action:
     # First stop the previous cleaning if started and send Vacuum to docking station.
-    # Sometimes familly stop the vacuum and it stays idle in the midlle of the house.
+    # Sometimes family stop the vacuum and it stays idle in the midlle of the house.
     - service: script.turn_on
       entity_id: script.stop_vacuum_workday_sequence
 

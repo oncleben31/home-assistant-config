@@ -239,7 +239,7 @@ The following integrations are not configured in YAML files. So you won't see it
 in this repository:
 
 
-- [Mobile App](https://www.home-assistant.io/integrations/mobile_app/) to integrate familly smartphones data.
+- [Mobile App](https://www.home-assistant.io/integrations/mobile_app/) to integrate family smartphones data.
 - Blitzortung (cf. customs components list).
 - [Brother](https://www.home-assistant.io/integrations/brother/) to have a status
   of my new printer.
