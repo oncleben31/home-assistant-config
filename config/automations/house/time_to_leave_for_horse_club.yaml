@@ -1,0 +1,29 @@
+---
+# FR: Vérifie si ma fille est au club d'équitation et si c'est l'heure de partir la chercher.
+# EN: Check if my daughter is in horse club and if it's time to leave to get her.
+#
+# https://www.home-assistant.io/docs/automation/trigger/#time-trigger
+# https://www.home-assistant.io/docs/scripts/conditions/#time-condition
+#
+- alias: "Vérfie s'il faut aller chercher Athénaïs au club"
+  description: Vérifie si c'est l'heure d'aller chercher Athénaïs au club équestre
+  id: 3ac7bb66-2b05-49d8-bec8-9753b6cce533
+  trigger:
+    platform: time
+    at: '11:00:00'
+  conditions:
+    - condition: time
+      weekday:
+        - sat
+    - condition: zone
+      entity_id: person.athenais
+      zone: zone.club_equestre
+  action:
+    - service: notify.family
+      data:
+        message: "C'est l'heure d'aller chercher Athénaïs au club."
+    - service: tts.google_translate_say
+      data:
+        entity_id: media_player.google_home
+        message: "Chers résidents, c'est l'heure d'aller chercher Athénaïs au club."
+
