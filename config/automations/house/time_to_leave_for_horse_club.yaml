@@ -11,7 +11,7 @@
   trigger:
     platform: time
     at: '11:00:00'
-  conditions:
+  condition:
     - condition: time
       weekday:
         - sat
