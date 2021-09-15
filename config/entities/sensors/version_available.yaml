@@ -6,5 +6,5 @@
 #
 platform: version
 name: version_available
-source: hassio
-image: raspberrypi3
+source: supervisor
+image: default
