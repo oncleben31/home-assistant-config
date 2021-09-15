@@ -9,12 +9,15 @@
   description: Vérifie si c'est l'heure d'aller chercher Athénaïs au club équestre
   id: 3ac7bb66-2b05-49d8-bec8-9753b6cce533
   trigger:
-    platform: time
-    at: '11:00:00'
+    - platform: time
+      at: 
+        - '11:00:00'
+        - '20:30:00'
   condition:
     - condition: time
       weekday:
         - sat
+        - tue
     - condition: zone
       entity_id: person.athenais
       zone: zone.club_equestre
