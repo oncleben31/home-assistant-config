@@ -3,6 +3,7 @@
 # F: Permet de charger mes automations (YAML et dans UI)
 #
 # https://www.home-assistant.io/docs/automation/
+# https://www.home-assistant.io/docs/configuration/splitting_configuration/#example-combine-include_dir_merge_list-with-automationsyaml
 #
 automation ui: !include ../automations.yaml
 automation manual: !include_dir_merge_list ../automations/
