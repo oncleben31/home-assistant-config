@@ -1,0 +1,32 @@
+---
+# FR: Vérifie si mon fils est au club de taekwondo et si c'est l'heure de partir la chercher.
+# EN: Check if my son is in taekwondo club and if it's time to leave to get him.
+#
+# https://www.home-assistant.io/docs/automation/trigger/#time-trigger
+# https://www.home-assistant.io/docs/scripts/conditions/#time-condition
+#
+- alias: "Vérfie s'il faut aller chercher Noah au club"
+  description: Vérifie si c'est l'heure d'aller chercher Noah au club de taekwondo
+  id: 592d4daf-3118-472b-8045-fb804c916adb
+  trigger:
+    - platform: time
+      at: 
+        - '20:20:00'
+        - '20:05:00'
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - fri
+    - condition: zone
+      entity_id: person.noah
+      zone: zone.club_taekwondo
+  action:
+    - service: notify.family
+      data:
+        message: "C'est l'heure d'aller chercher Noah au club."
+    - service: tts.google_translate_say
+      data:
+        entity_id: media_player.google_home
+        message: "Chers résidents, c'est l'heure d'aller chercher Noah au club."
+
