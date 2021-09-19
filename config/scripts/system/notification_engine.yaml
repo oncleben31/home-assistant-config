@@ -38,6 +38,13 @@ fields:
     description: Message audio à envoyer si différent du message texte.
     selector:
       text:
+  do_not_disturb:
+    name: Ne pas déranger
+    description: Le message ne sera pas diffusé si dans les heures "Ne pas déranger"
+    required: true
+    default: false
+    selector:
+      boolean:
 
 sequence:
   # Send a textual message 
@@ -50,11 +57,19 @@ sequence:
     data:
       message: "{{ message }}"
   
-  # Send an optional audio message
+  # Send an optional audio message if add_audio AND ( cancel message 
+  # if do_not_disturb==true and in daily quiet periode )
   - choose:
       - conditions:
-          - condition: template
-            value_template: "{{ add_audio }}"
+          - condition: and
+            conditions:
+              - "{{ add_audio }}"
+              - condition: or
+                conditions:
+                  - "{{ do_not_disturb == false}}"
+                  - condition: time
+                    before: '21:30:00'
+                    after: '10:00:00'
         sequence:
           - service: tts.cloud_say
             data:
