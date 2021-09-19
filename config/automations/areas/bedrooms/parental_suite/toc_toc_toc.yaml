@@ -31,8 +31,9 @@
       data:
         entity_id: light.salon
         flash: short
-    - service: notify.telegram
+    - service: script.notification_engine
       data:
+        who: Moi
         message: "Quelqu'un attend des calins dans la chambre"
     - service: tts.google_translate_say
       entity_id: media_player.google_home
