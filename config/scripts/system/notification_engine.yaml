@@ -22,7 +22,8 @@ fields:
           - "Telegram Famille"
   message: 
     name: Message
-    description: Message texte à envoyer
+    required: true
+    description: Message texte à envoyer.
     selector:
       text:
   add_audio:
@@ -34,7 +35,7 @@ fields:
       boolean:
   audio_message: 
     name: Message audio
-    description: Message audio à envoyer
+    description: Message audio à envoyer si différent du message texte.
     selector:
       text:
 
@@ -60,7 +61,8 @@ sequence:
               entity_id: media_player.google_home
               cache: true
               language: fr-CA
-              message: "{{ audio_message }}"
+              # If no audio_message defined us the textual message
+              message: "{{ audio_message|default(message) }}"
               options:
                 gender: female
 
