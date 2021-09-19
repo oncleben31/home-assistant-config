@@ -1,0 +1,31 @@
+---
+# FR: Script pour gérer les notifications
+# EN: Script to manage notifications
+#
+#
+alias: Gère les notifications
+fields:
+  who: 
+    name: "Qui?"
+    required: true
+    selector:
+      select:
+        options:
+          - "Moi"
+          - "Telegram Famille"
+  message: 
+    name: Message
+    description: Message à envoyer
+    selector:
+      text:
+
+sequence:
+  - service: >
+          {% if who == 'Moi' %}
+            notify.telegram_me
+          {% elif who == 'Telegram Famille' %}
+            notify.telegram_family
+          {% endif %}
+    data:
+      message: "{{ message }}"
+

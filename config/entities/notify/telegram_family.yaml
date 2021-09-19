@@ -1,0 +1,9 @@
+---
+# I use Telegram for notification. This chanel is the one exchanged with the whole family.
+# There will be probably in the future other chanels
+#
+# https://www.home-assistant.io/components/notify.telegram/
+#
+name: telegram_family
+platform: telegram
+chat_id: !secret family_chat_id
