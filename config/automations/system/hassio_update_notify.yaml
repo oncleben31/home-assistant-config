@@ -17,8 +17,9 @@
     - "{{ states('sensor.version_current') != 'unknown' }}"
 
   action:
-    - service: notify.telegram
+    - service: script.notification_engine
       data:
+        who: Moi
         message: >
           Une mise à jour de Home Assistant est disponible:  {{ states('sensor.version_available') }}
     - service: persistent_notification.create
