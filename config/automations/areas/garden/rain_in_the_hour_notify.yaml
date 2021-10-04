@@ -2,14 +2,14 @@
 # FR: Envoie une notificatin quand la pluie est attendue dans la prochaine heure
 # EN: Sent a notification if rain is expected in the hour
 #
-# FR: - Envoie une notification sur Telegram pour chaque changement d'heure estimée.
-#     - Envoie une notificatino sur la Google Home si la pluie est attendue dans moins de 5 minutes.
+# FR: - Envoie une notification texte la première fois que la pluie est attendue dans la prochaine heure.
+#     - Envoie une notification texte et audio si la pluie est attendue dans moins de 5 minutes.
 #     - Une fois qu'il pleue, évite de répéter les notifications jusqu'à plus de pluie attendue
 #       dans la prochaine heure.
 #
-# EN: - Send a notification on Telegram each time rain estimatin time change.
-#     - Send a notification on Google Home if rain is expected in less than 5 minutes.
-#     - When it's raining, avoid to send notification unitil nom more rain is expected in the
+# EN: - Send a textual notification the first time the rain is expected in the hour.
+#     - Send a textual and audio notification if rain is expected in less than 5 minutes.
+#     - When it's raining, avoid to send notification until no more rain is expected in the
 #       following hour.
 #
 # https://www.home-assistant.io/docs/automation/trigger/#template-trigger
@@ -32,41 +32,42 @@
           sequence:
             - choose:
                 - conditions:
-                    # If estimated time change...
+                    # If first time rain is expected in less than one hour...
                     # ... Send a notification on Telegram
-                    - "{{ trigger.to_state.state != trigger.from_state.state }}"
+                    - "{{ trigger.from_state.state ==  'unknown'  }}"
                   sequence:
-                    - service: notify.telegram
+                    - service: script.notification_engine
                       data:
+                        who: Moi
                         message: >
-                          La pluie est attendue à {{ as_timestamp(states('sensor.home_next_rain'))
+                          La pluie est attendue vers {{ as_timestamp(states('sensor.home_next_rain'))
                           | timestamp_custom('%H:%M', True) }}.
             - choose:
                 - conditions:
                     # If rain is expected in less than 5 mintues...
-                    # ... Stop future notification and send a notification on Google Home
+                    # ... Stop future notification and send a notification audio and text
                     - "{{ state_attr('sensor.home_next_rain', '1_hour_forecast')['0 min'] != 'Temps sec' }}"
                   sequence:
                     - service: input_boolean.turn_on
                       data:
                         entity_id: input_boolean.stop_rain_notification
-                    # If current time is between 10h00 and 21h30...
-                    # ... Send a notification on Google Home
-                    - condition: time
-                      before: '21:30:00'
-                      after: '10:00:00'
-                    - service: tts.google_translate_say
+                    # Send a textual and an audio message (if not in daily quiet hours)
+                    - service: script.notification_engine
                       data:
-                        entity_id: media_player.google_home
-                        message: "Chers résidents, la pluie est attendue dans quelques minutes."
+                        who: Moi
+                        message: "La pluie est attendue dans quelques minutes."
+                        add_audio: true
+                        audio_message: "Chers résidents, la pluie est attendue dans quelques minutes."
+                        do_not_disturb: true
         - conditions:
             # If rain is no more expected...
             # ... Send a notification on Telegram and allow future notifications
             - "{{ trigger.to_state.state == 'unknown' }}"
             - "{{ trigger.from_state.state != 'unknown' }}"
           sequence:
-            - service: notify.telegram
+            - service: script.notification_engine
               data:
+                who: Moi
                 message: "Plus de pluie attendue dans la prochaine heure."
             - service: input_boolean.turn_off
               data:

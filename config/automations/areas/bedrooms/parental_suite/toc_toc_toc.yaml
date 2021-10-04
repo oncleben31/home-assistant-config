@@ -34,9 +34,5 @@
     - service: script.notification_engine
       data:
         who: Moi
+        add_audio: true
         message: "Quelqu'un attend des calins dans la chambre"
-    - service: tts.google_translate_say
-      entity_id: media_player.google_home
-      data:
-        message: "Quelqu'un attend des calins dans la chambre"
-        language: 'fr'
