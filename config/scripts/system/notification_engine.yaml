@@ -12,7 +12,7 @@
 #
 alias: Gère les notifications
 fields:
-  who: 
+  who:
     name: "Qui"
     required: true
     selector:
@@ -20,7 +20,7 @@ fields:
         options:
           - "Moi"
           - "Telegram Famille"
-  message: 
+  message:
     name: Message
     required: true
     description: Message texte à envoyer.
@@ -31,9 +31,9 @@ fields:
     required: true
     default: false
     description: Est-ce qu'un message audio doit être ajouté ?
-    selector: 
+    selector:
       boolean:
-  audio_message: 
+  audio_message:
     name: Message audio
     description: Message audio à envoyer si différent du message texte.
     selector:
@@ -47,7 +47,7 @@ fields:
       boolean:
 
 sequence:
-  # Send a textual message 
+  # Send a textual message
   - service: >
           {% if who == 'Moi' %}
             notify.telegram_me
@@ -56,8 +56,8 @@ sequence:
           {% endif %}
     data:
       message: "{{ message }}"
-  
-  # Send an optional audio message if add_audio AND ( cancel message 
+
+  # Send an optional audio message if add_audio AND ( cancel message
   # if do_not_disturb==true and in daily quiet periode )
   - choose:
       - conditions:
@@ -80,6 +80,3 @@ sequence:
               message: "{{ audio_message|default(message) }}"
               options:
                 gender: female
-
-
-

@@ -12,6 +12,5 @@
     "sync-rsync.args": ["--filter=. /Users/oncleben31/Dev/home-assistant-config/.rsync-filter"],
     "sync-rsync.delete": true,
     "sync-rsync.showProgress": false
-    
-}
 
+}

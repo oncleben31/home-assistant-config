@@ -10,7 +10,9 @@
 #
 # Choisir un des différent mode pour la pomoe: Auto / Marche Forcée / Off
 #
-# Inspiré par l'implementation de exxamalte: https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump
+# Inspiré par l'implementation de exxamalte:
+# https://github.com/exxamalte/home-assistant-customisations/tree/master/pool-pump
+#
 pool_pump:
   name: Pool Pump mode
   options:

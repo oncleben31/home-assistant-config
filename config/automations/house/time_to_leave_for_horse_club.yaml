@@ -10,7 +10,7 @@
   id: 3ac7bb66-2b05-49d8-bec8-9753b6cce533
   trigger:
     - platform: time
-      at: 
+      at:
         - '11:00:00'
         - '20:30:00'
   condition:

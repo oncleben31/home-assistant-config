@@ -10,7 +10,8 @@ platform: template
 sensors:
   zoe_max_range:
     value_template: >
-      {% if (states('sensor.zoe_battery_level') | float != 0.0) and (states('sensor.zoe_battery_autonomy') is not none) %}
+      {% if (states('sensor.zoe_battery_level') | float != 0.0)
+        and (states('sensor.zoe_battery_autonomy') is not none) %}
         {{ (states('sensor.zoe_battery_autonomy') | float
         / states('sensor.zoe_battery_level') | float * 100)
        | round(0) }}
