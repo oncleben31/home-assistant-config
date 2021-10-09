@@ -26,8 +26,9 @@
         value: >
           {{ states('sensor.zoe_mileage') | int
           - state_attr('variable.zoe_weekly_mileage', 'last_mileage') | int }}
-    - service: notify.telegram
+    - service: script.notification_engine
       data:
+        who: Moi
         message: >
           La Zoé a parcouru {{ states.variable.zoe_weekly_mileage.state_with_unit }} cette semaine.
           {% if states('variable.zoe_weekly_mileage') | int > 317 -%}

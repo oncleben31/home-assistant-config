@@ -8,25 +8,41 @@
 - alias: "Vérfie s'il faut aller chercher Noah au club"
   description: Vérifie si c'est l'heure d'aller chercher Noah au club de taekwondo
   id: 592d4daf-3118-472b-8045-fb804c916adb
+  # Time of notification change deppending of the training day
   trigger:
     - platform: time
-      at: 
+      at:
         - '20:20:00'
+      id: "friday_time"
+    - platform: time
+      at:
         - '20:05:00'
+      id: "monday_time"
+  # Notification if time and day match AND kid located in taekwondo club
   condition:
-    - condition: time
-      weekday:
-        - mon
-        - fri
+    - condition: or
+      conditions:
+        - condition: and
+          conditions:
+            - condition: time
+              weekday:
+                - mon
+            - condition: trigger
+              id: monday_time
+        - condition: and
+          conditions:
+            - condition: time
+              weekday:
+                - fri
+            - condition: trigger
+              id: friday_time
     - condition: zone
       entity_id: person.noah
       zone: zone.club_taekwondo
   action:
-    - service: notify.family
+    - service: script.notification_engine
       data:
+        who: Telegram Famille
         message: "C'est l'heure d'aller chercher Noah au club."
-    - service: tts.google_translate_say
-      data:
-        entity_id: media_player.google_home
-        message: "Chers résidents, c'est l'heure d'aller chercher Noah au club."
-
+        add_audio: true
+        audio_message: "Chers résidents, c'est l'heure d'aller chercher Noah au club."

@@ -1,0 +1,82 @@
+---
+# FR: Script pour gérer les notifications
+# EN: Script to manage notifications
+#
+# FR: Le script permet de choisir le canal de communication pour envoyer
+#     la notification. Il permet aussi d'ajouter un message audio optionnel
+#     qui sera envoyé sur ma Google Home
+# EN: The script allows to chose the communication chanel to send a notification.
+#     It allows to add an optional audio message on my Google Home.
+#
+# Inspiré/ Inspired by https://ghost.canaletto.fr/notifications-avancees-sur-home-assistant/
+#
+alias: Gère les notifications
+fields:
+  who:
+    name: "Qui"
+    required: true
+    selector:
+      select:
+        options:
+          - "Moi"
+          - "Telegram Famille"
+  message:
+    name: Message
+    required: true
+    description: Message texte à envoyer.
+    selector:
+      text:
+  add_audio:
+    name: Ajoute un message audio
+    required: true
+    default: false
+    description: Est-ce qu'un message audio doit être ajouté ?
+    selector:
+      boolean:
+  audio_message:
+    name: Message audio
+    description: Message audio à envoyer si différent du message texte.
+    selector:
+      text:
+  do_not_disturb:
+    name: Ne pas déranger
+    description: Le message ne sera pas diffusé si dans les heures "Ne pas déranger"
+    required: true
+    default: false
+    selector:
+      boolean:
+
+sequence:
+  # Send a textual message
+  - service: >
+          {% if who == 'Moi' %}
+            notify.telegram_me
+          {% elif who == 'Telegram Famille' %}
+            notify.telegram_family
+          {% endif %}
+    data:
+      message: "{{ message }}"
+
+  # Send an optional audio message if add_audio AND ( cancel message
+  # if do_not_disturb==true and in daily quiet periode )
+  - choose:
+      - conditions:
+          - condition: and
+            conditions:
+              - "{{ add_audio }}"
+              - condition: or
+                conditions:
+                  - "{{ do_not_disturb == false}}"
+                  - condition: time
+                    before: '21:30:00'
+                    after: '10:00:00'
+        sequence:
+          - service: tts.cloud_say
+            data:
+              entity_id: media_player.google_home
+              cache: true
+              language: fr-CA
+              # If no audio_message defined us the textual message
+              message: "{{ audio_message|default(message) }}"
+              options:
+                gender: female

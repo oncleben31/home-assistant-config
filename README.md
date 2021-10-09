@@ -1,4 +1,4 @@
-# My Home Assistant config 
+# My Home Assistant config
 
 ![Project Maintenance][maintenance-shield]
 [![License][license-shield]](LICENSE.md)

@@ -25,6 +25,7 @@
     value_template: "{{ as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d'))
     - state_attr('input_datetime.last_maintenance_date_tank','timestamp') > 86400 * 365 * 3}}"
   action:
-    - service: notify.telegram
+    - service: script.notification_engine
       data:
+        who: Moi
         message: "Il est temps de faire la maintenance de la fosse sceptique."

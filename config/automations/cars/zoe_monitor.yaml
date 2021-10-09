@@ -4,35 +4,43 @@
 # FR: Automatisations pour surveiller ma Renault Zoé
 #     Envoie une notification quand une charge commence ou se termine
 #
-# https://github.com/hacf-fr/hassRenaultZE
+# https://www.home-assistant.io/integrations/renault/
 #
-- alias: notify_zoe_charge_start
+- alias: "Alerte quand la Zoé commence une charge"
+  description: "Envoie une notification lorsque la Zoé commence une charge"
+  id: d2cc1f3c-576f-449a-85e1-c0e9f9806cb2
   trigger:
     - platform: state
       entity_id: binary_sensor.zoe_charging
       from: 'off'
       to: 'on'
   action:
-    - service: notify.telegram
+    - service: script.notification_engine
       data:
+        who: Moi
         message: "La Zoé a commencé une charge à
           {{ states('sensor.zoe_battery_level')}}\u202F
           {{state_attr('sensor.zoe_battery_level', 'unit_of_measurement') }}"
 
-- alias: notify_zoe_charge_end
+- alias: "Alerte quand la Zoé termine une charge"
+  description: "Envoie une notification lorsque la Zoé termine une charge"
+  id: d9cf38d5-5b8d-496f-86fc-3f7a932940eb
   trigger:
     - platform: state
       entity_id: binary_sensor.zoe_charging
       from: 'on'
       to: 'off'
   action:
-    - service: notify.telegram
+    - service: script.notification_engine
       data:
+        who: Moi
         message: "La Zoé a terminé une charge à
           {{ states('sensor.zoe_battery_level')}}\u202F
           {{state_attr('sensor.zoe_battery_level', 'unit_of_measurement') }}"
 
-- alias: "Notify me if Zoé is not charging and battery is below 70%"
+- alias: "Alerte si la Zoé ne charge pas le soir"
+  description: "Envoie une notification le soir si la Zoé est sous 70% et qu'elle ne charge pas"
+  id: 30236b1e-81c6-4e6b-b75a-290f01c92584
   trigger:
     - platform: time
       at: "22:30:00"
@@ -44,9 +52,10 @@
       entity_id: binary_sensor.zoe_charging
       state: "off"
   action:
-    - service: notify.telegram
+    - service: script.notification_engine
       data:
+        who: Telegram Famille
         message: "La batterie de la Zoé est à
           {{ states('sensor.zoe_battery_level')}}\u202F
           {{state_attr('sensor.zoe_battery_level', 'unit_of_measurement') }}
-          et elle ne charge pas. Tu as peut-être oublié de la brancher ?"
+          et elle ne charge pas. Est-ce qu'il faut la brancher pour demain ?"

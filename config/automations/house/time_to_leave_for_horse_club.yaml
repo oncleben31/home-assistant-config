@@ -10,7 +10,7 @@
   id: 3ac7bb66-2b05-49d8-bec8-9753b6cce533
   trigger:
     - platform: time
-      at: 
+      at:
         - '11:00:00'
         - '20:30:00'
   condition:
@@ -22,11 +22,9 @@
       entity_id: person.athenais
       zone: zone.club_equestre
   action:
-    - service: notify.family
+    - service: script.notification_engine
       data:
+        who: Telegram Famille
         message: "C'est l'heure d'aller chercher Athénaïs au club."
-    - service: tts.google_translate_say
-      data:
-        entity_id: media_player.google_home
-        message: "Chers résidents, c'est l'heure d'aller chercher Athénaïs au club."
-
+        add_audio: true
+        audio_message: "Chers résidents, c'est l'heure d'aller chercher Athénaïs au club."

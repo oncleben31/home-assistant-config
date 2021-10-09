@@ -37,3 +37,4 @@ config/custom_components/cookiecutter_homeassistant_custom_component_instance
 
 # Virtual environement
 venv
+.venv

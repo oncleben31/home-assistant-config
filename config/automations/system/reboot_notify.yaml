@@ -10,6 +10,7 @@
     - event: start
       platform: homeassistant
   action:
-    - service: notify.telegram
+    - service: script.notification_engine
       data:
+        who: Moi
         message: "Home Assitant a redémarré !"
