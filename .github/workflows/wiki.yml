@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout wiki
-        uses: actions/checkout@v2.3.5
+        uses: actions/checkout@v2.4.0
         with:
           repository: oncleben31/home-assistant-config.wiki
           ref: master
