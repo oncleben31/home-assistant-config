@@ -19,7 +19,7 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v2.3.5
       - name: Running YAMLlint
-        uses: frenck/action-yamllint@v1.1.1
+        uses: frenck/action-yamllint@v1.1.2
 
   link-checker:
     name: Link Checker
