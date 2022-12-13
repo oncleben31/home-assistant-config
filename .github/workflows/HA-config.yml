@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2.3.5
+        uses: actions/checkout@v3.2.0
       - name: Running YAMLlint
         uses: frenck/action-yamllint@v1.1.1
 
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2.3.5
+        uses: actions/checkout@v3.2.0
       - name: Link Checker
         uses: gaurav-nelson/github-action-markdown-link-check@1.0.13
         with:
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2.3.5
+        uses: actions/checkout@v3.2.0
       - name: Running Remark lint
         uses: "docker://pipelinecomponents/remark-lint:latest"
         continue-on-error: true
@@ -52,7 +52,7 @@ jobs:
         version: ["stable", "beta"]
     steps:
       - name: ⤵️ Check out configuration from GitHub
-        uses: actions/checkout@v2.3.5
+        uses: actions/checkout@v3.2.0
       - name: 🚀 Run Home Assistant Configuration Check
         uses: frenck/action-home-assistant@v1.1.1
         with:
