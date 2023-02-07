@@ -11,8 +11,11 @@ blueprint:
           integration: meteo_france
           domain: sensor
     notifier:
-      name: "Notification"
-      description: "Nom du service de notification à utiliser"
+      name: Devices to notify
+      description: Devices to be notified via the mobile app
+      selector:
+        device:
+          integration: mobile_app
 
 trigger:
   - platform: state
@@ -28,17 +31,16 @@ action:
             entity_id: !input sensor_weather_alert
             state: ["Jaune", "Orange", "Rouge"]
         sequence:
-          - service: !input notifier
-            data:
-              message:
-                "Alerte météo {{states(weather_alert_sensor)}} en cours:\n
-                {%- for attr in ['Vent violent', 'Pluie-inondation', 'Orages', 'Inondation', 'Neige-verglas',
-                'Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion'] -%}
-                {%- if state_attr(weather_alert_sensor, attr) != 'Vert' and state_attr(weather_alert_sensor, attr)
-                != None %}\n
-                - {{attr}} : {{state_attr(weather_alert_sensor, attr)}}
-                {%- endif -%}
-                {% endfor -%}"
+          - device_id: !input notifier
+            domain: mobile_app
+            type: notify
+            message:
+              "Alerte météo {{states(weather_alert_sensor)}} en cours:\n
+              {%- for attr in ['Vent violent', 'Pluie-inondation', 'Orages', 'Inondation', 'Neige-verglas','Canicule', 'Grand-froid', 'Avalanches', 'Vagues-submersion'] -%}
+              {%- if state_attr(weather_alert_sensor, attr) != 'Vert' and state_attr(weather_alert_sensor, attr) != None %}\n
+              - {{attr}} : {{state_attr(weather_alert_sensor, attr)}}
+              {%- endif -%}
+              {% endfor -%}"
       - conditions:
           - condition: state
             entity_id: !input sensor_weather_alert
@@ -47,6 +49,7 @@ action:
           # E: Check if state is back to 'Vert' after entity was unvailable.
           - "{{ trigger.from_state.state != 'unavailable' }}"
         sequence:
-          - service: !input notifier
-            data:
-              message: "Fin de l'alerte météo."
+          - device_id: !input notifier
+            domain: mobile_app
+            type: notify
+            message: "Fin de l'alerte météo."
