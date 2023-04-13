@@ -11,8 +11,8 @@ blueprint:
           integration: meteo_france
           domain: sensor
     notifier:
-      name: Devices to notify
-      description: Devices to be notified via the mobile app
+      name: "Devices to notify"
+      description: "Devices to be notified via the mobile app"
       selector:
         device:
           integration: mobile_app
